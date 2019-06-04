@@ -61,6 +61,41 @@ class VIPHomeHeaderCell: UITableViewCell {
     }
     
     @IBOutlet weak var noticeBgView: UIView!
+    @IBOutlet weak var noticeLabel: UILabel!{
+        didSet{
+            self.noticeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction(_:))))
+        }
+    }
+    @IBOutlet weak var moreButton: UIButton!
+    
+    
+    
+    var financialManagementBlock : (()->())?
+    var superNodeBlock : (()->())?
+    var noticeBlock : (()->())?
+    var moreBlock : (()->())?
+    
+    @IBAction func financialManagementAction(_ sender: Any) {
+        if let block = financialManagementBlock {
+            block()
+        }
+    }
+    @IBAction func superNodeAction(_ sender: Any) {
+        if let block = superNodeBlock {
+            block()
+        }
+    }
+    @IBAction func moreAction(_ sender: Any) {
+        if let block = moreBlock {
+            block()
+        }
+    }
+    @objc func noticeAction(_ sender: Any) {
+        if let block = noticeBlock {
+            block()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

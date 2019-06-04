@@ -117,6 +117,7 @@ class VIPBackUpViewController: VIPBaseViewController {
     }
    
     @IBAction func remembered(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func remembering(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

@@ -11,4 +11,8 @@ import JXFoundation
 
 class VIPBaseModel: BaseModel {
 
+    override open func setValue(_ value: Any?, forUndefinedKey key: String) {
+        print("undefinedKey:\(key)")
+        //print("class:\(type(of: self)) undefinedKey:\(key) Value:\(String(describing: value))")
+    }
 }

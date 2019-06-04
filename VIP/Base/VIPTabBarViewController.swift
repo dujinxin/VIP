@@ -19,8 +19,10 @@ class VIPTabBarViewController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.tintColor = JXMainColor
         
-        let normalImageList = ["home_normal","tab2_normal","tab3_normal","tab4_normal"]
-        let selectedImageList = ["home_selected","tab2_selected","tab3_selected","tab4_selected"]
+        self.title = LocalizedString(key: "Home")
+        let normalTitleList = ["Home","Find","Quotes","My"]
+        let normalImageList = ["home_normal","find_normal","quotes_normal","my_normal"]
+        let selectedImageList = ["home_selected","find_selected","quotes_selected","my_selected"]
         
         let normalAttributed = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
         let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXMainColor]
@@ -32,6 +34,7 @@ class VIPTabBarViewController: UITabBarController {
         if let items = tabBar.items {
             for i in 0..<items.count {
                 let item = items[i]
+                item.title = LocalizedString(key: normalTitleList[i])
                 item.setTitleTextAttributes(normalAttributed, for: .normal)
                 item.setTitleTextAttributes(selectedAttributed, for: .selected)
                 item.image = UIImage(named: normalImageList[i])?.withRenderingMode(.alwaysOriginal)
@@ -45,7 +48,7 @@ class VIPTabBarViewController: UITabBarController {
         tabBar.layer.shadowOpacity = 1
         tabBar.addObserver(self, forKeyPath: "frame", options: [.old, .new], context: nil)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(tabBarStatus(notify:)), name: NSNotification.Name(rawValue: NotificationTabBarHiddenStatus), object: nil)
 //
     }
@@ -79,7 +82,7 @@ class VIPTabBarViewController: UITabBarController {
     }
     deinit {
         tabBar.removeObserver(self, forKeyPath: "frame")
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationLocatedStatus), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "NotificationLocatedStatus"), object: nil)
 //        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationTabBarHiddenStatus), object: nil)
     }
 
@@ -117,23 +120,26 @@ extension VIPTabBarViewController {
             isSuccess == true{
             
             
-        }else{
-//            UserManager.manager.removeAccound()
-//
-//            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//            let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-//            let loginVC = UINavigationController.init(rootViewController: login)
-//            if self.selectedViewController is UINavigationController {
-//                let selectVC = self.selectedViewController as! UINavigationController
-//                let topVC = selectVC.topViewController
-//                if let modelVC = topVC?.navigationController?.visibleViewController {
-//                    modelVC.dismiss(animated: false, completion: nil)
-//                }
-//                topVC?.navigationController?.popToRootViewController(animated: false)
-//                topVC!.navigationController?.present(loginVC, animated: true, completion: nil)
-//            }else{
-//                self.selectedViewController?.navigationController?.present(login, animated: true, completion: nil)
-//            }
+        } else {
+            UserManager.manager.removeAccound()
+            
+            UserDefaults.standard.setValue("", forKey: "Cookie")
+            UserDefaults.standard.synchronize()
+            
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+            let loginVC = UINavigationController.init(rootViewController: login)
+            if self.selectedViewController is UINavigationController {
+                let selectVC = self.selectedViewController as! UINavigationController
+                let topVC = selectVC.topViewController
+                if let modelVC = topVC?.navigationController?.visibleViewController {
+                    modelVC.dismiss(animated: false, completion: nil)
+                }
+                topVC?.navigationController?.popToRootViewController(animated: false)
+                topVC!.navigationController?.present(loginVC, animated: true, completion: nil)
+            }else{
+                self.selectedViewController?.navigationController?.present(login, animated: true, completion: nil)
+            }
         
         }
     }

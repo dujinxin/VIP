@@ -6,7 +6,8 @@ target 'VIP' do
   use_frameworks!
 
   pod 'JXFoundation'   #0.2.0  
-  pod 'JX_AFNetworking'
+  #pod 'JX_AFNetworking'
+  pod 'AFNetworking'
   pod 'JXFMDBHelper'
 
   pod 'MBProgressHUD'  #1.0.0

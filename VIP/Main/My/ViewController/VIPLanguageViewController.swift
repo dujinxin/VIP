@@ -12,24 +12,50 @@ class VIPLanguageViewController: VIPTableViewController{
     
     var actionArray = ["简体中文","English"]
     
-    var selectedRow: Int = 0
+    var selectedRow : Int = 0
+    var currentRow : Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
+        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
         self.tableView.register(UINib(nibName: "VIPSelectCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
         
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = .none
         
+        
+        if let language = UserDefaults.standard.object(forKey: "myLanguage") as? String, language.count > 0 {
+            print(language)
+            
+            if language == LanguageType.chinese.rawValue {
+                selectedRow = 0
+                currentRow = 0
+            } else {
+                selectedRow = 1
+                currentRow = 1
+            }
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    @objc func back() {
+        if selectedRow == currentRow {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            if selectedRow == 0 {
+                LanaguageManager.shared.changeLanguage(.chinese)
+            } else {
+                LanaguageManager.shared.changeLanguage(.english)
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)

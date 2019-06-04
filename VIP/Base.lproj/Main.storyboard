@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="-78" y="-1210"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="dtK-WW-cqk">
             <objects>
-                <tabBarController id="erI-22-jeF" sceneMemberID="viewController">
+                <tabBarController id="erI-22-jeF" customClass="VIPTabBarViewController" customModule="VIP" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bab-QP-bCw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -83,7 +83,7 @@
         <!--行情-->
         <scene sceneID="zp4-JT-Vyy">
             <objects>
-                <navigationController id="GHT-WA-48w" sceneMemberID="viewController">
+                <navigationController id="GHT-WA-48w" customClass="VIPNavigationController" customModule="VIP" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="行情" image="quotes_normal" selectedImage="quotes_selected" id="46X-66-Uka"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NRE-P5-52V">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -100,7 +100,7 @@
         <!--发现-->
         <scene sceneID="AbY-Iu-l20">
             <objects>
-                <navigationController id="Yoo-gS-Ej4" sceneMemberID="viewController">
+                <navigationController id="Yoo-gS-Ej4" customClass="VIPNavigationController" customModule="VIP" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发现" image="find_normal" selectedImage="find_selected" id="TdX-Nx-g5F"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jJp-6e-CqP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

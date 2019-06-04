@@ -1,0 +1,12 @@
+
+/* Class = "UITabBarItem"; title = "行情"; ObjectID = "46X-66-Uka"; */
+"46X-66-Uka.title" = "行情";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "KrD-fP-ipK"; */
+"KrD-fP-ipK.title" = "我的";
+
+/* Class = "UITabBarItem"; title = "发现"; ObjectID = "TdX-Nx-g5F"; */
+"TdX-Nx-g5F.title" = "发现";
+
+/* Class = "UITabBarItem"; title = "首页"; ObjectID = "Zno-uE-06t"; */
+"Zno-uE-06t.title" = "首页";

@@ -93,7 +93,20 @@ class VIPRegisterViewController: VIPBaseViewController {
             }()
         }
     }
-  
+    @IBOutlet weak var inviteTextField: UITextField!{
+        didSet{
+            
+            inviteTextField.rightViewMode = .always
+            inviteTextField.rightView = {() -> UIView in
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                button.setImage(UIImage(named: "scan"), for: .normal)
+                button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
+                
+                return button
+            }()
+        }
+    }
     @IBOutlet weak var agreeButton: UIButton!{
         didSet{
            
@@ -122,10 +135,7 @@ class VIPRegisterViewController: VIPBaseViewController {
     @IBOutlet weak var trailingConstraints: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraints: NSLayoutConstraint!
     
-    //var vm = LoginVM()
-    
-    var isCounting: Bool = false
-    
+    var vm = VIPLoginRegisterVM()
     
     lazy var keyboard: JXKeyboardToolBar = {
         let k = JXKeyboardToolBar(frame: CGRect(), views: [self.phoneTextField,self.loginPsdTextField,self.loginPsdRepeatTextField,self.tradePsdTextField,self.tradePsdRepeatTextField])
@@ -160,6 +170,13 @@ class VIPRegisterViewController: VIPBaseViewController {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         
         //self.updateButtonStatus()
+        
+        self.phoneTextField.text = "123312343"
+        self.loginPsdTextField.text = "12345678"
+        self.loginPsdRepeatTextField.text = "12345678"
+        self.tradePsdTextField.text = "12345678"
+        self.tradePsdRepeatTextField.text = "12345678"
+        self.inviteTextField.text = "j09qA2"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,18 +245,18 @@ class VIPRegisterViewController: VIPBaseViewController {
 //            ViewManager.showNotice("密码格式错误")
 //            return
 //        }
-//        self.showMBProgressHUD()
-//
-//        self.vm.register(mobile: userTextField.text!, password: passwordTextField.text ?? "", mobileCode: codeTextField.text!) { (_, msg, isSuccess) in
-//            self.hideMBProgressHUD()
-//            ViewManager.showNotice(msg)
-//            if isSuccess {
-//                //已实名
-//                self.dismiss(animated: true, completion: {
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: true)
-//                })
-//            }
-//        }
+        self.showMBProgressHUD()
+
+        self.vm.register(username: phoneTextField.text!, password: loginPsdTextField.text ?? "", pay_password: tradePsdTextField.text ?? "", invitation_code: inviteTextField.text ?? "") { (_, msg, isSuccess) in
+            self.hideMBProgressHUD()
+            ViewManager.showNotice(msg)
+            if isSuccess {
+                //已实名
+                self.dismiss(animated: true, completion: {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: true)
+                })
+            }
+        }
         
     }
     //[a-zA-Z0-9]{8,20}+$                             8-20位数字或字母

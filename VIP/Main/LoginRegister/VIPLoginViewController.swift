@@ -145,16 +145,16 @@ class VIPLoginViewController: VIPBaseViewController {
         //        }
         //        self.showMBProgressHUD()
         //
-        //        self.vm.register(mobile: userTextField.text!, password: passwordTextField.text ?? "", mobileCode: codeTextField.text!) { (_, msg, isSuccess) in
-        //            self.hideMBProgressHUD()
-        //            ViewManager.showNotice(msg)
-        //            if isSuccess {
-        //                //已实名
-        //                self.dismiss(animated: true, completion: {
-        //                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: true)
-        //                })
-        //            }
-        //        }
+                self.vm.register(mobile: phoneTextField.text!, password: loginPsdTextField.text ?? "") { (_, msg, isSuccess) in
+                    self.hideMBProgressHUD()
+                    ViewManager.showNotice(msg)
+                    if isSuccess {
+                        //已实名
+                        self.dismiss(animated: true, completion: {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: true)
+                        })
+                    }
+                }
     }
     
     func validate(_ string: String) -> Bool {

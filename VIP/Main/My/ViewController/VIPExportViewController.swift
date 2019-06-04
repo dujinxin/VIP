@@ -18,14 +18,20 @@ class VIPExportViewController: VIPBaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyButton: UIButton!
     
+    var privateKey = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = JXFfffffColor
         
-        self.addressLabel.text = "fgyjhkjilujghvjbkl23hhj4k1jgh24hk14jg1jk4g1j24k1jg4hk1j241k24hgh14khl1j241k24kj14g2kh1j4gk1h42h1k24h1g"
+        self.addressLabel.text = self.privateKey
     }
     @IBAction func copyAction(_ sender: Any) {
         print(self.addressLabel.text)
+        let pals = UIPasteboard.general
+        pals.string = self.addressLabel.text
+        ViewManager.showNotice("已复制")
     }
     
 }

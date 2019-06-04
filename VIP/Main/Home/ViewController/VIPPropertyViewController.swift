@@ -16,8 +16,10 @@ private let reuseIndentifierHeader = "reuseIndentifierHeader"
 class VIPPropertyViewController: VIPTableViewController {
     
     
-    var vm = VIPBuyVM()
-    var type = 0
+    var vm = VIPPropertyVM()
+    var currencyId = 0  //币种
+    var currencyType = 0 //0全部 1收款 2转账 3理财 4兑换
+    
     
     lazy var scrollView: UIScrollView = {
         let s = UIScrollView(frame: CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight))
@@ -94,7 +96,8 @@ class VIPPropertyViewController: VIPTableViewController {
             button.setTitle(names[i], for: .normal)
             button.setTitleColor(JXFfffffColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2.5, bottom: 0, right: -2.5)
             button.tag = i
             button.addTarget(self, action: #selector(action(button:)), for: .touchUpInside)
             if i == 0 {
@@ -102,7 +105,7 @@ class VIPPropertyViewController: VIPTableViewController {
             } else if i == 1 {
                 button.backgroundColor = JXGreenColor
             } else {
-                button.backgroundColor = JXDFE9F4Color
+                button.backgroundColor = JXCyanColor
                 button.setTitleColor(JXBlueColor, for: .normal)
             }
             headView.addSubview(button)
@@ -117,14 +120,13 @@ class VIPPropertyViewController: VIPTableViewController {
         topBar.delegate = self
         
         let att = JXAttribute()
-        att.normalColor = JX999999Color
-        att.selectedColor = JXMainColor
-        att.normalColor = JX999999Color
-        att.font = UIFont.systemFont(ofSize: 14)
+        att.normalColor = JXBlackTextColor
+        att.selectedColor = JXBlueColor
+        att.font = UIFont.systemFont(ofSize: 17)
         topBar.attribute = att
         
         topBar.backgroundColor = JXFfffffColor
-        topBar.bottomLineSize = CGSize(width: 45, height: 3)
+        topBar.bottomLineSize = CGSize(width: 36, height: 4)
         topBar.bottomLineView.backgroundColor = JXMainColor
         topBar.isBottomLineEnabled = true
         
@@ -163,8 +165,6 @@ class VIPPropertyViewController: VIPTableViewController {
         
         super.viewDidLoad()
         
-        self.title = "我要买"
-        
         //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
         self.view.addSubview(self.headView)
         
@@ -174,10 +174,9 @@ class VIPPropertyViewController: VIPTableViewController {
         self.addressLabel.text = "ghjjkswdhg978wiyu32uijjkh32u3gjhjkhjkjlsdsfsfsfwew213"
         
         
-        
-        
         self.tableView.frame = CGRect.init(x: 0, y: kNavStatusHeight + headViewHeight, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - headViewHeight)
         self.tableView.register(UINib(nibName: "VIPPropertyCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.rowHeight = 135
         
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.page = 1
@@ -187,7 +186,7 @@ class VIPPropertyViewController: VIPTableViewController {
             self.page += 1
             self.request(page: self.page)
         })
-        //self.tableView.mj_header.beginRefreshing()
+        self.tableView.mj_header.beginRefreshing()
         
     }
     
@@ -202,14 +201,13 @@ class VIPPropertyViewController: VIPTableViewController {
         //        }
     }
     override func request(page: Int) {
-        self.tableView.mj_header.endRefreshing()
-        self.tableView.mj_footer.endRefreshing()
-//        self.vm.buyList(payType: self.type, pageSize: 10, pageNo: page) { (_, msg, isSuc) in
-//            self.hideMBProgressHUD()
-//            self.collectionView?.mj_header.endRefreshing()
-//            self.collectionView?.mj_footer.endRefreshing()
-//            self.collectionView?.reloadData()
-//        }
+        
+        self.vm.propertyDetail(currencyId: self.currencyId, queryType: self.currencyType, page: self.page) { (_, msg, isSuc) in
+            //self.hideMBProgressHUD()
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
     @objc func copyAddress() {
         print("copy")
@@ -262,7 +260,7 @@ extension VIPPropertyViewController {
 extension VIPPropertyViewController : JXBarViewDelegate {
     
     func jxBarView(barView: JXBarView, didClick index: Int) {
-        self.type = index
+        self.currencyType = index
         self.tableView.mj_header.beginRefreshing()
     }
 }

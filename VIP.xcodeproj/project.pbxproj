@@ -7,6 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2944D8A9229FB92B00C31FAA /* VIPFinancialAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8A8229FB92B00C31FAA /* VIPFinancialAccountController.swift */; };
+		2944D8B5229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8B3229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift */; };
+		2944D8B6229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D8B4229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib */; };
+		2944D8B9229FBA3600C31FAA /* VIPFinancialAccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8B7229FBA3600C31FAA /* VIPFinancialAccountListCell.swift */; };
+		2944D8BA229FBA3600C31FAA /* VIPFinancialAccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D8B8229FBA3600C31FAA /* VIPFinancialAccountListCell.xib */; };
+		2944D8C3229FDFA900C31FAA /* VIPQuotesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8C1229FDFA900C31FAA /* VIPQuotesListCell.swift */; };
+		2944D8C4229FDFA900C31FAA /* VIPQuotesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D8C2229FDFA900C31FAA /* VIPQuotesListCell.xib */; };
+		2944D8C6229FDFB700C31FAA /* Quotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2944D8C5229FDFB700C31FAA /* Quotes.storyboard */; };
+		2944D8C8229FF09F00C31FAA /* VIPExRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8C7229FF09F00C31FAA /* VIPExRecordsViewController.swift */; };
+		2944D8CA229FF8F300C31FAA /* VIPExRecordsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8C9229FF8F300C31FAA /* VIPExRecordsDetailController.swift */; };
+		2944D8CF22A13EFC00C31FAA /* VIPFinancialAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8CE22A13EFC00C31FAA /* VIPFinancialAlertController.swift */; };
+		2944D8E322A2C4EE00C31FAA /* JXNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8DF22A2C4EE00C31FAA /* JXNetworkError.swift */; };
+		2944D8E422A2C4EE00C31FAA /* JXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8E022A2C4EE00C31FAA /* JXNetworkManager.swift */; };
+		2944D8E522A2C4EE00C31FAA /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8E122A2C4EE00C31FAA /* JXRequest.swift */; };
+		2944D8E622A2C4EE00C31FAA /* JXBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8E222A2C4EE00C31FAA /* JXBaseRequest.swift */; };
+		2944D8EA22A2C82400C31FAA /* VIPLoginRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8E922A2C82400C31FAA /* VIPLoginRegisterVM.swift */; };
+		2944D8EC22A2C8B400C31FAA /* ApiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8EB22A2C8B400C31FAA /* ApiEnum.swift */; };
+		2944D8EE22A2C93000C31FAA /* ProjectHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8ED22A2C93000C31FAA /* ProjectHeader.swift */; };
+		2944D8F022A2CCB200C31FAA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8EF22A2CCB200C31FAA /* UserManager.swift */; };
+		2944D8F222A2D77B00C31FAA /* VIPHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8F122A2D77B00C31FAA /* VIPHomeVM.swift */; };
+		2944D8F522A3E94900C31FAA /* VIPHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8F422A3E94900C31FAA /* VIPHomeModel.swift */; };
+		2944D8F722A3EECE00C31FAA /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8F622A3EECE00C31FAA /* ViewManager.swift */; };
+		2944D8F922A3FC6300C31FAA /* VIPPropertyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8F822A3FC6300C31FAA /* VIPPropertyVM.swift */; };
+		2944D8FB22A3FCA300C31FAA /* VIPPropertyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8FA22A3FCA300C31FAA /* VIPPropertyModel.swift */; };
+		2944D8FE22A4057C00C31FAA /* VIPNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8FD22A4057C00C31FAA /* VIPNoticeModel.swift */; };
+		2944D90022A4071900C31FAA /* VIPNotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8FF22A4071900C31FAA /* VIPNotificationVM.swift */; };
+		2944D90222A40A1400C31FAA /* VIPFeedBackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90122A40A1400C31FAA /* VIPFeedBackVM.swift */; };
+		2944D90422A50F3200C31FAA /* VIPFinancialRecordsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90322A50F3200C31FAA /* VIPFinancialRecordsController.swift */; };
+		2944D90722A51E5F00C31FAA /* VIPFinancialRecordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90522A51E5F00C31FAA /* VIPFinancialRecordsCell.swift */; };
+		2944D90822A51E5F00C31FAA /* VIPFinancialRecordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D90622A51E5F00C31FAA /* VIPFinancialRecordsCell.xib */; };
+		2944D90A22A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90922A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift */; };
+		2944D90C22A5345F00C31FAA /* VIPSafetyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90B22A5345F00C31FAA /* VIPSafetyVM.swift */; };
+		2944D90F22A621E100C31FAA /* VIPCommunityHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D90D22A621E100C31FAA /* VIPCommunityHeadCell.swift */; };
+		2944D91022A621E100C31FAA /* VIPCommunityHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D90E22A621E100C31FAA /* VIPCommunityHeadCell.xib */; };
+		2944D91322A631FD00C31FAA /* VIPCommunityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D91122A631FD00C31FAA /* VIPCommunityListCell.swift */; };
+		2944D91422A631FD00C31FAA /* VIPCommunityListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D91222A631FD00C31FAA /* VIPCommunityListCell.xib */; };
+		2944D91622A6599B00C31FAA /* VIPCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D91522A6599B00C31FAA /* VIPCommunityViewController.swift */; };
+		2944D91922A6733100C31FAA /* VIPFinancialListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D91722A6733100C31FAA /* VIPFinancialListCell.swift */; };
+		2944D91A22A6733100C31FAA /* VIPFinancialListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D91822A6733100C31FAA /* VIPFinancialListCell.xib */; };
+		2944D91E22A67C2300C31FAA /* VIPFinancialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D91D22A67C2300C31FAA /* VIPFinancialModel.swift */; };
+		2944D92022A67C3C00C31FAA /* VIPFinancialVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D91F22A67C3C00C31FAA /* VIPFinancialVM.swift */; };
 		2987BC7D229D9A6B004CD778 /* VIPSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987BC7C229D9A6B004CD778 /* VIPSettingViewController.swift */; };
 		29981B67229BCAAD00BD2FDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29981B66229BCAAD00BD2FDC /* AppDelegate.swift */; };
 		29981B69229BCAAD00BD2FDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29981B68229BCAAD00BD2FDC /* ViewController.swift */; };
@@ -59,10 +100,55 @@
 		29FC1024229E722F00371D68 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29FC1023229E722F00371D68 /* Login.storyboard */; };
 		29FC1026229EB80200371D68 /* VIPLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC1025229EB80200371D68 /* VIPLanguageViewController.swift */; };
 		29FC1029229EC01400371D68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29FC1027229EC01300371D68 /* Main.storyboard */; };
+		29FC102C229EC30500371D68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29FC102E229EC30500371D68 /* Localizable.strings */; };
+		29FC1033229EC45A00371D68 /* LanguageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC1032229EC45A00371D68 /* LanguageHeader.swift */; };
+		29FC1037229FB80100371D68 /* Find.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29FC1036229FB80100371D68 /* Find.storyboard */; };
+		29FC103A229FB87900371D68 /* VIPFinancialManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC1039229FB87900371D68 /* VIPFinancialManagementController.swift */; };
 		C53025622846775BB302974B /* Pods_VIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F8CC149733B2D946F6C078 /* Pods_VIP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2944D8A8229FB92B00C31FAA /* VIPFinancialAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAccountController.swift; sourceTree = "<group>"; };
+		2944D8B3229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAccountHeadCell.swift; sourceTree = "<group>"; };
+		2944D8B4229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPFinancialAccountHeadCell.xib; sourceTree = "<group>"; };
+		2944D8B7229FBA3600C31FAA /* VIPFinancialAccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAccountListCell.swift; sourceTree = "<group>"; };
+		2944D8B8229FBA3600C31FAA /* VIPFinancialAccountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPFinancialAccountListCell.xib; sourceTree = "<group>"; };
+		2944D8C1229FDFA900C31FAA /* VIPQuotesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPQuotesListCell.swift; sourceTree = "<group>"; };
+		2944D8C2229FDFA900C31FAA /* VIPQuotesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPQuotesListCell.xib; sourceTree = "<group>"; };
+		2944D8C5229FDFB700C31FAA /* Quotes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quotes.storyboard; sourceTree = "<group>"; };
+		2944D8C7229FF09F00C31FAA /* VIPExRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPExRecordsViewController.swift; sourceTree = "<group>"; };
+		2944D8C9229FF8F300C31FAA /* VIPExRecordsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPExRecordsDetailController.swift; sourceTree = "<group>"; };
+		2944D8CE22A13EFC00C31FAA /* VIPFinancialAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAlertController.swift; sourceTree = "<group>"; };
+		2944D8DF22A2C4EE00C31FAA /* JXNetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXNetworkError.swift; sourceTree = "<group>"; };
+		2944D8E022A2C4EE00C31FAA /* JXNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXNetworkManager.swift; sourceTree = "<group>"; };
+		2944D8E122A2C4EE00C31FAA /* JXRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXRequest.swift; sourceTree = "<group>"; };
+		2944D8E222A2C4EE00C31FAA /* JXBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXBaseRequest.swift; sourceTree = "<group>"; };
+		2944D8E922A2C82400C31FAA /* VIPLoginRegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPLoginRegisterVM.swift; sourceTree = "<group>"; };
+		2944D8EB22A2C8B400C31FAA /* ApiEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEnum.swift; sourceTree = "<group>"; };
+		2944D8ED22A2C93000C31FAA /* ProjectHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHeader.swift; sourceTree = "<group>"; };
+		2944D8EF22A2CCB200C31FAA /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		2944D8F122A2D77B00C31FAA /* VIPHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPHomeVM.swift; sourceTree = "<group>"; };
+		2944D8F422A3E94900C31FAA /* VIPHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPHomeModel.swift; sourceTree = "<group>"; };
+		2944D8F622A3EECE00C31FAA /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		2944D8F822A3FC6300C31FAA /* VIPPropertyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPPropertyVM.swift; sourceTree = "<group>"; };
+		2944D8FA22A3FCA300C31FAA /* VIPPropertyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPPropertyModel.swift; sourceTree = "<group>"; };
+		2944D8FD22A4057C00C31FAA /* VIPNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPNoticeModel.swift; sourceTree = "<group>"; };
+		2944D8FF22A4071900C31FAA /* VIPNotificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPNotificationVM.swift; sourceTree = "<group>"; };
+		2944D90122A40A1400C31FAA /* VIPFeedBackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFeedBackVM.swift; sourceTree = "<group>"; };
+		2944D90322A50F3200C31FAA /* VIPFinancialRecordsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialRecordsController.swift; sourceTree = "<group>"; };
+		2944D90522A51E5F00C31FAA /* VIPFinancialRecordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialRecordsCell.swift; sourceTree = "<group>"; };
+		2944D90622A51E5F00C31FAA /* VIPFinancialRecordsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPFinancialRecordsCell.xib; sourceTree = "<group>"; };
+		2944D90922A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialRecordsAlertController.swift; sourceTree = "<group>"; };
+		2944D90B22A5345F00C31FAA /* VIPSafetyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPSafetyVM.swift; sourceTree = "<group>"; };
+		2944D90D22A621E100C31FAA /* VIPCommunityHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPCommunityHeadCell.swift; sourceTree = "<group>"; };
+		2944D90E22A621E100C31FAA /* VIPCommunityHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPCommunityHeadCell.xib; sourceTree = "<group>"; };
+		2944D91122A631FD00C31FAA /* VIPCommunityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPCommunityListCell.swift; sourceTree = "<group>"; };
+		2944D91222A631FD00C31FAA /* VIPCommunityListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPCommunityListCell.xib; sourceTree = "<group>"; };
+		2944D91522A6599B00C31FAA /* VIPCommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPCommunityViewController.swift; sourceTree = "<group>"; };
+		2944D91722A6733100C31FAA /* VIPFinancialListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialListCell.swift; sourceTree = "<group>"; };
+		2944D91822A6733100C31FAA /* VIPFinancialListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPFinancialListCell.xib; sourceTree = "<group>"; };
+		2944D91D22A67C2300C31FAA /* VIPFinancialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialModel.swift; sourceTree = "<group>"; };
+		2944D91F22A67C3C00C31FAA /* VIPFinancialVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialVM.swift; sourceTree = "<group>"; };
 		2987BC7C229D9A6B004CD778 /* VIPSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPSettingViewController.swift; sourceTree = "<group>"; };
 		29981B63229BCAAD00BD2FDC /* VIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29981B66229BCAAD00BD2FDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +203,14 @@
 		29FC1023229E722F00371D68 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		29FC1025229EB80200371D68 /* VIPLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPLanguageViewController.swift; sourceTree = "<group>"; };
 		29FC1028229EC01300371D68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		29FC102D229EC30500371D68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		29FC102F229EC37800371D68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		29FC1030229EC37800371D68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		29FC1031229EC37800371D68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		29FC1032229EC45A00371D68 /* LanguageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHeader.swift; sourceTree = "<group>"; };
+		29FC1035229EC82000371D68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		29FC1036229FB80100371D68 /* Find.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Find.storyboard; sourceTree = "<group>"; };
+		29FC1039229FB87900371D68 /* VIPFinancialManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialManagementController.swift; sourceTree = "<group>"; };
 		2BB14488727041BD8427E829 /* Pods-VIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP.debug.xcconfig"; path = "Target Support Files/Pods-VIP/Pods-VIP.debug.xcconfig"; sourceTree = "<group>"; };
 		A8F8CC149733B2D946F6C078 /* Pods_VIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D318FF69CE9DE617810868A0 /* Pods-VIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP.release.xcconfig"; path = "Target Support Files/Pods-VIP/Pods-VIP.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +228,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2944D8AA229FB9B600C31FAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2944D91722A6733100C31FAA /* VIPFinancialListCell.swift */,
+				2944D91822A6733100C31FAA /* VIPFinancialListCell.xib */,
+				2944D8B3229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift */,
+				2944D8B4229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib */,
+				2944D8B7229FBA3600C31FAA /* VIPFinancialAccountListCell.swift */,
+				2944D8B8229FBA3600C31FAA /* VIPFinancialAccountListCell.xib */,
+				2944D90522A51E5F00C31FAA /* VIPFinancialRecordsCell.swift */,
+				2944D90622A51E5F00C31FAA /* VIPFinancialRecordsCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2944D8BF229FDF8800C31FAA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2944D8C0229FDF9500C31FAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2944D8C1229FDFA900C31FAA /* VIPQuotesListCell.swift */,
+				2944D8C2229FDFA900C31FAA /* VIPQuotesListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2944D8E722A2C7AC00C31FAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2944D8E922A2C82400C31FAA /* VIPLoginRegisterVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2944D8E822A2C7BA00C31FAA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				29FC101D229E71B000371D68 /* VIPLoginViewController.swift */,
+				29FC101F229E71C000371D68 /* VIPRegisterViewController.swift */,
+				29FC1021229E720900371D68 /* VIPForgetPsdViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2944D8F322A3E93100C31FAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2944D8F422A3E94900C31FAA /* VIPHomeModel.swift */,
+				2944D8FA22A3FCA300C31FAA /* VIPPropertyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2944D8FC22A4055D00C31FAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2944D8FD22A4057C00C31FAA /* VIPNoticeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2944D91B22A67BA000C31FAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2944D91F22A67C3C00C31FAA /* VIPFinancialVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2944D91C22A67BAB00C31FAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2944D91D22A67C2300C31FAA /* VIPFinancialModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		29981B5A229BCAAD00BD2FDC = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +361,12 @@
 		29981B79229BD58600BD2FDC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8F622A3EECE00C31FAA /* ViewManager.swift */,
+				2944D8EF22A2CCB200C31FAA /* UserManager.swift */,
 				29981B93229BE4C100BD2FDC /* ConfigurationHeader.swift */,
+				29FC1032229EC45A00371D68 /* LanguageHeader.swift */,
+				29FC102E229EC30500371D68 /* Localizable.strings */,
+				2944D8ED22A2C93000C31FAA /* ProjectHeader.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -193,6 +374,11 @@
 		29981B7A229BD59A00BD2FDC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8E222A2C4EE00C31FAA /* JXBaseRequest.swift */,
+				2944D8DF22A2C4EE00C31FAA /* JXNetworkError.swift */,
+				2944D8E022A2C4EE00C31FAA /* JXNetworkManager.swift */,
+				2944D8E122A2C4EE00C31FAA /* JXRequest.swift */,
+				2944D8EB22A2C8B400C31FAA /* ApiEnum.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -212,6 +398,7 @@
 		29981B7C229BD5C700BD2FDC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8F322A3E93100C31FAA /* Model */,
 				29981BA5229D179400BD2FDC /* ViewModel */,
 				29981B97229C141700BD2FDC /* ViewController */,
 				29981B95229C13FB00BD2FDC /* View */,
@@ -224,7 +411,12 @@
 		29981B7D229BD5D600BD2FDC /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				2944D91C22A67BAB00C31FAA /* Model */,
+				2944D91B22A67BA000C31FAA /* ViewModel */,
+				2944D8AA229FB9B600C31FAA /* View */,
+				29FC1038229FB81000371D68 /* ViewController */,
 				29981B8B229BDE3E00BD2FDC /* VIPFindViewController.swift */,
+				29FC1036229FB80100371D68 /* Find.storyboard */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -232,6 +424,7 @@
 		29981B7E229BD5DC00BD2FDC /* My */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8FC22A4055D00C31FAA /* Model */,
 				29981BBD229D7E5600BD2FDC /* ViewModel */,
 				29981BBC229D7E4B00BD2FDC /* ViewController */,
 				29981BBB229D7E4600BD2FDC /* View */,
@@ -244,7 +437,10 @@
 		29981B7F229BD63100BD2FDC /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8C0229FDF9500C31FAA /* View */,
+				2944D8BF229FDF8800C31FAA /* ViewController */,
 				29981B8D229BDE5100BD2FDC /* VIPQuotesViewController.swift */,
+				2944D8C5229FDFB700C31FAA /* Quotes.storyboard */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
@@ -252,7 +448,8 @@
 		29981B95229C13FB00BD2FDC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				29981BA8229D2A6B00BD2FDC /* Property */,
+				29981BA9229D2A9B00BD2FDC /* VIPPropertyCell.swift */,
+				29981BAA229D2A9B00BD2FDC /* VIPPropertyCell.xib */,
 				29981B98229C147B00BD2FDC /* VIPHomeHeaderCell.swift */,
 				29981B99229C147B00BD2FDC /* VIPHomeHeaderCell.xib */,
 				29981B9C229C149600BD2FDC /* VIPHomeCell.swift */,
@@ -264,38 +461,25 @@
 		29981B97229C141700BD2FDC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				29981BA0229CEDC000BD2FDC /* Property */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		29981BA0229CEDC000BD2FDC /* Property */ = {
-			isa = PBXGroup;
-			children = (
 				29981BA1229CEDF800BD2FDC /* VIPPropertyViewController.swift */,
 				29981BB9229D792F00BD2FDC /* VIPProDetailViewController.swift */,
 				29981BB1229D4C2500BD2FDC /* VIPReceiptViewController.swift */,
 				29981BB3229D4C3500BD2FDC /* VIPTransferViewController.swift */,
 				29981BB5229D4C4600BD2FDC /* VIPExchangeViewController.swift */,
+				2944D8C7229FF09F00C31FAA /* VIPExRecordsViewController.swift */,
+				2944D8C9229FF8F300C31FAA /* VIPExRecordsDetailController.swift */,
 			);
-			path = Property;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		29981BA5229D179400BD2FDC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				29981BA6229D17C900BD2FDC /* VIPBuyVM.swift */,
+				2944D8F122A2D77B00C31FAA /* VIPHomeVM.swift */,
+				2944D8F822A3FC6300C31FAA /* VIPPropertyVM.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		29981BA8229D2A6B00BD2FDC /* Property */ = {
-			isa = PBXGroup;
-			children = (
-				29981BA9229D2A9B00BD2FDC /* VIPPropertyCell.swift */,
-				29981BAA229D2A9B00BD2FDC /* VIPPropertyCell.xib */,
-			);
-			path = Property;
 			sourceTree = "<group>";
 		};
 		29981BBB229D7E4600BD2FDC /* View */ = {
@@ -309,6 +493,10 @@
 				29FC1015229E39DF00371D68 /* VIPSelectCell.xib */,
 				29FC1018229E45FC00371D68 /* VIPNotificationCell.swift */,
 				29FC1019229E45FC00371D68 /* VIPNotificationCell.xib */,
+				2944D90D22A621E100C31FAA /* VIPCommunityHeadCell.swift */,
+				2944D90E22A621E100C31FAA /* VIPCommunityHeadCell.xib */,
+				2944D91122A631FD00C31FAA /* VIPCommunityListCell.swift */,
+				2944D91222A631FD00C31FAA /* VIPCommunityListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,6 +511,7 @@
 				29981BD0229D99E400BD2FDC /* VIPModifyViewController.swift */,
 				29981BCE229D999100BD2FDC /* VIPBackUpViewController.swift */,
 				29981BD2229D9A0B00BD2FDC /* VIPNotificationViewController.swift */,
+				2944D91522A6599B00C31FAA /* VIPCommunityViewController.swift */,
 				2987BC7C229D9A6B004CD778 /* VIPSettingViewController.swift */,
 				29FC1012229E39A600371D68 /* VIPSafetyViewController.swift */,
 				29FC1025229EB80200371D68 /* VIPLanguageViewController.swift */,
@@ -333,6 +522,9 @@
 		29981BBD229D7E5600BD2FDC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2944D8FF22A4071900C31FAA /* VIPNotificationVM.swift */,
+				2944D90122A40A1400C31FAA /* VIPFeedBackVM.swift */,
+				2944D90B22A5345F00C31FAA /* VIPSafetyVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -340,12 +532,23 @@
 		29FC101C229E717300371D68 /* LoginRegister */ = {
 			isa = PBXGroup;
 			children = (
-				29FC101D229E71B000371D68 /* VIPLoginViewController.swift */,
-				29FC101F229E71C000371D68 /* VIPRegisterViewController.swift */,
-				29FC1021229E720900371D68 /* VIPForgetPsdViewController.swift */,
+				2944D8E822A2C7BA00C31FAA /* ViewController */,
+				2944D8E722A2C7AC00C31FAA /* ViewModel */,
 				29FC1023229E722F00371D68 /* Login.storyboard */,
 			);
 			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		29FC1038229FB81000371D68 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				29FC1039229FB87900371D68 /* VIPFinancialManagementController.swift */,
+				2944D8A8229FB92B00C31FAA /* VIPFinancialAccountController.swift */,
+				2944D8CE22A13EFC00C31FAA /* VIPFinancialAlertController.swift */,
+				2944D90322A50F3200C31FAA /* VIPFinancialRecordsController.swift */,
+				2944D90922A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		9278A3ABF33E89F237D93472 /* Pods */ = {
@@ -410,6 +613,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 29981B5A229BCAAD00BD2FDC;
 			productRefGroup = 29981B64229BCAAD00BD2FDC /* Products */;
@@ -426,18 +630,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2944D91A22A6733100C31FAA /* VIPFinancialListCell.xib in Resources */,
 				29981BAE229D477100BD2FDC /* Home.storyboard in Resources */,
 				29981BC5229D877C00BD2FDC /* VIPMyHeadCell.xib in Resources */,
 				29981B71229BCAAF00BD2FDC /* LaunchScreen.storyboard in Resources */,
+				2944D91422A631FD00C31FAA /* VIPCommunityListCell.xib in Resources */,
+				2944D8BA229FBA3600C31FAA /* VIPFinancialAccountListCell.xib in Resources */,
+				29FC102C229EC30500371D68 /* Localizable.strings in Resources */,
 				29981BC1229D839C00BD2FDC /* VIPMyListCell.xib in Resources */,
 				29FC1017229E39DF00371D68 /* VIPSelectCell.xib in Resources */,
 				29981B6E229BCAAF00BD2FDC /* Assets.xcassets in Resources */,
 				29981B9F229C149600BD2FDC /* VIPHomeCell.xib in Resources */,
 				29FC1029229EC01400371D68 /* Main.storyboard in Resources */,
 				29981BAC229D2A9B00BD2FDC /* VIPPropertyCell.xib in Resources */,
+				2944D91022A621E100C31FAA /* VIPCommunityHeadCell.xib in Resources */,
+				2944D8B6229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib in Resources */,
 				29FC1011229D9E4E00371D68 /* My.storyboard in Resources */,
+				29FC1037229FB80100371D68 /* Find.storyboard in Resources */,
 				29FC101B229E45FC00371D68 /* VIPNotificationCell.xib in Resources */,
 				29981B9B229C147B00BD2FDC /* VIPHomeHeaderCell.xib in Resources */,
+				2944D8C6229FDFB700C31FAA /* Quotes.storyboard in Resources */,
+				2944D8C4229FDFA900C31FAA /* VIPQuotesListCell.xib in Resources */,
+				2944D90822A51E5F00C31FAA /* VIPFinancialRecordsCell.xib in Resources */,
 				29FC1024229E722F00371D68 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +694,6 @@
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/JXFMDBHelper/JXFMDBHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/JXFoundation/JXFoundation.framework",
-				"${BUILT_PRODUCTS_DIR}/JX_AFNetworking/JX_AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -493,7 +706,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFMDBHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFoundation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JX_AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -511,43 +723,78 @@
 			buildActionMask = 2147483647;
 			files = (
 				29981BD3229D9A0B00BD2FDC /* VIPNotificationViewController.swift in Sources */,
+				2944D8F222A2D77B00C31FAA /* VIPHomeVM.swift in Sources */,
 				29981BCD229D995400BD2FDC /* VIPExportViewController.swift in Sources */,
 				29FC1022229E720900371D68 /* VIPForgetPsdViewController.swift in Sources */,
+				2944D8EE22A2C93000C31FAA /* ProjectHeader.swift in Sources */,
+				2944D8EA22A2C82400C31FAA /* VIPLoginRegisterVM.swift in Sources */,
 				29981B69229BCAAD00BD2FDC /* ViewController.swift in Sources */,
 				29981BAB229D2A9B00BD2FDC /* VIPPropertyCell.swift in Sources */,
+				2944D8E522A2C4EE00C31FAA /* JXRequest.swift in Sources */,
+				2944D8F722A3EECE00C31FAA /* ViewManager.swift in Sources */,
+				2944D8A9229FB92B00C31FAA /* VIPFinancialAccountController.swift in Sources */,
+				29FC103A229FB87900371D68 /* VIPFinancialManagementController.swift in Sources */,
 				29981B8C229BDE3E00BD2FDC /* VIPFindViewController.swift in Sources */,
 				29FC101A229E45FC00371D68 /* VIPNotificationCell.swift in Sources */,
 				2987BC7D229D9A6B004CD778 /* VIPSettingViewController.swift in Sources */,
+				2944D8FE22A4057C00C31FAA /* VIPNoticeModel.swift in Sources */,
 				29981BC0229D839C00BD2FDC /* VIPMyListCell.swift in Sources */,
+				2944D90A22A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift in Sources */,
+				2944D91E22A67C2300C31FAA /* VIPFinancialModel.swift in Sources */,
+				2944D90C22A5345F00C31FAA /* VIPSafetyVM.swift in Sources */,
 				29981B92229BE39000BD2FDC /* VIPTabBarViewController.swift in Sources */,
 				29FC1013229E39A600371D68 /* VIPSafetyViewController.swift in Sources */,
 				29981B9A229C147B00BD2FDC /* VIPHomeHeaderCell.swift in Sources */,
 				29FC1020229E71C000371D68 /* VIPRegisterViewController.swift in Sources */,
+				2944D8E622A2C4EE00C31FAA /* JXBaseRequest.swift in Sources */,
 				29981BB2229D4C2500BD2FDC /* VIPReceiptViewController.swift in Sources */,
 				29981B85229BD7F600BD2FDC /* VIPBaseModel.swift in Sources */,
 				29981B83229BD7A200BD2FDC /* VIPTableViewController.swift in Sources */,
 				29FC1016229E39DF00371D68 /* VIPSelectCell.swift in Sources */,
 				29FC1026229EB80200371D68 /* VIPLanguageViewController.swift in Sources */,
+				2944D92022A67C3C00C31FAA /* VIPFinancialVM.swift in Sources */,
+				2944D90422A50F3200C31FAA /* VIPFinancialRecordsController.swift in Sources */,
+				2944D8CF22A13EFC00C31FAA /* VIPFinancialAlertController.swift in Sources */,
 				29981BD1229D99E500BD2FDC /* VIPModifyViewController.swift in Sources */,
+				2944D8EC22A2C8B400C31FAA /* ApiEnum.swift in Sources */,
 				29981BBA229D792F00BD2FDC /* VIPProDetailViewController.swift in Sources */,
+				2944D91922A6733100C31FAA /* VIPFinancialListCell.swift in Sources */,
+				2944D8F922A3FC6300C31FAA /* VIPPropertyVM.swift in Sources */,
 				29981B94229BE4C100BD2FDC /* ConfigurationHeader.swift in Sources */,
 				29981BB8229D678300BD2FDC /* VIPNavigationController.swift in Sources */,
+				2944D91322A631FD00C31FAA /* VIPCommunityListCell.swift in Sources */,
+				2944D90F22A621E100C31FAA /* VIPCommunityHeadCell.swift in Sources */,
+				2944D90022A4071900C31FAA /* VIPNotificationVM.swift in Sources */,
+				2944D8F022A2CCB200C31FAA /* UserManager.swift in Sources */,
+				2944D8B5229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift in Sources */,
+				2944D90222A40A1400C31FAA /* VIPFeedBackVM.swift in Sources */,
+				2944D91622A6599B00C31FAA /* VIPCommunityViewController.swift in Sources */,
 				29981BA2229CEDF800BD2FDC /* VIPPropertyViewController.swift in Sources */,
 				29981B9E229C149600BD2FDC /* VIPHomeCell.swift in Sources */,
 				29981BCB229D993400BD2FDC /* VIPAboutUsViewController.swift in Sources */,
+				2944D8FB22A3FCA300C31FAA /* VIPPropertyModel.swift in Sources */,
 				29FC101E229E71B000371D68 /* VIPLoginViewController.swift in Sources */,
+				2944D8CA229FF8F300C31FAA /* VIPExRecordsDetailController.swift in Sources */,
+				2944D8E322A2C4EE00C31FAA /* JXNetworkError.swift in Sources */,
+				2944D8B9229FBA3600C31FAA /* VIPFinancialAccountListCell.swift in Sources */,
 				29981BC7229D98E900BD2FDC /* VIPPromotionViewController.swift in Sources */,
 				29981BCF229D999100BD2FDC /* VIPBackUpViewController.swift in Sources */,
 				29981B90229BDE6000BD2FDC /* VIPMyViewController.swift in Sources */,
 				29981BB4229D4C3500BD2FDC /* VIPTransferViewController.swift in Sources */,
 				29981BC9229D991B00BD2FDC /* VIPFeedBackViewController.swift in Sources */,
+				2944D8E422A2C4EE00C31FAA /* JXNetworkManager.swift in Sources */,
 				29981BA4229D173900BD2FDC /* VIPCollectionViewController.swift in Sources */,
 				29981BA7229D17C900BD2FDC /* VIPBuyVM.swift in Sources */,
 				29981BB6229D4C4600BD2FDC /* VIPExchangeViewController.swift in Sources */,
 				29981B81229BD76A00BD2FDC /* VIPBaseViewController.swift in Sources */,
 				29981B67229BCAAD00BD2FDC /* AppDelegate.swift in Sources */,
+				29FC1033229EC45A00371D68 /* LanguageHeader.swift in Sources */,
+				2944D8F522A3E94900C31FAA /* VIPHomeModel.swift in Sources */,
 				29981BC4229D877C00BD2FDC /* VIPMyHeadCell.swift in Sources */,
+				2944D8C8229FF09F00C31FAA /* VIPExRecordsViewController.swift in Sources */,
+				2944D8C3229FDFA900C31FAA /* VIPQuotesListCell.swift in Sources */,
 				29981B8A229BDE3000BD2FDC /* VIPHomeViewController.swift in Sources */,
+				2944D90722A51E5F00C31FAA /* VIPFinancialRecordsCell.swift in Sources */,
 				29981B8E229BDE5100BD2FDC /* VIPQuotesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +806,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				29981B70229BCAAF00BD2FDC /* Base */,
+				29FC1030229EC37800371D68 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -567,8 +815,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				29FC1028229EC01300371D68 /* Base */,
+				29FC102F229EC37800371D68 /* zh-Hans */,
+				29FC1035229EC82000371D68 /* en */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		29FC102E229EC30500371D68 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29FC102D229EC30500371D68 /* en */,
+				29FC1031229EC37800371D68 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -578,6 +837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -639,6 +899,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

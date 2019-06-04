@@ -13,10 +13,11 @@ private let reuseIdentifierCell = "reuseIdentifierCell"
 
 class VIPHomeViewController: VIPTableViewController {
 
+    var vm = VIPHomeVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "首页"
+        self.title = LocalizedString(key: "Home")
         
         self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - kTabBarHeight)
         
@@ -28,9 +29,21 @@ class VIPHomeViewController: VIPTableViewController {
         self.tableView.register(UINib(nibName: "VIPHomeCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCell)
         
         
-        self.requestData()
+        //self.requestData()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UserManager.manager.isLogin {
+            self.requestData()
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+            let loginVC = UINavigationController.init(rootViewController: login)
+            
+            self.navigationController?.present(loginVC, animated: false, completion: nil)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,13 +52,13 @@ class VIPHomeViewController: VIPTableViewController {
         return .lightContent
     }
     override func requestData() {
-//        self.vm.tradeDetail(type: self.type, bizId: self.bizId) { (_, msg, isSuc) in
-//            if isSuc {
-//                self.tableView?.reloadData()
-//            } else {
-//                ViewManager.showNotice(msg)
-//            }
-//        }
+        self.vm.home { (_, msg, isSuc) in
+            if isSuc {
+                self.tableView.reloadData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        }
     }
     // MARK: - Table view data source
     
@@ -55,33 +68,61 @@ class VIPHomeViewController: VIPTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.vm.homeEntity.list.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierHeader, for: indexPath) as! VIPHomeHeaderCell
-            //cell.entity = self.vm.tradeDetailEntity
-            //cell.setEntity(self.vm.tradeDetailEntity, type: self.type)
+            cell.totalPropertyLabel.text = "\(self.vm.homeEntity.total_number)"
+            cell.todayIncomeLabel.text = "今日收益：\(self.vm.homeEntity.today_vit_number) XXX"
+           
+            cell.financialManagementBlock = {
+                let storyboard = UIStoryboard(name: "Find", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "financialManagement") as! VIPFinancialManagementController
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.superNodeBlock = {
+                
+            }
+            cell.noticeBlock = {
+                
+            }
+            cell.moreBlock = {
+                let vc = VIPNotificationViewController()
+                vc.title = LocalizedString(key: "Notification")
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPHomeCell
-            //cell.addressLabel.text = self.vm.tradeDetailEntity.account
-            //cell.nameLabel.text = dict["title"]
-//            cell.showCodeImage = {
-//                self.showNoticeView2()
-//            }
+            let entity = self.vm.homeEntity.list[indexPath.row - 1]
+            cell.coinTitleLabel.text = entity.short_name
+            cell.coinNumLabel.text = "\(entity.available_qty)"
+            cell.coinValueLabel.text = "\(entity.price)"
+            cell.numValueLabel.text = "\(entity.price * entity.available_qty)"
+            if let s = entity.icon,s.count > 2,let url = URL(string: kBaseUrl + String(s.suffix(s.count - 2))) {
+                print(url)
+                cell.coinImageView.setImageWith(url, placeholderImage: nil)
+            }
+            
             return cell
           
         }
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row < 2 {
+        if indexPath.row > 0 {
+            let entity = self.vm.homeEntity.list[indexPath.row - 1]
+            
             let vc  = VIPPropertyViewController()
-            vc.title = "vip"
+            vc.title = entity.short_name
+            vc.currencyType = 0
+            vc.currencyId = entity.id
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else {

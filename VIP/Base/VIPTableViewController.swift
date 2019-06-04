@@ -9,6 +9,7 @@
 import UIKit
 import JXFoundation
 import MJRefresh
+import MBProgressHUD
 
 class VIPTableViewController: JXTableViewController {
 
@@ -20,14 +21,16 @@ class VIPTableViewController: JXTableViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    open func showMBProgressHUD() {
+        let _ = MBProgressHUD.showAdded(to: self.view, animated: true)
+        //        hud.backgroundView.color = UIColor.black
+        //        hud.contentColor = UIColor.black
+        //        hud.bezelView.backgroundColor = UIColor.black
+        //        hud.label.text = "加载中..."
+        
     }
-    */
+    open func hideMBProgressHUD() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
 
 }

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import MJRefresh
 
 class VIPNotificationViewController: VIPTableViewController{
     
-    var actionArray = ["语言","意见反馈","关于我们"]
+    var vm = VIPNotificationVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,29 @@ class VIPNotificationViewController: VIPTableViewController{
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = .none
         
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.page = 1
+            self.request(page: 1)
+        })
+        self.tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            self.page += 1
+            self.request(page: self.page)
+        })
+        self.tableView.mj_header.beginRefreshing()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func request(page: Int) {
+        
+        self.vm.noticeList(page: self.page) { (_, msg, isSuc) in
+            //self.hideMBProgressHUD()
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
@@ -38,23 +56,23 @@ class VIPNotificationViewController: VIPTableViewController{
         return 10
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actionArray.count
+        return self.vm.noticeListEntity.list.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! VIPNotificationCell
-        let title = actionArray[indexPath.row]
-        cell.titleLabel.text = title
-        cell.contentLabel.text = title
+        let entity = self.vm.noticeListEntity.list[indexPath.row]
+        cell.titleLabel.text = entity.title_zh
+        cell.contentLabel.text = entity.content_zh
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "My", bundle: nil)
-        let title = actionArray[indexPath.row]
+        let entity = self.vm.noticeListEntity.list[indexPath.row]
         
         let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
-        vc.title = title
+        vc.title = entity.title_zh
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         

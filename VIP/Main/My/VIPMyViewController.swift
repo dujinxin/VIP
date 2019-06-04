@@ -12,17 +12,17 @@ class VIPMyViewController: VIPTableViewController{
     
     var actionArray = [
         [
-            ["image":"promotion","title":"我的推广"],
-            ["image":"community","title":"我的社区"],
-            ["image":"income","title":"我的收益"]
+            ["image":"promotion","title":"Promotion"],
+            ["image":"community","title":"Community"],
+            ["image":"income","title":"Income"]
         ],
         [
-            ["image":"safety","title":"安全中心"],
-            ["image":"notification","title":"通知中心"],
-            ["image":"setting","title":"设置"]
+            ["image":"safety","title":"Safety"],
+            ["image":"notification","title":"Notification"],
+            ["image":"setting","title":"Setting"]
         ]
     ]
-    
+  
     //var vm = LoginVM()
    
     var textField : UITextField!
@@ -224,10 +224,10 @@ class VIPMyViewController: VIPTableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierHeader", for: indexPath) as! VIPMyHeadCell
-//
-//            if let str = self.vm.profileInfoEntity?.headImg {
+            cell.entity = UserManager.manager.userEntity
+//            if let str = UserManager.manager.userEntity.headImg {
 //                let url = URL.init(string:str)
-//                cell.userImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
+//                cell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
 //                //cell.userImageView.sd_setImage(with: url, completed: nil)
 //            }
 //            cell.nickNameLabel.text = self.vm.profileInfoEntity?.nickname
@@ -251,7 +251,7 @@ class VIPMyViewController: VIPTableViewController{
             let dict = actionArray[indexPath.section - 1][indexPath.row]
             
             cell.iconView.image = UIImage(named: dict["image"]!)
-            cell.titleView.text = dict["title"]
+            cell.titleView.text = LocalizedString(key: dict["title"] ?? "")
             return cell
         }
     }
@@ -259,61 +259,41 @@ class VIPMyViewController: VIPTableViewController{
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 {
-            
-            
-            
-            
-            //performSegue(withIdentifier: "property", sender: nil)
-//            if UserManager.manager.userEntity.user.safePwdInit != 0 {
-//                if UserManager.manager.userEntity.realName.isEmpty == false {
-//                    let vc = PayListController()
-//                    vc.hidesBottomBarWhenPushed = true
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                } else {
-//                    let storyboard = UIStoryboard(name: "My", bundle: nil)
-//                    let vc = storyboard.instantiateViewController(withIdentifier: "nameSet") as! NameSetController
-//                    vc.hidesBottomBarWhenPushed = true
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                }
-//            } else {
-//                self.showNoticeView()
-//            }
-            
-        } else {
+        if indexPath.section > 0 {
             let storyboard = UIStoryboard(name: "My", bundle: nil)
             let dict = actionArray[indexPath.section - 1][indexPath.row]
+            let title = LocalizedString(key: dict["title"] ?? "")
             if indexPath.section == 1 {
                 if indexPath.row == 0 {
                     let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                    vc.title = dict["title"]
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else if indexPath.row == 1{
-                    let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                    vc.title = dict["title"]
+                    let vc = VIPCommunityViewController()
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                    vc.title = dict["title"]
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             } else {
                 if indexPath.row == 0 {
                     let vc = VIPSafetyViewController()
-                    vc.title = dict["title"]
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else if indexPath.row == 1{
                     let vc = VIPNotificationViewController()
-                    vc.title = dict["title"]
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     let vc = VIPSettingViewController()
-                    vc.title = dict["title"]
+                    vc.title = title
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

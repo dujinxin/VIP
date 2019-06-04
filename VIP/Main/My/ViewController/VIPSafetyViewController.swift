@@ -12,12 +12,11 @@ class VIPSafetyViewController: VIPTableViewController{
     
     var actionArray = ["导出私钥","备份助记词","修改登录密码","修改交易密码"]
     
-    var isModify: Bool = false
+    var vm = VIPSafetyVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         self.tableView.register(UINib(nibName: "VIPSelectCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
         
         self.tableView.estimatedRowHeight = 50
@@ -33,7 +32,7 @@ class VIPSafetyViewController: VIPTableViewController{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
-        v.backgroundColor = JXEeeeeeColor//JXViewBgColor
+        v.backgroundColor = JXViewBgColor
         return UIView()
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -44,9 +43,6 @@ class VIPSafetyViewController: VIPTableViewController{
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! VIPSelectCell
@@ -61,23 +57,47 @@ class VIPSafetyViewController: VIPTableViewController{
         let title = actionArray[indexPath.section]
         
         if indexPath.section == 0 {
-            let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
-            vc.title = title
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.showMBProgressHUD()
+            self.vm.fetchPrivateKey() { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                
+                if isSuc == false {
+                    ViewManager.showNotice(msg)
+                } else {
+                    let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
+                    vc.title = title
+                    vc.privateKey = self.vm.privateKey
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            
         } else if indexPath.section == 1{
-            let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
-            vc.title = title
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.showMBProgressHUD()
+            self.vm.fetchMnemonic() { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                
+                if isSuc == false {
+                    ViewManager.showNotice(msg)
+                } else {
+                    let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
+                    vc.title = title
+                    vc.mnemonicStr = self.vm.mnemonic
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            
         } else if indexPath.section == 2{
-            let vc = storyboard.instantiateViewController(withIdentifier: "modifyPsd") as! VIPModifyViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "modify") as! VIPModifyViewController
             vc.title = title
+            vc.type = .login
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "modifyPsd") as! VIPModifyViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "modify") as! VIPModifyViewController
             vc.title = title
+            vc.type = .trade
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
