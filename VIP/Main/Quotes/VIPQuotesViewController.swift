@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import MJRefresh
 
 private let reuseIdentifierHeader = "reuseIdentifierHeader"
 private let reuseIdentifierCell = "reuseIdentifierCell"
 
 class VIPQuotesViewController: VIPTableViewController {
     
+    var vm = VIPQuotesVM()
+    var financialVM = VIPFinancialVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizedString(key: "Quotes")
+        self.view.backgroundColor = JXFfffffColor
         
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 68, height: 30))
@@ -40,10 +44,10 @@ class VIPQuotesViewController: VIPTableViewController {
         
         //self.tableView.register(UINib(nibName: "VIPHomeHeaderCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierHeader)
         self.tableView.register(UINib(nibName: "VIPQuotesListCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCell)
-        
-            
-        
-        self.requestData()
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestData()
+        })
+        self.tableView.mj_header.beginRefreshing()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,57 +55,96 @@ class VIPQuotesViewController: VIPTableViewController {
         // Dispose of any resources that can be recreated.
     }
     @objc func exchange(button: UIButton) {
+        if self.financialVM.walletListEntity.list.count > 0 {
+            self.showAlert(entity: self.financialVM.walletListEntity)
+        } else {
+            self.showMBProgressHUD()
+            self.financialVM.walletList { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                self.showAlert(entity: self.financialVM.walletListEntity)
+            }
+        }
+        
+    }
+    func showAlert(entity: VIPWalletListEntity) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "exchange") as! VIPExchangeViewController
+        vc.walletListEntity = entity
+        vc.backBlock = {
+            self.financialVM.walletListEntity.list.removeAll()
+            self.financialVM.walletList { (_, msg, isSuc) in
+                
+            }
+        }
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     override func requestData() {
-        //        self.vm.tradeDetail(type: self.type, bizId: self.bizId) { (_, msg, isSuc) in
-        //            if isSuc {
-        //                self.tableView?.reloadData()
-        //            } else {
-        //                ViewManager.showNotice(msg)
-        //            }
-        //        }
+        self.showMBProgressHUD()
+        self.vm.quotesList() { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            self.tableView.mj_header.endRefreshing()
+            if isSuc {
+                self.tableView.reloadData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        }
+        self.financialVM.walletList { (_, msg, isSuc) in
+    
+        }
     }
     // MARK: - Table view data source
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
+        bgView.backgroundColor = JXViewBgColor
+        
+        let leftLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 44))
+        leftLabel.textColor = JXGrayTextColor
+        leftLabel.textAlignment = .left
+        leftLabel.text = "币种"
+        leftLabel.font = UIFont.systemFont(ofSize: 15)
+        bgView.addSubview(leftLabel)
+        
+        let rightLabel = UILabel(frame: CGRect(x: bgView.jxWidth - 70, y: 0, width: 60, height: 44))
+        rightLabel.textColor = JXGrayTextColor
+        rightLabel.textAlignment = .right
+        rightLabel.text = "涨跌幅"
+        rightLabel.font = UIFont.systemFont(ofSize: 15)
+        bgView.addSubview(rightLabel)
+        
+        let centerLabel = UILabel(frame: CGRect(x: leftLabel.jxRight, y: 0, width: bgView.jxWidth - 20 - 37 - leftLabel.jxWidth - rightLabel.jxWidth, height: 44))
+        centerLabel.textColor = JXGrayTextColor
+        centerLabel.textAlignment = .right
+        centerLabel.text = "最新价"
+        centerLabel.font = UIFont.systemFont(ofSize: 15)
+        bgView.addSubview(centerLabel)
+        
+        return bgView
+        
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return self.vm.quotesListEntity.list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierHeader, for: indexPath) as! VIPHomeHeaderCell
-//            //cell.entity = self.vm.tradeDetailEntity
-//            //cell.setEntity(self.vm.tradeDetailEntity, type: self.type)
-//            cell.financialManagementBlock = {
-//                let storyboard = UIStoryboard(name: "Find", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "financialManagement") as! VIPFinancialManagementController
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//            cell.superNodeBlock = {
-//
-//            }
-//            return cell
-//        } else {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPQuotesListCell
-            //cell.addressLabel.text = self.vm.tradeDetailEntity.account
-            //cell.nameLabel.text = dict["title"]
-            //            cell.showCodeImage = {
-            //                self.showNoticeView2()
-            //            }
-            return cell
-            
-//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPQuotesListCell
+        let entity = self.vm.quotesListEntity.list[indexPath.row]
+        cell.entity = entity
+        //cell.addressLabel.text = self.vm.tradeDetailEntity.account
+        //cell.nameLabel.text = dict["title"]
+        //            cell.showCodeImage = {
+        //                self.showNoticeView2()
+        //            }
+        return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

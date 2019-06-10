@@ -1,0 +1,53 @@
+/* 
+  Localizable.strings
+  VIP
+
+  Created by 飞亦 on 5/29/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+
+"Home" = "Home";
+"Find" = "Find";
+"Quotes" = "Quotes";
+"My" = "My";
+
+
+
+"Promotion" = "Promotion";
+"Community" = "Community";
+"Income" = "Income";
+"Safety" = "Safety";
+"Notification" = "Notification";
+"Setting" = "Setting";
+
+//MARK:login&register
+//register
+"Language" = "language";
+"Register_nameTextField_placeholder" = "Please enter a name";
+"Register_loginPsdTextField_placeholder" = "Login password";
+"Register_loginPsdTextField_repeat_placeholder" = "Repeat login password";
+"Register_tradePsdTextField_placeholder" = "Transaction password";
+"Register_tradePsdTextField_repeat_placeholder" = "Repeat transaction password";
+"Register_inviteTextField_placeholder" = "Invitation code";
+
+"Register_read_agree" = "Read and agree";
+"Register_user_agreement" = "User Agreement";
+
+"Register" = "Register";
+"Registered" = "Registered?";
+"Register_gotologin" = "Go to login";
+//login
+"Login_psdTextField_placeholder" = "Please enter your password";
+"Login" = "Login";
+"Login_noAccountYet" = "No account yet？";
+"Login_goToRegister" = "Go to register";
+"Login_forgetPassword" = "Forget password";
+//Forget password
+"Mnemonic" = "Mnemonic";
+"PrivateKey" = "Private key";
+"Forget_mnemonicsTextField_placeholder" = "Please enter mnemonics, separated by space";
+"Forget_privateKeyTextField_placeholder" = "Please enter private key                  ";
+"Forget_loginPsdTextField_placeholder" = "New password";
+"Forget_loginPsdTextField_repeat_placeholder" = "Repeat password";
+
+"Import" = "Import";

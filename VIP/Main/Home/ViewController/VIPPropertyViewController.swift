@@ -17,9 +17,9 @@ class VIPPropertyViewController: VIPTableViewController {
     
     
     var vm = VIPPropertyVM()
-    var currencyId = 0  //币种
+    var financialVM = VIPFinancialVM()
     var currencyType = 0 //0全部 1收款 2转账 3理财 4兑换
-    
+    var entity : VIPCoinPropertyEntity!
     
     lazy var scrollView: UIScrollView = {
         let s = UIScrollView(frame: CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight))
@@ -46,14 +46,14 @@ class VIPPropertyViewController: VIPTableViewController {
         topView.addSubview(leftLabel)
         leftLabel.center = CGPoint(x: leftLabel.center.x, y: topView.jxHeight / 2)
         
-        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: 20, width: 100, height: 30))
+        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: 20, width: 150, height: 30))
         centerLabel1.textColor = JXBlackTextColor
         centerLabel1.font = UIFont.systemFont(ofSize: 24)
         centerLabel1.textAlignment = .center
         topView.addSubview(centerLabel1)
         centerLabel1.center = CGPoint(x: topView.center.x, y: centerLabel1.center.y)
         
-        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 5, width: 100, height: 20))
+        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 5, width: 150, height: 20))
         centerLabel2.textColor = JXGrayTextColor
         centerLabel2.font = UIFont.systemFont(ofSize: 14)
         centerLabel2.textAlignment = .center
@@ -161,17 +161,18 @@ class VIPPropertyViewController: VIPTableViewController {
         return bar
     }()
     
+    lazy var date: Date = {
+        let d = Date()
+        d.formatter.dateFormat = "HH:mm MM/dd"
+        return d
+    }()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
         self.view.addSubview(self.headView)
-        
-        self.coinNameLabel.text = "VIP"
-        self.coinNumLabel.text = "2313"
-        self.coinValueLabel.text = "456787.32$"
-        self.addressLabel.text = "ghjjkswdhg978wiyu32uijjkh32u3gjhjkhjkjlsdsfsfsfwew213"
         
         
         self.tableView.frame = CGRect.init(x: 0, y: kNavStatusHeight + headViewHeight, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - headViewHeight)
@@ -188,55 +189,82 @@ class VIPPropertyViewController: VIPTableViewController {
         })
         self.tableView.mj_header.beginRefreshing()
         
+        //设置默认值，真实数据以钱包结果为准
+        self.coinNameLabel.text = "\(self.entity.short_name ?? "")"
+        self.coinNumLabel.text = "\(self.entity.available_qty)"
+        self.coinValueLabel.text = "$\(self.entity.available_qty * self.entity.price)"
+        self.addressLabel.text = self.entity.address
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        switch segue.identifier {
-        //        case "invite":
-        //            if let vc = segue.destination as? InviteViewController, let inviteEntity = sender as? InviteEntity {
-        //                vc.inviteEntity = inviteEntity
-        //            }
-        //        default:
-        //            print("123456")
-        //        }
+    override func requestData() {
+        self.financialVM.walletList { (_, msg, isSuc) in
+            
+        }
     }
     override func request(page: Int) {
         
-        self.vm.propertyDetail(currencyId: self.currencyId, queryType: self.currencyType, page: self.page) { (_, msg, isSuc) in
+        self.vm.propertyDetail(currencyId: self.entity!.id, queryType: self.currencyType, page: self.page) { (_, msg, isSuc) in
             //self.hideMBProgressHUD()
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
+            
+            //self.serviceTotal = String(format:"%.2f",numDouble * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_coinName)"
+            
+            self.coinNameLabel.text = "\(self.vm.propertyEntity.coinEntity?.short_name ?? "")"
+            self.coinNumLabel.text = "\(self.vm.propertyEntity.walletEntity?.available_qty ?? 0)"
+            if let num = self.vm.propertyEntity.walletEntity?.available_qty, let prise = self.vm.propertyEntity.coinEntity?.price {
+                self.coinValueLabel.text = "$\(num * prise)"
+            }
+            self.addressLabel.text = self.vm.propertyEntity.coinEntity?.deposit_address
+            //self.addressLabel.text = self.entity.address
             self.tableView.reloadData()
         }
     }
     @objc func copyAddress() {
-        print("copy")
+        let pals = UIPasteboard.general
+        pals.string = self.addressLabel.text
+        ViewManager.showNotice("已复制")
     }
     @objc func action(button: UIButton) {
-        print(button.currentTitle!)
+       
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         if button.tag == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "transfer") as! VIPTransferViewController
+            vc.entity = self.vm.propertyEntity
+            vc.backBlock = {
+                self.tableView.mj_header.beginRefreshing()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         } else if button.tag == 1 {
             let vc = storyboard.instantiateViewController(withIdentifier: "receipt") as! VIPReceiptViewController
+            vc.receiptStr = self.vm.propertyEntity.walletEntity?.address ?? ""
+            vc.tokenName = self.vm.propertyEntity.coinEntity?.short_name ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "exchange") as! VIPExchangeViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.financialVM.walletListEntity.list.count > 0 {
+                self.showAlert(entity: self.financialVM.walletListEntity)
+            } else {
+                self.showMBProgressHUD()
+                self.financialVM.walletList { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    self.showAlert(entity: self.financialVM.walletListEntity)
+                }
+            }
         }
-//        self.showMBProgressHUD()
-//        self.vm.getQuickPayType(amount: num, completion: { (_, msg, isSuc) in
-//            self.hideMBProgressHUD()
-//            if isSuc{
-//                self.amount = num
-//                self.statusBottomView.customView = self.customViewInit(number: text)
-//                self.statusBottomView.show()
-//            } else {
-//                ViewManager.showNotice("暂不支持此购买金额")
-//            }
-//        })
-        
+
+    }
+    func showAlert(entity: VIPWalletListEntity) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "exchange") as! VIPExchangeViewController
+        vc.walletListEntity = entity
+        vc.backBlock = {
+            self.financialVM.walletListEntity.list.removeAll()
+            self.financialVM.walletList { (_, msg, isSuc) in
+                
+            }
+        }
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 //MARK:UIScrollViewDelegate
@@ -274,20 +302,23 @@ extension VIPPropertyViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.vm.propertyEntity.recordList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! VIPPropertyCell
-        //cell.entity = self.vm.tradeDetailEntity
-        //cell.setEntity(self.vm.tradeDetailEntity, type: self.type)
+        let entity = self.vm.propertyEntity.recordList[indexPath.row]
+        cell.tradeRecords = entity
+        
         return cell
        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "propertyDetail") as! VIPProDetailViewController
+        let entity = self.vm.propertyEntity.recordList[indexPath.row]
+        vc.entity = entity
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

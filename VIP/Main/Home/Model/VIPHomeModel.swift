@@ -11,12 +11,16 @@ import UIKit
 class VIPHomeModel: VIPBaseModel {
     @objc var total_number : Float = 0
     @objc var today_vit_number : Float = 0
-    var list = Array<VIPHomeListEntity>()
+    var list = Array<VIPCoinPropertyEntity>()
     var noticeList = Array<VIPNoticesListEntity>()
 }
-class VIPHomeListEntity: VIPBaseModel {
+class VIPCoinPropertyEntity: VIPBaseModel {
+    
+    @objc var deposit_address : String?
+    
     @objc var address : String?
     @objc var available_qty : Float = 0
+    @objc var currency_type : Int = 0
     @objc var detail : String?
     @objc var icon : String?
     @objc var id : Int = 0

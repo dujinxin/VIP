@@ -13,9 +13,17 @@ class VIPBackUpViewController: VIPBaseViewController {
     var unInputMnemonics = [String]()
     var inputMnemonics = [String]()
     
+    var isRegister : Int = 0 // 0否，其他 是
+    
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
             topConstraint.constant = kNavStatusHeight + 20
+        }
+    }
+    @IBOutlet weak var mnemonicsViewLeadingConstraint: NSLayoutConstraint!{
+        didSet{
+            mnemonicsViewLeadingConstraint.constant = 20
         }
     }
     
@@ -45,7 +53,7 @@ class VIPBackUpViewController: VIPBaseViewController {
         
         mnemonicContentView.removeAllSubView()
         
-        let rangeRect = CGRect(x: 24, y: 0, width: mnemonicContentView.jxWidth - 48, height: 65)
+        let rangeRect = CGRect(x: 22, y: 0, width: kScreenWidth - mnemonicsViewLeadingConstraint.constant * 2 - 44, height: 65)
         let lineSpace : CGFloat = 10
         let itemSpace : CGFloat = 10
         let itemWidth : CGFloat = 35
@@ -117,10 +125,23 @@ class VIPBackUpViewController: VIPBaseViewController {
     }
    
     @IBAction func remembered(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+
+        if isRegister == 0 {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: true)
+            })
+        }
     }
     @IBAction func remembering(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if isRegister == 0 {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: true)
+            })
+        }
     }
     
 }

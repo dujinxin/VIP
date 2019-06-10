@@ -28,7 +28,6 @@ class VIPExportViewController: VIPBaseViewController {
         self.addressLabel.text = self.privateKey
     }
     @IBAction func copyAction(_ sender: Any) {
-        print(self.addressLabel.text)
         let pals = UIPasteboard.general
         pals.string = self.addressLabel.text
         ViewManager.showNotice("已复制")

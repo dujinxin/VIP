@@ -18,10 +18,15 @@ class VIPForgetPsdViewController: VIPBaseViewController {
             self.topConstraint.constant = kNavStatusHeight
         }
     }
-    
+    @IBOutlet weak var barView: UIView!
+    @IBOutlet weak var textView: JXPlaceHolderTextView!{
+        didSet{
+             self.textView.placeHolderText = LocalizedString(key: "Forget_mnemonicsTextField_placeholder")
+        }
+    }
     @IBOutlet weak var psdTextField: UITextField!{
         didSet{
-            
+            psdTextField.placeholder = LocalizedString(key: "Forget_loginPsdTextField_placeholder")
             psdTextField.rightViewMode = .always
             psdTextField.rightView = {() -> UIView in
                 let button = UIButton(type: .custom)
@@ -37,7 +42,8 @@ class VIPForgetPsdViewController: VIPBaseViewController {
     }
     @IBOutlet weak var psdRepeatTextField: UITextField!{
         didSet{
-            
+    
+            psdRepeatTextField.placeholder = LocalizedString(key: "Forget_loginPsdTextField_repeat_placeholder")
             psdRepeatTextField.rightViewMode = .always
             psdRepeatTextField.rightView = {() -> UIView in
                 let button = UIButton(type: .custom)
@@ -46,28 +52,54 @@ class VIPForgetPsdViewController: VIPBaseViewController {
                 button.setImage(UIImage(named: "open"), for: .selected)
                 button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
                 button.isSelected = false
-                button.tag = 1
+                button.tag = 2
                 return button
             }()
         }
     }
     
-    //var vm = LoginVM()
-    
-    var isCounting: Bool = false
+    @IBOutlet weak var importButton: UIButton!{
+        didSet{
+            self.importButton.setTitle(LocalizedString(key: "Import"), for: .normal)
+        }
+    }
+    lazy var topBar : JXBarView = {
+        let topBar = JXBarView.init(frame: CGRect.init(x: 0, y: 0, width: view.bounds.width , height: 50), titles: [LocalizedString(key: "Mnemonic"),LocalizedString(key: "PrivateKey")])
+        topBar.delegate = self
+        
+        let att = JXAttribute()
+        
+        att.selectedColor = JXBlueColor
+        att.normalColor = JXBlackTextColor
+        att.font = UIFont.systemFont(ofSize: 17)
+        topBar.attribute = att
+        
+        topBar.backgroundColor = JXViewBgColor
+        topBar.bottomLineSize = CGSize(width: topBar.jxWidth / 2, height: 3)
+        topBar.bottomLineView.backgroundColor = JXMainColor
+        topBar.isBottomLineEnabled = true
+        
+        return topBar
+    }()
     
     
     lazy var keyboard: JXKeyboardToolBar = {
-        let k = JXKeyboardToolBar(frame: CGRect(), views: [self.psdTextField,self.psdRepeatTextField])
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [self.textView,self.psdTextField,self.psdRepeatTextField])
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
         k.tintColor = JXGrayTextColor
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
+        k.textViewDelegate = self
         k.textFieldDelegate = self
         return k
     }()
+    
+    
+    var selectIndex : Int = 0
+    
+    var vm = VIPLoginRegisterVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,36 +110,24 @@ class VIPForgetPsdViewController: VIPBaseViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
-        //self.view.insertSubview(self.customNavigationBar, aboveSubview: self.contentView)
         self.title = "忘记密码"
+        self.barView.addSubview(self.topBar)
         self.view.addSubview(self.keyboard)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextView.textDidChangeNotification, object: nil)
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
-        
-        //self.updateButtonStatus()
+        self.updateButtonStatus()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-        
-        if let controllers = self.navigationController?.viewControllers {
-            if controllers.count > 1 {
-                self.navigationController?.viewControllers.remove(at: 0)
-            }
-        }
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+//        if let controllers = self.navigationController?.viewControllers {
+//            print(controllers)
+//            if controllers.count > 1 {
+//                self.navigationController?.viewControllers.remove(at: 0)
+//            }
+//        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -116,49 +136,48 @@ class VIPForgetPsdViewController: VIPBaseViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //        self.view.endEditing(true)
-    //    }
-    
-    @objc func hideKeyboard() {
-        //        self.view.endEditing(true)
-    }
-    
     @objc func switchPsd(button: UIButton) {
-        //        button.isSelected = !button.isSelected
-        //        if button.isSelected {
-        //            self.passwordTextField.isSecureTextEntry = false
-        //        }else{
-        //            self.passwordTextField.isSecureTextEntry = true
-        //        }
+        button.isSelected = !button.isSelected
+        if button.tag == 1 {
+            self.psdTextField.isSecureTextEntry = !button.isSelected
+        } else if button.tag == 2 {
+            self.psdRepeatTextField.isSecureTextEntry = !button.isSelected
+        }
     }
     
     
     @IBAction func logAction(_ sender: Any) {
-        //        guard String.validate(userTextField.text, type: .phone, emptyMsg: "手机号未填写", formatMsg: "手机号填写错误") == true else { return }
-        //        guard String.validate(codeTextField.text, type: .code4, emptyMsg: "短信验证码未填写", formatMsg: "短信验证码填写错误") == true else { return }
-        //        //guard String.validate(passwordTextField.text, type: RegularExpression, emptyMsg: "密码未填写", formatMsg: "密码格式错误") == true else { return }
-        //        guard let password = self.passwordTextField.text, password.isEmpty == false else {
-        //            ViewManager.showNotice("密码未填写")
-        //            return
-        //        }
-        //
+        guard let text = self.textView.text else {
+            return
+        }
+        guard let password = self.psdTextField.text, let password_r = self.psdRepeatTextField.text, password == password_r else {
+            return
+        }
+        
         //        if self.validate(password) == false {
         //            ViewManager.showNotice("密码格式错误")
         //            return
         //        }
-        //        self.showMBProgressHUD()
-        //
-        //        self.vm.register(mobile: userTextField.text!, password: passwordTextField.text ?? "", mobileCode: codeTextField.text!) { (_, msg, isSuccess) in
-        //            self.hideMBProgressHUD()
-        //            ViewManager.showNotice(msg)
-        //            if isSuccess {
-        //                //已实名
-        //                self.dismiss(animated: true, completion: {
-        //                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: true)
-        //                })
-        //            }
-        //        }
+        self.showMBProgressHUD()
+        
+        self.vm.resetPsd(text: text, type: self.selectIndex + 1, password: password) { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            ViewManager.showNotice(msg)
+            if isSuc {
+                if let controllers = self.navigationController?.viewControllers {
+                    if controllers.count > 1 {
+                        self.navigationController?.viewControllers.remove(at: 0)
+                    }
+                }
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+                self.navigationController?.pushViewController(login, animated: true)
+                
+//                self.navigationController?.popToRootViewController(animated: true)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: false)
+            }
+        }
+    
     }
     
     func validate(_ string: String) -> Bool {
@@ -167,15 +186,36 @@ class VIPForgetPsdViewController: VIPBaseViewController {
     }
 }
 
-extension VIPForgetPsdViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegate {
+extension VIPForgetPsdViewController: JXBarViewDelegate,JXKeyboardTextFieldDelegate,JXKeyboardTextViewDelegate {
+    
+    
+    func jxBarView(barView: JXBarView, didClick index: Int) {
+        guard self.selectIndex != index else {
+            return
+        }
+        self.selectIndex = index
+        self.textView.text = ""
+        if index == 0 {
+            self.textView.placeHolderText = LocalizedString(key: "Forget_mnemonicsTextField_placeholder")
+        } else {
+            self.textView.placeHolderText = LocalizedString(key: "Forget_privateKeyTextField_placeholder")
+        }
+    }
+    func keyboardTextView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //        if textField == passwordTextField {
-        //            self.logAction(0)
-        //            return textField.resignFirstResponder()
-        //        } else if textField == imageTextField {
-        //            codeTextField.becomeFirstResponder()
-        //            return false
-        //        }
+        if textField == psdTextField {
+            psdRepeatTextField.becomeFirstResponder()
+            return false
+        } else if textField == psdRepeatTextField {
+            self.logAction(0)
+            return textField.resignFirstResponder()
+        }
         return true
     }
     
@@ -196,101 +236,26 @@ extension VIPForgetPsdViewController: UITextFieldDelegate,JXKeyboardTextFieldDel
         return true
     }
     
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //        if textField == passwordTextField {
-        //            self.logAction(0)
-        //            return textField.resignFirstResponder()
-        //        } else if textField == imageTextField {
-        //            codeTextField.becomeFirstResponder()
-        //            return false
-        //        }
-        return true
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        //        if textField == userTextField {
-        //            if range.location > 10 {
-        //                return false
-        //            }
-        //        } else if textField == codeTextField {
-        //            if range.location > 3 {
-        //                return false
-        //            }
-        //        }
-        return true
-    }
     @objc func textChange(notify: NSNotification) {
         
         if notify.object is UITextField {
-            //self.updateButtonStatus()
-        }
-    }
-    //    func updateButtonStatus() {
-    //        //登录按钮
-    //        if
-    //            let name = self.userTextField.text, name.isEmpty == false,
-    //            let password = self.passwordTextField.text, password.isEmpty == false,
-    //            let card = self.codeTextField.text, card.isEmpty == false{
-    //
-    //            self.loginButton.isEnabled = true
-    //            self.loginButton.backgroundColor = JXMainColor
-    //            self.loginButton.setTitleColor(JXMainTextColor, for: .normal)
-    //
-    //        } else {
-    //
-    //            self.loginButton.isEnabled = false
-    //            self.loginButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
-    //            self.loginButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
-    //
-    //        }
-    //        //验证码按钮
-    //        if
-    //            let name = self.userTextField.text, name.isEmpty == false,
-    //            let imageCode = self.imageTextField.text, imageCode.isEmpty == false, self.isCounting == false{
-    //
-    //            self.fetchButton.isEnabled = true
-    //            self.fetchButton.backgroundColor = JXMainColor
-    //            self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
-    //
-    //        } else {
-    //
-    //            self.fetchButton.isEnabled = false
-    //            self.fetchButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
-    //            self.fetchButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
-    //
-    //        }
-    //    }
-    @objc func keyboardWillShow(notify:Notification) {
-        
-        guard
-            let userInfo = notify.userInfo,
-            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
-            else {
-                return
-        }
-        
-        //print(rect)//226
-        UIView.animate(withDuration: animationDuration, animations: {
-            self.mainScrollView.contentOffset = CGPoint(x: 0, y: 160)
             
-        }) { (finish) in
-            //
         }
+        self.updateButtonStatus()
     }
-    @objc func keyboardWillHide(notify:Notification) {
-        print("notify = ","notify")
-        guard
-            let userInfo = notify.userInfo,
-            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
-            else {
-                return
-        }
-        UIView.animate(withDuration: animationDuration, animations: {
-            self.mainScrollView.contentOffset = CGPoint(x: 0, y: 0)
-        }) { (finish) in
+    func updateButtonStatus() {
+        //登录按钮
+        if
+            let text = self.textView.text, text.isEmpty == false,
+            let password = self.psdTextField.text, password.isEmpty == false,
+            let password_r = self.psdRepeatTextField.text, password_r.isEmpty == false{
+            
+            self.importButton.isEnabled = true
+            self.importButton.backgroundColor = JXMainColor
+            
+        } else {
+            self.importButton.isEnabled = false
+            self.importButton.backgroundColor = JXlightBlueColor
             
         }
     }

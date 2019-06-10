@@ -57,7 +57,7 @@ let JXGreenColor = UIColor.rgbColor(rgbValue: 0x2AB586)  //绿
 let JXYellowColor = UIColor.rgbColor(rgbValue: 0xEDC00B) //黄（黄金）
 let JXPurpleColor = UIColor.rgbColor(rgbValue: 0x7876F4) //紫（白金）
 let JXRedColor = UIColor.rgbColor(rgbValue: 0xD33333)    //红
-let JXCyanColor = UIColor.rgbColor(rgbValue: 0xDFE9F4)   //青
+let JXCyanColor = UIColor.rgbColor(rgbValue: 0xCFE7FF)   //青
 
 
 

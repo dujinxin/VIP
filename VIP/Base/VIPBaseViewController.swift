@@ -11,17 +11,26 @@ import JXFoundation
 import MBProgressHUD
 
 class VIPBaseViewController: JXBaseViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = JXViewBgColor
-        //self.customNavigationBar.isTranslucent = false
+        
+        self.customNavigationBar.isTranslucent = true
+        self.customNavigationBar.barStyle = .default
+        self.customNavigationBar.tintColor = JXBlackTextColor //item图片文字颜色
+        let font = UIFont(name: "PingFangSC-Semibold", size: 17) ?? UIFont.systemFont(ofSize: 17)
+        self.customNavigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: JXBlackTextColor,NSAttributedString.Key.font:font]//标题设置
+        self.customNavigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.white), for: UIBarMetrics.default)
+       
+        //self.navigationController?.navigationBar.barStyle = .default
     }
+    
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
-
+    
     open func showMBProgressHUD() {
         let _ = MBProgressHUD.showAdded(to: self.view, animated: true)
         //        hud.backgroundView.color = UIColor.black

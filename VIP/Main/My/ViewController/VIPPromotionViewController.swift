@@ -7,24 +7,53 @@
 //
 
 import UIKit
+import JXFoundation
 
 class VIPPromotionViewController: VIPBaseViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!{
+        didSet{
+            self.topConstraint.constant = kNavStatusHeight + 10
+        }
     }
     
+    @IBOutlet weak var codeImageView: UIImageView!
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var inviteNumLabel: UILabel!
+    @IBOutlet weak var validAccountLabel: UILabel!
+    @IBOutlet weak var personalPerformanceLabel: UILabel!
+    @IBOutlet weak var sharePerformanceNumLabel: UILabel!
+    @IBOutlet weak var inviteCodeLabel: UILabel!
+    
+    @IBOutlet weak var copyButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if #available(iOS 11.0, *) {
+            self.mainScrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+       
     }
-    */
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    @IBAction func copyCodeAction(_ sender: Any) {
+        let pals = UIPasteboard.general
+        pals.string = self.inviteCodeLabel.text
+        ViewManager.showNotice("已复制")
+    }
+    @IBAction func copyUrlAction(_ sender: Any) {
+        let pals = UIPasteboard.general
+        pals.string = "url"
+        ViewManager.showNotice("已复制")
+       
+    }
+ 
 }

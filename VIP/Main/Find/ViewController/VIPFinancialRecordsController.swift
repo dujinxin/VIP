@@ -15,12 +15,40 @@ private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
 class VIPFinancialRecordsController: VIPTableViewController {
     
+    var titleArray : Array<VIPFinancialListEntity>?
     
-    var vm = VIPPropertyVM()
-    var currencyId = 0  //币种
-    var currencyType = 0 //0全部 1收款 2转账 3理财 4兑换
+    var vm = VIPFinancialVM()
     
-    var topBar : JXBarView!
+    var select_row = 0  //账户类型(以列来表示)
+    var contract_id = 0  //计划ID
+    var programIndex = 0 //当前理财计划
+    
+    lazy var dropListView: JXDropListView = {
+        let sel = JXDropListView(frame: CGRect(x: kScreenWidth - 168, y: kNavStatusHeight, width: 168, height: 204), style: .list)
+        sel.delegate = self
+        sel.dataSource = self
+        sel.backgroundColor = JXFfffffColor
+        return sel
+    }()
+    
+    lazy var topBar : JXBarView = {
+        let topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width , height: 48), titles: ["","",""])
+        topBar.delegate = self
+        
+        let att = JXAttribute()
+        
+        att.selectedColor = JXBlueColor
+        att.normalColor = JXBlackTextColor
+        att.font = UIFont.systemFont(ofSize: 17)
+        topBar.attribute = att
+        
+        topBar.backgroundColor = JXFfffffColor
+        topBar.bottomLineSize = CGSize(width: 45, height: 3)
+        topBar.bottomLineView.backgroundColor = JXMainColor
+        topBar.isBottomLineEnabled = false
+        
+        return topBar
+    }()
     var horizontalView : JXHorizontalView?
     
     lazy var maskView: UIView = {
@@ -33,61 +61,23 @@ class VIPFinancialRecordsController: VIPTableViewController {
         super.viewDidLoad()
         
         self.customNavigationBar.backgroundColor = JXFfffffColor
-        self.customNavigationItem.titleView = ({
+        self.title = self.titleArray?[0].level_name
+        self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
+            //button.backgroundColor = UIColor.lightGray
+            button.setTitle("选择账户", for: .normal)
+            button.setImage(UIImage(named: "selectAccount"), for: .normal)
+            button.setTitleColor(JXBlueColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            //button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
+            button.layer.cornerRadius = 4
+            button.addTarget(self, action: #selector(selectAccount(button:)), for: .touchUpInside)
+            return button
+            }()))
 
-            let tabBgView = UIView(frame: CGRect(x: 20, y: 0 + 70, width: 75 * 3 + 24, height: 44))
-            
-          
-            let names = ["普通账户","黄金账户","白金账户"]
-            for i in 0..<3 {
-                let button = UIButton(type: .custom)
-                button.frame = CGRect(x: (12 + 75) * CGFloat(i), y: 10, width: 75, height: 24)
-               
-                button.setTitle(names[i], for: .normal)
-                button.setTitleColor(JXBlueColor, for: .selected)
-                button.setTitleColor(JXGrayTextColor, for: .normal)
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-                button.layer.borderWidth = 1
-                
-                button.tag = i
-                button.addTarget(self, action: #selector(action(button:)), for: .touchUpInside)
-                if i == 0 {
-                    button.backgroundColor = JXFfffffColor
-                    button.isSelected = true
-                    button.layer.borderColor = JXBlueColor.cgColor
-                } else {
-                    button.backgroundColor = JXViewBgColor
-                    button.isSelected = false
-                    button.layer.borderColor = JXViewBgColor.cgColor
-                }
 
-                tabBgView.addSubview(button)
-            }
-            return tabBgView
-
-        })()
-        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
-        
-        
-        let topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width , height: 48), titles: ["Play A","Play B","Play C","Play D"])
-        topBar.delegate = self
-        
-        let att = JXAttribute()
-
-        att.selectedColor = JXBlueColor
-        att.normalColor = JXBlackTextColor
-        att.font = UIFont.systemFont(ofSize: 17)
-        topBar.attribute = att
-        
-        topBar.backgroundColor = JXFfffffColor
-        topBar.bottomLineSize = CGSize(width: 45, height: 3)
-        topBar.bottomLineView.backgroundColor = JXMainColor
-        topBar.isBottomLineEnabled = true
-
-        
-        self.topBar = topBar
         self.view.addSubview(self.topBar)
-        
         
         
         self.tableView.frame = CGRect.init(x: 0, y: kNavStatusHeight + 48, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 48)
@@ -102,24 +92,33 @@ class VIPFinancialRecordsController: VIPTableViewController {
             self.page += 1
             self.request(page: self.page)
         })
-        self.tableView.mj_header.beginRefreshing()
-        
+        self.requestData()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        switch segue.identifier {
-        //        case "invite":
-        //            if let vc = segue.destination as? InviteViewController, let inviteEntity = sender as? InviteEntity {
-        //                vc.inviteEntity = inviteEntity
-        //            }
-        //        default:
-        //            print("123456")
-        //        }
+    override func requestData() {
+        self.showMBProgressHUD()
+        self.vm.financialPrograms_Records { (_, msg, isSuc) in
+            if isSuc {
+                //self.topBar.titles =
+                self.select_row = 0
+                self.programIndex = 0
+                self.topBar.titles = self.vm.programRecordsEntity.list[0].titles
+                self.topBar.isBottomLineEnabled = true
+                self.topBar.containerView.reloadData()
+                
+                self.contract_id = self.vm.programRecordsEntity.list[0].list[0].id
+                self.request(page: self.page)
+            } else {
+                self.hideMBProgressHUD()
+                ViewManager.showNotice(msg)
+            }
+        }
     }
     override func request(page: Int) {
+//        self.vm.recordsEntity.list.removeAll()
+//        self.tableView.reloadData()
         
-        self.vm.propertyDetail(currencyId: self.currencyId, queryType: self.currencyType, page: self.page) { (_, msg, isSuc) in
-            //self.hideMBProgressHUD()
+        self.vm.financialRecords(contract_id: self.contract_id, page: self.page) { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             self.tableView.reloadData()
@@ -128,34 +127,9 @@ class VIPFinancialRecordsController: VIPTableViewController {
     @objc func back() {
         self.navigationController?.popViewController(animated: true)
     }
-    @objc func action(button: UIButton) {
+    @objc func selectAccount(button: UIButton) {
         
-        self.customNavigationItem.titleView?.subviews.forEach({ (v) in
-            if let b = v as? UIButton {
-                if b.tag == button.tag {
-                    b.backgroundColor = JXFfffffColor
-                    b.isSelected = true
-                    b.layer.borderColor = JXBlueColor.cgColor
-                } else {
-                    b.backgroundColor = JXViewBgColor
-                    b.isSelected = false
-                    b.layer.borderColor = JXViewBgColor.cgColor
-                }
-            }
-        })
-        
-        //        self.showMBProgressHUD()
-        //        self.vm.getQuickPayType(amount: num, completion: { (_, msg, isSuc) in
-        //            self.hideMBProgressHUD()
-        //            if isSuc{
-        //                self.amount = num
-        //                self.statusBottomView.customView = self.customViewInit(number: text)
-        //                self.statusBottomView.show()
-        //            } else {
-        //                ViewManager.showNotice("暂不支持此购买金额")
-        //            }
-        //        })
-        
+        self.dropListView.show()
     }
 }
 //MARK:UIScrollViewDelegate
@@ -179,7 +153,8 @@ extension VIPFinancialRecordsController {
 extension VIPFinancialRecordsController : JXBarViewDelegate {
     
     func jxBarView(barView: JXBarView, didClick index: Int) {
-        self.currencyType = index
+        self.programIndex = index
+        self.contract_id = self.vm.programRecordsEntity.list[self.select_row].list[index].id
         self.tableView.mj_header.beginRefreshing()
     }
 }
@@ -193,23 +168,35 @@ extension VIPFinancialRecordsController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.vm.recordsEntity.list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! VIPFinancialRecordsCell
-        //cell.entity = self.vm.tradeDetailEntity
-        //cell.setEntity(self.vm.tradeDetailEntity, type: self.type)
+        let entity = self.vm.recordsEntity.list[indexPath.row]
+        cell.entity = entity
         cell.releaseBlock = {
+            
             let storyboard = UIStoryboard(name: "Find", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "financialRecordsAlert") as! VIPFinancialRecordsAlertController
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
-            vc.backBlock = {
+            vc.entity = entity
+            if self.vm.programRecordsEntity.list.count > 0 {
+                let arr = self.vm.programRecordsEntity.list[self.select_row].titles
+                if arr.count > 0 {
+                    vc.titleStr = arr[self.programIndex]
+                }
+            }
+            vc.callBackBlock = { isRefresh in
                 if let _ = self.maskView.superview {
                     self.maskView.removeFromSuperview()
                 }
+                if isRefresh {
+                    self.tableView.mj_header.beginRefreshing()
+                }
+
             }
             self.view.addSubview(self.maskView)
             self.present(vc, animated: true, completion:{
@@ -224,5 +211,36 @@ extension VIPFinancialRecordsController {
         let vc = storyboard.instantiateViewController(withIdentifier: "propertyDetail") as! VIPProDetailViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+}
+// MARK: JXDropListViewDelegate & JXDropListViewDataSource
+extension VIPFinancialRecordsController : JXDropListViewDelegate,JXDropListViewDataSource {
+    func dropListView(listView: JXDropListView, didSelectRowAt row: Int, inSection section: Int) {
+        guard let entity = self.titleArray?[row], let title = entity.level_name else {
+            return
+        }
+        self.title = title
+        self.select_row = row
+        self.topBar.titles = self.vm.programRecordsEntity.list[row].titles
+        self.topBar.containerView.reloadData()
+        
+        self.contract_id = self.vm.programRecordsEntity.list[row].list[0].id
+        self.tableView.mj_header.beginRefreshing()
+    }
+    func dropListView(listView: JXDropListView, numberOfRowsInSection section: Int) -> Int {
+        return self.titleArray?.count ?? 0
+    }
+    
+    func dropListView(listView: JXDropListView, heightForRowAt row: Int) -> CGFloat {
+        return 60
+    }
+    
+    func dropListView(listView: JXDropListView, contentForRow row: Int, InSection section: Int) -> String {
+        guard let entity = self.titleArray?[row], let title = entity.level_name else {
+            return ""
+        }
+        return title
+    }
+    
     
 }

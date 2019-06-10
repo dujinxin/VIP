@@ -11,6 +11,10 @@ import UIKit
 class VIPFinancialModel: VIPBaseModel {
     
 }
+//钱包
+class VIPWalletListEntity: VIPBaseModel {
+    var list = Array<VIPCoinPropertyEntity>()
+}
 //理财首页
 class VIPFinancialEntity: VIPBaseModel {
     @objc var invest_sum : Float = 0
@@ -25,6 +29,14 @@ class VIPFinancialListEntity: VIPBaseModel {
     @objc var level_name : String?
     @objc var min_money : Float = 0
     @objc var max_money : Float = 0
+}
+//账户及计划总表
+class VIPFinancialProgramRecordsEntity: VIPBaseModel {
+    var list = Array<VIPFinancialProgramRecordsListEntity>()
+}
+class VIPFinancialProgramRecordsListEntity: VIPFinancialListEntity {
+    var list = Array<VIPFinancialProgramListEntity>()
+    var titles = Array<String>()   //用于自定义视图显示
 }
 //理财计划
 class VIPFinancialProgramEntity: VIPBaseModel {
@@ -42,4 +54,23 @@ class VIPFinancialProgramListEntity: VIPBaseModel {
     
     @objc var return_id : Int = 0
     
+}
+//理财记录
+class VIPFinancialRecordsEntity: VIPBaseModel {
+    @objc var invest_money : Float = 0
+    var list = Array<VIPFinancialRecordsListEntity>()
+}
+
+class VIPFinancialRecordsListEntity: VIPBaseModel {
+    
+    @objc var id : Int = 0
+    @objc var plan_status : Int = 0
+    @objc var contract_price : Float = 0
+    
+    @objc var currency_name : String?
+    @objc var create_time : String?
+    @objc var expire_time : String?
+    
+    @objc var bonus_price : Float = 0
+    @objc var deduct_price : Float = 0
 }

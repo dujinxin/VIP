@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  VIP
+
+  Created by 飞亦 on 5/29/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+
+"Home" = "主页";
+"Find" = "发现";
+"Quotes" = "行情";
+"My" = "我的";
+
+
+"Promotion" = "我的推广";
+"Community" = "我的社区";
+"Income" = "我的收益";
+"Safety" = "安全中心";
+"Notification" = "通知中心";
+"Setting" = "设置";
+//MARK:login&register
+//register
+"Language" = "语言";
+"Register_nameTextField_placeholder" = "请输入名称";
+"Register_loginPsdTextField_placeholder" = "登录密码";
+"Register_loginPsdTextField_repeat_placeholder" = "重复登录密码";
+"Register_tradePsdTextField_placeholder" = "交易密码";
+"Register_tradePsdTextField_repeat_placeholder" = "重复交易密码";
+"Register_inviteTextField_placeholder" = "邀请码";
+
+"Register_read_agree" = "已阅读并同意";
+"Register_user_agreement" = "用户协议";
+
+"Register" = "注册";
+"Registered" = "已注册？";
+"Register_gotologin" = "去登录";
+//login
+"Login_psdTextField_placeholder" = "请输入密码";
+"Login" = "登录";
+"Login_noAccountYet" = "还没有账号？";
+"Login_goToRegister" = "去注册";
+"Login_forgetPassword" = "忘记密码";
+//Forget password
+"Mnemonic" = "助记词";
+"PrivateKey" = "私钥";
+"Forget_mnemonicsTextField_placeholder" = "请输入助记词，用空格隔开";
+"Forget_privateKeyTextField_placeholder" = "请输入私钥";
+"Forget_loginPsdTextField_placeholder" = "新密码";
+"Forget_loginPsdTextField_repeat_placeholder" = "重复输入密码";
+
+"Import" = "立即导入";

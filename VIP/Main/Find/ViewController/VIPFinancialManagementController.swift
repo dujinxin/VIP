@@ -83,6 +83,7 @@ class VIPFinancialManagementController: VIPTableViewController {
     }
     @objc func record(button: UIButton) {
         let vc = VIPFinancialRecordsController()
+        vc.titleArray = self.vm.financialEntity.list
         self.navigationController?.pushViewController(vc, animated: true)
     }
     override func requestData() {

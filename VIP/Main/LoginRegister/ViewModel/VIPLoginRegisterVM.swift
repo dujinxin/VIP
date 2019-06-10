@@ -59,15 +59,15 @@ class VIPLoginRegisterVM: NSObject {
             completion(nil,message,false)
         }
     }
-//    //重设密码
-//    func resetPsd(mobile: String, password: String, mobileCode: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-//        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["mobile": mobile, "password": MD5.encode(password) ,"mobileValidateCode": mobileCode], success: { (data, message) in
-//
-//            completion(nil,message,true)
-//        }) { (message, code) in
-//            completion(nil,message,false)
-//        }
-//    }
+    //重设密码
+    func resetPsd(text: String, type: Int, password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["text": text, "password": password ,"type": type, "lang":LanaguageManager.shared.languageStr], success: { (data, message) in
+
+            completion(nil,message,true)
+        }) { (message, code) in
+            completion(nil,message,false)
+        }
+    }
     //退出
     func logout(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) {
         JXRequest.request(url: ApiString.logout.rawValue, param: ["lang":LanaguageManager.shared.languageStr], success: { (data, message) in

@@ -24,6 +24,8 @@ class LanaguageManager: NSObject {
     
     static let shared = LanaguageManager()
     
+    var type : LanguageType = .chinese
+    
     var languageStr : String = "en"
     
     override init() {
@@ -31,9 +33,11 @@ class LanaguageManager: NSObject {
         
         if let language = UserDefaults.standard.object(forKey: "myLanguage") as? String, language.isEmpty == false {
             if language == LanguageType.chinese.rawValue {
-                languageStr = "zh"
+                self.languageStr = "zh"
+                self.type = .chinese
             } else if language == LanguageType.english.rawValue {
                 languageStr = "en"
+                type = .english
             }
             Bundle.main.setLanguage(language)
         }
@@ -43,18 +47,24 @@ class LanaguageManager: NSObject {
         UserDefaults.standard.set(key.rawValue, forKey: "myLanguage")
         UserDefaults.standard.synchronize()
         
+        self.type = key
         if key == .chinese {
-            languageStr = "zh"
+            self.languageStr = "zh"
         } else if key == .english {
-            languageStr = "en"
+            self.languageStr = "en"
         }
         
         Bundle.main.setLanguage(key.rawValue)
-        
-        let mainSb = UIStoryboard(name: "Main", bundle: nil)
-        let rootViewC = mainSb.instantiateInitialViewController() as! VIPTabBarViewController
-        rootViewC.selectedIndex = 3  //回到设置页面
-        UIApplication.shared.delegate!.window!!.rootViewController = rootViewC
+    }
+    func reset(_ rootViewCongtroller: UIViewController?) {
+        if let vc = rootViewCongtroller {
+            UIApplication.shared.delegate!.window!!.rootViewController = vc
+        } else {
+            let mainSb = UIStoryboard(name: "Main", bundle: nil)
+            let rootViewC = mainSb.instantiateInitialViewController() as! VIPTabBarViewController
+            rootViewC.selectedIndex = 3  //回到设置页面
+            UIApplication.shared.delegate!.window!!.rootViewController = rootViewC
+        }
     }
 }
 

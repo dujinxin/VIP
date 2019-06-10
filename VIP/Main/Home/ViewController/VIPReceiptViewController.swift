@@ -22,12 +22,6 @@ class VIPReceiptViewController: VIPBaseViewController {
         }
     }
     
-    @IBOutlet weak var numLabel: UILabel!{
-        didSet{
-            numLabel.textColor = JXBlueColor
-        }
-    }
-    
     @IBOutlet weak var addressBgView: UIView!{
         didSet{
             addressBgView.backgroundColor = JXViewBgColor
@@ -39,8 +33,12 @@ class VIPReceiptViewController: VIPBaseViewController {
         }
     }
     @IBOutlet weak var copyButton: UIButton!
-    @IBOutlet weak var changeButton: UIButton!
-    @IBOutlet weak var numberButton: UIButton!
+  
+    @IBOutlet weak var saveButton: UIButton!{
+        didSet {
+            self.saveButton.backgroundColor = JXCyanColor
+        }
+    }
     
     @IBOutlet weak var noticeLabel: UILabel!{
         didSet{
@@ -63,9 +61,10 @@ class VIPReceiptViewController: VIPBaseViewController {
         //self.noticeLabel.text = WalletManager.shared.entity.address
         
 //        self.noticeLabel.text = "请转入\(tokenName)"
-//        self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
-//
-//        self.codeImageView.image = self.code(self.receiptStr)
+        //self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
+       
+        self.noticeLabel.text = "注意：该地址仅支持\(self.tokenName)收款，请勿用于其他币种！"
+        self.codeImageView.image = self.code(self.receiptStr)
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,46 +87,23 @@ class VIPReceiptViewController: VIPBaseViewController {
 //        return s
 //    }
     @IBAction func copyAddress(_ sender: Any) {
-        print("更换资产")
-        
-        //        self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
-        self.codeImageView.image = self.code(self.receiptStr)
+        let pals = UIPasteboard.general
+        pals.string = self.addressLabel.text
+        ViewManager.showNotice("已复制")
     }
-    @IBAction func setNumber(_ sender: Any) {
-        
-        print("设定金额")
-        let alertVC = UIAlertController(title: nil, message: "输入金额", preferredStyle: .alert)
-        //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
-        alertVC.addTextField(configurationHandler: { (textField) in
-            textField.keyboardType = .decimalPad
-            //textField.placeholder = "请输入数量"
-        })
-        alertVC.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
-            
-            if
-                let textField = alertVC.textFields?[0],
-                let text = textField.text,
-                text.isEmpty == false, let doubleNum = Double(text){
-                
-                //                let bigInt = EthUnit.etherToWei(ether: Decimal(doubleNum))
-                //
-                //                self.receiptStr = self.getReceiptStr(t: self.type, contractAddress: self.contractAddress, value: bigInt)
-                //                self.codeImageView.image = self.code(self.receiptStr)
-            }
-        }))
-        alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
-        }))
-        self.present(alertVC, animated: true, completion: nil)
-    }
+   
     @IBAction func saveImage(_ sender: Any) {
-        
-        print("更换资产")
-        
-        //        self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
-        self.codeImageView.image = self.code(self.receiptStr)
-        
+        guard let image = self.codeImageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
     
+    @objc func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
+        if error != nil {
+            ViewManager.showNotice("保存失败")
+        } else {
+            ViewManager.showNotice("已保存")
+        }
+    }
     func code(_ string:String) -> UIImage {
         //二维码滤镜
         let filter = CIFilter.init(name: "CIQRCodeGenerator")

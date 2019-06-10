@@ -29,7 +29,7 @@ class VIPHomeVM: NSObject {
             
             if let currencys = result["currencys"] as? Array<Dictionary<String, Any>> {
                 for i in 0..<currencys.count {
-                    let entity = VIPHomeListEntity()
+                    let entity = VIPCoinPropertyEntity()
                     entity.setValuesForKeys(currencys[i])
                     self.homeEntity.list.append(entity)
                     totalNum += entity.available_qty * entity.price

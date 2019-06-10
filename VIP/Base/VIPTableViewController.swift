@@ -16,8 +16,16 @@ class VIPTableViewController: JXTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = JXViewBgColor
+        
+        self.customNavigationBar.isTranslucent = true
+        self.customNavigationBar.barStyle = .default
+        self.customNavigationBar.tintColor = JXBlackTextColor //item图片文字颜色
+        let font = UIFont(name: "PingFangSC-Semibold", size: 17) ?? UIFont.systemFont(ofSize: 17)
+        self.customNavigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: JXBlackTextColor,NSAttributedString.Key.font:font]//标题设置
+        self.customNavigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.white), for: UIBarMetrics.default)
+        
         self.tableView.backgroundColor = UIColor.clear
-        // Do any additional setup after loading the view.
+        
     }
     
 

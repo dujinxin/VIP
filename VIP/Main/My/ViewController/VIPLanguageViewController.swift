@@ -53,6 +53,7 @@ class VIPLanguageViewController: VIPTableViewController{
             } else {
                 LanaguageManager.shared.changeLanguage(.english)
             }
+            LanaguageManager.shared.reset(nil)
             self.navigationController?.popViewController(animated: true)
         }
     }

@@ -30,26 +30,49 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
     
     @IBOutlet weak var noticeLabel: UILabel!
     
+    var entity : VIPFinancialRecordsListEntity?
+    var titleStr = ""
+    var vm = VIPFinancialVM()
+    var callBackBlock : ((_ isRefresh: Bool)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.clear
         
-        
-        // Do any additional setup after loading the view.
+        self.titleLabel.text = self.titleStr
+        self.totalCastLabel.text = "\(self.entity?.contract_price ?? 0)"
+        self.totalIncomeLabel.text = "\(self.entity?.bonus_price ?? 0)"
+        self.interestIncomeLabel.text = "\(self.entity?.deduct_price ?? 0)"
+    }
+    override func isCustomNavigationBarUsed() -> Bool {
+        return false
     }
     @IBAction func cancelAction(_ sender: Any) {
-        if let block = self.backBlock {
-            block()
+        if let block = self.callBackBlock {
+            block(false)
         }
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func confirmAction(_ sender: UIButton) {
-        if let block = self.backBlock {
-            block()
+        guard let psd = self.psdTextField.text,psd.isEmpty == false else {
+            ViewManager.showNotice("请输入密码")
+            return
         }
-        self.dismiss(animated: true, completion: nil)
+        guard let id = self.entity?.id else { return }
+        
+        self.showMBProgressHUD()
+        self.vm.financialRelease(plan_id: id, pay_password: psd) { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            ViewManager.showNotice(msg)
+            if isSuc {
+                if let block = self.callBackBlock {
+                    block(true)
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
 }

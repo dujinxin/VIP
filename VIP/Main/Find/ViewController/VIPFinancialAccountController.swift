@@ -56,6 +56,9 @@ class VIPFinancialAccountController: VIPTableViewController {
                 ViewManager.showNotice(msg)
             }
         })
+        self.vm.walletList { (_, msg, isSuc) in
+            
+        }
     }
     // MARK: - Table view data source
     
@@ -92,28 +95,39 @@ class VIPFinancialAccountController: VIPTableViewController {
             cell.rateLabel.text = entity.interest_range
             
             cell.buyBlock = {
-                let storyboard = UIStoryboard(name: "Find", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "financialAlert") as! VIPFinancialAlertController
-                vc.modalPresentationStyle = .overCurrentContext
-                vc.modalTransitionStyle = .crossDissolve
-                vc.backBlock = {
-                    if let _ = self.maskView.superview {
-                        self.maskView.removeFromSuperview()
+                if self.vm.walletListEntity.list.count > 0 {
+                    self.showAlert(entity: entity)
+                } else {
+                    self.showMBProgressHUD()
+                    self.vm.walletList { (_, msg, isSuc) in
+                        self.hideMBProgressHUD()
+                        self.showAlert(entity: entity)
                     }
                 }
-                self.present(vc, animated: true, completion:{
-                    //self.maskView.alpha = 1
-                })
-                self.view.addSubview(self.maskView)
+                
             }
             return cell
             
         }
         
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//    }
+    func showAlert(entity: VIPFinancialProgramListEntity) {
+        let storyboard = UIStoryboard(name: "Find", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "financialAlert") as! VIPFinancialAlertController
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        vc.walletListEntity = self.vm.walletListEntity
+        vc.programEntity = entity
+        vc.backBlock = {
+            if let _ = self.maskView.superview {
+                self.maskView.removeFromSuperview()
+            }
+        }
+        self.present(vc, animated: true, completion:{
+            //self.maskView.alpha = 1
+        })
+        self.view.addSubview(self.maskView)
+    }
     lazy var maskView: UIView = {
         let v = UIView(frame: UIScreen.main.bounds)
         v.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.4)

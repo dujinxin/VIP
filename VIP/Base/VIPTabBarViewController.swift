@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JXFoundation
 
 class VIPTabBarViewController: UITabBarController {
     
@@ -128,7 +129,7 @@ extension VIPTabBarViewController {
             
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
-            let loginVC = UINavigationController.init(rootViewController: login)
+            let loginVC = VIPNavigationController.init(rootViewController: login)
             if self.selectedViewController is UINavigationController {
                 let selectVC = self.selectedViewController as! UINavigationController
                 let topVC = selectVC.topViewController
@@ -137,8 +138,8 @@ extension VIPTabBarViewController {
                 }
                 topVC?.navigationController?.popToRootViewController(animated: false)
                 topVC!.navigationController?.present(loginVC, animated: true, completion: nil)
-            }else{
-                self.selectedViewController?.navigationController?.present(login, animated: true, completion: nil)
+            } else {
+                self.selectedViewController?.navigationController?.present(loginVC, animated: true, completion: nil)
             }
         
         }

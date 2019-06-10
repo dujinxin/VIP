@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MJRefresh
+import JXFoundation
 
 private let reuseIdentifierHeader = "reuseIdentifierHeader"
 private let reuseIdentifierCell = "reuseIdentifierCell"
@@ -28,6 +30,9 @@ class VIPHomeViewController: VIPTableViewController {
         self.tableView.register(UINib(nibName: "VIPHomeHeaderCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierHeader)
         self.tableView.register(UINib(nibName: "VIPHomeCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCell)
         
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestData()
+        })
         
         //self.requestData()
     }
@@ -35,24 +40,23 @@ class VIPHomeViewController: VIPTableViewController {
         super.viewWillAppear(animated)
         
         if UserManager.manager.isLogin {
-            self.requestData()
+            self.tableView.mj_header.beginRefreshing()
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
-            let loginVC = UINavigationController.init(rootViewController: login)
+            let loginVC = VIPNavigationController.init(rootViewController: login)
             
-            self.navigationController?.present(loginVC, animated: false, completion: nil)
+            self.present(loginVC, animated: false, completion: nil)
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override open var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    
     override func requestData() {
         self.vm.home { (_, msg, isSuc) in
+            self.tableView.mj_header.endRefreshing()
             if isSuc {
                 self.tableView.reloadData()
             } else {
@@ -103,9 +107,9 @@ class VIPHomeViewController: VIPTableViewController {
             let entity = self.vm.homeEntity.list[indexPath.row - 1]
             cell.coinTitleLabel.text = entity.short_name
             cell.coinNumLabel.text = "\(entity.available_qty)"
-            cell.coinValueLabel.text = "\(entity.price)"
-            cell.numValueLabel.text = "\(entity.price * entity.available_qty)"
-            if let s = entity.icon,s.count > 2,let url = URL(string: kBaseUrl + String(s.suffix(s.count - 2))) {
+            cell.coinValueLabel.text = "$\(entity.price)"
+            cell.numValueLabel.text = "$\(entity.price * entity.available_qty)"
+            if let s = entity.icon,let url = URL(string: kBaseUrl + s) {
                 print(url)
                 cell.coinImageView.setImageWith(url, placeholderImage: nil)
             }
@@ -122,7 +126,8 @@ class VIPHomeViewController: VIPTableViewController {
             let vc  = VIPPropertyViewController()
             vc.title = entity.short_name
             vc.currencyType = 0
-            vc.currencyId = entity.id
+            vc.entity = entity
+            
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else {

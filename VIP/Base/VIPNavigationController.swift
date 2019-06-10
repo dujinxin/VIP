@@ -16,17 +16,14 @@ class VIPNavigationController: JXNavigationController {
 
         self.navigationBar.isTranslucent = false
         self.navigationBar.barStyle = .default      //状态栏 黑色
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // 重写这两个方法
+    override var childForStatusBarHidden: UIViewController? {
+        return self.visibleViewController
     }
-    */
 
+    override var childForStatusBarStyle: UIViewController? {
+        return self.visibleViewController
+    }
 }

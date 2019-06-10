@@ -229,6 +229,7 @@
                     <connections>
                         <outlet property="mnemonicView" destination="xFc-dB-Ime" id="S3b-G9-6Wx"/>
                         <outlet property="mnemonicViewHeight" destination="k2n-dh-e5a" id="OKL-wU-fie"/>
+                        <outlet property="mnemonicsViewLeadingConstraint" destination="bDn-vF-jSW" id="LHO-9n-KJ4"/>
                         <outlet property="textLabel" destination="GNf-sV-nmc" id="oTR-nJ-lPQ"/>
                         <outlet property="topConstraint" destination="1WJ-OW-kYe" id="9eP-jw-To8"/>
                     </connections>
