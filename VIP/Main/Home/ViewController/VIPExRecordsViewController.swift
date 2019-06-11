@@ -42,6 +42,7 @@ class VIPExRecordsViewController: VIPTableViewController {
         // Dispose of any resources that can be recreated.
     }
   
+    
     override func request(page: Int) {
         
         self.vm.exchangeList(page: page) { (_, msg, isSuc) in
@@ -49,6 +50,21 @@ class VIPExRecordsViewController: VIPTableViewController {
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             self.tableView.reloadData()
+            if isSuc == true && self.vm.exchangeListEntity.list.count > 0 {
+                self.tableView.isHidden = false
+            } else {
+                
+                self.defaultView.backgroundColor = UIColor.clear
+                self.defaultView.subviews.forEach({ (v) in
+                    v.backgroundColor = UIColor.clear
+                    if let l = v as? UILabel {
+                        l.textColor = JXGrayTextColor
+                    }
+                })
+                self.defaultInfo = ["imageName":"noneImage","content":"暂无相关数据"]
+                self.setUpDefaultView()
+                self.defaultView.frame = self.tableView.frame
+            }
         }
     }
     // MARK: - Table view data source

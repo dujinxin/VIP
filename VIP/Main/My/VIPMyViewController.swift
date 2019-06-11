@@ -216,7 +216,8 @@ class VIPMyViewController: VIPTableViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return UITableViewAutomaticDimension
         if indexPath.section == 0 {
-            return 124 + 20 + kNavStatusHeight
+            return 184
+            //return 124 + 20 + kNavStatusHeight
         } else {
             return 50
         }
@@ -244,7 +245,13 @@ class VIPMyViewController: VIPTableViewController{
 //                }
 //                self.navigationController?.pushViewController(vc, animated: true)
 //            }
-            
+            cell.promotionBlock = {
+                let storyboard = UIStoryboard(name: "My", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
+                vc.title = LocalizedString(key: "Promotion")
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! VIPMyListCell

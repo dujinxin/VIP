@@ -12,11 +12,20 @@ class VIPMyHeadCell: UITableViewCell {
 
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
-            self.topConstraint.constant = kStatusBarHeight
+            self.topConstraint.constant = kNavStatusHeight
         }
     }
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    
+    
+    @IBOutlet weak var promotionImageView: UIImageView!{
+        didSet{
+            self.promotionImageView.isUserInteractionEnabled = true
+            self.promotionImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(promotionAction)))
+        }
+    }
+    @IBOutlet weak var promotionLabel: UILabel!
     
     @IBOutlet weak var star1ImageView: UIImageView!
     @IBOutlet weak var star2ImageView: UIImageView!
@@ -29,7 +38,11 @@ class VIPMyHeadCell: UITableViewCell {
             if let str = entity?.headImg,let url = URL.init(string:str) {
                 self.avatarImageView.setImageWith(url)
             }
-            self.nickNameLabel.text = entity?.nickname
+            if let nickName = entity?.nickname, nickName.isEmpty == false {
+                self.nickNameLabel.text = nickName
+            } else {
+                self.nickNameLabel.text = entity?.username
+            }
             
             switch entity?.user_level {
             case 1:
@@ -71,7 +84,14 @@ class VIPMyHeadCell: UITableViewCell {
             }
         }
     }
+    @objc var promotionBlock : (()->())?
     
+    
+    @objc func promotionAction() {
+        if let block = self.promotionBlock {
+            block()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -77,21 +77,6 @@ class VIPPropertyCell: UITableViewCell {
             } else if self.tradeRecords?.operation_style == 4 {
                 self.typeLabel.text = "兑换"
             }
-           
-            //self.statusLabel.text =
-            let formater = DateFormatter()
-            formater.dateFormat = "YYYY-MM-dd HH:mm:ss"
-            let date = formater.date(from: tradeRecords?.create_time ?? "0")
-            //self.date.dateFromString(entity.create_time ?? "0")
-            formater.dateFormat = "HH:mm MM/dd"
-            //self.date.format("HH:mm MM/dd")
-            //let dateStr = date?.stringFromDate()
-            if let date = date {
-                let dateStr = formater.string(from: date)
-                self.timeLabel.text = dateStr
-            } else {
-                self.timeLabel.text = self.tradeRecords?.create_time
-            }
             
         }
     }

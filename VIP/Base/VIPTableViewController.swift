@@ -27,7 +27,15 @@ class VIPTableViewController: JXTableViewController {
         self.tableView.backgroundColor = UIColor.clear
         
     }
-    
+//    override func setUpDefaultView() {
+//        defaultView.frame = self.tableView.frame
+//        defaultView.backgroundColor = UIColor.clear
+//        view.addSubview(defaultView)
+//        defaultView.info = defaultInfo
+//        defaultView.tapBlock = {()->() in
+//            self.requestData()
+//        }
+//    }
 
     open func showMBProgressHUD() {
         let _ = MBProgressHUD.showAdded(to: self.view, animated: true)

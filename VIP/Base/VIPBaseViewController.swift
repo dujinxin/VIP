@@ -25,6 +25,8 @@ class VIPBaseViewController: JXBaseViewController {
         self.customNavigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.white), for: UIBarMetrics.default)
        
         //self.navigationController?.navigationBar.barStyle = .default
+        
+        
     }
     
     override open var preferredStatusBarStyle: UIStatusBarStyle {

@@ -12,13 +12,15 @@ import MJRefresh
 
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
+//
+private let headViewHeight : CGFloat = 100 + 15 + 50 + 30 + 40 + 30 + 10 + 44
 
 class VIPPropertyViewController: VIPTableViewController {
     
-    
-    var vm = VIPPropertyVM()
+    //
+    var vm: VIPPropertyVM?
+    //
     var financialVM = VIPFinancialVM()
-    var currencyType = 0 //0全部 1收款 2转账 3理财 4兑换
     var entity : VIPCoinPropertyEntity!
     
     lazy var scrollView: UIScrollView = {
@@ -28,8 +30,6 @@ class VIPPropertyViewController: VIPTableViewController {
         s.contentSize = CGSize(width: 0, height: kScreenHeight * 2)
         return s
     }()
-    
-    var headViewHeight : CGFloat = 100 + 15 + 50 + 30 + 40 + 30 + 10 + 44
     
     lazy var headView: UIView = {
         let headView = UIView(frame: CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: headViewHeight))
@@ -144,28 +144,7 @@ class VIPPropertyViewController: VIPTableViewController {
     var addressLabel : UILabel!
     
     var topBar : JXBarView!
-    var horizontalView : JXHorizontalView?
-    
-    
-    lazy var keyboard: JXKeyboardToolBar = {
-        let bar = JXKeyboardToolBar(frame: CGRect())
-        bar.showBlock = { (view, value) in
-            print(view,value)
-        }
-        bar.closeBlock = {
-            //self.textField.text = ""
-        }
-        bar.tintColor = JXFfffffColor
-        bar.toolBar.barTintColor = JXViewBgColor
-        bar.backgroundColor = JXViewBgColor
-        return bar
-    }()
-    
-    lazy var date: Date = {
-        let d = Date()
-        d.formatter.dateFormat = "HH:mm MM/dd"
-        return d
-    }()
+    var horizontalView : JXHorizontalView!
     
     override func viewDidLoad() {
         
@@ -174,20 +153,42 @@ class VIPPropertyViewController: VIPTableViewController {
         //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
         self.view.addSubview(self.headView)
         
+        let rect = CGRect(x: 0, y: kNavStatusHeight + headViewHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - headViewHeight)
+        let vc1 = VIPProRecordsContorller()
+        vc1.type = 0
+        vc1.entity = self.entity
+        vc1.refreshBlock = { vm in
+            self.updateValues(vm)
+        }
+        let vc2 = VIPProRecordsContorller()
+        vc2.type = 1
+        vc2.entity = self.entity
+        vc2.refreshBlock = { vm in
+            self.updateValues(vm)
+        }
+        let vc3 = VIPProRecordsContorller()
+        vc3.type = 2
+        vc3.entity = self.entity
+        vc3.refreshBlock = { vm in
+            self.updateValues(vm)
+        }
+        let vc4 = VIPProRecordsContorller()
+        vc4.type = 3
+        vc4.entity = self.entity
+        vc4.refreshBlock = { vm in
+            self.updateValues(vm)
+        }
+        let vc5 = VIPProRecordsContorller()
+        vc5.type = 4
+        vc5.entity = self.entity
+        vc5.refreshBlock = { vm in
+            self.updateValues(vm)
+        }
         
-        self.tableView.frame = CGRect.init(x: 0, y: kNavStatusHeight + headViewHeight, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - headViewHeight)
-        self.tableView.register(UINib(nibName: "VIPPropertyCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.rowHeight = 135
-        
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.page = 1
-            self.request(page: 1)
-        })
-        self.tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-            self.page += 1
-            self.request(page: self.page)
-        })
-        self.tableView.mj_header.beginRefreshing()
+        let horizontalView = JXHorizontalView.init(frame: rect, containers: [vc1,vc2,vc3,vc4,vc5], parentViewController: self)
+        self.view.addSubview(horizontalView)
+        self.horizontalView = horizontalView
+
         
         //设置默认值，真实数据以钱包结果为准
         self.coinNameLabel.text = "\(self.entity.short_name ?? "")"
@@ -195,29 +196,17 @@ class VIPPropertyViewController: VIPTableViewController {
         self.coinValueLabel.text = "$\(self.entity.available_qty * self.entity.price)"
         self.addressLabel.text = self.entity.address
     }
-    
+    func updateValues(_ vm: VIPPropertyVM) {
+        self.coinNameLabel.text = "\(vm.propertyEntity.coinEntity?.short_name ?? "")"
+        self.coinNumLabel.text = "\(vm.propertyEntity.walletEntity?.available_qty ?? 0)"
+        if let num = vm.propertyEntity.walletEntity?.available_qty, let prise = vm.propertyEntity.coinEntity?.price {
+            self.coinValueLabel.text = "$\(num * prise)"
+        }
+        self.addressLabel.text = vm.propertyEntity.coinEntity?.deposit_address
+    }
     override func requestData() {
         self.financialVM.walletList { (_, msg, isSuc) in
             
-        }
-    }
-    override func request(page: Int) {
-        
-        self.vm.propertyDetail(currencyId: self.entity!.id, queryType: self.currencyType, page: self.page) { (_, msg, isSuc) in
-            //self.hideMBProgressHUD()
-            self.tableView.mj_header.endRefreshing()
-            self.tableView.mj_footer.endRefreshing()
-            
-            //self.serviceTotal = String(format:"%.2f",numDouble * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_coinName)"
-            
-            self.coinNameLabel.text = "\(self.vm.propertyEntity.coinEntity?.short_name ?? "")"
-            self.coinNumLabel.text = "\(self.vm.propertyEntity.walletEntity?.available_qty ?? 0)"
-            if let num = self.vm.propertyEntity.walletEntity?.available_qty, let prise = self.vm.propertyEntity.coinEntity?.price {
-                self.coinValueLabel.text = "$\(num * prise)"
-            }
-            self.addressLabel.text = self.vm.propertyEntity.coinEntity?.deposit_address
-            //self.addressLabel.text = self.entity.address
-            self.tableView.reloadData()
         }
     }
     @objc func copyAddress() {
@@ -230,15 +219,15 @@ class VIPPropertyViewController: VIPTableViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         if button.tag == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "transfer") as! VIPTransferViewController
-            vc.entity = self.vm.propertyEntity
+            vc.entity = self.vm?.propertyEntity
             vc.backBlock = {
                 self.tableView.mj_header.beginRefreshing()
             }
             self.navigationController?.pushViewController(vc, animated: true)
         } else if button.tag == 1 {
             let vc = storyboard.instantiateViewController(withIdentifier: "receipt") as! VIPReceiptViewController
-            vc.receiptStr = self.vm.propertyEntity.walletEntity?.address ?? ""
-            vc.tokenName = self.vm.propertyEntity.coinEntity?.short_name ?? ""
+            vc.receiptStr = self.vm?.propertyEntity.walletEntity?.address ?? ""
+            vc.tokenName = self.vm?.propertyEntity.coinEntity?.short_name ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             if self.financialVM.walletListEntity.list.count > 0 {
@@ -288,37 +277,28 @@ extension VIPPropertyViewController {
 extension VIPPropertyViewController : JXBarViewDelegate {
     
     func jxBarView(barView: JXBarView, didClick index: Int) {
-        self.currencyType = index
-        self.tableView.mj_header.beginRefreshing()
+        
+        let indexPath = IndexPath.init(item: index, section: 0)
+        //开启动画会影响topBar的点击移动动画
+        self.horizontalView.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: false)
     }
 }
-// MARK: - Table view data source
-extension VIPPropertyViewController {
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.vm.propertyEntity.recordList.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//MARK:JXHorizontalViewDelegate
+extension VIPPropertyViewController : JXHorizontalViewDelegate {
+    func horizontalViewDidScroll(scrollView:UIScrollView) {
+        let offset = scrollView.contentOffset.x
+        var x : CGFloat
+        let count = CGFloat(self.topBar.titles.count)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! VIPPropertyCell
-        let entity = self.vm.propertyEntity.recordList[indexPath.row]
-        cell.tradeRecords = entity
+        x = (kScreenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / kScreenWidth ) * ((kScreenWidth / count))
         
-        return cell
-       
+        self.topBar.bottomLineView.frame.origin.x = x
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "propertyDetail") as! VIPProDetailViewController
-        let entity = self.vm.propertyEntity.recordList[indexPath.row]
-        vc.entity = entity
-        self.navigationController?.pushViewController(vc, animated: true)
+    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+        if self.topBar.selectedIndex == indexPath.item {
+            return
+        }
+        
+        self.topBar.scrollToItem(at: indexPath)
     }
 }

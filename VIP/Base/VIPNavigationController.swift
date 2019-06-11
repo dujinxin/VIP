@@ -22,8 +22,13 @@ class VIPNavigationController: JXNavigationController {
     override var childForStatusBarHidden: UIViewController? {
         return self.visibleViewController
     }
-
     override var childForStatusBarStyle: UIViewController? {
         return self.visibleViewController
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.visibleViewController!.preferredStatusBarStyle
+    }
+    override var prefersStatusBarHidden: Bool {
+        return self.visibleViewController!.prefersStatusBarHidden
     }
 }
