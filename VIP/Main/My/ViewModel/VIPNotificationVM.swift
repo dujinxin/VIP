@@ -26,7 +26,7 @@ class VIPNotificationVM: NSObject {
                 self.noticeListEntity.list.removeAll()
             }
             for i in 0..<result.count {
-                let entity = VIPNoticesListEntity()
+                let entity = VIPNoticesCellEntity()
                 entity.setValuesForKeys(result[i])
                 self.noticeListEntity.list.append(entity)
             }

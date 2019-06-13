@@ -24,7 +24,7 @@ class VIPFinancialAccountController: VIPTableViewController {
         
         self.view.backgroundColor = JXFfffffColor
         
-        self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - kTabBarHeight)
+        self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         self.tableView.isHidden = true
         self.tableView.separatorStyle = .none
         self.tableView.estimatedRowHeight = 82

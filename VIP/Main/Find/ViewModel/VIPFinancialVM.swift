@@ -42,8 +42,8 @@ class VIPFinancialVM: NSObject {
                     completion(nil, msg, false)
                     return
             }
-            self.financialEntity.invest_sum = result["invest_sum"] as? Float ?? 0
-            self.financialEntity.profit_sum = result["profit_sum"] as? Float ?? 0
+            self.financialEntity.invest_sum = result["invest_sum"] as? Double ?? 0
+            self.financialEntity.profit_sum = result["profit_sum"] as? Double ?? 0
             if let levels = result["levels"] as? Array<Dictionary<String, Any>>{
                 for i in 0..<levels.count {
                     let entity = VIPFinancialListEntity()

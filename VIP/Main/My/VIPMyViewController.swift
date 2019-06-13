@@ -23,42 +23,24 @@ class VIPMyViewController: VIPTableViewController{
         ]
     ]
   
-    //var vm = LoginVM()
+    var vm = VIPMyVM()
    
-    var textField : UITextField!
-    
-    var nickName = ""
-    
-    var isModify: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customNavigationBar.removeFromSuperview()
         
         self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight)
         self.tableView.register(UINib(nibName: "VIPMyListCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
         self.tableView.register(UINib(nibName: "VIPMyHeadCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierHeader")
         self.tableView.estimatedRowHeight = 64
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.isScrollEnabled = false
+        //self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
-//        if !UserManager.manager.isLogin {
-//            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//            let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-//            let loginVC = UINavigationController.init(rootViewController: login)
-//            self.navigationController?.present(loginVC, animated: false, completion: nil)
-//        } else {
-//            self.requestData()
-//        }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.barStyle = .default
+        self.requestData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,26 +49,17 @@ class VIPMyViewController: VIPTableViewController{
     override open var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "accound" {
-            
-        }
-    }
     override func isCustomNavigationBarUsed() -> Bool {
-        return true
+        return false
     }
     override func requestData() {
-//        self.vm.personInfo { (data, msg, isSuccess) in
-//            if isSuccess == true {
-//                self.tableView.reloadData()
-//                if self.isModify == true {
-//                    UserManager.manager.updateAvatar(self.vm.profileInfoEntity?.headImg ?? "")
-//                    self.isModify = false
-//                }
-//            } else {
-//                ViewManager.showNotice(msg)
-//            }
-//        }
+        self.vm.my { (data, msg, isSuccess) in
+            if isSuccess == true {
+                self.tableView.reloadData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        }
     }
     @IBAction func edit(_ sender: UIButton) {
         
@@ -123,7 +96,7 @@ class VIPMyViewController: VIPTableViewController{
         //        self.present(alertVC, animated: true, completion: nil)
     }
     @objc func logout(button: UIButton) {
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: false)
     }
     @objc func valueChanged(textField:UITextField) {
         let maxLength = 12
@@ -225,7 +198,7 @@ class VIPMyViewController: VIPTableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierHeader", for: indexPath) as! VIPMyHeadCell
-            cell.entity = UserManager.manager.userEntity
+            cell.entity = self.vm.myEntity
 //            if let str = UserManager.manager.userEntity.headImg {
 //                let url = URL.init(string:str)
 //                cell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
@@ -246,11 +219,22 @@ class VIPMyViewController: VIPTableViewController{
 //                self.navigationController?.pushViewController(vc, animated: true)
 //            }
             cell.promotionBlock = {
-                let storyboard = UIStoryboard(name: "My", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                vc.title = LocalizedString(key: "Promotion")
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
+                
+                self.showMBProgressHUD()
+                let v = VIPPromotionVM()
+                v.promotion { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    if isSuc {
+                        let storyboard = UIStoryboard(name: "My", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
+                        vc.title = LocalizedString(key: "Promotion")
+                        vc.entity = v.promotionEntity
+                        vc.hidesBottomBarWhenPushed = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        ViewManager.showNotice(msg)
+                    }
+                }
             }
             return cell
         } else {
@@ -272,20 +256,51 @@ class VIPMyViewController: VIPTableViewController{
             let title = LocalizedString(key: dict["title"] ?? "")
             if indexPath.section == 1 {
                 if indexPath.row == 0 {
-                    let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                    vc.title = title
-                    vc.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.showMBProgressHUD()
+                    let v = VIPPromotionVM()
+                    v.promotion { (_, msg, isSuc) in
+                        self.hideMBProgressHUD()
+                        if isSuc {
+                            let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
+                            vc.title = title
+                            vc.entity = v.promotionEntity
+                            vc.hidesBottomBarWhenPushed = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            ViewManager.showNotice(msg)
+                        }
+                    }
+                    
                 } else if indexPath.row == 1{
-                    let vc = VIPCommunityViewController()
-                    vc.title = title
-                    vc.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.showMBProgressHUD()
+                    let v = VIPCommunityVM()
+                    v.community { (_, msg, isSuc) in
+                        self.hideMBProgressHUD()
+                        if isSuc {
+                            let vc = VIPCommunityViewController()
+                            vc.title = title
+                            vc.entity = v.communityEntity
+                            vc.hidesBottomBarWhenPushed = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            ViewManager.showNotice(msg)
+                        }
+                    }
                 } else {
-                    let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                    vc.title = title
-                    vc.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.showMBProgressHUD()
+                    let v = VIPIncomeVM()
+                    v.income { (_, msg, isSuc) in
+                        self.hideMBProgressHUD()
+                        if isSuc {
+                            let vc = storyboard.instantiateViewController(withIdentifier: "income") as! VIPIncomeViewController
+                            vc.title = title
+                            vc.entity = v.incomeEntity
+                            vc.hidesBottomBarWhenPushed = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            ViewManager.showNotice(msg)
+                        }
+                    }
                 }
             } else {
                 if indexPath.row == 0 {

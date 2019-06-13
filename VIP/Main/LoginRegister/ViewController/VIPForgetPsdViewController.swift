@@ -150,7 +150,12 @@ class VIPForgetPsdViewController: VIPBaseViewController {
         guard let text = self.textView.text else {
             return
         }
-        guard let password = self.psdTextField.text, let password_r = self.psdRepeatTextField.text, password == password_r else {
+        guard let password = self.psdTextField.text, password.count >= 6 else {
+            ViewManager.showNotice("登录密码需要设置6位以上！")
+            return
+        }
+        guard let password_r = self.psdRepeatTextField.text, password == password_r else {
+            ViewManager.showNotice("两次输入密码不一致！")
             return
         }
         
@@ -220,19 +225,11 @@ extension VIPForgetPsdViewController: JXBarViewDelegate,JXKeyboardTextFieldDeleg
     }
     
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //        if textField == userTextField {
-        //            if range.location > 10 {
-        //                return false
-        //            }
-        //        } else if textField == codeTextField || textField == imageTextField{
-        //            if range.location > 3 {
-        //                return false
-        //            }
-        //        } else if textField == passwordTextField {
-        //            if range.location > 19 {
-        //                return false
-        //            }
-        //        }
+        if textField == psdTextField || textField == psdRepeatTextField {
+            if range.location > 9 {
+                return false
+            }
+        }
         return true
     }
     

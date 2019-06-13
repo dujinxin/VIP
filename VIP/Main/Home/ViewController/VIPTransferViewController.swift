@@ -51,7 +51,7 @@ class VIPTransferViewController: VIPBaseViewController {
         self.title = "\(self.entity?.coinEntity?.short_name ?? "")转账"
         self.numLabel.text = "\(self.entity?.coinEntity?.short_name ?? "")余额：\(self.entity?.walletEntity?.available_qty ?? 0)"
         self.valueLabel.text = "≈ $0.00"
-        self.fromAddressLabel.text = self.entity?.walletEntity?.address
+        self.fromAddressLabel.text = self.entity?.coinEntity?.deposit_address
         self.rateLabel.text = "矿工费：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
@@ -64,7 +64,7 @@ class VIPTransferViewController: VIPBaseViewController {
         if let textField = notify.object as? UITextField, textField == self.numTextFeild {
             if
                 let text = textField.text, text.isEmpty == false,
-                let num = Float(text), num > 0 {
+                let num = Double(text), num > 0 {
                 
                 self.valueLabel.text = "≈ $\(num * (self.entity?.walletEntity!.available_qty)!)"
                 
@@ -83,7 +83,7 @@ class VIPTransferViewController: VIPBaseViewController {
     
     @IBAction func allAction(_ sender: UIButton) {
         self.numTextFeild.text = "\(self.entity?.walletEntity?.available_qty ?? 0)"
-        if let text = self.numTextFeild.text, let num = Float(text) {
+        if let text = self.numTextFeild.text, let num = Double(text) {
             self.valueLabel.text = "≈ $\(num * (self.entity?.coinEntity!.price)!)"
         } else {
             self.valueLabel.text = "≈ $\(0.00)"

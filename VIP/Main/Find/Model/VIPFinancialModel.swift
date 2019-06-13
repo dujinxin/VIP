@@ -17,8 +17,8 @@ class VIPWalletListEntity: VIPBaseModel {
 }
 //理财首页
 class VIPFinancialEntity: VIPBaseModel {
-    @objc var invest_sum : Float = 0
-    @objc var profit_sum : Float = 0
+    @objc var invest_sum : Double = 0
+    @objc var profit_sum : Double = 0
     var list = Array<VIPFinancialListEntity>()
 }
 
@@ -27,8 +27,8 @@ class VIPFinancialListEntity: VIPBaseModel {
     @objc var id : Int = 0
     @objc var level : Int = 0
     @objc var level_name : String?
-    @objc var min_money : Float = 0
-    @objc var max_money : Float = 0
+    @objc var min_money : Double = 0
+    @objc var max_money : Double = 0
 }
 //账户及计划总表
 class VIPFinancialProgramRecordsEntity: VIPBaseModel {
@@ -57,7 +57,7 @@ class VIPFinancialProgramListEntity: VIPBaseModel {
 }
 //理财记录
 class VIPFinancialRecordsEntity: VIPBaseModel {
-    @objc var invest_money : Float = 0
+    @objc var invest_money : Double = 0
     var list = Array<VIPFinancialRecordsListEntity>()
 }
 
@@ -65,12 +65,12 @@ class VIPFinancialRecordsListEntity: VIPBaseModel {
     
     @objc var id : Int = 0
     @objc var plan_status : Int = 0
-    @objc var contract_price : Float = 0
+    @objc var contract_price : Double = 0
     
     @objc var currency_name : String?
     @objc var create_time : String?
     @objc var expire_time : String?
     
-    @objc var bonus_price : Float = 0
-    @objc var deduct_price : Float = 0
+    @objc var bonus_price : Double = 0
+    @objc var deduct_price : Double = 0
 }

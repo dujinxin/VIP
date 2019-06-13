@@ -228,7 +228,7 @@
                                                         <rect key="frame" x="30" y="0.0" width="294" height="44"/>
                                                         <color key="textColor" red="0.019607843140000001" green="0.1333333333" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="bT8-sv-z83" id="cPB-GK-xlN"/>
                                                         </connections>
@@ -276,7 +276,7 @@
                                                         <rect key="frame" x="30" y="0.0" width="294" height="44"/>
                                                         <color key="textColor" red="0.019607843140000001" green="0.1333333333" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" secureTextEntry="YES"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="bT8-sv-z83" id="ZLP-QK-K8T"/>
                                                         </connections>
@@ -823,6 +823,7 @@
                                                                 <rect key="frame" x="45" y="10" width="324" height="165"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" red="0.019607843140000001" green="0.1333333333" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                         </subviews>
@@ -1100,6 +1101,6 @@
         <image name="phone" width="12" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8vg-hr-efC"/>
+        <segue reference="S43-1N-fRb"/>
     </inferredMetricsTieBreakers>
 </document>

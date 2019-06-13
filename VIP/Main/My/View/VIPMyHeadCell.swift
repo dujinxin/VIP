@@ -33,18 +33,18 @@ class VIPMyHeadCell: UITableViewCell {
     @IBOutlet weak var star4ImageView: UIImageView!
     @IBOutlet weak var star5ImageView: UIImageView!
     
-    var entity: UserEntity? {
+    var entity: VIPMyModel? {
         didSet{
-            if let str = entity?.headImg,let url = URL.init(string:str) {
+            if let str = entity?.icon,let url = URL.init(string:str) {
                 self.avatarImageView.setImageWith(url)
             }
-            if let nickName = entity?.nickname, nickName.isEmpty == false {
+            if let nickName = entity?.name, nickName.isEmpty == false {
                 self.nickNameLabel.text = nickName
             } else {
-                self.nickNameLabel.text = entity?.username
+                self.nickNameLabel.text = UserManager.manager.userEntity.username
             }
             
-            switch entity?.user_level {
+            switch entity?.level {
             case 1:
                 self.star1ImageView.isHidden = false
                 self.star2ImageView.isHidden = true

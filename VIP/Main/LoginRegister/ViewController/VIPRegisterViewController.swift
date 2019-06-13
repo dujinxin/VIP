@@ -95,7 +95,7 @@ class VIPRegisterViewController: VIPBaseViewController {
     @IBOutlet weak var inviteTextField: UITextField!{
         didSet{
             
-            inviteTextField.rightViewMode = .always
+//            inviteTextField.rightViewMode = .always
             inviteTextField.rightView = {() -> UIView in
                 let button = UIButton(type: .custom)
                 button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -174,12 +174,12 @@ class VIPRegisterViewController: VIPBaseViewController {
         
         
         
-        self.phoneTextField.text = "123312343"
-        self.loginPsdTextField.text = "12345678"
-        self.loginPsdRepeatTextField.text = "12345678"
-        self.tradePsdTextField.text = "12345678"
-        self.tradePsdRepeatTextField.text = "12345678"
-        self.inviteTextField.text = "j09qA2"
+//        self.phoneTextField.text = "123312343"
+//        self.loginPsdTextField.text = "12345678"
+//        self.loginPsdRepeatTextField.text = "12345678"
+//        self.tradePsdTextField.text = "12345678"
+//        self.tradePsdRepeatTextField.text = "12345678"
+//        self.inviteTextField.text = "j09qA2"
         
         self.updateValues()
         self.updateButtonStatus()
@@ -267,11 +267,13 @@ class VIPRegisterViewController: VIPBaseViewController {
     }
     
     @IBAction func logAction(_ sender: Any) {
-        guard let userName = self.phoneTextField.text else {
+        guard let userName = self.phoneTextField.text, userName.count >= 5 else {
+            ViewManager.showNotice("名称需要设置5位以上！")
             return
         }
         
-        guard let login_password = self.loginPsdTextField.text else {
+        guard let login_password = self.loginPsdTextField.text, login_password.count >= 6 else {
+            ViewManager.showNotice("登录密码需要设置6位以上！")
             return
         }
         guard let password_again = self.loginPsdRepeatTextField.text, password_again == login_password else {
@@ -279,7 +281,8 @@ class VIPRegisterViewController: VIPBaseViewController {
             return
         }
         
-        guard let trade_password = self.tradePsdTextField.text else {
+        guard let trade_password = self.tradePsdTextField.text, trade_password.count == 6 else {
+            ViewManager.showNotice("交易密码需设置6位数字！")
             return
         }
         guard let trade_password_again = self.tradePsdRepeatTextField.text, trade_password_again == trade_password else {
@@ -383,19 +386,15 @@ extension VIPRegisterViewController: UITextFieldDelegate,JXKeyboardTextFieldDele
     }
     
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if textField == userTextField {
-//            if range.location > 10 {
-//                return false
-//            }
-//        } else if textField == codeTextField || textField == imageTextField{
-//            if range.location > 3 {
-//                return false
-//            }
-//        } else if textField == passwordTextField {
-//            if range.location > 19 {
-//                return false
-//            }
-//        }
+        if textField == phoneTextField || textField == loginPsdTextField || textField == loginPsdRepeatTextField {
+            if range.location > 9 {
+                return false
+            }
+        } else if textField == tradePsdTextField || textField == tradePsdRepeatTextField || textField == inviteTextField{
+            if range.location > 5 {
+                return false
+            }
+        }
         return true
     }
     

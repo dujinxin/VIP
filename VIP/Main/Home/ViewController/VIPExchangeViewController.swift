@@ -127,7 +127,7 @@ class VIPExchangeViewController: VIPBaseViewController {
     }
     func setOtherValues(leftEntity: VIPCoinPropertyEntity, rightEntity: VIPCoinPropertyEntity) {
         
-        let rateStr = String(format: "%.6f", leftEntity.price / rightEntity.price)
+        let rateStr = String(format: "%.8f", leftEntity.price / rightEntity.price)
         self.rateLabel.text = "1 \(leftEntity.short_name ?? "") ≈ \(rateStr) \(rightEntity.short_name ?? "")"
         self.totalNumLabel.text = "\(leftEntity.available_qty) \(leftEntity.short_name ?? "")"
         self.numTextField.text = "0"
@@ -143,9 +143,9 @@ class VIPExchangeViewController: VIPBaseViewController {
         if let textField = notify.object as? UITextField, textField == self.numTextField {
             if
                 let text = textField.text, text.isEmpty == false,
-                let num = Float(text), num > 0 {
+                let num = Double(text), num > 0 {
                 
-                let numStr = String(format: "%.6f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
+                let numStr = String(format: "%.8f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
                 self.coinNumLabel.text = numStr
                 
                 self.exchangeButton.isEnabled = true
@@ -168,7 +168,7 @@ class VIPExchangeViewController: VIPBaseViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-
+        self.title = "兑换"
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
             //button.backgroundColor = UIColor.lightGray
@@ -224,12 +224,19 @@ class VIPExchangeViewController: VIPBaseViewController {
     @IBAction func allAction(_ sender: Any) {
         self.numTextField.text = "\(self.currentLeftEntity.available_qty)"
         
-        if let text = self.numTextField.text, let num = Float(text) {
-            let numStr = String(format: "%.6f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
+        if let text = self.numTextField.text, let num = Double(text), num > 0 {
+            let numStr = String(format: "%.8f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
             self.coinNumLabel.text = numStr
+            
+            self.exchangeButton.isEnabled = true
+            self.exchangeButton.backgroundColor = JXMainColor
         } else {
             self.coinNumLabel.text = "0"
+            
+            self.exchangeButton.isEnabled = false
+            self.exchangeButton.backgroundColor = JXlightBlueColor
         }
+       
     }
     @IBAction func exchangeAction(_ sender: Any) {
         guard let text = self.numTextField.text, let num = Float(text) else {

@@ -35,13 +35,16 @@
 
 "Register" = "Register";
 "Registered" = "Registered?";
-"Register_gotologin" = "Go to login";
+//"Register_gotologin" = "Go to login";
+"Register_gotologin" = "Login";
 //login
 "Login_psdTextField_placeholder" = "Please enter your password";
 "Login" = "Login";
 "Login_noAccountYet" = "No account yet？";
-"Login_goToRegister" = "Go to register";
-"Login_forgetPassword" = "Forget password";
+"Login_goToRegister" = "Register";
+//"Login_goToRegister" = "Go to register";
+"Login_forgetPassword" = "Forget";
+//"Login_forgetPassword" = "Forget password";
 //Forget password
 "Mnemonic" = "Mnemonic";
 "PrivateKey" = "Private key";

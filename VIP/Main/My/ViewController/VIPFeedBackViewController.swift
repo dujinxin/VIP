@@ -43,8 +43,13 @@ class VIPFeedBackViewController: VIPBaseViewController {
     }
     @IBAction func action(_ sender: Any) {
         print(self.textView.text)
+        guard let text = self.textView.text, text.count >= 6 else {
+            ViewManager.showNotice("反馈内容至少6个字符！")
+            return
+        }
+        
         self.showMBProgressHUD()
-        self.vm.feedback(text: self.textView.text) { (_, msg, isSuc) in
+        self.vm.feedback(text: text) { (_, msg, isSuc) in
             self.hideMBProgressHUD()
             ViewManager.showNotice(msg)
             if isSuc {

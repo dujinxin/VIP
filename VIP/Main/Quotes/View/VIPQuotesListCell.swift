@@ -42,8 +42,7 @@ class VIPQuotesListCell: UITableViewCell {
             self.coinPriceLabel.text = "$\(entity?.price ?? 0)"
             
             if let s = entity?.icon,let url = URL(string: kBaseUrl + s) {
-                print(url)
-                self.coinImageView.setImageWith(url, placeholderImage: nil)
+                self.coinImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
             }
             if let range = entity?.range {
                 if range > 0 {

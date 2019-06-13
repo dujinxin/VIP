@@ -122,15 +122,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSV-s0-ugG">
                                         <rect key="frame" x="10" y="222" width="394" height="49"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告：全新版本上线了！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApZ-oP-12C">
-                                                <rect key="frame" x="28" y="15.5" width="168.5" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.015686274510000001" green="0.31764705879999999" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice" translatesAutoresizingMaskIntoConstraints="NO" id="aya-Qw-7if">
                                                 <rect key="frame" x="0.0" y="16.5" width="20" height="16"/>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTM-e3-d7k" customClass="SDCycleScrollView">
+                                                <rect key="frame" x="28" y="0.0" width="315" height="49"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="IVS-Tb-Yk3">
                                                 <rect key="frame" x="383" y="19" width="11" height="11"/>
                                             </imageView>
@@ -150,14 +148,15 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="IVS-Tb-Yk3" firstAttribute="centerY" secondItem="FSV-s0-ugG" secondAttribute="centerY" id="0fy-w0-RTe"/>
-                                            <constraint firstItem="sRF-r5-vhY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ApZ-oP-12C" secondAttribute="trailing" constant="10" id="6zq-N2-QFp"/>
-                                            <constraint firstItem="ApZ-oP-12C" firstAttribute="centerY" secondItem="aya-Qw-7if" secondAttribute="centerY" id="K25-Ze-BYL"/>
+                                            <constraint firstItem="zTM-e3-d7k" firstAttribute="leading" secondItem="aya-Qw-7if" secondAttribute="trailing" constant="8" id="5ja-eX-NdW"/>
+                                            <constraint firstItem="sRF-r5-vhY" firstAttribute="leading" secondItem="zTM-e3-d7k" secondAttribute="trailing" constant="10" id="8c7-ci-k53"/>
                                             <constraint firstAttribute="height" constant="49" id="KVS-yy-V9p"/>
                                             <constraint firstItem="sRF-r5-vhY" firstAttribute="centerY" secondItem="IVS-Tb-Yk3" secondAttribute="centerY" id="OCE-YA-LZR"/>
+                                            <constraint firstAttribute="bottom" secondItem="zTM-e3-d7k" secondAttribute="bottom" id="Tg2-YD-0Nx"/>
                                             <constraint firstItem="IVS-Tb-Yk3" firstAttribute="leading" secondItem="sRF-r5-vhY" secondAttribute="trailing" id="Zn5-Kn-IKf"/>
                                             <constraint firstAttribute="trailing" secondItem="IVS-Tb-Yk3" secondAttribute="trailing" id="Zwx-GL-lx9"/>
+                                            <constraint firstItem="zTM-e3-d7k" firstAttribute="top" secondItem="FSV-s0-ugG" secondAttribute="top" id="aXL-Ld-r1a"/>
                                             <constraint firstItem="aya-Qw-7if" firstAttribute="leading" secondItem="FSV-s0-ugG" secondAttribute="leading" id="dx5-LA-XUb"/>
-                                            <constraint firstItem="ApZ-oP-12C" firstAttribute="leading" secondItem="aya-Qw-7if" secondAttribute="trailing" constant="8" id="nRz-ex-q0M"/>
                                             <constraint firstItem="aya-Qw-7if" firstAttribute="centerY" secondItem="FSV-s0-ugG" secondAttribute="centerY" id="ny2-fy-qoP"/>
                                         </constraints>
                                     </view>
@@ -183,10 +182,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="J7i-fo-ny7"/>
                     <connections>
+                        <outlet property="cycleScrollView" destination="zTM-e3-d7k" id="d6O-Q8-WeV"/>
                         <outlet property="manageButton" destination="gHP-uJ-fsg" id="Kcx-bk-foc"/>
                         <outlet property="moreButton" destination="sRF-r5-vhY" id="OmF-CR-RVN"/>
                         <outlet property="noticeBgView" destination="FSV-s0-ugG" id="wzD-yL-wTa"/>
-                        <outlet property="noticeLabel" destination="ApZ-oP-12C" id="eRs-Qq-xEC"/>
                         <outlet property="propertyBgView" destination="sTI-U0-qKN" id="vcO-Zi-6Yh"/>
                         <outlet property="superNodeButton" destination="8gM-l3-5BH" id="GQq-yR-OhN"/>
                         <outlet property="titleView" destination="Jri-do-VS3" id="UjN-yg-x1i"/>
@@ -223,10 +222,9 @@
         <!--我的-->
         <scene sceneID="fAV-nI-efZ">
             <objects>
-                <navigationController id="row-Mc-GYR" customClass="VIPNavigationController" customModule="VIP" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="row-Mc-GYR" customClass="VIPNavigationController" customModule="VIP" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="my_normal" selectedImage="my_selected" id="KrD-fP-ipK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xbO-4Y-Keo">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

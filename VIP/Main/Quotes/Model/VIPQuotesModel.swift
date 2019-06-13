@@ -15,7 +15,7 @@ class VIPQuotesCellEntity: VIPBaseModel {
     
     @objc var icon : String?
     @objc var short_name : String?
-    @objc var price : Float = 0
-    @objc var range : Float = 0
+    @objc var price : Double = 0
+    @objc var range : Double = 0
 
 }

@@ -18,10 +18,10 @@ class VIPWalletEntity: VIPBaseModel {
     @objc var currency_id : Int = 0
     @objc var currency_type : Int = 0
     @objc var currency_name : String?
-    @objc var available_qty : Float = 0
+    @objc var available_qty : Double = 0
     @objc var address : String?
-    @objc var locked_qty : Float = 0
-    @objc var withdraw_qty : Float = 0
+    @objc var locked_qty : Double = 0
+    @objc var withdraw_qty : Double = 0
     @objc var status : Int = 0
     @objc var create_time : String?
     @objc var update_time : String?
@@ -36,11 +36,11 @@ class VIPTradeRecordsEntity: VIPBaseModel {
     @objc var currency_id : Int = 0
     @objc var currency_name : String?
     
-    @objc var operation_fee : Float = 0
+    @objc var operation_fee : Double = 0
     @objc var operation_id : Int = 0
     @objc var operation_address : String?
     @objc var operation_style : Int = 0
-    @objc var operation_qty : Float = 0
+    @objc var operation_qty : Double = 0
     
     @objc var create_time : String?
     @objc var update_time : String?

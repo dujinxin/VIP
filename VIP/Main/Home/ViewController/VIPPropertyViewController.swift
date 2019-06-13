@@ -39,21 +39,22 @@ class VIPPropertyViewController: VIPTableViewController {
         topView.backgroundColor = JXEeeeeeColor
         headView.addSubview(topView)
         
-        let leftLabel = UILabel(frame: CGRect(x: 30, y: 30, width: 60, height: 30))
+        let leftLabel = UILabel(frame: CGRect(x: 30, y: 30, width: 64, height: 30))
         leftLabel.textColor = JXBlackTextColor
         leftLabel.font = UIFont.systemFont(ofSize: 24)
         leftLabel.textAlignment = .left
+        
         topView.addSubview(leftLabel)
         leftLabel.center = CGPoint(x: leftLabel.center.x, y: topView.jxHeight / 2)
         
-        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: 20, width: 150, height: 30))
+        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: 20, width: 180, height: 30))
         centerLabel1.textColor = JXBlackTextColor
         centerLabel1.font = UIFont.systemFont(ofSize: 24)
         centerLabel1.textAlignment = .center
         topView.addSubview(centerLabel1)
         centerLabel1.center = CGPoint(x: topView.center.x, y: centerLabel1.center.y)
         
-        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 5, width: 150, height: 20))
+        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 5, width: 180, height: 20))
         centerLabel2.textColor = JXGrayTextColor
         centerLabel2.font = UIFont.systemFont(ofSize: 14)
         centerLabel2.textAlignment = .center
@@ -197,10 +198,11 @@ class VIPPropertyViewController: VIPTableViewController {
         self.addressLabel.text = self.entity.address
     }
     func updateValues(_ vm: VIPPropertyVM) {
+        self.vm = vm
         self.coinNameLabel.text = "\(vm.propertyEntity.coinEntity?.short_name ?? "")"
-        self.coinNumLabel.text = "\(vm.propertyEntity.walletEntity?.available_qty ?? 0)"
+        self.coinNumLabel.text = String(format: "%.8f", vm.propertyEntity.walletEntity?.available_qty ?? 0)
         if let num = vm.propertyEntity.walletEntity?.available_qty, let prise = vm.propertyEntity.coinEntity?.price {
-            self.coinValueLabel.text = "$\(num * prise)"
+            self.coinValueLabel.text = String(format: "$%.2f", num * prise)
         }
         self.addressLabel.text = vm.propertyEntity.coinEntity?.deposit_address
     }
@@ -226,8 +228,8 @@ class VIPPropertyViewController: VIPTableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         } else if button.tag == 1 {
             let vc = storyboard.instantiateViewController(withIdentifier: "receipt") as! VIPReceiptViewController
-            vc.receiptStr = self.vm?.propertyEntity.walletEntity?.address ?? ""
-            vc.tokenName = self.vm?.propertyEntity.coinEntity?.short_name ?? ""
+            vc.receiptStr = self.addressLabel.text ?? ""
+            vc.tokenName = self.coinNameLabel.text ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             if self.financialVM.walletListEntity.list.count > 0 {

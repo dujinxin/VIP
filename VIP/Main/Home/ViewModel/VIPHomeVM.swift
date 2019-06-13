@@ -24,8 +24,9 @@ class VIPHomeVM: NSObject {
             }
             self.homeEntity.list.removeAll()
             self.homeEntity.noticeList.removeAll()
-            self.homeEntity.today_vit_number = result["today_vit_number"] as? Float ?? 0
-            var totalNum : Float = 0
+            self.homeEntity.contentList.removeAll()
+            self.homeEntity.today_vit_number = result["today_vit_number"] as? Double ?? 0
+            var totalNum : Double = 0
             
             if let currencys = result["currencys"] as? Array<Dictionary<String, Any>> {
                 for i in 0..<currencys.count {
@@ -38,9 +39,10 @@ class VIPHomeVM: NSObject {
             }
             if let notices = result["notices"] as? Array<Dictionary<String, Any>> {
                 for i in 0..<notices.count {
-                    let entity = VIPNoticesListEntity()
+                    let entity = VIPNoticesCellEntity()
                     entity.setValuesForKeys(notices[i])
                     self.homeEntity.noticeList.append(entity)
+                    self.homeEntity.contentList.append(entity.content_zh ?? "")
                 }
             }
             

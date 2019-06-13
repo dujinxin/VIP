@@ -93,8 +93,8 @@ class VIPLoginViewController: VIPBaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
-        self.phoneTextField.text = "123312343"
-        self.loginPsdTextField.text = "12345678"
+//        self.phoneTextField.text = "123312343"
+//        self.loginPsdTextField.text = "12345678"
         
         self.updateValues()
         self.updateButtonStatus()
@@ -164,10 +164,12 @@ class VIPLoginViewController: VIPBaseViewController {
 
     @IBAction func logAction(_ sender: Any) {
     
-        guard let user = self.phoneTextField.text else {
+        guard let user = self.phoneTextField.text, user.count >= 5  else {
+            ViewManager.showNotice("名称需要设置5位以上！")
             return
         }
-        guard let password = self.loginPsdTextField.text else {
+        guard let password = self.loginPsdTextField.text, password.count >= 6 else {
+            ViewManager.showNotice("登录密码需要设置6位以上！")
             return
         }
 
@@ -226,19 +228,11 @@ extension VIPLoginViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
     }
     
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //        if textField == userTextField {
-        //            if range.location > 10 {
-        //                return false
-        //            }
-        //        } else if textField == codeTextField || textField == imageTextField{
-        //            if range.location > 3 {
-        //                return false
-        //            }
-        //        } else if textField == passwordTextField {
-        //            if range.location > 19 {
-        //                return false
-        //            }
-        //        }
+        if textField == phoneTextField || textField == loginPsdTextField  {
+            if range.location > 9 {
+                return false
+            }
+        }
         return true
     }
     @objc func textChange(notify: NSNotification) {

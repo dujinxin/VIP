@@ -37,6 +37,7 @@ class VIPReceiptViewController: VIPBaseViewController {
     @IBOutlet weak var saveButton: UIButton!{
         didSet {
             self.saveButton.backgroundColor = JXCyanColor
+            self.saveButton.setTitleColor(JXBlueColor, for: .normal)
         }
     }
     
@@ -62,7 +63,8 @@ class VIPReceiptViewController: VIPBaseViewController {
         
 //        self.noticeLabel.text = "请转入\(tokenName)"
         //self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
-       
+        
+        self.addressLabel.text = self.receiptStr
         self.noticeLabel.text = "注意：该地址仅支持\(self.tokenName)收款，请勿用于其他币种！"
         self.codeImageView.image = self.code(self.receiptStr)
     }

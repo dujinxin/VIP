@@ -53,12 +53,16 @@ class VIPCommunityHeadCell: UITableViewCell {
     @IBOutlet weak var star4ImageView: UIImageView!
     @IBOutlet weak var star5ImageView: UIImageView!
     
-    var entity: UserEntity? {
+    var entity: VIPCommunityMemberEntity? {
         didSet{
             
-            self.nickNameLabel.text = entity?.nickname
+            self.nickNameLabel.text = entity?.name
+            self.communityValueLabel.text = "\(entity?.team_market_value ?? 0)"
+            self.availalbeAccountLabel.text = "\(entity?.valid_count ?? 0)"
+            self.communityRewardLabel.text = "\(entity?.team_price ?? 0)"
+            self.normalRewardLabel.text = "\(entity?.level_price ?? 0)"
             
-            switch entity?.user_level {
+            switch entity?.level {
             case 1:
                 self.star1ImageView.isHidden = false
                 self.star2ImageView.isHidden = true

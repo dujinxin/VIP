@@ -17,6 +17,8 @@ class VIPQuotesViewController: VIPTableViewController {
     var vm = VIPQuotesVM()
     var financialVM = VIPFinancialVM()
     
+    var timer: Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizedString(key: "Quotes")
@@ -47,7 +49,28 @@ class VIPQuotesViewController: VIPTableViewController {
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.requestData()
         })
-        self.tableView.mj_header.beginRefreshing()
+        //self.tableView.mj_header.beginRefreshing()
+        
+        self.financialVM.walletList { (_, _, _) in }
+        
+        self.showMBProgressHUD()
+        
+        if #available(iOS 10.0, *) {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (t) in
+                self.vm.quotesList() { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    if isSuc {
+                        self.tableView.reloadData()
+                    } else {
+                        ViewManager.showNotice(msg)
+                    }
+                }
+            })
+        } else {
+            self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(refreshData), userInfo: nil, repeats: true)
+        }
+        
+        self.timer.fire()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +102,19 @@ class VIPQuotesViewController: VIPTableViewController {
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @objc func refreshData() {
+        
+        self.vm.quotesList() { (_, msg, isSuc) in
+            self.tableView.mj_header.endRefreshing()
+            self.hideMBProgressHUD()
+            if isSuc {
+                self.tableView.reloadData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        }
+        
+    }
     override func requestData() {
         self.showMBProgressHUD()
         self.vm.quotesList() { (_, msg, isSuc) in
@@ -98,30 +134,30 @@ class VIPQuotesViewController: VIPTableViewController {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let bgView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
         bgView.backgroundColor = JXViewBgColor
-        
+
         let leftLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 44))
         leftLabel.textColor = JXGrayTextColor
         leftLabel.textAlignment = .left
         leftLabel.text = "币种"
         leftLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(leftLabel)
-        
+
         let rightLabel = UILabel(frame: CGRect(x: bgView.jxWidth - 70, y: 0, width: 60, height: 44))
         rightLabel.textColor = JXGrayTextColor
         rightLabel.textAlignment = .right
         rightLabel.text = "涨跌幅"
         rightLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(rightLabel)
-        
+
         let centerLabel = UILabel(frame: CGRect(x: leftLabel.jxRight, y: 0, width: bgView.jxWidth - 20 - 37 - leftLabel.jxWidth - rightLabel.jxWidth, height: 44))
         centerLabel.textColor = JXGrayTextColor
         centerLabel.textAlignment = .right
         centerLabel.text = "最新价"
         centerLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(centerLabel)
-        
+
         return bgView
-        
+
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44

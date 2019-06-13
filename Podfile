@@ -11,7 +11,8 @@ target 'VIP' do
   pod 'JXFMDBHelper'
 
   pod 'MBProgressHUD'  #1.0.0
-  pod 'SDWebImage'     #4.4.1
+  pod 'SDWebImage'     #4.4.6
   pod 'MJRefresh'      #3.1.15.3
+  pod 'SDCycleScrollView'
 
 end

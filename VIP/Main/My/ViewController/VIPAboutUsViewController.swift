@@ -15,21 +15,65 @@ class VIPAboutUsViewController: VIPBaseViewController {
             self.topConstraint.constant = kNavStatusHeight + 10
         }
     }
+    @IBOutlet weak var weChatImageView: UIImageView!
+    @IBOutlet weak var weChatLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.weChatLabel.text = "vibvib"
+        self.weChatImageView.image = self.code("vibvib")
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func code(_ string:String) -> UIImage {
+        //二维码滤镜
+        let filter = CIFilter.init(name: "CIQRCodeGenerator")
+        //设置滤镜默认属性
+        filter?.setDefaults()
+        
+        let data = string.data(using: .utf8)
+        
+        //设置内容
+        filter?.setValue(data, forKey: "inputMessage")
+        //设置纠错级别
+        filter?.setValue("M", forKey: "inputCorrectionLevel")
+        //获取滤镜输出图像
+        guard let outImage = filter?.outputImage else{
+            return UIImage()
+        }
+        //转换CIIamge为UIImage,并放大显示
+        guard let image = self.createNonInterpolatedUIImage(outImage, size: CGSize(width: 200, height: 200)) else {
+            return UIImage()
+        }
+        return image
     }
-    */
+    func createNonInterpolatedUIImage(_ ciImage : CIImage,size:CGSize) -> UIImage? {
+        let a = size.height
+        
+        let extent = ciImage.extent.integral
+        let scale = min(a / extent.size.width, a / extent.size.height)
+        //创建bitmap
+        let width = extent.width * scale
+        let height = extent.height * scale
+        
+        let cs = CGColorSpaceCreateDeviceGray()
+        guard let bitmapRef = CGContext.init(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: CGImageAlphaInfo.none.rawValue) else {
+            return nil
+        }
+        let context = CIContext.init()
+        guard let bitmapImage = context.createCGImage(ciImage, from: extent) else {
+            return nil
+        }
+        bitmapRef.interpolationQuality = .none
+        bitmapRef.scaleBy(x: scale, y: scale)
+        bitmapRef.draw(bitmapImage, in: extent)
+        //保存bitmap到图片
+        guard let scaledImage = bitmapRef.makeImage() else {
+            return nil
+        }
+        let image = UIImage.init(cgImage: scaledImage)
+        return image
+    }
 
 }

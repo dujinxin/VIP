@@ -9,11 +9,12 @@
 import UIKit
 import MJRefresh
 import JXFoundation
+import SDCycleScrollView
 
 private let reuseIdentifierHeader = "reuseIdentifierHeader"
 private let reuseIdentifierCell = "reuseIdentifierCell"
 
-class VIPHomeViewController: VIPTableViewController {
+class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
 
     @IBOutlet weak var titleView: UILabel!{
         didSet{
@@ -76,6 +77,25 @@ class VIPHomeViewController: VIPTableViewController {
     }
     
     @IBOutlet weak var noticeBgView: UIView!
+    @IBOutlet weak var cycleScrollView: SDCycleScrollView!{
+        didSet{
+            self.cycleScrollView.isHidden = true
+            self.cycleScrollView.delegate = self
+          
+            self.cycleScrollView.showPageControl = false
+            
+            self.cycleScrollView.autoScroll = true
+            self.cycleScrollView.autoScrollTimeInterval = 3
+            self.cycleScrollView.infiniteLoop = true
+            
+            self.cycleScrollView.scrollDirection = .vertical
+            self.cycleScrollView.onlyDisplayText = true
+            self.cycleScrollView.titleLabelTextColor = JXBlueColor
+            self.cycleScrollView.titleLabelTextFont = UIFont.systemFont(ofSize: 15)
+            self.cycleScrollView.titleLabelBackgroundColor = UIColor.clear
+        }
+    }
+    
     @IBOutlet weak var noticeLabel: UILabel!{
         didSet{
             self.noticeLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeAction(_:))))
@@ -97,9 +117,7 @@ class VIPHomeViewController: VIPTableViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func superNodeAction(_ sender: Any) {
-        if let block = superNodeBlock {
-            block()
-        }
+        ViewManager.showNotice("待开发中，敬请期待")
     }
     @IBAction func moreAction(_ sender: Any) {
         let vc = VIPNotificationViewController()
@@ -118,6 +136,7 @@ class VIPHomeViewController: VIPTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.cycleScrollView.titleLabelBackgroundColor = UIColor.clear
         
         self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight + 183, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - kTabBarHeight - 183)
         
@@ -128,9 +147,11 @@ class VIPHomeViewController: VIPTableViewController {
         //self.tableView.register(UINib(nibName: "VIPHomeHeaderCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierHeader)
         self.tableView.register(UINib(nibName: "VIPHomeCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCell)
         
+        
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.requestData()
         })
+        
         
         //self.requestData()
     }
@@ -161,13 +182,45 @@ class VIPHomeViewController: VIPTableViewController {
         self.vm.home { (_, msg, isSuc) in
             self.tableView.mj_header.endRefreshing()
             if isSuc {
-                self.totalPropertyLabel.text = "\(self.vm.homeEntity.total_number)"
-                self.todayIncomeLabel.text = "今日收益：\(self.vm.homeEntity.today_vit_number) XXX"
+                self.totalPropertyLabel.text = String(format: "%.2f", self.vm.homeEntity.total_number)
+                self.todayIncomeLabel.text = String(format: "今日收益：%.8f VIT", self.vm.homeEntity.today_vit_number)
+                
+                
+                self.cycleScrollView.isHidden = false
+                self.cycleScrollView.autoScrollTimeInterval = 3
+                self.cycleScrollView.scrollDirection = .vertical
+                self.cycleScrollView.onlyDisplayText = true
+                self.cycleScrollView.titleLabelTextColor = JXBlueColor
+                self.cycleScrollView.titleLabelTextFont = UIFont.systemFont(ofSize: 15)
+                self.cycleScrollView.titleLabelBackgroundColor = UIColor.clear
+                self.cycleScrollView.titlesGroup = self.vm.homeEntity.contentList
+                
                 self.tableView.reloadData()
             } else {
                 ViewManager.showNotice(msg)
             }
         }
+    }
+    // MARK: - SDCycleScrollViewDelegate
+    func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
+        print(index)
+        let entity = self.vm.homeEntity.noticeList[index]
+
+        if entity.content_type == 1 {
+            let storyboard = UIStoryboard(name: "My", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "notification_text") as! VIPNotificationTextController
+            vc.title = "通知中心"
+            vc.entity = entity
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = VIPWebViewController()
+            vc.title = entity.title_zh//self.homeVM.homeEntity.notice.title
+            vc.urlStr = entity.link
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     // MARK: - Table view data source
     
@@ -185,27 +238,30 @@ class VIPHomeViewController: VIPTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPHomeCell
         let entity = self.vm.homeEntity.list[indexPath.row]
         cell.coinTitleLabel.text = entity.short_name
-        cell.coinNumLabel.text = "\(entity.available_qty)"
+        cell.coinNumLabel.text = String(format: "%.8f", entity.available_qty)
         cell.coinValueLabel.text = "$\(entity.price)"
-        cell.numValueLabel.text = "$\(entity.price * entity.available_qty)"
+        cell.numValueLabel.text = String(format: "$%.8f", entity.price * entity.available_qty)
         if let s = entity.icon,let url = URL(string: kBaseUrl + s) {
             print(url)
-            cell.coinImageView.setImageWith(url, placeholderImage: nil)
+            cell.coinImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
         }
         
         return cell
         
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-            let entity = self.vm.homeEntity.list[indexPath.row]
+        ViewManager.showNotice("indexPath.row")
+        let entity = self.vm.homeEntity.list[indexPath.row]
 
-            let vc  = VIPPropertyViewController()
-            vc.title = entity.short_name
-            vc.entity = entity
+        let vc  = VIPPropertyViewController()
+        vc.title = entity.short_name
+        vc.entity = entity
 
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     
     }
 

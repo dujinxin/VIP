@@ -68,13 +68,22 @@ class VIPNotificationViewController: VIPTableViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        let storyboard = UIStoryboard(name: "My", bundle: nil)
+        
         let entity = self.vm.noticeListEntity.list[indexPath.row]
         
-        let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
-        vc.title = entity.title_zh
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        if entity.content_type == 1 {
+            let storyboard = UIStoryboard(name: "My", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "notification_text") as! VIPNotificationTextController
+            vc.title = "通知中心"
+            vc.entity = entity
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = VIPWebViewController()
+            vc.title = entity.title_zh//self.homeVM.homeEntity.notice.title
+            vc.urlStr = entity.link
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

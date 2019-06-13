@@ -30,6 +30,9 @@ class VIPPromotionViewController: VIPBaseViewController {
     
     @IBOutlet weak var copyButton: UIButton!
     
+    var entity : VIPPromotionModel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
@@ -37,7 +40,14 @@ class VIPPromotionViewController: VIPBaseViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-       
+        self.inviteNumLabel.text = "\(self.entity.invent_counts)"
+        self.validAccountLabel.text = "\(self.entity.valid_count)"
+        self.personalPerformanceLabel.text = "\(self.entity.user_price)"
+        self.sharePerformanceNumLabel.text = "\(self.entity.team_price)"
+        self.inviteCodeLabel.text = self.entity.invitation_code
+        
+        self.codeImageView.image = self.code(self.entity.invent_url ?? "")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,9 +61,57 @@ class VIPPromotionViewController: VIPBaseViewController {
     }
     @IBAction func copyUrlAction(_ sender: Any) {
         let pals = UIPasteboard.general
-        pals.string = "url"
+        pals.string = self.entity.invent_url
         ViewManager.showNotice("已复制")
        
     }
- 
+    func code(_ string:String) -> UIImage {
+        //二维码滤镜
+        let filter = CIFilter.init(name: "CIQRCodeGenerator")
+        //设置滤镜默认属性
+        filter?.setDefaults()
+        
+        let data = string.data(using: .utf8)
+        
+        //设置内容
+        filter?.setValue(data, forKey: "inputMessage")
+        //设置纠错级别
+        filter?.setValue("M", forKey: "inputCorrectionLevel")
+        //获取滤镜输出图像
+        guard let outImage = filter?.outputImage else{
+            return UIImage()
+        }
+        //转换CIIamge为UIImage,并放大显示
+        guard let image = self.createNonInterpolatedUIImage(outImage, size: CGSize(width: 200, height: 200)) else {
+            return UIImage()
+        }
+        return image
+    }
+    func createNonInterpolatedUIImage(_ ciImage : CIImage,size:CGSize) -> UIImage? {
+        let a = size.height
+        
+        let extent = ciImage.extent.integral
+        let scale = min(a / extent.size.width, a / extent.size.height)
+        //创建bitmap
+        let width = extent.width * scale
+        let height = extent.height * scale
+        
+        let cs = CGColorSpaceCreateDeviceGray()
+        guard let bitmapRef = CGContext.init(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: CGImageAlphaInfo.none.rawValue) else {
+            return nil
+        }
+        let context = CIContext.init()
+        guard let bitmapImage = context.createCGImage(ciImage, from: extent) else {
+            return nil
+        }
+        bitmapRef.interpolationQuality = .none
+        bitmapRef.scaleBy(x: scale, y: scale)
+        bitmapRef.draw(bitmapImage, in: extent)
+        //保存bitmap到图片
+        guard let scaledImage = bitmapRef.makeImage() else {
+            return nil
+        }
+        let image = UIImage.init(cgImage: scaledImage)
+        return image
+    }
 }

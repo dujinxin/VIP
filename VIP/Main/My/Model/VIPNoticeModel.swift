@@ -9,10 +9,10 @@
 import UIKit
 
 class VIPNoticeModel: VIPBaseModel {
-    var list = Array<VIPNoticesListEntity>()
+    var list = Array<VIPNoticesCellEntity>()
 }
 
-class VIPNoticesListEntity: VIPBaseModel {
+class VIPNoticesCellEntity: VIPBaseModel {
     
     @objc var content_en : String?
     @objc var content_zh : String?
@@ -25,8 +25,8 @@ class VIPNoticesListEntity: VIPBaseModel {
     @objc var create_time : String?
     
     
-    @objc var content_type : Int = 0
+    @objc var content_type : Int = 0 //1:文本内容,2:外链接内容
     @objc var id : Int = 0
     @objc var status : Int = 0
-    @objc var stick : Float = 0
+    @objc var stick : Double = 0
 }

@@ -90,7 +90,7 @@ class VIPFinancialAlertController: VIPBaseViewController {
         if let textField = notify.object as? UITextField, textField == self.numTextField {
             if
                 let text = textField.text, text.isEmpty == false,
-                let num = Float(text), num > 0 {
+                let num = Double(text), num > 0 {
                 
                 self.valueLabel.text = "价值 ≈ $\(num * self.currentEntity.available_qty)"
                 
@@ -145,7 +145,7 @@ class VIPFinancialAlertController: VIPBaseViewController {
     @IBAction func allAction(_ sender: Any) {
     
         self.numTextField.text = "\(self.currentEntity.available_qty)"
-        if let text = self.numTextField.text, let num = Float(text) {
+        if let text = self.numTextField.text, let num = Double(text) {
             self.valueLabel.text = "价值 ≈ $\(num * self.currentEntity.available_qty)"
         } else {
             self.valueLabel.text = "价值 ≈ $\(0)"
@@ -186,7 +186,7 @@ class VIPFinancialAlertController: VIPBaseViewController {
         self.numTextField.text = ""
         self.numTextField.placeholder = "请输入数量（\(entity.short_name ?? "")）"
         
-        if let text = self.numTextField.text, let num = Float(text) {
+        if let text = self.numTextField.text, let num = Double(text) {
             self.valueLabel.text = "价值 ≈ $\(num * entity.available_qty)"
         } else {
             self.valueLabel.text = "价值 ≈ $\(0)"
