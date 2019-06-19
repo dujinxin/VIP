@@ -1,12 +1,12 @@
 
 /* Class = "UIButton"; normalTitle = "立即抢购"; ObjectID = "14q-6C-tgl"; */
-"14q-6C-tgl.normalTitle" = "Buy immediately";
+"14q-6C-tgl.normalTitle" = "Buy";
 
 /* Class = "UILabel"; text = "(活期)"; ObjectID = "CDK-J5-d04"; */
 "CDK-J5-d04.text" = "(Current)";
 
 /* Class = "UILabel"; text = "(日收益率)"; ObjectID = "JUn-pQ-JuD"; */
-"JUn-pQ-JuD.text" = "(Daily rate of return)";
+"JUn-pQ-JuD.text" = "(Daily return)";
 
 /* Class = "UILabel"; text = "3%-8%"; ObjectID = "e5L-41-I7r"; */
 "e5L-41-I7r.text" = "3%-8%";

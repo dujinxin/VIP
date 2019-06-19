@@ -117,7 +117,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func superNodeAction(_ sender: Any) {
-        ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+        ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
     }
     @IBAction func moreAction(_ sender: Any) {
         let vc = VIPNotificationViewController()

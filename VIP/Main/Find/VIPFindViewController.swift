@@ -83,7 +83,7 @@ class VIPFindViewController: VIPTableViewController{
                 
             }
             cell.developBlock = {
-                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
             }
       
             cell.netnoteBlock = {
@@ -94,7 +94,7 @@ class VIPFindViewController: VIPTableViewController{
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.foreignExchangeBlock = {
-                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
 //                let vc = VIPWebViewController()
 //                vc.title = LocalizedString(key: "Find_foreignExchange")
 //                vc.urlStr = "https://www.myfxbook.com/members/MCCROBOTS/mccea40/3307015"
@@ -102,7 +102,7 @@ class VIPFindViewController: VIPTableViewController{
 //                self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.fundBlock = {
-                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
 //                let vc = VIPWebViewController()
 //                vc.title = LocalizedString(key: "Find_fund")
 //                vc.urlStr = "https://us.dimensional.com/funds"
@@ -110,10 +110,10 @@ class VIPFindViewController: VIPTableViewController{
 //                self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.insuranceBlock = {
-                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
             }
             cell.negotiableSecuritiesBlock = {
-                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
             }
             cell.btcBlock = {
                 let vc = VIPWebViewController()

@@ -66,7 +66,7 @@ class VIPReceiptViewController: VIPBaseViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        self.title = LocalizedString(key: "Receip")
+        self.title = LocalizedString(key: "Receive")
  
         if let s = self.tokenIcon, let url = URL(string: kBaseUrl + s) {
             self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))

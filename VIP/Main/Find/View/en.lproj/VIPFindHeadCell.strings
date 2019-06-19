@@ -6,7 +6,7 @@
 "CX2-Dc-Hnc.text" = "Etherscan";
 
 /* Class = "UILabel"; text = "ETH区块链浏览器"; ObjectID = "HAG-vS-pRF"; */
-"HAG-vS-pRF.text" = "ETH Block Chain Browser";
+"HAG-vS-pRF.text" = "ETH Explorer";
 
 /* Class = "UILabel"; text = "推荐"; ObjectID = "Ibf-0o-a8a"; */
 "Ibf-0o-a8a.text" = "Recommend";
@@ -21,7 +21,7 @@
 "VVm-pz-svZ.text" = "Super node";
 
 /* Class = "UILabel"; text = "BTC区块链浏览器"; ObjectID = "gQZ-pk-bjE"; */
-"gQZ-pk-bjE.text" = "BTC Block Chain Browser";
+"gQZ-pk-bjE.text" = "BTC Explorer";
 
 /* Class = "UILabel"; text = "BTC.COM"; ObjectID = "zC0-X6-AZ7"; */
 "zC0-X6-AZ7.text" = "BTC.COM";

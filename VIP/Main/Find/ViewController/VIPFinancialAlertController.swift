@@ -206,7 +206,7 @@ class VIPFinancialAlertController: VIPBaseViewController {
         self.balanceLabel.text = "\(LocalizedString(key: "Find_availableBalance"))：\(entity.available_qty)"
         
         self.numTextField.text = ""
-        self.numTextField.placeholder = "\(LocalizedString(key: "Find_pleaseEnterQuantity"))（\(entity.short_name ?? "")）"
+        self.numTextField.placeholder = "\(LocalizedString(key: "Find_enterAmount"))（\(entity.short_name ?? "")）"
         
         if let text = self.numTextField.text, let num = Double(text) {
             self.valueLabel.text = String(format: "\(LocalizedString(key: "Find_value")) ≈ $%.2f", num * self.currentEntity.price)

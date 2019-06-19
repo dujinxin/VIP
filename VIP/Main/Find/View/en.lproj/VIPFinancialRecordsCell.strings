@@ -18,13 +18,13 @@
 "8H4-oF-d1B.text" = "Join time";
 
 /* Class = "UILabel"; text = "到期时间"; ObjectID = "Mzf-Wu-e6T"; */
-"Mzf-Wu-e6T.text" = "Maturity time";
+"Mzf-Wu-e6T.text" = "Expire time";
 
 /* Class = "UILabel"; text = "2019-05-24 18:50:08"; ObjectID = "gPy-lj-Raf"; */
 "gPy-lj-Raf.text" = "2019-05-24 18:50:08";
 
 /* Class = "UIButton"; normalTitle = "解除合约"; ObjectID = "jd4-AK-ZpS"; */
-"jd4-AK-ZpS.normalTitle" = "Revoke";
+"jd4-AK-ZpS.normalTitle" = "Dissolve";
 
 /* Class = "UILabel"; text = "生效中"; ObjectID = "sEK-WG-r27"; */
 "sEK-WG-r27.text" = "生效中";

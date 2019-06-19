@@ -95,7 +95,7 @@ class VIPPropertyViewController: VIPTableViewController {
         self.addressLabel = addressLabel
         
         let space = (kScreenWidth - 30 - 90 * 3) / 2
-        let names = [ LocalizedString(key: "Transfer"),LocalizedString(key: "Receip"),LocalizedString(key: "Exchange")]
+        let names = [ LocalizedString(key: "Transfer"),LocalizedString(key: "Receive"),LocalizedString(key: "Exchange")]
         let icons = ["transfer","receip","exchange"]
         for i in 0..<3 {
             let button = UIButton(type: .custom)
@@ -124,7 +124,7 @@ class VIPPropertyViewController: VIPTableViewController {
         tabBgView.backgroundColor = JXEeeeeeColor
         headView.addSubview(tabBgView)
         
-        let topBar = JXXBarView.init(frame: CGRect.init(x: 0, y: 10, width: view.bounds.width , height: 44), titles: [LocalizedString(key: "Whole"),LocalizedString(key: "Transfer"),LocalizedString(key: "Receip"),LocalizedString(key: "Finance"),LocalizedString(key: "Exchange")])
+        let topBar = JXXBarView.init(frame: CGRect.init(x: 0, y: 10, width: view.bounds.width , height: 44), titles: [LocalizedString(key: "All"),LocalizedString(key: "Transfer"),LocalizedString(key: "Receive"),LocalizedString(key: "Finance"),LocalizedString(key: "Exchange")])
         topBar.delegate = self
 
         

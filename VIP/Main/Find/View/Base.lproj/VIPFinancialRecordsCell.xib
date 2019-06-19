@@ -69,6 +69,7 @@
                                     <constraint firstItem="sx4-hY-ORB" firstAttribute="top" secondItem="65f-v7-7xR" secondAttribute="bottom" constant="10" id="Rt0-lk-U4t"/>
                                     <constraint firstItem="sx4-hY-ORB" firstAttribute="top" secondItem="xK1-kO-9xQ" secondAttribute="bottom" constant="10" id="Wwy-L2-lb4"/>
                                     <constraint firstItem="65f-v7-7xR" firstAttribute="trailing" secondItem="8H4-oF-d1B" secondAttribute="trailing" id="fZC-wh-kBO"/>
+                                    <constraint firstItem="8H4-oF-d1B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Zb-ly-j7d" secondAttribute="trailing" constant="10" id="h73-b0-GKo"/>
                                     <constraint firstAttribute="bottom" secondItem="sx4-hY-ORB" secondAttribute="bottom" id="p1s-xI-OSd"/>
                                     <constraint firstItem="sx4-hY-ORB" firstAttribute="leading" secondItem="fCK-Ws-BBU" secondAttribute="leading" id="sca-oE-CmK"/>
                                 </constraints>
@@ -110,6 +111,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Mzf-Wu-e6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="551-3U-ryi" secondAttribute="trailing" constant="10" id="4dO-7j-Vl0"/>
                                     <constraint firstItem="cvo-b3-Mu4" firstAttribute="top" secondItem="gPy-lj-Raf" secondAttribute="bottom" constant="10" id="7mf-Wo-qaW"/>
                                     <constraint firstItem="gPy-lj-Raf" firstAttribute="trailing" secondItem="Mzf-Wu-e6T" secondAttribute="trailing" id="FgI-hM-0ip"/>
                                     <constraint firstAttribute="height" constant="60" id="GUQ-vN-MEL"/>
@@ -144,7 +146,7 @@
                                         <rect key="frame" x="192" y="12" width="100" height="36"/>
                                         <color key="backgroundColor" red="0.47450980390000003" green="0.59999999999999998" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="CyC-qp-PzF"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CyC-qp-PzF"/>
                                             <constraint firstAttribute="height" constant="36" id="l90-PU-qYB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -161,8 +163,10 @@
                                     <constraint firstItem="sEK-WG-r27" firstAttribute="leading" secondItem="51i-ka-FMx" secondAttribute="leading" id="LBe-4x-aWp"/>
                                     <constraint firstAttribute="bottom" secondItem="sEK-WG-r27" secondAttribute="bottom" constant="10" id="OIG-Z1-rNq"/>
                                     <constraint firstItem="jd4-AK-ZpS" firstAttribute="centerY" secondItem="mip-gD-flP" secondAttribute="centerY" id="S62-Rd-99A"/>
+                                    <constraint firstItem="jd4-AK-ZpS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sEK-WG-r27" secondAttribute="trailing" constant="10" id="UWN-Wp-QxX"/>
                                     <constraint firstItem="51i-ka-FMx" firstAttribute="leading" secondItem="mip-gD-flP" secondAttribute="leading" constant="10" id="YwY-by-cSb"/>
                                     <constraint firstItem="51i-ka-FMx" firstAttribute="top" secondItem="mip-gD-flP" secondAttribute="top" constant="10" id="ZFb-Yy-f4x"/>
+                                    <constraint firstItem="jd4-AK-ZpS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="51i-ka-FMx" secondAttribute="trailing" constant="10" id="xEJ-dn-Rw9"/>
                                 </constraints>
                             </view>
                         </subviews>

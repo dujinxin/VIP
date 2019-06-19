@@ -30,10 +30,10 @@
 "SaveFailed" = "保存失败";
 
 "No relevant data available" = "暂无相关数据";
-"To be developed, please look forward to it." = "待开发中，敬请期待";
-
 
 //Notice
+
+"To be developed, please look forward" = "待开发中，敬请期待";
 
 "Notice_nameLength" = "名称需要设置5位以上！";
 "Notice_loginLength" = "登录密码需要设置6位以上！";
@@ -73,7 +73,6 @@
 "Registered" = "已注册？";
 "Register_gotologin" = "去登录";
 
-"Register_gotologin" = "To login";
 "Register_systemTips" = "系统提示";
 "Register_systemTips_content" = "未填写推荐码，将安排默认推荐码！";
 
@@ -105,9 +104,9 @@
 "Withdraw" = "提现";
 "Recharge" = "充值";
 "Transfer" = "转账";
-"Receip" = "收款";
+"Receive" = "收款";
 "Exchange" = "兑换";
-"Whole" = "全部";
+"All" = "全部";
 
 
 "Home_review" = "待审核";
@@ -153,15 +152,14 @@
 
 "Find_selectAaccounts" = "选择账户";
 
-"Find_nothing" = "无";
-"Find_effectiveInProgress" = "生效中";
-"Find_released" = "已解除";
+"Find_effective" = "生效中";
+"Find_dissolved" = "已解除";
 "Find_completed" = "已完成";
 
 "Find_availableBalance" = "可用余额";
 "Find_presentPrice" = "现价";
 "Find_value" = "价值";
-"Find_pleaseEnterQuantity" = "请输入数量";
+"Find_enterAmount" = "请输入数量";
 
 //Quotes
 "Quotes_currency" = "币种";

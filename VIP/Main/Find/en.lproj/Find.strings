@@ -3,13 +3,13 @@
 "08v-HU-7YW.normalTitle" = "Confirm";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "15s-2J-Kwe"; */
-"15s-2J-Kwe.normalTitle" = "Whole";
+"15s-2J-Kwe.normalTitle" = "All";
 
 /* Class = "UILabel"; text = "扣除收益($)"; ObjectID = "5Z3-Ju-ERe"; */
 "5Z3-Ju-ERe.text" = "Deduction($)";
 
 /* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "5hG-2s-m0s"; */
-"5hG-2s-m0s.placeholder" = "Please enter the trade password";
+"5hG-2s-m0s.placeholder" = "Enter the trade password";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "6hE-sC-V70"; */
 "6hE-sC-V70.text" = "1234";
@@ -24,10 +24,10 @@
 "9tE-q7-mWu.text" = "Amount(100$-999$)";
 
 /* Class = "UITextField"; placeholder = "请输入数量（BTC）"; ObjectID = "AjM-fY-FPM"; */
-"AjM-fY-FPM.placeholder" = "请输入数量（BTC）";
+"AjM-fY-FPM.placeholder" = "Enter Amount（BTC）";
 
 /* Class = "UILabel"; text = "总投资金额($)"; ObjectID = "BYL-0j-3D8"; */
-"BYL-0j-3D8.text" = "Total investment amount($)";
+"BYL-0j-3D8.text" = "Total amount($)";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "FI2-so-P4e"; */
 "FI2-so-P4e.text" = "1234";
@@ -48,10 +48,10 @@
 "Mww-zP-RZY.text" = "可用数量100";
 
 /* Class = "UITextField"; placeholder = "请输入数量（BTC）"; ObjectID = "Q1d-7B-kT0"; */
-"Q1d-7B-kT0.placeholder" = "请输入数量（BTC）";
+"Q1d-7B-kT0.placeholder" = "Enter Amount（BTC）";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "QgT-IW-qtx"; */
-"QgT-IW-qtx.normalTitle" = "Whole";
+"QgT-IW-qtx.normalTitle" = "All";
 
 /* Class = "UILabel"; text = "总收益(VIT)"; ObjectID = "RJD-4z-pRb"; */
 "RJD-4z-pRb.text" = "Total income(VIT)";
@@ -90,13 +90,13 @@
 "khq-Xo-Ixx.text" = "Type：";
 
 /* Class = "UILabel"; text = "解除合约将会扣除 80%的收益，若收益不足时将从本金中扣除相应的金额。"; ObjectID = "kiF-iy-IxJ"; */
-"kiF-iy-IxJ.text" = "Removal of the contract will deduct 80% of the proceeds, and the corresponding amount will be deducted from the principal if the proceeds are insufficient.";
+"kiF-iy-IxJ.text" = "Dissolve the contract will deduct 80% of the interest, and the value of interest will deduct from the capital if the balance is insufficient.";
 
 /* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "nzv-ph-fmR"; */
-"nzv-ph-fmR.placeholder" = "Please enter the trade password";
+"nzv-ph-fmR.placeholder" = "Enter the trade password";
 
 /* Class = "UILabel"; text = "投资金额($)"; ObjectID = "oyg-As-QRb"; */
-"oyg-As-QRb.text" = "Investment($)";
+"oyg-As-QRb.text" = "Capital($)";
 
 /* Class = "UILabel"; text = "投资账户"; ObjectID = "qMv-ov-1Dp"; */
 "qMv-ov-1Dp.text" = "Investment account";
@@ -108,10 +108,10 @@
 "u2d-wj-dpZ.text" = "1234";
 
 /* Class = "UIButton"; normalTitle = "确认抢购"; ObjectID = "udg-hi-d2m"; */
-"udg-hi-d2m.normalTitle" = "Confirmation of purchase";
+"udg-hi-d2m.normalTitle" = "Confirm";
 
 /* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "yn9-bK-v5x"; */
-"yn9-bK-v5x.placeholder" = "Please enter the trade password";
+"yn9-bK-v5x.placeholder" = "Enter the trade password";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zKy-fG-NVb"; */
 "zKy-fG-NVb.normalTitle" = "Button";

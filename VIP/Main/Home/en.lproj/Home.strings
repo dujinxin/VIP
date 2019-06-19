@@ -36,10 +36,10 @@
 "D7v-AY-UAV.text" = ")：";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Dyf-yu-e3U"; */
-"Dyf-yu-e3U.normalTitle" = "Whole";
+"Dyf-yu-e3U.normalTitle" = "All";
 
 /* Class = "UILabel"; text = "兑换数量："; ObjectID = "EsO-bz-P78"; */
-"EsO-bz-P78.text" = "Exchange quantity：";
+"EsO-bz-P78.text" = "Exchange amount：";
 
 /* Class = "UITextField"; text = "1.123456"; ObjectID = "GeM-Qk-lhe"; */
 "GeM-Qk-lhe.text" = "1.123456";
@@ -60,10 +60,10 @@
 "MRD-YV-W2D.text" = "VIT余额：0.01";
 
 /* Class = "UILabel"; text = "源自钱包"; ObjectID = "Mi6-Lw-8vD"; */
-"Mi6-Lw-8vD.text" = "From wallets";
+"Mi6-Lw-8vD.text" = "From";
 
 /* Class = "UILabel"; text = "兑换数量("; ObjectID = "QOe-5y-FW6"; */
-"QOe-5y-FW6.text" = "Quantity(";
+"QOe-5y-FW6.text" = "Amount(";
 
 /* Class = "UILabel"; text = "1000VIT"; ObjectID = "RFz-Qj-JZ7"; */
 "RFz-Qj-JZ7.text" = "1000VIT";
@@ -72,7 +72,7 @@
 "RMQ-nd-8zX.text" = "hsidfksjhfwiuefweiu238723hgj23hj123y23hj23h3jhwe3wrwrwer";
 
 /* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Rb2-LQ-HBI"; */
-"Rb2-LQ-HBI.normalTitle" = "Whole";
+"Rb2-LQ-HBI.normalTitle" = "All";
 
 /* Class = "UILabel"; text = "可用数量100"; ObjectID = "Slw-TX-BKI"; */
 "Slw-TX-BKI.text" = "可用数量100";
@@ -147,7 +147,7 @@
 "k53-Qc-rqq.text" = "Transfer amount";
 
 /* Class = "UILabel"; text = "目标钱包"; ObjectID = "knP-DB-b0H"; */
-"knP-DB-b0H.text" = "Target wallet";
+"knP-DB-b0H.text" = "Target";
 
 /* Class = "UILabel"; text = "可用数量100"; ObjectID = "o42-Wr-mC7"; */
 "o42-Wr-mC7.text" = "可用数量100";
@@ -189,4 +189,4 @@
 "xEG-CQ-RBo.text" = "0.032";
 
 /* Class = "UITextField"; placeholder = "请输入金额"; ObjectID = "zTf-RR-j0q"; */
-"zTf-RR-j0q.placeholder" = "Please enter quantity";
+"zTf-RR-j0q.placeholder" = "Enter Amount";

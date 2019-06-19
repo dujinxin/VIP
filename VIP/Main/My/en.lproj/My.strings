@@ -15,10 +15,10 @@
 "1Ka-rr-GHQ.text" = "VIT";
 
 /* Class = "UIButton"; normalTitle = "修改交易密码"; ObjectID = "1aQ-4W-Xst"; */
-"1aQ-4W-Xst.normalTitle" = "Modify the trade password";
+"1aQ-4W-Xst.normalTitle" = "Modify trade password";
 
 /* Class = "UILabel"; text = "今日理财收益"; ObjectID = "4bi-8x-wZV"; */
-"4bi-8x-wZV.text" = "Today's financial benefits";
+"4bi-8x-wZV.text" = "Today financial benefits";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "5i8-Au-XsG"; */
 "5i8-Au-XsG.text" = "1234";
@@ -33,10 +33,10 @@
 "70N-B7-5Ph.text" = "1234";
 
 /* Class = "UILabel"; text = "累计分享业绩(VIT)"; ObjectID = "7iU-pO-yyT"; */
-"7iU-pO-yyT.text" = "Accumulated sharing awards(VIT)";
+"7iU-pO-yyT.text" = "All sharing award(VIT)";
 
 /* Class = "UILabel"; text = "社区有效账户(个)"; ObjectID = "8cE-s5-bF4"; */
-"8cE-s5-bF4.text" = "Community effective accounts(individual)";
+"8cE-s5-bF4.text" = "Effective accounts(individual)";
 
 /* Class = "UITextField"; placeholder = "旧密码"; ObjectID = "9YC-6h-meh"; */
 "9YC-6h-meh.placeholder" = "Old password";
@@ -45,7 +45,7 @@
 "9nz-0d-jxe.normalTitle" = "Copy promotion links";
 
 /* Class = "UILabel"; text = "今日平级奖励"; ObjectID = "9yt-xZ-srI"; */
-"9yt-xZ-srI.text" = "Today's level award";
+"9yt-xZ-srI.text" = "Today level reward";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "Byw-4W-Fd5"; */
 "Byw-4W-Fd5.text" = "1234";
@@ -78,13 +78,13 @@
 "LK9-aQ-bct.text" = "1234";
 
 /* Class = "UILabel"; text = "平级奖励(VIT)"; ObjectID = "LSU-Zo-4uE"; */
-"LSU-Zo-4uE.text" = "Horizontal awards(VIT)";
+"LSU-Zo-4uE.text" = "Level rewards(VIT)";
 
 /* Class = "UILabel"; text = "推荐码："; ObjectID = "NaY-Sp-KZy"; */
 "NaY-Sp-KZy.text" = "     ";
 
 /* Class = "UILabel"; text = "今日社区奖励"; ObjectID = "O67-1u-nVE"; */
-"O67-1u-nVE.text" = "Today's community award";
+"O67-1u-nVE.text" = "Today community rewards";
 
 /* Class = "UILabel"; text = "        Virtual Investment Bank 引入了自身多年积累的立体安全保障机制，打造新一代的金融服务基础设施，提供给投资者银行级的资产安全服务。引入合规流程和专业服务，对接自身或第三方投融资服务商，为用户提供从链上到链下的投融资生态服务。是主流金融与区块链的一次结合，是区块链金融在监管下的规范性尝试。"; ObjectID = "OuA-0O-Wn3"; */
 "OuA-0O-Wn3.text" = "        Virtual Investment Bank Introduced its own accumulated three-dimensional security mechanism for many years, to create a new generation of financial services infrastructure, to provide investors with bank-level asset security services. Introducing compliance process and professional services, docking itself or third-party investment and financing service providers, providing users with investment and financing ecological services from the chain to the chain. It is a combination of mainstream finance and block chain, and a normative attempt of block chain finance under supervision.";
@@ -99,7 +99,7 @@
 "VVH-9j-A7p.text" = "Personal performance($)";
 
 /* Class = "UILabel"; text = "今日分享奖励"; ObjectID = "WRb-dD-Kq4"; */
-"WRb-dD-Kq4.text" = "Sharing awards today";
+"WRb-dD-Kq4.text" = "Today sharing rewards";
 
 /* Class = "UILabel"; text = "可点击复制，推荐给好友，或者截图发送给好友进行邀请"; ObjectID = "Y1J-v8-HHV"; */
 "Y1J-v8-HHV.text" = "Click copy, recommend to friends, or send screenshots to friends for invitation";
@@ -108,10 +108,10 @@
 "YUc-wu-1oz.text" = "kshefiuh213y3h42j34g23j1h42hj32k3h4123jkhg4jh23g4k2h3g4kj124hg1kj234hk1";
 
 /* Class = "UILabel"; text = "社区市值($)"; ObjectID = "Zfp-md-7dj"; */
-"Zfp-md-7dj.text" = "Community market value($)";
+"Zfp-md-7dj.text" = "Community value($)";
 
 /* Class = "UILabel"; text = "社区人员"; ObjectID = "aqq-jf-bBm"; */
-"aqq-jf-bBm.text" = "Community personnel";
+"aqq-jf-bBm.text" = "Community accounts";
 
 /* Class = "UILabel"; text = "历史平级奖励"; ObjectID = "ban-aO-3Xe"; */
 "ban-aO-3Xe.text" = "History level award";
@@ -147,7 +147,7 @@
 "gaK-H3-2o8.text" = "VIT";
 
 /* Class = "UILabel"; text = "历史社区奖励"; ObjectID = "gtN-yZ-bvv"; */
-"gtN-yZ-bvv.text" = "Historic community award";
+"gtN-yZ-bvv.text" = "History community award";
 
 /* Class = "UILabel"; text = "VIT"; ObjectID = "h3N-FR-MFS"; */
 "h3N-FR-MFS.text" = "VIT";
@@ -180,13 +180,13 @@
 "q0M-pL-JP3.placeholder" = "Repeat the password";
 
 /* Class = "UILabel"; text = "今日总收益(VIT)"; ObjectID = "rbQ-e4-fHU"; */
-"rbQ-e4-fHU.text" = "Total earnings today(VIT)";
+"rbQ-e4-fHU.text" = "Total today income(VIT)";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "t7b-ON-Rs2"; */
 "t7b-ON-Rs2.text" = "1234";
 
 /* Class = "UILabel"; text = "历史总收益(VIT)"; ObjectID = "tNs-8A-A3W"; */
-"tNs-8A-A3W.text" = "Total historical income(VIT)";
+"tNs-8A-A3W.text" = "Total history income(VIT)";
 
 /* Class = "UILabel"; text = "1234"; ObjectID = "tWw-pg-Ovb"; */
 "tWw-pg-Ovb.text" = "1234";
@@ -204,7 +204,7 @@
 "w07-KL-ZZh.text" = "1234";
 
 /* Class = "UILabel"; text = "今日理财收益"; ObjectID = "w6v-ia-ZYq"; */
-"w6v-ia-ZYq.text" = "Historical financial benefits";
+"w6v-ia-ZYq.text" = "Today financial benefits";
 
 /* Class = "UILabel"; text = "http://www.vib.world/"; ObjectID = "wbt-D4-L9f"; */
 "wbt-D4-L9f.text" = "http://www.vib.world";

@@ -18,7 +18,7 @@
 "byn-xx-gx6.text" = "2019-06-06 18:05:33";
 
 /* Class = "UILabel"; text = "兑换数量("; ObjectID = "com-sF-zME"; */
-"com-sF-zME.text" = "Quantity(";
+"com-sF-zME.text" = "Amount(";
 
 /* Class = "UILabel"; text = "+1000.0"; ObjectID = "oGn-Yc-N42"; */
 "oGn-Yc-N42.text" = "+1000.0";

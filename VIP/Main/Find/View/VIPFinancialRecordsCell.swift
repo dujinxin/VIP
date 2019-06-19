@@ -24,7 +24,7 @@ class VIPFinancialRecordsCell: UITableViewCell {
             self.coinNameLabel.text = entity?.currency_name
             self.coinValueLabel.text = "$\(entity?.contract_price ?? 0)"
             if entity?.plan_status == 1 {
-                self.statusLabel.text = LocalizedString(key: "Find_effectiveInProgress")
+                self.statusLabel.text = LocalizedString(key: "Find_effective")
                 self.ReleaseButton.backgroundColor = JXCyanColor
                 self.ReleaseButton.setTitleColor(JXBlueColor, for: .normal)
                 self.ReleaseButton.isEnabled = true
@@ -34,7 +34,7 @@ class VIPFinancialRecordsCell: UITableViewCell {
                 self.ReleaseButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xadb4bb), for: .normal)
                 self.ReleaseButton.isEnabled = false
             } else if entity?.plan_status == 3 {
-                self.statusLabel.text = LocalizedString(key: "Find_released")
+                self.statusLabel.text = LocalizedString(key: "Find_dissolved")
                 self.ReleaseButton.backgroundColor = JXViewBgColor
                 self.ReleaseButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xadb4bb), for: .normal)
                 self.ReleaseButton.isEnabled = false
@@ -42,9 +42,7 @@ class VIPFinancialRecordsCell: UITableViewCell {
             self.joinTimeLabel.text = entity?.create_time
             
             if entity?.create_time == entity?.expire_time {
-                self.endTimeLabel.text = LocalizedString(key: "Find_nothing")
-            } else {
-                self.endTimeLabel.text = entity?.expire_time
+                self.endTimeLabel.text = "--"
             }
           
         }

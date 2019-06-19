@@ -32,10 +32,12 @@
 
 
 "No relevant data available" = "No relevant data available";
-"To be developed, please look forward to it." = "To be developed, please look forward to it.";
+
 
 
 //Notice
+
+"To be developed, please look forward" = "To be developed, please look forward";
 
 "Notice_nameLength" = "The name needs to be set to 5 or more.";
 "Notice_loginLength" = "Login password needs to be set to 6 or more.";
@@ -75,7 +77,7 @@
 //"Register_gotologin" = "Go to login";
 "Register_gotologin" = "To login";
 "Register_systemTips" = "System Tips";
-"Register_systemTips_content" = "If the recommendation code is not filled in, the default recommendation code will be arranged.";
+"Register_systemTips_content" = "If the invitation code is not filled in, the default invitation code will be arranged.";
 
 //login
 "Login_psdTextField_placeholder" = "Please enter your password";
@@ -95,7 +97,7 @@
 "Forget_loginPsdTextField_placeholder" = "New password";
 "Forget_loginPsdTextField_repeat_placeholder" = "Repeat password";
 
-"Import" = "Immediate import";
+"Import" = "Import immediately";
 
 //Backup mnemonics
 "Backup_mnemonics" = "Backup mnemonics";
@@ -116,9 +118,9 @@
 "Withdraw" = "Withdraw";
 "Recharge" = "Recharge";
 "Transfer" = "Transfer";
-"Receip" = "Receip";
+"Receive" = "Receive";
 "Exchange" = "Exchange";
-"Whole" = "Whole";
+"All" = "All";
 "Number" = "Number";
 "State" = "State";
 "Time" = "Time";
@@ -131,9 +133,9 @@
 "Home_transferInProgress" = "Transfer in progress";
 "Home_auditInProgress" = "Audit in progress";
 "Home_confirmationInProgress" = "Confirmation in progress";
-"Home_exchangeQuantity" = "Exchange Quantity";
+"Home_exchangeQuantity" = "Exchange Amount";
 
-"Home_number of exchange token" = "Number of exchange token";
+"Home_number of exchange token" = "Amount of exchange token";
 "Transfer amount" = "Transfer amount";
 
 "Balance" = "Balance";
@@ -147,26 +149,26 @@
 "Home_flashError" = "Flash Error";
 
 
-"Home_fromWallets" = "From wallets";
-"Home_targetWallet" = "Target Wallet";
+"Home_fromWallets" = "From";
+"Home_targetWallet" = "Target";
 "Home_exchangeRate" = "exchange rate";
 "Home_maximumExchangeNumber" = "Maximum Exchange Number";
-"Home_absenceFee" = "Absencee fee";
+"Home_absenceFee" = "Miner's fee";
 "Home_Please enter the trade password" = "Please enter the trade password";
-"Home_exchangeRecord" = "Exchange records";
-"Home_recordDetails" = "Record details";
+"Home_exchangeRecord" = "Records";
+"Home_recordDetails" = "Details";
 
 
 //Find
 "Find_btc" = "BTC";
 "Find_eth" = "ETH";
 
-"Find_foreignExchange" = "Foreign exchange";
+"Find_foreignExchange" = "Forex";
 "Find_fund" = "Fund";
 "Find_insurance" = "Insurance";
 "Find_negotiableSecurities" = "Securities";
 
-"Find_financialRecords" = "Financial records";
+"Find_financialRecords" = "Records";
 "Find_amount" = "Amount";
 "Find_current" = "Current";
 "Find_months" = "Months";
@@ -174,10 +176,8 @@
 //"Find_selectAaccounts" = "Selection of accounts";
 "Find_selectAaccounts" = "Accounts";
 
-//"Find_nothing" = "Nothing";
-"Find_nothing" = "No";
-"Find_effectiveInProgress" = "effective in progress";
-"Find_released" = "Released";
+"Find_effective" = "Effective";
+"Find_dissolved" = "Dissolved";
 "Find_completed" = "Completed";
 
 //"Find_availableBalance" = "Available balance";
@@ -185,7 +185,7 @@
 "Find_availableBalance" = "Balance";
 "Find_presentPrice" = "Price";
 "Find_value" = "Value";
-"Find_pleaseEnterQuantity" = "Please enter quantity";
+"Find_enterAmount" = "Enter Amount";
 
 
 
@@ -203,12 +203,12 @@
 "My_logout" = "Log out";
 
 
-"My_incomeDetail" = "Income detail";
+"My_incomeDetail" = "Details";
 //1:合约收益 2：分享收益 3：分享收益 4社区收益 5：平级收益
-"My_contractGains" = "Contract gains";
-"My_sharedProfit" = "Share in the profit";
-"My_communityBenefits" = "Community Benefits";
-"My_levelIncome" = "Level income";
+"My_contractGains" = "Contract benefits";
+"My_sharedProfit" = "Sharing reward";
+"My_communityBenefits" = "Community reward";
+"My_levelIncome" = "Level reward";
 
 
 "My_exportPrivateKey" = "Export private key";
