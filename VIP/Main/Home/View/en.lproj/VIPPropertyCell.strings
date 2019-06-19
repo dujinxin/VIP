@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "+1000.0"; ObjectID = "CVA-xS-r54"; */
+"CVA-xS-r54.text" = "+1000.0";
+
+/* Class = "UILabel"; text = "18:18 05/28"; ObjectID = "JWT-w8-irG"; */
+"JWT-w8-irG.text" = "18:18 05/28";
+
+/* Class = "UILabel"; text = "状态"; ObjectID = "Vja-TS-nhn"; */
+"Vja-TS-nhn.text" = "State";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "c6s-Tl-bj7"; */
+"c6s-Tl-bj7.text" = "Time";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "nE5-U0-52e"; */
+"nE5-U0-52e.text" = "Number";
+
+/* Class = "UILabel"; text = "收款"; ObjectID = "xPi-fw-C7h"; */
+"xPi-fw-C7h.text" = "Receip";
+
+/* Class = "UILabel"; text = "审核中"; ObjectID = "y7s-VO-N2c"; */
+"y7s-VO-N2c.text" = "审核中";

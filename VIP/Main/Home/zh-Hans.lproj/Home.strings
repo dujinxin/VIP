@@ -1,0 +1,192 @@
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "1OS-3p-AdR"; */
+"1OS-3p-AdR.text" = "可用数量100";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "1aN-vt-PiI"; */
+"1aN-vt-PiI.text" = ")：";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "3CN-NJ-VFO"; */
+"3CN-NJ-VFO.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "类型："; ObjectID = "4mp-Eh-EAF"; */
+"4mp-Eh-EAF.text" = "类型：";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "6Ia-pJ-XYw"; */
+"6Ia-pJ-XYw.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "72H-E3-6cr"; */
+"72H-E3-6cr.text" = "数量";
+
+/* Class = "UILabel"; text = "状态："; ObjectID = "8ga-cC-xx9"; */
+"8ga-cC-xx9.text" = "状态：";
+
+/* Class = "UILabel"; text = "价格("; ObjectID = "94b-ld-iQ3"; */
+"94b-ld-iQ3.text" = "价格(";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "9Fc-kn-zTj"; */
+"9Fc-kn-zTj.text" = "可用数量100";
+
+/* Class = "UITextField"; placeholder = "请输入VIT地址"; ObjectID = "9L5-L4-Hxo"; */
+"9L5-L4-Hxo.placeholder" = "请输入VIT地址";
+
+/* Class = "UILabel"; text = "=$0"; ObjectID = "9db-9F-aMY"; */
+"9db-9F-aMY.text" = "=$0";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "D7v-AY-UAV"; */
+"D7v-AY-UAV.text" = ")：";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Dyf-yu-e3U"; */
+"Dyf-yu-e3U.normalTitle" = "全部";
+
+/* Class = "UILabel"; text = "兑换数量："; ObjectID = "EsO-bz-P78"; */
+"EsO-bz-P78.text" = "兑换数量：";
+
+/* Class = "UITextField"; text = "1.123456"; ObjectID = "GeM-Qk-lhe"; */
+"GeM-Qk-lhe.text" = "1.123456";
+
+/* Class = "UIButton"; normalTitle = "兑换"; ObjectID = "HTp-iJ-lqj"; */
+"HTp-iJ-lqj.normalTitle" = "兑换";
+
+/* Class = "UILabel"; text = "价格("; ObjectID = "JLa-PG-YJc"; */
+"JLa-PG-YJc.text" = "价格(";
+
+/* Class = "UILabel"; text = "接收地址"; ObjectID = "KVc-eO-Bhu"; */
+"KVc-eO-Bhu.text" = "接收地址";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "MFR-Q7-uRq"; */
+"MFR-Q7-uRq.text" = ")：";
+
+/* Class = "UILabel"; text = "VIT余额：0.01"; ObjectID = "MRD-YV-W2D"; */
+"MRD-YV-W2D.text" = "VIT余额：0.01";
+
+/* Class = "UILabel"; text = "源自钱包"; ObjectID = "Mi6-Lw-8vD"; */
+"Mi6-Lw-8vD.text" = "源自钱包";
+
+/* Class = "UILabel"; text = "兑换数量("; ObjectID = "QOe-5y-FW6"; */
+"QOe-5y-FW6.text" = "兑换数量(";
+
+/* Class = "UILabel"; text = "1000VIT"; ObjectID = "RFz-Qj-JZ7"; */
+"RFz-Qj-JZ7.text" = "1000VIT";
+
+/* Class = "UILabel"; text = "hsidfksjhfwiuefweiu238723hgj23hj123y23hj23h3jhwe3wrwrwer"; ObjectID = "RMQ-nd-8zX"; */
+"RMQ-nd-8zX.text" = "hsidfksjhfwiuefweiu238723hgj23hj123y23hj23h3jhwe3wrwrwer";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "Rb2-LQ-HBI"; */
+"Rb2-LQ-HBI.normalTitle" = "全部";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "Slw-TX-BKI"; */
+"Slw-TX-BKI.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "USDT"; ObjectID = "TTN-5V-1cN"; */
+"TTN-5V-1cN.text" = "USDT";
+
+/* Class = "UILabel"; text = "1 VIT ≈ 0.04531346 USDT"; ObjectID = "VP0-vV-5mp"; */
+"VP0-vV-5mp.text" = "1 VIT ≈ 0.04531346 USDT";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "WRc-Il-LTj"; */
+"WRc-Il-LTj.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "USDT"; ObjectID = "WW1-of-wZA"; */
+"WW1-of-wZA.text" = "USDT";
+
+/* Class = "UILabel"; text = "注意：该地址仅支持VIT收款，请勿用于其他币种！"; ObjectID = "WmW-i1-6oE"; */
+"WmW-i1-6oE.text" = "注意：该地址仅支持VIT收款，请勿用于其他币种！";
+
+/* Class = "UILabel"; text = "余额：3"; ObjectID = "XkW-FA-D73"; */
+"XkW-FA-D73.text" = "余额：3";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "ZlP-Tr-e5e"; */
+"ZlP-Tr-e5e.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "aC1-1B-7dZ"; */
+"aC1-1B-7dZ.text" = "数量";
+
+/* Class = "UILabel"; text = "状态："; ObjectID = "auU-bU-41B"; */
+"auU-bU-41B.text" = "状态：";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "bG2-rq-5xC"; */
+"bG2-rq-5xC.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "兑换币数量："; ObjectID = "bmB-o6-mN6"; */
+"bmB-o6-mN6.text" = "兑换币数量：";
+
+/* Class = "UILabel"; text = "发送地址"; ObjectID = "crM-LO-sbt"; */
+"crM-LO-sbt.text" = "发送地址";
+
+/* Class = "UILabel"; text = "矿工费：0"; ObjectID = "dRz-dU-Aql"; */
+"dRz-dU-Aql.text" = "矿工费：0";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "dbD-zr-kct"; */
+"dbD-zr-kct.text" = "数量";
+
+/* Class = "UILabel"; text = "交易单号："; ObjectID = "doS-mE-XI4"; */
+"doS-mE-XI4.text" = "交易单号：";
+
+/* Class = "UILabel"; text = "时间："; ObjectID = "eit-fa-0mf"; */
+"eit-fa-0mf.text" = "时间：";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "et1-wt-XF5"; */
+"et1-wt-XF5.text" = "数量";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "h5G-M9-pNE"; */
+"h5G-M9-pNE.text" = ")：";
+
+/* Class = "UILabel"; text = "金额："; ObjectID = "i1D-M8-261"; */
+"i1D-M8-261.text" = "金额：";
+
+/* Class = "UIButton"; normalTitle = "相册"; ObjectID = "iNj-Ka-mtn"; */
+"iNj-Ka-mtn.normalTitle" = "相册";
+
+/* Class = "UILabel"; text = "时间："; ObjectID = "j2i-kr-m5V"; */
+"j2i-kr-m5V.text" = "时间：";
+
+/* Class = "UIButton"; normalTitle = "灯光"; ObjectID = "jzJ-jh-DS6"; */
+"jzJ-jh-DS6.normalTitle" = "灯光";
+
+/* Class = "UILabel"; text = "转账金额"; ObjectID = "k53-Qc-rqq"; */
+"k53-Qc-rqq.text" = "转账金额";
+
+/* Class = "UILabel"; text = "目标钱包"; ObjectID = "knP-DB-b0H"; */
+"knP-DB-b0H.text" = "目标钱包";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "o42-Wr-mC7"; */
+"o42-Wr-mC7.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "ocG-um-20g"; */
+"ocG-um-20g.text" = "可用数量100";
+
+/* Class = "UIButton"; normalTitle = "保存图片"; ObjectID = "ox6-oP-lwY"; */
+"ox6-oP-lwY.normalTitle" = "保存图片";
+
+/* Class = "UILabel"; text = "兑换币数量("; ObjectID = "pVq-Lh-dHn"; */
+"pVq-Lh-dHn.text" = "兑换币数量(";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "qNH-9c-Oel"; */
+"qNH-9c-Oel.text" = "VIT";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "rie-c4-bTu"; */
+"rie-c4-bTu.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "余额：10"; ObjectID = "sKD-2U-REb"; */
+"sKD-2U-REb.text" = "余额：10";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "tQl-Zb-h2Z"; */
+"tQl-Zb-h2Z.text" = "VIT";
+
+/* Class = "UILabel"; text = "汇率"; ObjectID = "uYv-nF-qRE"; */
+"uYv-nF-qRE.text" = "汇率";
+
+/* Class = "UILabel"; text = "hsidfksjhfwiuefweiu238723hgj23hj123y23hj23h3jhwe3wrwrwer"; ObjectID = "uim-jX-l89"; */
+"uim-jX-l89.text" = "hsidfksjhfwiuefweiu238723hgj23hj123y23hj23h3jhwe3wrwrwer";
+
+/* Class = "UILabel"; text = "最大兑换数"; ObjectID = "ukS-J9-q5f"; */
+"ukS-J9-q5f.text" = "最大兑换数";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "vbz-nn-tG3"; */
+"vbz-nn-tG3.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "0.032"; ObjectID = "xEG-CQ-RBo"; */
+"xEG-CQ-RBo.text" = "0.032";
+
+/* Class = "UITextField"; placeholder = "请输入金额"; ObjectID = "zTf-RR-j0q"; */
+"zTf-RR-j0q.placeholder" = "请输入数量";

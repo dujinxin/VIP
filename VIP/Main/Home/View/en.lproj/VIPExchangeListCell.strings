@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "4YF-gl-BpZ"; */
+"4YF-gl-BpZ.text" = "Number";
+
+/* Class = "UILabel"; text = "总兑币数量("; ObjectID = "KEm-IY-AT0"; */
+"KEm-IY-AT0.text" = "Exchange(";
+
+/* Class = "UILabel"; text = "兑换"; ObjectID = "NKk-GH-9iL"; */
+"NKk-GH-9iL.text" = "Exchange";
+
+/* Class = "UILabel"; text = "数量"; ObjectID = "Q6j-na-GVk"; */
+"Q6j-na-GVk.text" = "Number";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "SKx-Wq-eQm"; */
+"SKx-Wq-eQm.text" = "Time";
+
+/* Class = "UILabel"; text = "2019-06-06 18:05:33"; ObjectID = "byn-xx-gx6"; */
+"byn-xx-gx6.text" = "2019-06-06 18:05:33";
+
+/* Class = "UILabel"; text = "兑换数量("; ObjectID = "com-sF-zME"; */
+"com-sF-zME.text" = "Quantity(";
+
+/* Class = "UILabel"; text = "+1000.0"; ObjectID = "oGn-Yc-N42"; */
+"oGn-Yc-N42.text" = "+1000.0";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "oZB-sI-Jln"; */
+"oZB-sI-Jln.text" = ")";
+
+/* Class = "UILabel"; text = ")"; ObjectID = "qUB-Yj-E1N"; */
+"qUB-Yj-E1N.text" = ")";
+
+/* Class = "UILabel"; text = "+1000.0"; ObjectID = "sLQ-wj-8cg"; */
+"sLQ-wj-8cg.text" = "+1000.0";

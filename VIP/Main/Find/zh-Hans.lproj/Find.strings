@@ -1,0 +1,117 @@
+
+/* Class = "UIButton"; normalTitle = "确认抢购"; ObjectID = "08v-HU-7YW"; */
+"08v-HU-7YW.normalTitle" = "确认抢购";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "15s-2J-Kwe"; */
+"15s-2J-Kwe.normalTitle" = "全部";
+
+/* Class = "UILabel"; text = "扣除收益($)"; ObjectID = "5Z3-Ju-ERe"; */
+"5Z3-Ju-ERe.text" = "扣除收益($)";
+
+/* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "5hG-2s-m0s"; */
+"5hG-2s-m0s.placeholder" = "请输入交易密码";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "6hE-sC-V70"; */
+"6hE-sC-V70.text" = "1234";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6yt-OY-rdn"; */
+"6yt-OY-rdn.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "类型："; ObjectID = "76g-Lr-ke0"; */
+"76g-Lr-ke0.text" = "类型：";
+
+/* Class = "UILabel"; text = "金额(100$-999$)"; ObjectID = "9tE-q7-mWu"; */
+"9tE-q7-mWu.text" = "金额(100$-999$)";
+
+/* Class = "UITextField"; placeholder = "请输入数量（BTC）"; ObjectID = "AjM-fY-FPM"; */
+"AjM-fY-FPM.placeholder" = "请输入数量（BTC）";
+
+/* Class = "UILabel"; text = "总投资金额($)"; ObjectID = "BYL-0j-3D8"; */
+"BYL-0j-3D8.text" = "总投资金额($)";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "FI2-so-P4e"; */
+"FI2-so-P4e.text" = "1234";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GBj-qV-nVu"; */
+"GBj-qV-nVu.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "Iir-2Q-Ra4"; */
+"Iir-2Q-Ra4.normalTitle" = "确定";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "MHS-Yz-KOc"; */
+"MHS-Yz-KOc.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "MTn-BT-mSz"; */
+"MTn-BT-mSz.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "Mww-zP-RZY"; */
+"Mww-zP-RZY.text" = "可用数量100";
+
+/* Class = "UITextField"; placeholder = "请输入数量（BTC）"; ObjectID = "Q1d-7B-kT0"; */
+"Q1d-7B-kT0.placeholder" = "请输入数量（BTC）";
+
+/* Class = "UIButton"; normalTitle = "全部"; ObjectID = "QgT-IW-qtx"; */
+"QgT-IW-qtx.normalTitle" = "全部";
+
+/* Class = "UILabel"; text = "总收益(VIT)"; ObjectID = "RJD-4z-pRb"; */
+"RJD-4z-pRb.text" = "总收益(VIT)";
+
+/* Class = "UILabel"; text = "合约周期"; ObjectID = "SaR-cG-DRE"; */
+"SaR-cG-DRE.text" = "合约周期";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "VNV-8C-BuK"; */
+"VNV-8C-BuK.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "Y7O-vW-yEC"; */
+"Y7O-vW-yEC.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "1233"; ObjectID = "YkF-li-fc8"; */
+"YkF-li-fc8.text" = "1233";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "c07-1J-z90"; */
+"c07-1J-z90.text" = "1234";
+
+/* Class = "UILabel"; text = "价值 ≈ $0"; ObjectID = "dQ1-8o-x2T"; */
+"dQ1-8o-x2T.text" = "价值 ≈ $0";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "eNz-Fr-V8m"; */
+"eNz-Fr-V8m.text" = "1234";
+
+/* Class = "UILabel"; text = "可用数量100"; ObjectID = "fPy-F4-vVS"; */
+"fPy-F4-vVS.text" = "可用数量100";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "jKq-Z4-pgA"; */
+"jKq-Z4-pgA.text" = "1234";
+
+/* Class = "UILabel"; text = "利息收入($)"; ObjectID = "kQ2-sd-BMV"; */
+"kQ2-sd-BMV.text" = "利息收入($)";
+
+/* Class = "UILabel"; text = "类型："; ObjectID = "khq-Xo-Ixx"; */
+"khq-Xo-Ixx.text" = "类型：";
+
+/* Class = "UILabel"; text = "解除合约将会扣除 80%的收益，若收益不足时将从本金中扣除相应的金额。"; ObjectID = "kiF-iy-IxJ"; */
+"kiF-iy-IxJ.text" = "解除合约将会扣除 80%的收益，若收益不足时将从本金中扣除相应的金额。";
+
+/* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "nzv-ph-fmR"; */
+"nzv-ph-fmR.placeholder" = "请输入交易密码";
+
+/* Class = "UILabel"; text = "投资金额($)"; ObjectID = "oyg-As-QRb"; */
+"oyg-As-QRb.text" = "投资金额($)";
+
+/* Class = "UILabel"; text = "投资账户"; ObjectID = "qMv-ov-1Dp"; */
+"qMv-ov-1Dp.text" = "投资账户";
+
+/* Class = "UILabel"; text = "已加入： $"; ObjectID = "tXc-Gc-6JY"; */
+"tXc-Gc-6JY.text" = "已加入： $";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "u2d-wj-dpZ"; */
+"u2d-wj-dpZ.text" = "1234";
+
+/* Class = "UIButton"; normalTitle = "确认抢购"; ObjectID = "udg-hi-d2m"; */
+"udg-hi-d2m.normalTitle" = "确认抢购";
+
+/* Class = "UITextField"; placeholder = "请输入交易密码"; ObjectID = "yn9-bK-v5x"; */
+"yn9-bK-v5x.placeholder" = "请输入交易密码";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zKy-fG-NVb"; */
+"zKy-fG-NVb.normalTitle" = "Button";

@@ -1,0 +1,210 @@
+
+/* Class = "UIButton"; normalTitle = "下次再记"; ObjectID = "0Uu-TY-lWf"; */
+"0Uu-TY-lWf.normalTitle" = "Next time";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "0gf-Kh-zWL"; */
+"0gf-Kh-zWL.text" = "1234";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "0vj-v8-hqO"; */
+"0vj-v8-hqO.text" = "1234";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "0vz-pa-Dl3"; */
+"0vz-pa-Dl3.text" = "1234";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "1Ka-rr-GHQ"; */
+"1Ka-rr-GHQ.text" = "VIT";
+
+/* Class = "UIButton"; normalTitle = "修改交易密码"; ObjectID = "1aQ-4W-Xst"; */
+"1aQ-4W-Xst.normalTitle" = "Modify the trade password";
+
+/* Class = "UILabel"; text = "今日理财收益"; ObjectID = "4bi-8x-wZV"; */
+"4bi-8x-wZV.text" = "Today's financial benefits";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "5i8-Au-XsG"; */
+"5i8-Au-XsG.text" = "1234";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "5qq-2w-Irf"; */
+"5qq-2w-Irf.text" = "1234";
+
+/* Class = "UIButton"; normalTitle = "记好了"; ObjectID = "61M-oX-82n"; */
+"61M-oX-82n.normalTitle" = "Remember it";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "70N-B7-5Ph"; */
+"70N-B7-5Ph.text" = "1234";
+
+/* Class = "UILabel"; text = "累计分享业绩(VIT)"; ObjectID = "7iU-pO-yyT"; */
+"7iU-pO-yyT.text" = "Accumulated sharing awards(VIT)";
+
+/* Class = "UILabel"; text = "社区有效账户(个)"; ObjectID = "8cE-s5-bF4"; */
+"8cE-s5-bF4.text" = "Community effective accounts(individual)";
+
+/* Class = "UITextField"; placeholder = "旧密码"; ObjectID = "9YC-6h-meh"; */
+"9YC-6h-meh.placeholder" = "Old password";
+
+/* Class = "UIButton"; normalTitle = "复制推广链接"; ObjectID = "9nz-0d-jxe"; */
+"9nz-0d-jxe.normalTitle" = "Copy promotion links";
+
+/* Class = "UILabel"; text = "今日平级奖励"; ObjectID = "9yt-xZ-srI"; */
+"9yt-xZ-srI.text" = "Today's level award";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "Byw-4W-Fd5"; */
+"Byw-4W-Fd5.text" = "1234";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "E4A-gM-LY1"; */
+"E4A-gM-LY1.text" = "VIT";
+
+/* Class = "UILabel"; text = "2019-05-10 00:20:40"; ObjectID = "FkY-v7-l9M"; */
+"FkY-v7-l9M.text" = "2019-05-10 00:20:40";
+
+/* Class = "UILabel"; text = "请仔细备份助记词，最好抄写在本子上"; ObjectID = "GNf-sV-nmc"; */
+"GNf-sV-nmc.text" = "Please back up your mnemonics carefully. You'd better copy them in your notebook.";
+
+/* Class = "UILabel"; text = "收益组成"; ObjectID = "HLY-TR-St8"; */
+"HLY-TR-St8.text" = "Income composition";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "HjN-dg-lmJ"; */
+"HjN-dg-lmJ.text" = "1234";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "I31-Us-8Hq"; */
+"I31-Us-8Hq.text" = "VIT";
+
+/* Class = "UILabel"; text = "社区奖励(VIT)"; ObjectID = "JZp-2G-WQv"; */
+"JZp-2G-WQv.text" = "Community rewards(VIT)";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "Jqj-sG-7Rh"; */
+"Jqj-sG-7Rh.text" = "VIT";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "LK9-aQ-bct"; */
+"LK9-aQ-bct.text" = "1234";
+
+/* Class = "UILabel"; text = "平级奖励(VIT)"; ObjectID = "LSU-Zo-4uE"; */
+"LSU-Zo-4uE.text" = "Horizontal awards(VIT)";
+
+/* Class = "UILabel"; text = "推荐码："; ObjectID = "NaY-Sp-KZy"; */
+"NaY-Sp-KZy.text" = "     ";
+
+/* Class = "UILabel"; text = "今日社区奖励"; ObjectID = "O67-1u-nVE"; */
+"O67-1u-nVE.text" = "Today's community award";
+
+/* Class = "UILabel"; text = "        Virtual Investment Bank 引入了自身多年积累的立体安全保障机制，打造新一代的金融服务基础设施，提供给投资者银行级的资产安全服务。引入合规流程和专业服务，对接自身或第三方投融资服务商，为用户提供从链上到链下的投融资生态服务。是主流金融与区块链的一次结合，是区块链金融在监管下的规范性尝试。"; ObjectID = "OuA-0O-Wn3"; */
+"OuA-0O-Wn3.text" = "        Virtual Investment Bank Introduced its own accumulated three-dimensional security mechanism for many years, to create a new generation of financial services infrastructure, to provide investors with bank-level asset security services. Introducing compliance process and professional services, docking itself or third-party investment and financing service providers, providing users with investment and financing ecological services from the chain to the chain. It is a combination of mainstream finance and block chain, and a normative attempt of block chain finance under supervision.";
+
+/* Class = "UILabel"; text = "什么是水晶IPE"; ObjectID = "T7P-an-696"; */
+"T7P-an-696.text" = "什么是水晶IPE";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "Tzy-2H-TcF"; */
+"Tzy-2H-TcF.text" = "1234";
+
+/* Class = "UILabel"; text = "个人业绩($)"; ObjectID = "VVH-9j-A7p"; */
+"VVH-9j-A7p.text" = "Personal performance($)";
+
+/* Class = "UILabel"; text = "今日分享奖励"; ObjectID = "WRb-dD-Kq4"; */
+"WRb-dD-Kq4.text" = "Sharing awards today";
+
+/* Class = "UILabel"; text = "可点击复制，推荐给好友，或者截图发送给好友进行邀请"; ObjectID = "Y1J-v8-HHV"; */
+"Y1J-v8-HHV.text" = "Click copy, recommend to friends, or send screenshots to friends for invitation";
+
+/* Class = "UILabel"; text = "kshefiuh213y3h42j34g23j1h42hj32k3h4123jkhg4jh23g4k2h3g4kj124hg1kj234hk1"; ObjectID = "YUc-wu-1oz"; */
+"YUc-wu-1oz.text" = "kshefiuh213y3h42j34g23j1h42hj32k3h4123jkhg4jh23g4k2h3g4kj124hg1kj234hk1";
+
+/* Class = "UILabel"; text = "社区市值($)"; ObjectID = "Zfp-md-7dj"; */
+"Zfp-md-7dj.text" = "Community market value($)";
+
+/* Class = "UILabel"; text = "社区人员"; ObjectID = "aqq-jf-bBm"; */
+"aqq-jf-bBm.text" = "Community personnel";
+
+/* Class = "UILabel"; text = "历史平级奖励"; ObjectID = "ban-aO-3Xe"; */
+"ban-aO-3Xe.text" = "History level award";
+
+/* Class = "UIButton"; normalTitle = "复制私钥"; ObjectID = "bef-SP-gII"; */
+"bef-SP-gII.normalTitle" = "Copy the private key";
+
+/* Class = "UILabel"; text = "29KE"; ObjectID = "bhZ-ME-lh1"; */
+"bhZ-ME-lh1.text" = "29KE";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "dCH-Bg-AMj"; */
+"dCH-Bg-AMj.text" = "VIT";
+
+/* Class = "UILabel"; text = "历史分享奖励"; ObjectID = "dGw-zG-RT6"; */
+"dGw-zG-RT6.text" = "History sharing award";
+
+/* Class = "UILabel"; text = "可点击保存图片，复制推广链接，或者截图发送给好友进行注册。"; ObjectID = "eIh-z9-d1w"; */
+"eIh-z9-d1w.text" = "Copy promotion links can click to save pictures, copy promotion links, or send screenshots to friends for registration.";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "egr-w4-iEp"; */
+"egr-w4-iEp.text" = "1234";
+
+/* Class = "UIButton"; normalTitle = "保存图片"; ObjectID = "eqg-RC-zk6"; */
+"eqg-RC-zk6.normalTitle" = "Save pictures";
+
+/* Class = "UITextField"; placeholder = "新密码"; ObjectID = "esR-Ay-ZOt"; */
+"esR-Ay-ZOt.placeholder" = "New password";
+
+/* Class = "UIButton"; normalTitle = "提交"; ObjectID = "gWE-Nw-mkt"; */
+"gWE-Nw-mkt.normalTitle" = "Submit";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "gaK-H3-2o8"; */
+"gaK-H3-2o8.text" = "VIT";
+
+/* Class = "UILabel"; text = "历史社区奖励"; ObjectID = "gtN-yZ-bvv"; */
+"gtN-yZ-bvv.text" = "Historic community award";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "h3N-FR-MFS"; */
+"h3N-FR-MFS.text" = "VIT";
+
+/* Class = "UILabel"; text = "推广"; ObjectID = "hXa-kI-Q5n"; */
+"hXa-kI-Q5n.text" = "Promotion";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "iaj-Bs-iji"; */
+"iaj-Bs-iji.text" = "1234";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "kg0-pq-FRF"; */
+"kg0-pq-FRF.text" = "1234";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "mM8-a3-uaM"; */
+"mM8-a3-uaM.text" = "1234";
+
+/* Class = "UILabel"; text = "官方网站："; ObjectID = "mhw-0S-Kcn"; */
+"mhw-0S-Kcn.text" = "Official website：";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "nqe-mJ-ssR"; */
+"nqe-mJ-ssR.text" = "1234";
+
+/* Class = "UILabel"; text = "智慧是用户获得水晶的重要因素，智慧越高，获得的水晶IPE越多。\n智慧值分永久智慧和创力智慧。永久智慧长期有效，能持续参与水晶IPE分配。创力智慧需要用户积极参与智慧星球的建设。\n除了智慧外，还有一些其他因素影响获得水晶IPE的效率，用户可自行探索。"; ObjectID = "nyQ-1c-INm"; */
+"nyQ-1c-INm.text" = "智慧是用户获得水晶的重要因素，智慧越高，获得的水晶IPE越多。\n智慧值分永久智慧和创力智慧。永久智慧长期有效，能持续参与水晶IPE分配。创力智慧需要用户积极参与智慧星球的建设。\n除了智慧外，还有一些其他因素影响获得水晶IPE的效率，用户可自行探索。";
+
+/* Class = "UIButton"; normalTitle = "复制推广链接"; ObjectID = "o7w-od-pwt"; */
+"o7w-od-pwt.normalTitle" = "Copy promotion links";
+
+/* Class = "UITextField"; placeholder = "重复输入密码"; ObjectID = "q0M-pL-JP3"; */
+"q0M-pL-JP3.placeholder" = "Repeat the password";
+
+/* Class = "UILabel"; text = "今日总收益(VIT)"; ObjectID = "rbQ-e4-fHU"; */
+"rbQ-e4-fHU.text" = "Total earnings today(VIT)";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "t7b-ON-Rs2"; */
+"t7b-ON-Rs2.text" = "1234";
+
+/* Class = "UILabel"; text = "历史总收益(VIT)"; ObjectID = "tNs-8A-A3W"; */
+"tNs-8A-A3W.text" = "Total historical income(VIT)";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "tWw-pg-Ovb"; */
+"tWw-pg-Ovb.text" = "1234";
+
+/* Class = "UILabel"; text = "个人邀请(个)"; ObjectID = "v8U-cZ-qPO"; */
+"v8U-cZ-qPO.text" = "Personal invitation (individual)";
+
+/* Class = "UILabel"; text = "社区有效账户(个)"; ObjectID = "vDa-Bs-8FT"; */
+"vDa-Bs-8FT.text" = "Community effective accounts (individual)";
+
+/* Class = "UILabel"; text = "VIT"; ObjectID = "vbM-f5-nkc"; */
+"vbM-f5-nkc.text" = "VIT";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "w07-KL-ZZh"; */
+"w07-KL-ZZh.text" = "1234";
+
+/* Class = "UILabel"; text = "今日理财收益"; ObjectID = "w6v-ia-ZYq"; */
+"w6v-ia-ZYq.text" = "Historical financial benefits";
+
+/* Class = "UILabel"; text = "http://www.vib.world/"; ObjectID = "wbt-D4-L9f"; */
+"wbt-D4-L9f.text" = "http://www.vib.world";
