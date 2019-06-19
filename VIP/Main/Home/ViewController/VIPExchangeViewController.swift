@@ -31,7 +31,7 @@ class VIPExchangeViewController: VIPBaseViewController {
     }
     @IBOutlet weak var exchangeImageView: UIImageView!{
         didSet{
-            self.exchangeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(exchangeTwo(_:))))
+//            self.exchangeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(exchangeTwo(_:))))
         }
     }
     @IBOutlet weak var fromCoinLabel: UILabel!
@@ -70,6 +70,7 @@ class VIPExchangeViewController: VIPBaseViewController {
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
+   
         return k
     }()
     lazy var selectView: JXSelectView = {
@@ -118,11 +119,11 @@ class VIPExchangeViewController: VIPBaseViewController {
         self.setOtherValues(leftEntity: leftEntity, rightEntity: rightEntity)
     }
     func setLeftValues(_ entity: VIPCoinPropertyEntity) {
-        self.fromBalanceLabel.text = "余额：\(entity.available_qty)"
+        self.fromBalanceLabel.text = "\(LocalizedString(key: "Balance"))：\(entity.available_qty)"
         self.fromCoinLabel.text = "\(entity.short_name ?? "")"
     }
     func setRightValues(_ entity: VIPCoinPropertyEntity) {
-        self.toBalanceLabel.text = "余额：\(entity.available_qty)"
+        self.toBalanceLabel.text = "\(LocalizedString(key: "Balance"))：\(entity.available_qty)"
         self.toCoinLabel.text = "\(entity.short_name ?? "")"
     }
     func setOtherValues(leftEntity: VIPCoinPropertyEntity, rightEntity: VIPCoinPropertyEntity) {
@@ -138,27 +139,7 @@ class VIPExchangeViewController: VIPBaseViewController {
         self.exchangeButton.isEnabled = false
         self.exchangeButton.backgroundColor = JXlightBlueColor
     }
-    @objc func textChange(notify: NSNotification) {
-        
-        if let textField = notify.object as? UITextField, textField == self.numTextField {
-            if
-                let text = textField.text, text.isEmpty == false,
-                let num = Double(text), num > 0 {
-                
-                let numStr = String(format: "%.8f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
-                self.coinNumLabel.text = numStr
-                
-                self.exchangeButton.isEnabled = true
-                self.exchangeButton.backgroundColor = JXMainColor
-                
-            } else {
-                self.coinNumLabel.text = "0"
-                
-                self.exchangeButton.isEnabled = false
-                self.exchangeButton.backgroundColor = JXlightBlueColor
-            }
-        }
-    }
+    
     //MARK: system methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,11 +149,11 @@ class VIPExchangeViewController: VIPBaseViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.title = "兑换"
+        self.title = LocalizedString(key: "Exchange")
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
             //button.backgroundColor = UIColor.lightGray
-            button.setTitle("兑换记录", for: .normal)
+            button.setTitle(LocalizedString(key: "Home_exchangeRecord"), for: .normal)
             button.setImage(UIImage(named: "copy"), for: .normal)
             button.setTitleColor(JXBlueColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -213,12 +194,14 @@ class VIPExchangeViewController: VIPBaseViewController {
         self.view.endEditing(true)
         
         self.currentSide = 0
+        self.selectView.selectRow = 0
         self.selectView.show()
     }
     @IBAction func selectTo(_ sender: Any) {
         self.view.endEditing(true)
         
         self.currentSide = 1
+        self.selectView.selectRow = 0
         self.selectView.show()
     }
     @IBAction func allAction(_ sender: Any) {
@@ -246,9 +229,9 @@ class VIPExchangeViewController: VIPBaseViewController {
         let alertVC = UIAlertController(title: "", message: nil, preferredStyle: .alert)
         //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
         alertVC.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "请输入交易密码"
+            textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
         })
-        alertVC.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
             
             guard
                 let textField = alertVC.textFields?[0],
@@ -271,20 +254,85 @@ class VIPExchangeViewController: VIPBaseViewController {
             })
             
         }))
-        alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
         }))
         
         self.present(alertVC, animated: true, completion: nil)
 
     }
 }
+
 extension VIPExchangeViewController: JXKeyboardTextFieldDelegate {
     func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
     
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            return true
+        }
+        
+        if textField == numTextField, let text = textField.text, let num = Double(text), num >= self.currentLeftEntity.available_qty  {
+            
+            return false
+        }
+        
         return true
+    }
+    @objc func textChange(notify: NSNotification) {
+        
+        if let textField = notify.object as? UITextField, textField == self.numTextField {
+            if
+                let text = textField.text, text.isEmpty == false,
+                let num = Double(text), num > 0 {
+                
+                let numStr = String(format: "%.8f", num * self.currentLeftEntity.price / self.currentRightEntity.price)
+                self.coinNumLabel.text = numStr
+                
+                self.exchangeButton.isEnabled = true
+                self.exchangeButton.backgroundColor = JXMainColor
+                
+            } else {
+                self.coinNumLabel.text = "0"
+                
+                self.exchangeButton.isEnabled = false
+                self.exchangeButton.backgroundColor = JXlightBlueColor
+            }
+        }
+    }
+  
+    @objc func keyboardWillShow(notify:Notification) {
+        
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        
+        //print(rect)//226
+        UIView.animate(withDuration: animationDuration, animations: {
+            //self.mainScrollView.contentOffset = CGPoint(x: 0, y: 160)
+            
+        }) { (finish) in
+            //
+        }
+    }
+    @objc func keyboardWillHide(notify:Notification) {
+        print("notify = ","notify")
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        UIView.animate(withDuration: animationDuration, animations: {
+            //self.mainScrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }) { (finish) in
+            
+        }
     }
 }
 extension VIPExchangeViewController: JXSelectViewDelegate,JXSelectViewDataSource{

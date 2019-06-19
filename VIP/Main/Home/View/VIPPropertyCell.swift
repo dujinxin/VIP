@@ -69,38 +69,38 @@ class VIPPropertyCell: UITableViewCell {
             }
             // 1充值 2提现 3 理财 4兑换
             if self.tradeRecords?.operation_style == 1 {
-                self.typeLabel.text = "充值"
+                self.typeLabel.text = LocalizedString(key: "Recharge")
             } else if self.tradeRecords?.operation_style == 2 {
-                self.typeLabel.text = "提现"
+                self.typeLabel.text = LocalizedString(key: "Withdraw")
             } else if self.tradeRecords?.operation_style == 3 {
-                self.typeLabel.text = "理财"
+                self.typeLabel.text = LocalizedString(key: "Finance")
             } else if self.tradeRecords?.operation_style == 4 {
-                self.typeLabel.text = "兑换"
+                self.typeLabel.text = LocalizedString(key: "Exchange")
             }
             //1 待审核 2 已审核(转账中，确认中) 3 已完成 4 审核失败(转账失败 操作失败)
             if self.tradeRecords?.verify_status == 1 {
-                self.statusLabel.text = "待审核"
+                self.statusLabel.text = LocalizedString(key: "Home_review")
             } else if self.tradeRecords?.verify_status == 3 {
-                self.statusLabel.text = "已完成"
+                self.statusLabel.text = LocalizedString(key: "Home_completed")
             } else if self.tradeRecords?.verify_status  == 2 {
                 if self.tradeRecords?.operation_style == 1 {
-                    self.statusLabel.text = "转账中"
+                    self.statusLabel.text = LocalizedString(key: "Home_transferInProgress")
                 } else if self.tradeRecords?.operation_style == 2 {
-                    self.statusLabel.text = "转账中"
+                    self.statusLabel.text = LocalizedString(key: "Home_transferInProgress")
                 } else if self.tradeRecords?.operation_style == 3 {
-                    self.statusLabel.text = "已审核"
+                    self.statusLabel.text = LocalizedString(key: "Home_completed")
                 } else if self.tradeRecords?.operation_style == 4 {
-                    self.statusLabel.text = "确认中"
+                    self.statusLabel.text = LocalizedString(key: "Home_confirmationInProgress")
                 }
             } else {
                 if self.tradeRecords?.operation_style == 1 {
-                    self.statusLabel.text = "转账失败"
+                    self.statusLabel.text = LocalizedString(key: "Home_failure")
                 } else if self.tradeRecords?.operation_style == 2 {
-                    self.statusLabel.text = "转账失败"
+                    self.statusLabel.text = LocalizedString(key: "Home_failure")
                 } else if self.tradeRecords?.operation_style == 3 {
-                    self.statusLabel.text = "审核失败"
+                    self.statusLabel.text = LocalizedString(key: "Home_failure")
                 } else if self.tradeRecords?.operation_style == 4 {
-                    self.statusLabel.text = "操作失败"
+                    self.statusLabel.text = LocalizedString(key: "Home_failure")
                 }
             }
             

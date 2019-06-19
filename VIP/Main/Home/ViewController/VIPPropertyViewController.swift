@@ -13,7 +13,7 @@ import MJRefresh
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
 //
-private let headViewHeight : CGFloat = 100 + 15 + 50 + 30 + 40 + 30 + 10 + 44
+private let headViewHeight : CGFloat = 162 + 20 + 50 + 24 + 40 + 30 + 10 + 44
 
 class VIPPropertyViewController: VIPTableViewController {
     
@@ -24,44 +24,51 @@ class VIPPropertyViewController: VIPTableViewController {
     var entity : VIPCoinPropertyEntity!
     
     lazy var scrollView: UIScrollView = {
-        let s = UIScrollView(frame: CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight))
+        let s = UIScrollView(frame: CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight ))
         s.delegate = self
-        s.scrollIndicatorInsets = UIEdgeInsets.init(top: headViewHeight, left: 0, bottom: 0, right: 0)
-        s.contentSize = CGSize(width: 0, height: kScreenHeight * 2)
+        //s.scrollIndicatorInsets = UIEdgeInsets.init(top: headViewHeight, left: 0, bottom: 0, right: 0)
+        s.contentSize = CGSize(width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
+        //s.contentSize = CGSize(width: kScreenWidth, height: kScreenHeight - kNavStatusHeight + (headViewHeight - 44 - 35))
+        s.bounces = false
+        s.isScrollEnabled = false
         return s
     }()
     
     lazy var headView: UIView = {
-        let headView = UIView(frame: CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: headViewHeight))
+        let headView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: headViewHeight))
         headView.backgroundColor = JXFfffffColor
         //资产相关
-        let topView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 100))
+        let topView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 162))
         topView.backgroundColor = JXEeeeeeColor
         headView.addSubview(topView)
         
-        let leftLabel = UILabel(frame: CGRect(x: 30, y: 30, width: 64, height: 30))
-        leftLabel.textColor = JXBlackTextColor
-        leftLabel.font = UIFont.systemFont(ofSize: 24)
-        leftLabel.textAlignment = .left
+//        let leftLabel = UILabel(frame: CGRect(x: 30, y: 30, width: 64, height: 30))
+//        leftLabel.textColor = JXBlackTextColor
+//        leftLabel.font = UIFont.systemFont(ofSize: 24)
+//        leftLabel.textAlignment = .left
+//        topView.addSubview(leftLabel)
+//        leftLabel.center = CGPoint(x: leftLabel.center.x, y: topView.jxHeight / 2)
         
-        topView.addSubview(leftLabel)
-        leftLabel.center = CGPoint(x: leftLabel.center.x, y: topView.jxHeight / 2)
+        let iconImageView = UIImageView(frame: CGRect(x: 0, y: 20, width: 50, height: 50))
+        topView.addSubview(iconImageView)
+        iconImageView.center = CGPoint(x: topView.center.x, y: iconImageView.center.y)
         
-        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: 20, width: 180, height: 30))
+        
+        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: iconImageView.jxBottom + 20, width: 260, height: 30))
         centerLabel1.textColor = JXBlackTextColor
         centerLabel1.font = UIFont.systemFont(ofSize: 24)
         centerLabel1.textAlignment = .center
         topView.addSubview(centerLabel1)
         centerLabel1.center = CGPoint(x: topView.center.x, y: centerLabel1.center.y)
         
-        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 5, width: 180, height: 20))
+        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 2, width: 260, height: 20))
         centerLabel2.textColor = JXGrayTextColor
         centerLabel2.font = UIFont.systemFont(ofSize: 14)
         centerLabel2.textAlignment = .center
         topView.addSubview(centerLabel2)
         centerLabel2.center = CGPoint(x: topView.center.x, y: centerLabel2.center.y)
         
-        self.coinNameLabel = leftLabel
+        self.iconImageView = iconImageView
         self.coinNumLabel = centerLabel1
         self.coinValueLabel = centerLabel2
         
@@ -88,17 +95,17 @@ class VIPPropertyViewController: VIPTableViewController {
         self.addressLabel = addressLabel
         
         let space = (kScreenWidth - 30 - 90 * 3) / 2
-        let names = ["转账","收款","兑换"]
+        let names = [ LocalizedString(key: "Transfer"),LocalizedString(key: "Receip"),LocalizedString(key: "Exchange")]
         let icons = ["transfer","receip","exchange"]
         for i in 0..<3 {
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: 15 + (space + 90) * CGFloat(i), y: textFieldBgView.jxBottom + 30, width: 90, height: 40)
-            button.setImage(UIImage(named: icons[i]), for: .normal)
+            //button.setImage(UIImage(named: icons[i]), for: .normal)
             button.setTitle(names[i], for: .normal)
             button.setTitleColor(JXFfffffColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
-            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2.5, bottom: 0, right: -2.5)
+            //button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+            //button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2.5, bottom: 0, right: -2.5)
             button.tag = i
             button.addTarget(self, action: #selector(action(button:)), for: .touchUpInside)
             if i == 0 {
@@ -117,13 +124,19 @@ class VIPPropertyViewController: VIPTableViewController {
         tabBgView.backgroundColor = JXEeeeeeColor
         headView.addSubview(tabBgView)
         
-        let topBar = JXBarView.init(frame: CGRect.init(x: 0, y: 10, width: view.bounds.width , height: 44), titles: ["全部","转账","收款","理财","兑换"])
+        let topBar = JXXBarView.init(frame: CGRect.init(x: 0, y: 10, width: view.bounds.width , height: 44), titles: [LocalizedString(key: "Whole"),LocalizedString(key: "Transfer"),LocalizedString(key: "Receip"),LocalizedString(key: "Finance"),LocalizedString(key: "Exchange")])
         topBar.delegate = self
+
         
         let att = JXAttribute()
         att.normalColor = JXBlackTextColor
         att.selectedColor = JXBlueColor
-        att.font = UIFont.systemFont(ofSize: 17)
+        if LanaguageManager.shared.type == .english {
+            att.font = UIFont.systemFont(ofSize: 15)
+        } else {
+            att.font = UIFont.systemFont(ofSize: 17)
+        }
+        
         topBar.attribute = att
         
         topBar.backgroundColor = JXFfffffColor
@@ -138,28 +151,30 @@ class VIPPropertyViewController: VIPTableViewController {
         return headView
     }()
     
-    var coinNameLabel : UILabel!
+    var iconImageView : UIImageView!
     var coinNumLabel : UILabel!
     var coinValueLabel : UILabel!
     
     var addressLabel : UILabel!
     
-    var topBar : JXBarView!
+    var topBar : JXXBarView!
     var horizontalView : JXHorizontalView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
-        self.view.addSubview(self.headView)
-        
-        let rect = CGRect(x: 0, y: kNavStatusHeight + headViewHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - headViewHeight)
+        //self.view.addSubview(self.headView)
+       
+        let rect = CGRect(x: 0, y: headViewHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - headViewHeight)
         let vc1 = VIPProRecordsContorller()
         vc1.type = 0
         vc1.entity = self.entity
         vc1.refreshBlock = { vm in
             self.updateValues(vm)
+        }
+        vc1.scrollViewDidScrollBlock = { scroll in
+            self.tableViewDidScroll(scrollView: scroll)
         }
         let vc2 = VIPProRecordsContorller()
         vc2.type = 1
@@ -167,11 +182,17 @@ class VIPPropertyViewController: VIPTableViewController {
         vc2.refreshBlock = { vm in
             self.updateValues(vm)
         }
+        vc2.scrollViewDidScrollBlock = { scroll in
+            self.tableViewDidScroll(scrollView: scroll)
+        }
         let vc3 = VIPProRecordsContorller()
         vc3.type = 2
         vc3.entity = self.entity
         vc3.refreshBlock = { vm in
             self.updateValues(vm)
+        }
+        vc3.scrollViewDidScrollBlock = { scroll in
+            self.tableViewDidScroll(scrollView: scroll)
         }
         let vc4 = VIPProRecordsContorller()
         vc4.type = 3
@@ -179,27 +200,41 @@ class VIPPropertyViewController: VIPTableViewController {
         vc4.refreshBlock = { vm in
             self.updateValues(vm)
         }
+        vc4.scrollViewDidScrollBlock = { scroll in
+            self.tableViewDidScroll(scrollView: scroll)
+        }
         let vc5 = VIPProRecordsContorller()
         vc5.type = 4
         vc5.entity = self.entity
         vc5.refreshBlock = { vm in
             self.updateValues(vm)
         }
+        vc5.scrollViewDidScrollBlock = { scroll in
+            self.tableViewDidScroll(scrollView: scroll)
+        }
         
         let horizontalView = JXHorizontalView.init(frame: rect, containers: [vc1,vc2,vc3,vc4,vc5], parentViewController: self)
         self.view.addSubview(horizontalView)
         self.horizontalView = horizontalView
+        
+        self.view.addSubview(self.scrollView)
+        self.scrollView.addSubview(self.headView)
+        self.scrollView.addSubview(horizontalView)
 
         
         //设置默认值，真实数据以钱包结果为准
-        self.coinNameLabel.text = "\(self.entity.short_name ?? "")"
+        if let s = self.entity.icon, let url = URL(string: kBaseUrl + s) {
+            self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
+        }
         self.coinNumLabel.text = "\(self.entity.available_qty)"
         self.coinValueLabel.text = "$\(self.entity.available_qty * self.entity.price)"
         self.addressLabel.text = self.entity.address
     }
     func updateValues(_ vm: VIPPropertyVM) {
         self.vm = vm
-        self.coinNameLabel.text = "\(vm.propertyEntity.coinEntity?.short_name ?? "")"
+        if let s = self.entity.icon, let url = URL(string: kBaseUrl + s) {
+            self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
+        }
         self.coinNumLabel.text = String(format: "%.8f", vm.propertyEntity.walletEntity?.available_qty ?? 0)
         if let num = vm.propertyEntity.walletEntity?.available_qty, let prise = vm.propertyEntity.coinEntity?.price {
             self.coinValueLabel.text = String(format: "$%.2f", num * prise)
@@ -214,7 +249,7 @@ class VIPPropertyViewController: VIPTableViewController {
     @objc func copyAddress() {
         let pals = UIPasteboard.general
         pals.string = self.addressLabel.text
-        ViewManager.showNotice("已复制")
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
     }
     @objc func action(button: UIButton) {
        
@@ -229,7 +264,8 @@ class VIPPropertyViewController: VIPTableViewController {
         } else if button.tag == 1 {
             let vc = storyboard.instantiateViewController(withIdentifier: "receipt") as! VIPReceiptViewController
             vc.receiptStr = self.addressLabel.text ?? ""
-            vc.tokenName = self.coinNameLabel.text ?? ""
+            vc.tokenName = self.entity.short_name ?? ""
+            vc.tokenIcon = self.entity.icon
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             if self.financialVM.walletListEntity.list.count > 0 {
@@ -261,24 +297,25 @@ class VIPPropertyViewController: VIPTableViewController {
 //MARK:UIScrollViewDelegate
 extension VIPPropertyViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY = self.scrollView.contentOffset.y
-//        if (offsetY <= 0.0) {
-//            var frame = self.headView.frame
-//            frame.origin.y = offsetY
-//
+        //print(scrollView.contentOffset)
+        let offsetY = self.scrollView.contentOffset.y
+        if (offsetY <= 0.0) {
+            var frame = self.headView.frame
+            frame.origin.y = offsetY
+
 //            var tFrame = self.tableView.frame
 //            tFrame.origin.y = offsetY + headViewHeight
 //            self.tableView.frame = tFrame
 //            if !self.tableView.mj_header.isRefreshing {
 //                self.tableView.contentOffset = CGPoint(x: 0, y: offsetY)
 //            }
-//        }
+        }
     }
 }
 //MARK:JXBarViewDelegate
-extension VIPPropertyViewController : JXBarViewDelegate {
+extension VIPPropertyViewController : JXXBarViewDelegate {
     
-    func jxBarView(barView: JXBarView, didClick index: Int) {
+    func jxxBarView(barView: JXXBarView, didClick index: Int) {
         
         let indexPath = IndexPath.init(item: index, section: 0)
         //开启动画会影响topBar的点击移动动画
@@ -287,7 +324,7 @@ extension VIPPropertyViewController : JXBarViewDelegate {
 }
 //MARK:JXHorizontalViewDelegate
 extension VIPPropertyViewController : JXHorizontalViewDelegate {
-    func horizontalViewDidScroll(scrollView:UIScrollView) {
+    func horizontalViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x
         var x : CGFloat
         let count = CGFloat(self.topBar.titles.count)
@@ -295,6 +332,7 @@ extension VIPPropertyViewController : JXHorizontalViewDelegate {
         x = (kScreenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / kScreenWidth ) * ((kScreenWidth / count))
         
         self.topBar.bottomLineView.frame.origin.x = x
+        
     }
     func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
         if self.topBar.selectedIndex == indexPath.item {
@@ -302,5 +340,19 @@ extension VIPPropertyViewController : JXHorizontalViewDelegate {
         }
         
         self.topBar.scrollToItem(at: indexPath)
+    }
+    
+}
+//vc1 tableView
+extension VIPPropertyViewController {
+    func tableViewDidScroll(scrollView: UIScrollView) {
+        
+        //print("table", scrollView.contentOffset)
+        
+        let offsetY = scrollView.contentOffset.y
+        if (offsetY <= (headViewHeight - 45) && offsetY >= 0) {
+            
+            //self.scrollView.contentOffset = scrollView.contentOffset
+        }
     }
 }

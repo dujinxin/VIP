@@ -13,8 +13,8 @@ class VIPPromotionModel: VIPBaseModel {
     @objc var invitation_code : String?
     @objc var invent_url : String?
     
-    @objc var invent_counts : Int = 0
-    @objc var valid_count : Int = 0
-    @objc var user_price : Int = 0
-    @objc var team_price : Int = 0
+    @objc var invent_counts : Double = 0
+    @objc var valid_count : Double = 0
+    @objc var user_price : Double = 0
+    @objc var team_price : Double = 0
 }

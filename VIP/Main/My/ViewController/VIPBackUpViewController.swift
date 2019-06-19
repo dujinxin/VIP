@@ -42,6 +42,7 @@ class VIPBackUpViewController: VIPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = JXFfffffColor
+        self.title = LocalizedString(key: "My_backupMnemonics")
         
         let titles = mnemonicStr.components(separatedBy: " ")
         print(self.mnemonicView)
@@ -129,18 +130,28 @@ class VIPBackUpViewController: VIPBaseViewController {
         if isRegister == 0 {
             self.navigationController?.popViewController(animated: true)
         } else {
-            self.dismiss(animated: true, completion: {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: true)
-            })
+            if let controllers = self.navigationController?.viewControllers {
+                if controllers.count > 1 {
+                    self.navigationController?.viewControllers.remove(at: 0)
+                }
+            }
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+            self.navigationController?.pushViewController(login, animated: true)
         }
     }
     @IBAction func remembering(_ sender: Any) {
         if isRegister == 0 {
             self.navigationController?.popViewController(animated: true)
         } else {
-            self.dismiss(animated: true, completion: {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: true)
-            })
+            if let controllers = self.navigationController?.viewControllers {
+                if controllers.count > 1 {
+                    self.navigationController?.viewControllers.remove(at: 0)
+                }
+            }
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let login = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+            self.navigationController?.pushViewController(login, animated: true)
         }
     }
     

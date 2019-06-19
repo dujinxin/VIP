@@ -56,7 +56,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         didSet{
             self.manageButton.backgroundColor = JXFfffffColor
             self.manageButton.setTitleColor(JXBlueColor, for: .normal)
-            self.manageButton.setTitle("理财", for: .normal)
+            self.manageButton.setTitle(LocalizedString(key: "Finance"), for: .normal)
             
             manageButton.layer.cornerRadius = 4
             manageButton.layer.borderColor = JXFfffffColor.cgColor
@@ -68,7 +68,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         didSet{
             self.superNodeButton.backgroundColor = JXBlueColor
             self.superNodeButton.setTitleColor(JXFfffffColor, for: .normal)
-            self.superNodeButton.setTitle("超级节点", for: .normal)
+            self.superNodeButton.setTitle(LocalizedString(key: "SuperNode"), for: .normal)
             
             superNodeButton.layer.cornerRadius = 4
             superNodeButton.layer.borderColor = JXFfffffColor.cgColor
@@ -90,7 +90,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
             
             self.cycleScrollView.scrollDirection = .vertical
             self.cycleScrollView.onlyDisplayText = true
-            self.cycleScrollView.titleLabelTextColor = JXBlueColor
+            self.cycleScrollView.titleLabelTextColor = JXGrayTextColor
             self.cycleScrollView.titleLabelTextFont = UIFont.systemFont(ofSize: 15)
             self.cycleScrollView.titleLabelBackgroundColor = UIColor.clear
         }
@@ -117,7 +117,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func superNodeAction(_ sender: Any) {
-        ViewManager.showNotice("待开发中，敬请期待")
+        ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
     }
     @IBAction func moreAction(_ sender: Any) {
         let vc = VIPNotificationViewController()
@@ -130,6 +130,12 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
             block()
         }
     }
+    
+    lazy var maskView: UIView = {
+        let v = UIView(frame: UIScreen.main.bounds)
+        v.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.4)
+        return v
+    }()
     
     var vm = VIPHomeVM()
     
@@ -152,8 +158,58 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
             self.requestData()
         })
         
-        
-        //self.requestData()
+        if UserManager.manager.isLogin {
+            let v = VIPVersionVM()
+            v.version { (_, msg, isSuc) in
+                
+                if isSuc && v.versionEntity.ios_version != Bundle.main.version {
+                    let storyboard = UIStoryboard(name: "My", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "versionAlert") as! VIPVersionAlertController
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.entity = v.versionEntity
+                    
+                    let window = UIWindow()
+                    window.frame = UIScreen.main.bounds
+                    window.windowLevel = UIWindow.Level.alert + 1
+                    window.backgroundColor = UIColor.clear
+                    window.isHidden = false
+                    let root = UIViewController()
+                    root.view.backgroundColor = UIColor.clear
+                    window.rootViewController = root
+                    
+                    vc.callBackBlock = { isDownload in
+                        window.isHidden = true
+                        if let _ = self.maskView.superview {
+                            self.maskView.removeFromSuperview()
+                        }
+                        if isDownload {
+                            guard
+                                let text = v.versionEntity.ios_url,
+                                let url = URL(string: text) else {
+                                    return
+                            }
+                            if UIApplication.shared.canOpenURL(url) {
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(url, options: [:]) { (isTrue) in
+                                        
+                                    }
+                                } else {
+                                    UIApplication.shared.openURL(url)
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                    window.rootViewController?.view.addSubview(self.maskView)
+                    window.rootViewController?.present(vc, animated: true, completion:{
+                        //self.maskView.alpha = 1
+                    })
+                    
+                }
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -183,14 +239,14 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
             self.tableView.mj_header.endRefreshing()
             if isSuc {
                 self.totalPropertyLabel.text = String(format: "%.2f", self.vm.homeEntity.total_number)
-                self.todayIncomeLabel.text = String(format: "今日收益：%.8f VIT", self.vm.homeEntity.today_vit_number)
+                self.todayIncomeLabel.text = String(format: "\(LocalizedString(key: "Home_earningsToday"))：%.8f VIT", self.vm.homeEntity.today_vit_number)
                 
                 
                 self.cycleScrollView.isHidden = false
                 self.cycleScrollView.autoScrollTimeInterval = 3
                 self.cycleScrollView.scrollDirection = .vertical
                 self.cycleScrollView.onlyDisplayText = true
-                self.cycleScrollView.titleLabelTextColor = JXBlueColor
+                self.cycleScrollView.titleLabelTextColor = JXGrayTextColor
                 self.cycleScrollView.titleLabelTextFont = UIFont.systemFont(ofSize: 15)
                 self.cycleScrollView.titleLabelBackgroundColor = UIColor.clear
                 self.cycleScrollView.titlesGroup = self.vm.homeEntity.contentList
@@ -209,13 +265,12 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         if entity.content_type == 1 {
             let storyboard = UIStoryboard(name: "My", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "notification_text") as! VIPNotificationTextController
-            vc.title = "通知中心"
             vc.entity = entity
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = VIPWebViewController()
-            vc.title = entity.title_zh//self.homeVM.homeEntity.notice.title
+            vc.title = entity.title
             vc.urlStr = entity.link
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -250,10 +305,9 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        ViewManager.showNotice("indexPath.row")
         let entity = self.vm.homeEntity.list[indexPath.row]
 
         let vc  = VIPPropertyViewController()

@@ -20,15 +20,15 @@ class VIPIncomRecordsCell: UITableViewCell {
             self.timeLabel.text = entity?.create_time
             //1:合约收益 2：分享收益 3：分享收益 4社区收益 5：平级收益
             if entity?.type == 1 {
-                self.typeLabel.text = "合约收益"
+                self.typeLabel.text = LocalizedString(key: "My_contractGains")
             } else if entity?.type == 2 {
-                self.typeLabel.text = "分享收益"
+                self.typeLabel.text = LocalizedString(key: "My_sharedProfit")
             } else if entity?.type == 3 {
-                self.typeLabel.text = "分享收益"
+                self.typeLabel.text = LocalizedString(key: "My_sharedProfit")
             } else if entity?.type == 4 {
-                self.typeLabel.text = "社区收益"
+                self.typeLabel.text = LocalizedString(key: "My_communityBenefits")
             } else if entity?.type == 5 {
-                self.typeLabel.text = "平级收益"
+                self.typeLabel.text = LocalizedString(key: "My_levelIncome")
             }
         }
     }

@@ -42,7 +42,7 @@ class VIPHomeVM: NSObject {
                     let entity = VIPNoticesCellEntity()
                     entity.setValuesForKeys(notices[i])
                     self.homeEntity.noticeList.append(entity)
-                    self.homeEntity.contentList.append(entity.content_zh ?? "")
+                    self.homeEntity.contentList.append(entity.content ?? "")
                 }
             }
             

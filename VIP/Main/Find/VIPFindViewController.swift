@@ -30,6 +30,8 @@ class VIPFindViewController: VIPTableViewController{
             self.requestData()
         })
         self.tableView.mj_header.beginRefreshing()
+        
+        //self.tableView.bounces = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,9 +80,54 @@ class VIPFindViewController: VIPTableViewController{
                 let vc = storyboard.instantiateViewController(withIdentifier: "financialManagement") as! VIPFinancialManagementController
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
+                
             }
             cell.developBlock = {
-                ViewManager.showNotice("待开发中，敬请期待")
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+            }
+      
+            cell.netnoteBlock = {
+                let vc = VIPWebViewController()
+                vc.title = "Netnote"
+                vc.urlStr = "https://www.netnote.app"
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.foreignExchangeBlock = {
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+//                let vc = VIPWebViewController()
+//                vc.title = LocalizedString(key: "Find_foreignExchange")
+//                vc.urlStr = "https://www.myfxbook.com/members/MCCROBOTS/mccea40/3307015"
+//                vc.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.fundBlock = {
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+//                let vc = VIPWebViewController()
+//                vc.title = LocalizedString(key: "Find_fund")
+//                vc.urlStr = "https://us.dimensional.com/funds"
+//                vc.hidesBottomBarWhenPushed = true
+//                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.insuranceBlock = {
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+            }
+            cell.negotiableSecuritiesBlock = {
+                ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward to it."))
+            }
+            cell.btcBlock = {
+                let vc = VIPWebViewController()
+                vc.title = "BTC"
+                vc.urlStr = "https://btc.com"
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.ethBlock = {
+                let vc = VIPWebViewController()
+                vc.title = "ETH"
+                vc.urlStr = "https://etherscan.com"
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
         } else {
@@ -92,7 +139,7 @@ class VIPFindViewController: VIPTableViewController{
             return cell
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         

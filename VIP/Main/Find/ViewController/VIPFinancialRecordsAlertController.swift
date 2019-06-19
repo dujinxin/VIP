@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import JXFoundation
 
 class VIPFinancialRecordsAlertController: VIPBaseViewController {
 
+    @IBOutlet weak var mainScrollView: UIScrollView!{
+        didSet{
+            self.mainScrollView.isScrollEnabled = false
+        }
+    }
+    @IBOutlet weak var contentView: UIView!{
+        didSet{
+            //self.contentView.isHidden = true
+        }
+    }
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!{
@@ -30,6 +42,19 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
     
     @IBOutlet weak var noticeLabel: UILabel!
     
+    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [self.psdTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXGrayTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
+        k.textFieldDelegate = self
+        return k
+    }()
+    
     var entity : VIPFinancialRecordsListEntity?
     var titleStr = ""
     var vm = VIPFinancialVM()
@@ -40,10 +65,22 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
         
         self.view.backgroundColor = UIColor.clear
         
+        if #available(iOS 11.0, *) {
+            self.mainScrollView.contentInsetAdjustmentBehavior = .never
+            
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        self.view.addSubview(self.keyboard)
+        
         self.titleLabel.text = self.titleStr
         self.totalCastLabel.text = "\(self.entity?.contract_price ?? 0)"
         self.totalIncomeLabel.text = "\(self.entity?.bonus_price ?? 0)"
         self.interestIncomeLabel.text = "\(self.entity?.deduct_price ?? 0)"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     override func isCustomNavigationBarUsed() -> Bool {
         return false
@@ -56,7 +93,11 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
     }
     @IBAction func confirmAction(_ sender: UIButton) {
         guard let psd = self.psdTextField.text,psd.isEmpty == false else {
-            ViewManager.showNotice("请输入密码")
+            ViewManager.showNotice(LocalizedString(key: "Notice_inputPassword"))
+            return
+        }
+        guard psd.count == 6 else {
+            ViewManager.showNotice(LocalizedString(key: "Notice_passwordError"))
             return
         }
         guard let id = self.entity?.id else { return }
@@ -75,4 +116,61 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
         
     }
     
+}
+extension VIPFinancialRecordsAlertController: JXKeyboardTextFieldDelegate {
+    func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == psdTextField {
+            textField.resignFirstResponder()
+            return true
+        }
+        return true
+    }
+    
+    func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            return true
+        }
+        if textField == psdTextField  {
+            if range.location > 5 {
+                return false
+            }
+        }
+        return true
+    }
+    @objc func textChange(notify: NSNotification) {
+        
+    }
+    @objc func keyboardWillShow(notify:Notification) {
+        
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        
+        //print(rect)//226
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.mainScrollView.contentOffset = CGPoint(x: 0, y: 160)
+            
+        }) { (finish) in
+            //
+        }
+    }
+    @objc func keyboardWillHide(notify:Notification) {
+        print("notify = ","notify")
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.mainScrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }) { (finish) in
+            
+        }
+    }
 }

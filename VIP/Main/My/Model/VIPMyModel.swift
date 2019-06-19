@@ -15,4 +15,5 @@ class VIPMyModel: VIPBaseModel {
     @objc var invitation_code : String?
     
     @objc var level : Int = 0
+    @objc var status : Int = 0
 }

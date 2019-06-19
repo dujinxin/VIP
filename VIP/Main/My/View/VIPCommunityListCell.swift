@@ -21,13 +21,13 @@ class VIPCommunityListCell: UITableViewCell {
     
     @IBOutlet weak var topBgView: UIView!{
         didSet{
-            self.topBgView.backgroundColor = UIColor.rgbColor(rgbValue: 0xeff3f8)
+            self.topBgView.backgroundColor = JXCyanColor
             self.topBgView.layer.cornerRadius = 10
         }
     }
     @IBOutlet weak var bgView: UIView!{
         didSet{
-            self.bgView.backgroundColor = JXCyanColor
+            self.bgView.backgroundColor = JXFfffffColor
             self.bgView.layer.cornerRadius = 10
         }
     }
@@ -51,10 +51,22 @@ class VIPCommunityListCell: UITableViewCell {
             self.nickNameLabel.text = entity?.name
             self.communityValueLabel.text = "\(entity?.team_market_value ?? 0)"
             self.availalbeAccountLabel.text = "\(entity?.valid_count ?? 0)"
-            if let level = entity?.level, level > 0 {
-                self.statusImageView.image = UIImage(named: "available")
+            if LanaguageManager.shared.type == .chinese {
+                if entity?.status == 0 {
+                    self.statusImageView.image = UIImage(named: "unavailable_c")
+                } else if entity?.status == 1 {
+                    self.statusImageView.image = UIImage(named: "available_c")
+                } else if entity?.status == 2 {
+                    self.statusImageView.image = UIImage(named: "qualified_c")
+                }
             } else {
-                self.statusImageView.image = UIImage(named: "unavailable")
+                if entity?.status == 0 {
+                    self.statusImageView.image = UIImage(named: "unavailable_e")
+                } else if entity?.status == 1 {
+                    self.statusImageView.image = UIImage(named: "available_e")
+                } else if entity?.status == 2 {
+                    self.statusImageView.image = UIImage(named: "qualified_e")
+                }
             }
             switch entity?.level {
             case 1:

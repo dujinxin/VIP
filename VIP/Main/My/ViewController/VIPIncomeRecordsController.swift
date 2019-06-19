@@ -18,7 +18,7 @@ class VIPIncomeRecordsController: VIPTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = LocalizedString(key: "收益明细")
+        self.title = LocalizedString(key: "My_incomeDetail")
         
         
         self.tableView.separatorStyle = .none
@@ -61,7 +61,7 @@ class VIPIncomeRecordsController: VIPTableViewController {
                         l.textColor = JXGrayTextColor
                     }
                 })
-                self.defaultInfo = ["imageName":"noneImage","content":"暂无相关数据"]
+                self.defaultInfo = ["imageName":"noneImage","content":LocalizedString(key: "No relevant data available")]
                 self.setUpDefaultView()
                 self.defaultView.frame = self.tableView.frame
             }
@@ -88,7 +88,7 @@ class VIPIncomeRecordsController: VIPTableViewController {
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     

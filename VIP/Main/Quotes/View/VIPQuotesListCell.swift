@@ -22,7 +22,7 @@ class VIPQuotesListCell: UITableViewCell {
     }
     @IBOutlet weak var coinImageView: UIImageView!{
         didSet{
-            //self.coinImageView.textColor = JXFfffffColor
+            self.coinImageView.backgroundColor = UIColor.clear
             self.coinImageView.layer.cornerRadius = 25.0
             coinImageView.layer.masksToBounds = true
         }

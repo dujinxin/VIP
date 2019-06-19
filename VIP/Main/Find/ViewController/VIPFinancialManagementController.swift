@@ -20,7 +20,7 @@ class VIPFinancialManagementController: VIPTableViewController {
     }
     @IBOutlet weak var contentView: UIView!{
         didSet{
-            self.contentView.isHidden = true
+            self.contentView.isHidden = false
         }
     }
     
@@ -47,12 +47,12 @@ class VIPFinancialManagementController: VIPTableViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.title = LocalizedString(key: "理财")
+        self.title = LocalizedString(key: "Finance")
         
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
             //button.backgroundColor = UIColor.lightGray
-            button.setTitle("理财记录", for: .normal)
+            button.setTitle(LocalizedString(key: "Find_financialRecords"), for: .normal)
             button.setImage(UIImage(named: "financialRecords"), for: .normal)
             button.setTitleColor(JXBlueColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -65,11 +65,16 @@ class VIPFinancialManagementController: VIPTableViewController {
         
         self.tableView.removeFromSuperview()
         self.contentView.addSubview(self.tableView)
-        self.tableView.frame = CGRect(x: 10, y: kNavStatusHeight + 10 + 130, width: kScreenWidth - 20, height: kScreenHeight - kNavStatusHeight - 140)
+        self.tableView.isHidden = true
+        
+        let height = (kScreenWidth - 20) * 106.0 / 355.0
+        print("height ", height)
+        self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight + 10 + height + 40, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - 10 - height - 40)
         self.tableView.backgroundColor = JXFfffffColor
         self.tableView.separatorStyle = .none
-        self.tableView.estimatedRowHeight = 82
+        self.tableView.estimatedRowHeight = 183
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.backgroundColor = JXViewBgColor
         
         //self.tableView.register(UINib(nibName: "VIPFinancialAccountHeadCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierHeader)
         self.tableView.register(UINib(nibName: "VIPFinancialListCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCell)
@@ -94,7 +99,23 @@ class VIPFinancialManagementController: VIPTableViewController {
                 self.contentView.isHidden = false
                 self.totalNumLabel.text = "\(self.vm.financialEntity.invest_sum)"
                 self.totalValueLabel.text = "\(self.vm.financialEntity.profit_sum)"
-                self.tableView.reloadData()
+                
+                if self.vm.financialEntity.list.count > 0 {
+                    self.tableView.isHidden = false
+                    self.tableView.reloadData()
+                } else {
+                    
+                    self.defaultView.backgroundColor = UIColor.clear
+                    self.defaultView.subviews.forEach({ (v) in
+                        v.backgroundColor = UIColor.clear
+                        if let l = v as? UILabel {
+                            l.textColor = JXGrayTextColor
+                        }
+                    })
+                    self.defaultInfo = ["imageName":"noneImage","content":LocalizedString(key: "No relevant data available")]
+                    self.setUpDefaultView()
+                    self.defaultView.frame = self.tableView.frame
+                }
             } else {
                 ViewManager.showNotice(msg)
             }
@@ -124,7 +145,7 @@ class VIPFinancialManagementController: VIPTableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPFinancialListCell
             let entity = self.vm.financialEntity.list[indexPath.row]
             cell.accountLabel.text = entity.level_name
-            cell.limitLabel.text = "金额($\(entity.min_money)-$\(entity.max_money))"
+            cell.limitLabel.text = "\(LocalizedString(key: "Find_amount"))($\(entity.min_money)-$\(entity.max_money))"
 //            cell.joinBlock = {
 //                //                let storyboard = UIStoryboard(name: "Find", bundle: nil)
 //                //                let vc = storyboard.instantiateViewController(withIdentifier: "financialManagement") as! VIPFinancialManagementController
@@ -135,9 +156,10 @@ class VIPFinancialManagementController: VIPTableViewController {
 //        }
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = VIPFinancialAccountController()
+        let storyboard = UIStoryboard(name: "Find", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "financialAccount") as! VIPFinancialAccountController
         let entity = self.vm.financialEntity.list[indexPath.row]
         vc.accountEntity = entity
         self.navigationController?.pushViewController(vc, animated: true)

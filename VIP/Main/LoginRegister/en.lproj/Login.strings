@@ -12,7 +12,7 @@
 "Duc-An-D0E.normalTitle" = "去注册";
 
 /* Class = "UILabel"; text = "语言选择"; ObjectID = "EYX-Xa-VTq"; */
-"EYX-Xa-VTq.text" = "语言选择";
+"EYX-Xa-VTq.text" = "Language";
 
 /* Class = "UITextField"; placeholder = "重复输入密码"; ObjectID = "Eh1-Xp-lDI"; */
 "Eh1-Xp-lDI.placeholder" = "重复输入密码";
@@ -72,10 +72,10 @@
 "tOc-Dd-fcP.text" = "已注册？";
 
 /* Class = "UILabel"; text = "简体中文"; ObjectID = "wZW-Cf-lKT"; */
-"wZW-Cf-lKT.text" = "简体中文";
+"wZW-Cf-lKT.text" = "Chinese";
 
 /* Class = "UIButton"; normalTitle = "取消"; ObjectID = "xHc-Hu-cM8"; */
-"xHc-Hu-cM8.normalTitle" = "取消";
+"xHc-Hu-cM8.normalTitle" = "Cancel";
 
 /* Class = "UIButton"; normalTitle = "确定"; ObjectID = "zJc-Ey-NkL"; */
-"zJc-Ey-NkL.normalTitle" = "确定";
+"zJc-Ey-NkL.normalTitle" = "OK";

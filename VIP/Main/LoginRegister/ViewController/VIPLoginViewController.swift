@@ -16,7 +16,7 @@ class VIPLoginViewController: VIPBaseViewController {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
-            self.topConstraint.constant = kNavStatusHeight
+            self.topConstraint.constant = 0
         }
     }
     @IBOutlet weak var itemTopConstraint: NSLayoutConstraint!{
@@ -63,9 +63,7 @@ class VIPLoginViewController: VIPBaseViewController {
     }
     
     var vm = VIPLoginRegisterVM()
-    
-    var isCounting: Bool = false
-    
+ 
     
     lazy var keyboard: JXKeyboardToolBar = {
         let k = JXKeyboardToolBar(frame: CGRect(), views: [self.phoneTextField,self.loginPsdTextField])
@@ -120,7 +118,9 @@ class VIPLoginViewController: VIPBaseViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     @IBAction func switchLanguage(_ sender: Any) {
         self.view.endEditing(true)
         
@@ -165,11 +165,11 @@ class VIPLoginViewController: VIPBaseViewController {
     @IBAction func logAction(_ sender: Any) {
     
         guard let user = self.phoneTextField.text, user.count >= 5  else {
-            ViewManager.showNotice("名称需要设置5位以上！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_nameError"))
             return
         }
         guard let password = self.loginPsdTextField.text, password.count >= 6 else {
-            ViewManager.showNotice("登录密码需要设置6位以上！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_passwordError"))
             return
         }
 

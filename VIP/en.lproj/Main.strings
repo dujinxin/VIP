@@ -1,12 +1,33 @@
 
 /* Class = "UITabBarItem"; title = "行情"; ObjectID = "46X-66-Uka"; */
-"46X-66-Uka.title" = "quotes";
+"46X-66-Uka.title" = "行情";
+
+/* Class = "UIButton"; normalTitle = "超级节点"; ObjectID = "8gM-l3-5BH"; */
+"8gM-l3-5BH.normalTitle" = "超级节点";
+
+/* Class = "UILabel"; text = "10000.21"; ObjectID = "Asr-I2-2yn"; */
+"Asr-I2-2yn.text" = "10000.21";
+
+/* Class = "UILabel"; text = "首页"; ObjectID = "Jri-do-VS3"; */
+"Jri-do-VS3.text" = "首页";
 
 /* Class = "UITabBarItem"; title = "我的"; ObjectID = "KrD-fP-ipK"; */
-"KrD-fP-ipK.title" = "my";
+"KrD-fP-ipK.title" = "我的";
+
+/* Class = "UILabel"; text = "总资产（USD）"; ObjectID = "LOb-r4-l3P"; */
+"LOb-r4-l3P.text" = "Total assets(USD)";
 
 /* Class = "UITabBarItem"; title = "发现"; ObjectID = "TdX-Nx-g5F"; */
-"TdX-Nx-g5F.title" = "find";
+"TdX-Nx-g5F.title" = "发现";
 
 /* Class = "UITabBarItem"; title = "首页"; ObjectID = "Zno-uE-06t"; */
-"Zno-uE-06t.title" = "home";
+"Zno-uE-06t.title" = "首页";
+
+/* Class = "UIButton"; normalTitle = "理财"; ObjectID = "gHP-uJ-fsg"; */
+"gHP-uJ-fsg.normalTitle" = "理财";
+
+/* Class = "UILabel"; text = "今日收益：10 VIT"; ObjectID = "h58-3a-dYr"; */
+"h58-3a-dYr.text" = "今日收益：10 VIT";
+
+/* Class = "UIButton"; normalTitle = "更多"; ObjectID = "sRF-r5-vhY"; */
+"sRF-r5-vhY.normalTitle" = "More";

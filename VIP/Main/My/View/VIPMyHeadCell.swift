@@ -18,14 +18,25 @@ class VIPMyHeadCell: UITableViewCell {
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    
+    @IBOutlet weak var statusBgView: UIView!{
+        didSet{
+            self.statusBgView.layer.cornerRadius = 5
+            self.statusBgView.layer.borderColor = UIColor.rgbColor(rgbValue: 0x57abff).cgColor
+            self.statusBgView.layer.borderWidth = 1
+        }
+    }
+    @IBOutlet weak var statusLabel: UILabel!{
+        didSet{
+            self.statusLabel.textColor = UIColor.rgbColor(rgbValue: 0x57abff)
+            
+        }
+    }
     @IBOutlet weak var promotionImageView: UIImageView!{
         didSet{
             self.promotionImageView.isUserInteractionEnabled = true
             self.promotionImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(promotionAction)))
         }
     }
-    @IBOutlet weak var promotionLabel: UILabel!
     
     @IBOutlet weak var star1ImageView: UIImageView!
     @IBOutlet weak var star2ImageView: UIImageView!
@@ -43,7 +54,14 @@ class VIPMyHeadCell: UITableViewCell {
             } else {
                 self.nickNameLabel.text = UserManager.manager.userEntity.username
             }
-            
+      
+            if entity?.status == 0 {
+                self.statusLabel.text = LocalizedString(key: "My_notActive")
+            } else if entity?.status == 1 {
+                self.statusLabel.text = LocalizedString(key: "My_effective")
+            } else if entity?.status == 2 {
+                self.statusLabel.text = LocalizedString(key: "My_qualified")
+            }
             switch entity?.level {
             case 1:
                 self.star1ImageView.isHidden = false

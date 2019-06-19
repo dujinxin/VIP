@@ -40,8 +40,8 @@ class VIPExRecordsDetailController: VIPBaseViewController {
         
         self.view.backgroundColor = JXViewBgColor
         
-        self.title = "记录详情"
-        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
+        self.title = LocalizedString(key: "Home_recordDetails")
+        //self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
 
         self.numTitleLabel.text = self.entity.l_currency_name
         self.numLabel.text = "\(self.entity.l_currency_qty)"
@@ -52,7 +52,7 @@ class VIPExRecordsDetailController: VIPBaseViewController {
         self.priceNumTitleLabel.text = self.entity.r_currency_name
         self.priceNumLabel.text = "$\(self.entity.r_currency_price)"
         self.orderLabel.text = self.entity.order_no
-        self.statusLabel.text = "已完成"
+        self.statusLabel.text = LocalizedString(key: "Find_completed")
         self.timeLabel.text = self.entity.create_time
         
     }

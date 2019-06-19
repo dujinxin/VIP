@@ -8,6 +8,7 @@
 
 import UIKit
 import JXFoundation
+import MJRefresh
 
 class VIPPromotionViewController: VIPBaseViewController {
     
@@ -16,7 +17,7 @@ class VIPPromotionViewController: VIPBaseViewController {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
-            self.topConstraint.constant = kNavStatusHeight + 10
+            self.topConstraint.constant = kNavStatusHeight
         }
     }
     
@@ -31,6 +32,7 @@ class VIPPromotionViewController: VIPBaseViewController {
     @IBOutlet weak var copyButton: UIButton!
     
     var entity : VIPPromotionModel!
+    var vm = VIPPromotionVM()
     
     
     override func viewDidLoad() {
@@ -40,6 +42,31 @@ class VIPPromotionViewController: VIPBaseViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        
+        self.updateValues()
+        
+        self.mainScrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestData()
+        })
+     
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    override func requestData() {
+        self.vm.promotion { (_, msg, isSuc) in
+            self.mainScrollView.mj_header.endRefreshing()
+            if isSuc {
+                self.entity = self.vm.promotionEntity
+                self.updateValues()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        }
+    }
+    func updateValues() {
         self.inviteNumLabel.text = "\(self.entity.invent_counts)"
         self.validAccountLabel.text = "\(self.entity.valid_count)"
         self.personalPerformanceLabel.text = "\(self.entity.user_price)"
@@ -47,22 +74,16 @@ class VIPPromotionViewController: VIPBaseViewController {
         self.inviteCodeLabel.text = self.entity.invitation_code
         
         self.codeImageView.image = self.code(self.entity.invent_url ?? "")
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     @IBAction func copyCodeAction(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = self.inviteCodeLabel.text
-        ViewManager.showNotice("已复制")
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
     }
     @IBAction func copyUrlAction(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = self.entity.invent_url
-        ViewManager.showNotice("已复制")
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
        
     }
     func code(_ string:String) -> UIImage {

@@ -25,9 +25,9 @@ class VIPQuotesViewController: VIPTableViewController {
         self.view.backgroundColor = JXFfffffColor
         
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 68, height: 30))
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
             button.backgroundColor = JXCyanColor
-            button.setTitle("兑换", for: .normal)
+            button.setTitle(LocalizedString(key: "Exchange"), for: .normal)
             button.setImage(UIImage(named: "exchange"), for: .normal)
             button.setTitleColor(JXBlueColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -131,35 +131,35 @@ class VIPQuotesViewController: VIPTableViewController {
         }
     }
     // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let bgView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
         bgView.backgroundColor = JXViewBgColor
 
         let leftLabel = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 44))
         leftLabel.textColor = JXGrayTextColor
         leftLabel.textAlignment = .left
-        leftLabel.text = "币种"
+        leftLabel.text = LocalizedString(key: "Quotes_currency")
         leftLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(leftLabel)
 
-        let rightLabel = UILabel(frame: CGRect(x: bgView.jxWidth - 70, y: 0, width: 60, height: 44))
+        let rightLabel = UILabel(frame: CGRect(x: bgView.jxWidth - 130, y: 0, width: 120, height: 44))
         rightLabel.textColor = JXGrayTextColor
         rightLabel.textAlignment = .right
-        rightLabel.text = "涨跌幅"
+        rightLabel.text = LocalizedString(key: "Quotes_upAndDown")
         rightLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(rightLabel)
-
-        let centerLabel = UILabel(frame: CGRect(x: leftLabel.jxRight, y: 0, width: bgView.jxWidth - 20 - 37 - leftLabel.jxWidth - rightLabel.jxWidth, height: 44))
+  
+        let centerLabel = UILabel(frame: CGRect(x: leftLabel.jxRight, y: 0, width: bgView.jxWidth - 20 - leftLabel.jxWidth - rightLabel.jxWidth, height: 44))
         centerLabel.textColor = JXGrayTextColor
         centerLabel.textAlignment = .right
-        centerLabel.text = "最新价"
+        centerLabel.text = LocalizedString(key: "Quotes_latestPrice")
         centerLabel.font = UIFont.systemFont(ofSize: 15)
         bgView.addSubview(centerLabel)
 
         return bgView
 
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -183,19 +183,19 @@ class VIPQuotesViewController: VIPTableViewController {
         return cell
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row < 2 {
-            let vc  = VIPPropertyViewController()
-            vc.title = "vip"
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
-            let nvc = VIPNavigationController(rootViewController: vc)
-            self.present(nvc, animated: true, completion: nil)
-        }
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.row < 2 {
+//            let vc  = VIPPropertyViewController()
+//            vc.title = "vip"
+//            vc.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        } else {
+//            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "login") as! VIPLoginViewController
+//            let nvc = VIPNavigationController(rootViewController: vc)
+//            self.present(nvc, animated: true, completion: nil)
+//        }
+//
     }
     
 }

@@ -36,7 +36,7 @@
 "QKo-0p-aro.normalTitle" = "语言";
 
 /* Class = "UILabel"; text = "English"; ObjectID = "Ql6-hY-OVU"; */
-"Ql6-hY-OVU.text" = "English";
+"Ql6-hY-OVU.text" = "英语";
 
 /* Class = "UITextField"; placeholder = "重复登录密码"; ObjectID = "S9h-np-EDG"; */
 "S9h-np-EDG.placeholder" = "重复登录密码";

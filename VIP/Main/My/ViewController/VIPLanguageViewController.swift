@@ -9,8 +9,8 @@
 import UIKit
 
 class VIPLanguageViewController: VIPTableViewController{
-    
-    var actionArray = ["简体中文","English"]
+
+    var actionArray = [LocalizedString(key: "My_chinese"),LocalizedString(key: "My_english")]
     
     var selectedRow : Int = 0
     var currentRow : Int = 0
@@ -57,13 +57,13 @@ class VIPLanguageViewController: VIPTableViewController{
             self.navigationController?.popViewController(animated: true)
         }
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
         v.backgroundColor = JXEeeeeeColor//JXViewBgColor
         return UIView()
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,7 +86,7 @@ class VIPLanguageViewController: VIPTableViewController{
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         selectedRow = indexPath.section

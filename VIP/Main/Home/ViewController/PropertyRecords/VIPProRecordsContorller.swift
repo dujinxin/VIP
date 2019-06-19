@@ -28,15 +28,19 @@ class VIPProRecordsContorller: VIPTableViewController {
     }()
     var refreshBlock: ((_ vm: VIPPropertyVM) -> ())?
     
+    var scrollViewDidScrollBlock: ((_ scrollView: UIScrollView) -> ())?
+    var scrollViewDidEndDeceleratingBlock: ((_ scrollView: UIScrollView) -> ())?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        let headViewHeight : CGFloat = 100 + 15 + 50 + 30 + 40 + 30 + 10 + 44
+        let headViewHeight : CGFloat = 162 + 20 + 50 + 24 + 40 + 30 + 10 + 44
         let rect = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - headViewHeight)
         self.tableView.frame = rect
         self.tableView.register(UINib(nibName: "VIPPropertyCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 135
+        self.tableView.showsVerticalScrollIndicator = false
         
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.page = 1
@@ -74,7 +78,7 @@ class VIPProRecordsContorller: VIPTableViewController {
                         l.textColor = JXGrayTextColor
                     }
                 })
-                self.defaultInfo = ["imageName":"noneImage","content":"暂无相关数据"]
+                self.defaultInfo = ["imageName":"noneImage","content":LocalizedString(key: "No relevant data available")]
                 self.setUpDefaultView()
                 self.defaultView.frame = self.tableView.frame
             }
@@ -115,11 +119,23 @@ extension VIPProRecordsContorller {
         return cell
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "propertyDetail") as! VIPProDetailViewController
         let entity = self.vm.propertyEntity.recordList[indexPath.row]
         vc.entity = entity
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension VIPProRecordsContorller {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let block = self.scrollViewDidScrollBlock {
+            block(scrollView)
+        }
+    }
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let block = self.scrollViewDidEndDeceleratingBlock {
+            block(scrollView)
+        }
     }
 }

@@ -7,21 +7,18 @@
 //
 
 import UIKit
+import JXFoundation
 
 class VIPTransferViewController: VIPBaseViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
-            self.topConstraint.constant = kNavStatusHeight + 20
+            self.topConstraint.constant = kNavStatusHeight
         }
     }
     
     @IBOutlet weak var scrollView: UIScrollView!{
         didSet{
-            if #available(iOS 11.0, *) {
-                self.scrollView.contentInsetAdjustmentBehavior = .never
-            } else {
-                self.automaticallyAdjustsScrollViewInsets = false
-            }
+            self.scrollView.isScrollEnabled = false
         }
     }
     @IBOutlet weak var numLabel: UILabel!
@@ -34,12 +31,28 @@ class VIPTransferViewController: VIPBaseViewController {
     }
     @IBOutlet weak var valueLabel: UILabel!
     
-    @IBOutlet weak var toAddressTextField: UITextField!
+    @IBOutlet weak var toAddressTextField: UITextField!{
+        didSet{
+            
+        }
+    }
     @IBOutlet weak var fromAddressLabel: UILabel!
     @IBOutlet weak var scanButton: UIButton!
     
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
+    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [self.numTextFeild,self.toAddressTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXGrayTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
+        k.textFieldDelegate = self
+        return k
+    }()
     
     var entity : VIPPropertyModel?
     var vm = VIPPropertyVM()
@@ -48,38 +61,30 @@ class VIPTransferViewController: VIPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "\(self.entity?.coinEntity?.short_name ?? "")转账"
-        self.numLabel.text = "\(self.entity?.coinEntity?.short_name ?? "")余额：\(self.entity?.walletEntity?.available_qty ?? 0)"
+        if #available(iOS 11.0, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        self.view.addSubview(self.keyboard)
+        
+        self.title = "\(self.entity?.coinEntity?.short_name ?? "") \(LocalizedString(key: "Exchange"))"
+        self.numLabel.text = "\(self.entity?.coinEntity?.short_name ?? "") \(LocalizedString(key: "Balance"))：\(self.entity?.walletEntity?.available_qty ?? 0)"
         self.valueLabel.text = "≈ $0.00"
+        if LanaguageManager.shared.type == .chinese {
+            self.toAddressTextField.placeholder = LocalizedString(key: "请输入（ \(self.entity?.coinEntity?.short_name ?? "")）地址")
+        } else {
+            self.toAddressTextField.placeholder = LocalizedString(key: "Input address(\(self.entity?.coinEntity?.short_name ?? ""))")
+        }
         self.fromAddressLabel.text = self.entity?.coinEntity?.deposit_address
-        self.rateLabel.text = "矿工费：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
+        self.rateLabel.text = "\(LocalizedString(key: "Home_absenceFee"))：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    @objc func textChange(notify: NSNotification) {
-        
-        if let textField = notify.object as? UITextField, textField == self.numTextFeild {
-            if
-                let text = textField.text, text.isEmpty == false,
-                let num = Double(text), num > 0 {
-                
-                self.valueLabel.text = "≈ $\(num * (self.entity?.walletEntity!.available_qty)!)"
-                
-                //                self.confirmButton.isEnabled = true
-                //                self.confirmButton.backgroundColor = JXMainColor
-                
-            } else {
-                self.valueLabel.text = "≈ $\(0.00)"
-                
-                //                self.confirmButton.isEnabled = false
-                //                self.confirmButton.backgroundColor = JXlightBlueColor
-                
-            }
-        }
-    }
+    
     
     @IBAction func allAction(_ sender: UIButton) {
         self.numTextFeild.text = "\(self.entity?.walletEntity?.available_qty ?? 0)"
@@ -104,9 +109,9 @@ class VIPTransferViewController: VIPBaseViewController {
         let alertVC = UIAlertController(title: nil, message: "", preferredStyle: .alert)
         //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
         alertVC.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "请输入交易密码"
+            textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
         })
-        alertVC.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
             
             guard
                 let textField = alertVC.textFields?[0],
@@ -128,10 +133,81 @@ class VIPTransferViewController: VIPBaseViewController {
                 }
             })
         }))
-        alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
         }))
         
         self.present(alertVC, animated: true, completion: nil)
         
+    }
+}
+extension VIPTransferViewController: JXKeyboardTextFieldDelegate {
+    func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == numTextFeild {
+            self.toAddressTextField.becomeFirstResponder()
+            return false
+        } else if textField == toAddressTextField {
+            textField.resignFirstResponder()
+            return true
+        }
+        return true
+    }
+    
+    func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            return true
+        }
+        
+        if textField == numTextFeild, let text = textField.text, let num = Double(text), num >= self.entity!.walletEntity!.available_qty  {
+            
+            return false
+        }
+
+        return true
+    }
+    @objc func textChange(notify: NSNotification) {
+        
+        if let textField = notify.object as? UITextField, textField == self.numTextFeild {
+            if
+                let text = textField.text, text.isEmpty == false,
+                let num = Double(text), num > 0 {
+                
+                self.valueLabel.text = "≈ $\(num * (self.entity?.walletEntity!.available_qty)!)"
+            } else {
+                self.valueLabel.text = "≈ $\(0.00)"
+            }
+        }
+    }
+    @objc func keyboardWillShow(notify:Notification) {
+        
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        
+        //print(rect)//226
+        UIView.animate(withDuration: animationDuration, animations: {
+            //self.mainScrollView.contentOffset = CGPoint(x: 0, y: 160)
+            
+        }) { (finish) in
+            //
+        }
+    }
+    @objc func keyboardWillHide(notify:Notification) {
+        print("notify = ","notify")
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        UIView.animate(withDuration: animationDuration, animations: {
+            //self.mainScrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }) { (finish) in
+            
+        }
     }
 }

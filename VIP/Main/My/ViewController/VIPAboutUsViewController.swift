@@ -15,16 +15,35 @@ class VIPAboutUsViewController: VIPBaseViewController {
             self.topConstraint.constant = kNavStatusHeight + 10
         }
     }
-    @IBOutlet weak var weChatImageView: UIImageView!
-    @IBOutlet weak var weChatLabel: UILabel!
+
+    @IBOutlet weak var weChatLabel: UILabel!{
+        didSet{
+            self.weChatLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUrl)))
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.weChatLabel.text = "vibvib"
-        self.weChatImageView.image = self.code("vibvib")
+        //self.weChatLabel.text = "官网网站"
+
     }
-    
+    @objc func openUrl() {
+        guard
+            let text = self.weChatLabel.text,
+            let url = URL(string: text) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:]) { (isTrue) in
+                    
+                }
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
 
     func code(_ string:String) -> UIImage {
         //二维码滤镜

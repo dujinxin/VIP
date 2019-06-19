@@ -40,7 +40,7 @@ class VIPFinancialProgramRecordsListEntity: VIPFinancialListEntity {
 }
 //理财计划
 class VIPFinancialProgramEntity: VIPBaseModel {
-    @objc var invest_money : Float = 0
+    @objc var invest_money : Double = 0
     var list = Array<VIPFinancialProgramListEntity>()
 }
 

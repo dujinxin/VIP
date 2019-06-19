@@ -9,8 +9,8 @@
 import UIKit
 
 class VIPSafetyViewController: VIPTableViewController{
-    
-    var actionArray = ["导出私钥","备份助记词","修改登录密码","修改交易密码"]
+
+    var actionArray = [LocalizedString(key: "My_exportPrivateKey"),LocalizedString(key: "My_backupMnemonics"),LocalizedString(key: "My_modifyLoginPassword"),LocalizedString(key: "My_modifyTradePassword")]
     
     var vm = VIPSafetyVM()
     
@@ -29,13 +29,13 @@ class VIPSafetyViewController: VIPTableViewController{
         // Dispose of any resources that can be recreated.
     }
    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
         v.backgroundColor = JXViewBgColor
         return UIView()
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,7 +50,7 @@ class VIPSafetyViewController: VIPTableViewController{
         cell.titleLabel.text = title
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "My", bundle: nil)

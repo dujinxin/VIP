@@ -10,9 +10,15 @@ import UIKit
 
 class VIPSettingViewController: VIPTableViewController{
     
-    var actionArray = ["语言选择","意见反馈","关于我们"]
+    var actionArray = [LocalizedString(key: "My_languageChoice"),LocalizedString(key: "My_feedback"),LocalizedString(key: "My_aboutUs"),LocalizedString(key: "My_version")]
     
     var isModify: Bool = false
+    
+    lazy var maskView: UIView = {
+        let v = UIView(frame: UIScreen.main.bounds)
+        v.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.4)
+        return v
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +36,13 @@ class VIPSettingViewController: VIPTableViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
         v.backgroundColor = JXEeeeeeColor//JXViewBgColor
         return UIView()
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,9 +58,13 @@ class VIPSettingViewController: VIPTableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! VIPSelectCell
         let title = actionArray[indexPath.section]
         cell.titleLabel.text = title
+        
+        if indexPath.section == 3 {
+            cell.selectLabel.text = "\(Bundle.main.version)"
+        }
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "My", bundle: nil)
@@ -69,11 +79,58 @@ class VIPSettingViewController: VIPTableViewController{
             vc.title = title
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
+        } else if indexPath.section == 2 {
             let vc = storyboard.instantiateViewController(withIdentifier: "aboutUs") as! VIPAboutUsViewController
             vc.title = title
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+         
+            self.showMBProgressHUD()
+            let v = VIPVersionVM()
+            v.version { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                if isSuc && v.versionEntity.ios_version != Bundle.main.version {
+                    let vc = storyboard.instantiateViewController(withIdentifier: "versionAlert") as! VIPVersionAlertController
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.title = title
+                    vc.entity = v.versionEntity
+                    
+                    vc.callBackBlock = { isDownload in
+                        if let _ = self.maskView.superview {
+                            self.maskView.removeFromSuperview()
+                        }
+                        if isDownload {
+                            guard
+                                let text = v.versionEntity.ios_url,
+                                let url = URL(string: text) else {
+                                    return
+                            }
+                            if UIApplication.shared.canOpenURL(url) {
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(url, options: [:]) { (isTrue) in
+                                        
+                                    }
+                                } else {
+                                    UIApplication.shared.openURL(url)
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                    self.view.addSubview(self.maskView)
+                    self.present(vc, animated: true, completion:{
+                        //self.maskView.alpha = 1
+                    })
+                    
+                } else {
+                    ViewManager.showNotice(LocalizedString(key: "Notice_version"))
+                }
+            }
+            
+            
         }
         
     }

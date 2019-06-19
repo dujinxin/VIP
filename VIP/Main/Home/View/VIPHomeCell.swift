@@ -14,15 +14,15 @@ class VIPHomeCell: UITableViewCell {
         didSet{
             self.coinBgView.backgroundColor = JXFfffffColor
             
-            coinBgView.layer.shadowOpacity = 1
-            coinBgView.layer.shadowRadius = 2
-            coinBgView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.5).cgColor
-            coinBgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+//            coinBgView.layer.shadowOpacity = 1
+//            coinBgView.layer.shadowRadius = 2
+//            coinBgView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.1).cgColor
+//            coinBgView.layer.shadowOffset = CGSize(width: 0, height: 0)
         }
     }
     @IBOutlet weak var coinImageView: UIImageView!{
         didSet{
-            //self.coinImageView.textColor = JXFfffffColor
+            self.coinImageView.backgroundColor = UIColor.clear
             self.coinImageView.layer.cornerRadius = 26.0
             coinImageView.layer.masksToBounds = true
         }

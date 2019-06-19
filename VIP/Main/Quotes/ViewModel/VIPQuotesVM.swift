@@ -17,6 +17,7 @@ class VIPQuotesVM: NSObject {
         
         JXRequest.request(url: ApiString.quotesList.rawValue, param: ["lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
             
+            self.quotesListEntity.list.removeAll()
             if let result = data as? Array<Dictionary<String, Any>> {
                 
                 for i in 0..<result.count {

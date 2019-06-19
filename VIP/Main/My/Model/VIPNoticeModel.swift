@@ -14,10 +14,8 @@ class VIPNoticeModel: VIPBaseModel {
 
 class VIPNoticesCellEntity: VIPBaseModel {
     
-    @objc var content_en : String?
-    @objc var content_zh : String?
-    @objc var title_en : String?
-    @objc var title_zh : String?
+    @objc var content : String?
+    @objc var title : String?
     @objc var link : String?
     @objc var notice_icon : String?
     @objc var remarks : String?

@@ -10,96 +10,24 @@ import UIKit
 
 class VIPCommunityHeadCell: UITableViewCell {
 
-    @IBOutlet weak var nickNameLabel: UILabel!
-   
     @IBOutlet weak var communityValueLabel: UILabel!
     @IBOutlet weak var availalbeAccountLabel: UILabel!
     @IBOutlet weak var communityRewardLabel: UILabel!
     @IBOutlet weak var normalRewardLabel: UILabel!
-    @IBOutlet weak var title1Label: UILabel!
-    @IBOutlet weak var title2Label: UILabel!
-    @IBOutlet weak var title3Label: UILabel!
-    @IBOutlet weak var title4Label: UILabel!
-    
-    @IBOutlet weak var bg1View: UIView!{
+    @IBOutlet weak var lineView: UIView!{
         didSet{
-            self.bg1View.backgroundColor = JXCyanColor
-            self.bg1View.layer.cornerRadius = 10
+            self.lineView.layer.cornerRadius = 1.5
         }
     }
-    @IBOutlet weak var bg2View: UIView!{
-        didSet{
-            self.bg2View.backgroundColor = JXCyanColor
-            self.bg2View.layer.cornerRadius = 10
-        }
-    }
-    @IBOutlet weak var bg3View: UIView!{
-        didSet{
-            self.bg3View.backgroundColor = JXCyanColor
-            self.bg3View.layer.cornerRadius = 10
-        }
-    }
-    @IBOutlet weak var bg4View: UIView!{
-        didSet{
-            self.bg4View.backgroundColor = JXCyanColor
-            self.bg4View.layer.cornerRadius = 10
-        }
-    }
-    
-    
-    @IBOutlet weak var star1ImageView: UIImageView!
-    @IBOutlet weak var star2ImageView: UIImageView!
-    @IBOutlet weak var star3ImageView: UIImageView!
-    @IBOutlet weak var star4ImageView: UIImageView!
-    @IBOutlet weak var star5ImageView: UIImageView!
     
     var entity: VIPCommunityMemberEntity? {
         didSet{
             
-            self.nickNameLabel.text = entity?.name
             self.communityValueLabel.text = "\(entity?.team_market_value ?? 0)"
             self.availalbeAccountLabel.text = "\(entity?.valid_count ?? 0)"
             self.communityRewardLabel.text = "\(entity?.team_price ?? 0)"
             self.normalRewardLabel.text = "\(entity?.level_price ?? 0)"
             
-            switch entity?.level {
-            case 1:
-                self.star1ImageView.isHidden = false
-                self.star2ImageView.isHidden = true
-                self.star3ImageView.isHidden = true
-                self.star4ImageView.isHidden = true
-                self.star5ImageView.isHidden = true
-            case 2:
-                self.star1ImageView.isHidden = false
-                self.star2ImageView.isHidden = false
-                self.star3ImageView.isHidden = true
-                self.star4ImageView.isHidden = true
-                self.star5ImageView.isHidden = true
-            case 3:
-                self.star1ImageView.isHidden = false
-                self.star2ImageView.isHidden = false
-                self.star3ImageView.isHidden = false
-                self.star4ImageView.isHidden = true
-                self.star5ImageView.isHidden = true
-            case 4:
-                self.star1ImageView.isHidden = false
-                self.star2ImageView.isHidden = false
-                self.star3ImageView.isHidden = false
-                self.star4ImageView.isHidden = false
-                self.star5ImageView.isHidden = true
-            case 5:
-                self.star1ImageView.isHidden = false
-                self.star2ImageView.isHidden = false
-                self.star3ImageView.isHidden = false
-                self.star4ImageView.isHidden = false
-                self.star5ImageView.isHidden = false
-            default:
-                self.star1ImageView.isHidden = true
-                self.star2ImageView.isHidden = true
-                self.star3ImageView.isHidden = true
-                self.star4ImageView.isHidden = true
-                self.star5ImageView.isHidden = true
-            }
         }
     }
     

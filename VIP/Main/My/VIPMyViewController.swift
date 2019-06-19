@@ -34,7 +34,7 @@ class VIPMyViewController: VIPTableViewController{
         self.tableView.register(UINib(nibName: "VIPMyHeadCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierHeader")
         self.tableView.estimatedRowHeight = 64
         self.tableView.rowHeight = UITableView.automaticDimension
-        //self.tableView.isScrollEnabled = false
+        self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
 
     }
@@ -96,7 +96,16 @@ class VIPMyViewController: VIPTableViewController{
         //        self.present(alertVC, animated: true, completion: nil)
     }
     @objc func logout(button: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: false)
+        
+        let alertVC = UIAlertController(title: nil, message: LocalizedString(key: "My_logout"), preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: false)
+            
+        }))
+        alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
     }
     @objc func valueChanged(textField:UITextField) {
         let maxLength = 12
@@ -138,13 +147,13 @@ class VIPMyViewController: VIPTableViewController{
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
         v.backgroundColor = JXEeeeeeColor//JXViewBgColor
         return v
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 2 {
             return 15
         }
@@ -157,7 +166,7 @@ class VIPMyViewController: VIPTableViewController{
             
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: 30 , y: 35, width: kScreenWidth - 60, height: 50)
-            button.setTitle("退出登录", for: .normal)
+            button.setTitle(LocalizedString(key: "My_logout"), for: .normal)
             button.setTitleColor(JXBlueColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             button.addTarget(self, action: #selector(logout(button:)), for: .touchUpInside)
@@ -199,42 +208,14 @@ class VIPMyViewController: VIPTableViewController{
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierHeader", for: indexPath) as! VIPMyHeadCell
             cell.entity = self.vm.myEntity
-//            if let str = UserManager.manager.userEntity.headImg {
-//                let url = URL.init(string:str)
-//                cell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
-//                //cell.userImageView.sd_setImage(with: url, completed: nil)
-//            }
-//            cell.nickNameLabel.text = self.vm.profileInfoEntity?.nickname
-//            cell.editButton.addTarget(self, action: #selector(edit(_:)), for: .touchUpInside)
-//            cell.rankLabel.text = self.vm.profileInfoEntity?.mobile
-//            cell.modifyBlock = {
-//                let storyboard = UIStoryboard(name: "Task", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "ModifyImageVC") as! ModifyImageController
-//                vc.hidesBottomBarWhenPushed = true
-//                vc.avatar = self.vm.profileInfoEntity?.headImg
-//                vc.backBlock = {
-//                    self.isModify = true
-//                    self.requestData()
-//                }
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
+
             cell.promotionBlock = {
-                
-                self.showMBProgressHUD()
-                let v = VIPPromotionVM()
-                v.promotion { (_, msg, isSuc) in
-                    self.hideMBProgressHUD()
-                    if isSuc {
-                        let storyboard = UIStoryboard(name: "My", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "promotion") as! VIPPromotionViewController
-                        vc.title = LocalizedString(key: "Promotion")
-                        vc.entity = v.promotionEntity
-                        vc.hidesBottomBarWhenPushed = true
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    } else {
-                        ViewManager.showNotice(msg)
-                    }
-                }
+                let storyboard = UIStoryboard(name: "My", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "promotionDetail") as! VIPPromotionDetailController
+                //vc.title = LocalizedString(key: "Promotion")
+                vc.inviteUrl = self.vm.myEntity.invent_url
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
         } else {
@@ -246,7 +227,7 @@ class VIPMyViewController: VIPTableViewController{
             return cell
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -277,7 +258,7 @@ class VIPMyViewController: VIPTableViewController{
                     v.community { (_, msg, isSuc) in
                         self.hideMBProgressHUD()
                         if isSuc {
-                            let vc = VIPCommunityViewController()
+                            let vc = storyboard.instantiateViewController(withIdentifier: "community") as! VIPCommunityViewController
                             vc.title = title
                             vc.entity = v.communityEntity
                             vc.hidesBottomBarWhenPushed = true

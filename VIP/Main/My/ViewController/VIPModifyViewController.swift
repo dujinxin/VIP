@@ -113,9 +113,15 @@ class VIPModifyViewController: VIPBaseViewController {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         
         if type == .login {
-            self.confirmButton.setTitle("修改登录密码", for: .normal)
+            self.confirmButton.setTitle(LocalizedString(key: "My_modifyLoginPassword"), for: .normal)
+            self.psdTextField.keyboardType = .default
+            self.newPsdTextField.keyboardType = .default
+            self.newPsdRepeatTextField.keyboardType = .default
         } else {
-            self.confirmButton.setTitle("修改交易密码", for: .normal)
+            self.confirmButton.setTitle(LocalizedString(key: "My_modifyTradePassword"), for: .normal)
+            self.psdTextField.keyboardType = .numberPad
+            self.newPsdTextField.keyboardType = .numberPad
+            self.newPsdRepeatTextField.keyboardType = .numberPad
         }
         
         self.updateButtonStatus()
@@ -183,7 +189,7 @@ class VIPModifyViewController: VIPBaseViewController {
             return
         }
         guard let new_password_again = self.newPsdRepeatTextField.text, new_password_again == new_password else {
-            ViewManager.showNotice("新密码不一致！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_newPsdDifferent"))
             return
         }
         self.showMBProgressHUD()
@@ -220,44 +226,15 @@ extension VIPModifyViewController: UITextFieldDelegate,JXKeyboardTextFieldDelega
     }
     
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //        if textField == userTextField {
-        //            if range.location > 10 {
-        //                return false
-        //            }
-        //        } else if textField == codeTextField || textField == imageTextField{
-        //            if range.location > 3 {
-        //                return false
-        //            }
-        //        } else if textField == passwordTextField {
-        //            if range.location > 19 {
-        //                return false
-        //            }
-        //        }
-        return true
-    }
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //        if textField == passwordTextField {
-        //            self.logAction(0)
-        //            return textField.resignFirstResponder()
-        //        } else if textField == imageTextField {
-        //            codeTextField.becomeFirstResponder()
-        //            return false
-        //        }
-        return true
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        //        if textField == userTextField {
-        //            if range.location > 10 {
-        //                return false
-        //            }
-        //        } else if textField == codeTextField {
-        //            if range.location > 3 {
-        //                return false
-        //            }
-        //        }
+        if type == .login {
+            if range.location > 9 {
+                return false
+            }
+        } else {
+            if range.location > 5 {
+                return false
+            }
+        }
         return true
     }
     @objc func textChange(notify: NSNotification) {

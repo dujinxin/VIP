@@ -20,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let language = UserDefaults.standard.object(forKey: "myLanguage") as? String, language.isEmpty == false {
             Bundle.main.setLanguage(language)
+        } else {
+            let language = Bundle.main.getCurrentLanguage()
+            if language == "en" {
+                UserDefaults.standard.set("en", forKey: "myLanguage")
+                UserDefaults.standard.synchronize()
+            } else {
+                UserDefaults.standard.set("zh", forKey: "myLanguage")
+                UserDefaults.standard.synchronize()
+            }
         }
         return true
     }

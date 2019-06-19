@@ -25,7 +25,7 @@ class VIPTabBarViewController: UITabBarController {
         let normalImageList = ["home_normal","find_normal","quotes_normal","my_normal"]
         let selectedImageList = ["home_selected","find_selected","quotes_selected","my_selected"]
         
-        let normalAttributed = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
+        let normalAttributed = [NSAttributedString.Key.foregroundColor:JXGrayTextColor]
         let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXMainColor]
 //        tabBar.items?.forEach({ (item) in
 //            item.setTitleTextAttributes(normalAttributed, for: .normal)
@@ -111,7 +111,7 @@ class VIPTabBarViewController: UITabBarController {
     }
 
 }
-
+//E68807963   2026-02-15
 //MARK: loginStatus
 extension VIPTabBarViewController {
     @objc func loginStatus(notify:Notification) {
@@ -120,7 +120,9 @@ extension VIPTabBarViewController {
         if let isSuccess = notify.object as? Bool,
             isSuccess == true{
             
-            
+            let mainSb = UIStoryboard(name: "Main", bundle: nil)
+            let rootViewC = mainSb.instantiateInitialViewController() as! VIPTabBarViewController
+            LanaguageManager.shared.reset(rootViewC)
         } else {
             UserManager.manager.removeAccound()
             

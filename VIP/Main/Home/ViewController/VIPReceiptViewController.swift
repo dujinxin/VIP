@@ -10,7 +10,16 @@ import UIKit
 
 class VIPReceiptViewController: VIPBaseViewController {
 
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!{
+        didSet{
+            self.topConstraint.constant = kNavStatusHeight + 20
+        }
+    }
+    @IBOutlet weak var iconImageView: UIImageView!{
+        didSet{
+            
+        }
+    }
     @IBOutlet weak var codeImageBgView: UIView!{
         didSet{
             codeImageBgView.backgroundColor = JXViewBgColor
@@ -49,23 +58,28 @@ class VIPReceiptViewController: VIPBaseViewController {
  
     var contractAddress : String = ""
     var tokenName : String = "ETH"
-    
+    var tokenIcon : String?
     var receiptStr = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.white
-        self.title = "收款"
+        self.title = LocalizedString(key: "Receip")
+ 
+        if let s = self.tokenIcon, let url = URL(string: kBaseUrl + s) {
+            self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
+        }
         
-        
-        //self.noticeLabel.text = WalletManager.shared.entity.address
-        
-//        self.noticeLabel.text = "请转入\(tokenName)"
-        //self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
         
         self.addressLabel.text = self.receiptStr
-        self.noticeLabel.text = "注意：该地址仅支持\(self.tokenName)收款，请勿用于其他币种！"
+        
+        if LanaguageManager.shared.type == .chinese {
+            self.noticeLabel.text = "注意：该地址仅支持\(self.tokenName)收款，请勿用于其他币种！"
+        } else {
+            self.noticeLabel.text = "Note: This address only supports \(self.tokenName) receivables, please do not use it in other currencies!"
+        }
         self.codeImageView.image = self.code(self.receiptStr)
     }
     
@@ -73,25 +87,11 @@ class VIPReceiptViewController: VIPBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        self.topConstraint.constant = kNavStatusHeight + 44
-    }
-//    func getReceiptStr(t: Type, contractAddress: String = "", value: BigUInt = 0) -> String {
-//        var s = ""
-//        if t == .eth {
-//            s = "ethereum:\(WalletManager.shared.entity.address)?decimal=\(18)&value=\(value)"
-//
-//        } else {
-//            s  = "ethereum:\(WalletManager.shared.entity.address)?contractAddress=\(contractAddress)&decimal=\(18)&value=\(value)"
-//        }
-//        print(s)
-//        return s
-//    }
+
     @IBAction func copyAddress(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = self.addressLabel.text
-        ViewManager.showNotice("已复制")
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
     }
    
     @IBAction func saveImage(_ sender: Any) {
@@ -101,9 +101,9 @@ class VIPReceiptViewController: VIPBaseViewController {
     
     @objc func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
         if error != nil {
-            ViewManager.showNotice("保存失败")
+            ViewManager.showNotice(LocalizedString(key: "SaveFailed"))
         } else {
-            ViewManager.showNotice("已保存")
+            ViewManager.showNotice(LocalizedString(key: "Saved"))
         }
     }
     func code(_ string:String) -> UIImage {

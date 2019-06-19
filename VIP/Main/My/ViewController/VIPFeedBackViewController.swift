@@ -20,7 +20,7 @@ class VIPFeedBackViewController: VIPBaseViewController {
     @IBOutlet weak var textView: JXPlaceHolderTextView!{
         didSet{
             self.textView.backgroundColor = UIColor.clear
-            self.textView.placeHolderText = "请填写您的宝贵建议！"
+            self.textView.placeHolderText = LocalizedString(key: "My_feedback_textView_placeholder")
         }
     }
     @IBOutlet weak var submitButton: UIButton!{
@@ -44,7 +44,7 @@ class VIPFeedBackViewController: VIPBaseViewController {
     @IBAction func action(_ sender: Any) {
         print(self.textView.text)
         guard let text = self.textView.text, text.count >= 6 else {
-            ViewManager.showNotice("反馈内容至少6个字符！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_feedbackContent_min"))
             return
         }
         
@@ -82,7 +82,7 @@ extension VIPFeedBackViewController : UITextViewDelegate,UITextFieldDelegate{
         if let string = textView.text, string.count >= 200 {
             textView.text = String(string.prefix(upTo: string.index(string.startIndex, offsetBy: 200)))
             //textView.text = string.substring(to: string.index(string.startIndex, offsetBy: 500))
-            ViewManager.showNotice("字符个数不能大于\(200)")
+            ViewManager.showNotice(LocalizedString(key: "Notice_feedbackContent_max"))
             return false
         }
         return true

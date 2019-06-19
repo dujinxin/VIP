@@ -37,7 +37,7 @@ class VIPExchangeListCell: UITableViewCell {
     var entity : VIPExchangeCellEntity? {
         didSet{
             // 1充值 2提现 3 理财 4兑换
-            self.typeLabel.text = "兑换"
+            self.typeLabel.text = LocalizedString(key: "Exchange")
             
             self.numTitleLabel.text = self.entity?.l_currency_name
             self.numLabel.text = "\(self.entity?.l_currency_qty ?? 0)"

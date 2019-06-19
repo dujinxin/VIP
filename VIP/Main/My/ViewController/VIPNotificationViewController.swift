@@ -46,13 +46,13 @@ class VIPNotificationViewController: VIPTableViewController{
             self.tableView.reloadData()
         }
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 15)
         v.backgroundColor = JXEeeeeeColor//JXViewBgColor
         return UIView()
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,11 +61,11 @@ class VIPNotificationViewController: VIPTableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! VIPNotificationCell
         let entity = self.vm.noticeListEntity.list[indexPath.row]
-        cell.titleLabel.text = entity.title_zh
-        cell.contentLabel.text = entity.content_zh
+        cell.titleLabel.text = entity.title
+        cell.contentLabel.text = entity.content
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -74,13 +74,12 @@ class VIPNotificationViewController: VIPTableViewController{
         if entity.content_type == 1 {
             let storyboard = UIStoryboard(name: "My", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "notification_text") as! VIPNotificationTextController
-            vc.title = "通知中心"
             vc.entity = entity
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = VIPWebViewController()
-            vc.title = entity.title_zh//self.homeVM.homeEntity.notice.title
+            vc.title = entity.title
             vc.urlStr = entity.link
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)

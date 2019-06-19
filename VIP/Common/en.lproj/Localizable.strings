@@ -6,23 +6,60 @@
   Copyright © 2019 飞亦. All rights reserved.
 */
 
-"Home" = "Home";
-"Find" = "Find";
-"Quotes" = "Quotes";
-"My" = "My";
+"Home" = "Home page";
+"Find" = "Discover";
+"Quotes" = "Quotation";
+"My" = "Main";
 
 
 
-"Promotion" = "Promotion";
-"Community" = "Community";
-"Income" = "Income";
-"Safety" = "Safety";
-"Notification" = "Notification";
-"Setting" = "Setting";
+"Promotion" = "My promotion";
+"Community" = "My community";
+"Income" = "My Benefits";
+"Safety" = "Safety Center";
+"Notification" = "Notification Center";
+"Setting" = "Set up";
+
+//common
+"Cancel" = "Cancel";
+"OK" = "OK";
+
+"Submit" = "Submit";
+
+"Copied" = "Successful copied";
+"Saved" = "Successfully saved";
+"SaveFailed" = "Save failed";
+
+
+"No relevant data available" = "No relevant data available";
+"To be developed, please look forward to it." = "To be developed, please look forward to it.";
+
+
+//Notice
+
+"Notice_nameLength" = "The name needs to be set to 5 or more.";
+"Notice_loginLength" = "Login password needs to be set to 6 or more.";
+"Notice_tradeLength" = "The transaction password must be set to 6 digits.";
+"Notice_loginDifferent" = "The login passwords is different";
+"Notice_tradeDifferent" = "The trade passwords is different";
+"Notice_newPsdDifferent" = "The new passwords is different";
+
+"Notice_nameError" = "Incorrect name";
+"Notice_passwordError" = "Incorrect password";
+
+"Notice_inputPassword" = "Please enter the password";
+"Notice_inputNumber" = "Please enter quantity";
+"Notice_insufficientBalance" = "Insufficient balance";
+
+"Notice_feedbackContent_min" = "The feedback content is at least 6 characters.";
+"Notice_feedbackContent_max" = "The number of characters is not more than 300.";
+
+
+"Notice_version" = "The current version is the latest version.";
 
 //MARK:login&register
 //register
-"Language" = "language";
+"Language" = "Language";
 "Register_nameTextField_placeholder" = "Please enter a name";
 "Register_loginPsdTextField_placeholder" = "Login password";
 "Register_loginPsdTextField_repeat_placeholder" = "Repeat login password";
@@ -36,7 +73,10 @@
 "Register" = "Register";
 "Registered" = "Registered?";
 //"Register_gotologin" = "Go to login";
-"Register_gotologin" = "Login";
+"Register_gotologin" = "To login";
+"Register_systemTips" = "System Tips";
+"Register_systemTips_content" = "If the recommendation code is not filled in, the default recommendation code will be arranged.";
+
 //login
 "Login_psdTextField_placeholder" = "Please enter your password";
 "Login" = "Login";
@@ -45,12 +85,150 @@
 //"Login_goToRegister" = "Go to register";
 "Login_forgetPassword" = "Forget";
 //"Login_forgetPassword" = "Forget password";
+
+
 //Forget password
 "Mnemonic" = "Mnemonic";
 "PrivateKey" = "Private key";
-"Forget_mnemonicsTextField_placeholder" = "Please enter mnemonics, separated by space";
+"Forget_mnemonicsTextField_placeholder" = "Please enter mnemonic words separated by spaces.";
 "Forget_privateKeyTextField_placeholder" = "Please enter private key                  ";
 "Forget_loginPsdTextField_placeholder" = "New password";
 "Forget_loginPsdTextField_repeat_placeholder" = "Repeat password";
 
-"Import" = "Import";
+"Import" = "Immediate import";
+
+//Backup mnemonics
+"Backup_mnemonics" = "Backup mnemonics";
+"Backup_info" = "Please back up your mnemonics carefully. You'd better copy them in your notebook.";
+"Backup_remember" = "Remember it";
+"Backup_next" = "Next time";
+
+
+//Home
+"Finance" = "Finance";
+"SuperNode" = "Super node";
+"Notice" = "Notice";
+"Home_more" = "More";
+"Home_totalAssets" = "Total assets";
+"Home_earningsToday" = "Earnings today";
+
+
+"Withdraw" = "Withdraw";
+"Recharge" = "Recharge";
+"Transfer" = "Transfer";
+"Receip" = "Receip";
+"Exchange" = "Exchange";
+"Whole" = "Whole";
+"Number" = "Number";
+"State" = "State";
+"Time" = "Time";
+
+
+
+"Home_review" = "Waiting Review";
+"Home_failure" = "Failure";
+"Home_completed" = "Completed";
+"Home_transferInProgress" = "Transfer in progress";
+"Home_auditInProgress" = "Audit in progress";
+"Home_confirmationInProgress" = "Confirmation in progress";
+"Home_exchangeQuantity" = "Exchange Quantity";
+
+"Home_number of exchange token" = "Number of exchange token";
+"Transfer amount" = "Transfer amount";
+
+"Balance" = "Balance";
+
+"Home_transferAmount" = "Transfer amount";
+"Home_Output amount" = "Output amount";
+"Home_receivingAddress" = "Receiving address";
+"Home_inputAddress" = "Input address";
+"Home_sendAddress" = "Send Address";
+"Home_photo" = "Photo";
+"Home_flashError" = "Flash Error";
+
+
+"Home_fromWallets" = "From wallets";
+"Home_targetWallet" = "Target Wallet";
+"Home_exchangeRate" = "exchange rate";
+"Home_maximumExchangeNumber" = "Maximum Exchange Number";
+"Home_absenceFee" = "Absencee fee";
+"Home_Please enter the trade password" = "Please enter the trade password";
+"Home_exchangeRecord" = "Exchange records";
+"Home_recordDetails" = "Record details";
+
+
+//Find
+"Find_btc" = "BTC";
+"Find_eth" = "ETH";
+
+"Find_foreignExchange" = "Foreign exchange";
+"Find_fund" = "Fund";
+"Find_insurance" = "Insurance";
+"Find_negotiableSecurities" = "Securities";
+
+"Find_financialRecords" = "Financial records";
+"Find_amount" = "Amount";
+"Find_current" = "Current";
+"Find_months" = "Months";
+
+//"Find_selectAaccounts" = "Selection of accounts";
+"Find_selectAaccounts" = "Accounts";
+
+//"Find_nothing" = "Nothing";
+"Find_nothing" = "No";
+"Find_effectiveInProgress" = "effective in progress";
+"Find_released" = "Released";
+"Find_completed" = "Completed";
+
+//"Find_availableBalance" = "Available balance";
+//"Find_presentPrice" = "Present price";
+"Find_availableBalance" = "Balance";
+"Find_presentPrice" = "Price";
+"Find_value" = "Value";
+"Find_pleaseEnterQuantity" = "Please enter quantity";
+
+
+
+
+
+
+
+//Quotes
+"Quotes_currency" = "Currency";
+"Quotes_latestPrice" = "Latest Price";
+"Quotes_upAndDown" = "Up and down";
+
+
+//My
+"My_logout" = "Log out";
+
+
+"My_incomeDetail" = "Income detail";
+//1:合约收益 2：分享收益 3：分享收益 4社区收益 5：平级收益
+"My_contractGains" = "Contract gains";
+"My_sharedProfit" = "Share in the profit";
+"My_communityBenefits" = "Community Benefits";
+"My_levelIncome" = "Level income";
+
+
+"My_exportPrivateKey" = "Export private key";
+"My_backupMnemonics" = "Backup mnemonics";
+"My_modifyLoginPassword" = "Modify login password";
+"My_modifyTradePassword" = "Modify trade password";
+
+//"My_languageChoice" = "Language Choice";
+"My_languageChoice" = "Language";
+"My_aboutUs" = "About us";
+"My_feedback" = "Feedback";
+"My_version" = "Version";
+
+
+"My_effective" = "Effective";
+"My_notActive" = "Not active";
+"My_qualified" = "Qualified";
+
+"My_feedback_textView_placeholder" = "Please fill in your valuable suggestions.";
+
+"My_chinese" = "Chinese";
+"My_english" = "English";
+

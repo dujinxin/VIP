@@ -20,6 +20,7 @@ class VIPFinancialAccountListCell: UITableViewCell {
     @IBOutlet weak var buyButton: UIButton!{
         didSet{
             self.buyButton.backgroundColor = JXGreenColor
+            self.buyButton.layer.cornerRadius = 2
         }
     }
 

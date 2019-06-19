@@ -30,7 +30,9 @@ class VIPFindHeadCell: UITableViewCell {
     }
     @IBOutlet weak var financialBgView: UIView!{
         didSet{
-            self.financialBgView.backgroundColor = JXCyanColor
+            self.financialBgView.backgroundColor = UIColor.clear
+            self.financialBgView.layer.borderColor = UIColor.rgbColor(rgbValue: 0xEBF3F9).cgColor
+            self.financialBgView.layer.borderWidth = 1
             self.financialBgView.layer.cornerRadius = 4
             self.financialBgView.tag = 100
             self.financialBgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(tap:))))
@@ -38,7 +40,9 @@ class VIPFindHeadCell: UITableViewCell {
     }
     @IBOutlet weak var superNodeBgView: UIView!{
         didSet{
-            self.superNodeBgView.backgroundColor = JXCyanColor
+            self.superNodeBgView.backgroundColor = UIColor.clear
+            self.superNodeBgView.layer.borderColor = UIColor.rgbColor(rgbValue: 0xEBF3F9).cgColor
+            self.superNodeBgView.layer.borderWidth = 1
             self.superNodeBgView.layer.cornerRadius = 4
             self.superNodeBgView.tag = 101
             self.superNodeBgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(tap:))))
@@ -59,7 +63,7 @@ class VIPFindHeadCell: UITableViewCell {
     @IBOutlet weak var ethBgView: UIView!{
         didSet{
             
-            self.ethBgView.tag = 7
+            self.ethBgView.tag = 8
             self.ethBgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(tap:))))
         }
     }
@@ -68,41 +72,45 @@ class VIPFindHeadCell: UITableViewCell {
     var financialBlock : (()->())?
     var developBlock : (()->())?
     
+    var netnoteBlock : (()->())?
+    var foreignExchangeBlock : (()->())?
+    var fundBlock : (()->())?
+    var insuranceBlock : (()->())?
+    var negotiableSecuritiesBlock : (()->())?
+    
     var bannerBlock : ((_ index: Int)->())?
+    
+    var btcBlock : (()->())?
+    var ethBlock : (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        var width : CGFloat = kScreenWidth - 30
-        let s = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: 120))
+        let width : CGFloat = kScreenWidth - 30
+        let s = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: 218))
         self.scrollContentView.addSubview(s)
         
-        let titles = ["Netnote","外汇","基金","保险","证券"]
+        let titles = ["Netnote",LocalizedString(key: "Find_foreignExchange"),LocalizedString(key: "Find_fund"),LocalizedString(key: "Find_insurance"),LocalizedString(key: "Find_negotiableSecurities")]
+        let itemSpace  = (width - 4 * 69) / 3
         for i in 0..<5 {
-            let iv = UIImageView(frame: CGRect(x: i * (15 + 69), y: 0, width: 69, height: 69))
+            let iv = UIImageView(frame: CGRect(x: CGFloat(i % 4) * (itemSpace + 69), y: 0 + CGFloat(i / 4) * (40 + 69), width: 69, height: 69))
             iv.image = UIImage(named: "\(i + 1)")
             iv.tag = i
             iv.isUserInteractionEnabled = true
             iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(tap:))))
             s.addSubview(iv)
-            if i == 4 {
-                width = iv.jxRight
-            }
-            
-            let l = UILabel(frame: CGRect(x: i * (15 + 69), y: Int(iv.jxBottom + 10), width: 69, height: 20))
+           
+            let l = UILabel(frame: CGRect(x: iv.jxLeft, y: iv.jxBottom + 5, width: 69, height: 30))
             l.text = titles[i]
+            l.numberOfLines = 0
             l.textColor = JXBlueColor
             l.textAlignment = .center
             l.font = UIFont.systemFont(ofSize: 14)
+            l.adjustsFontSizeToFitWidth = true
             s.addSubview(l)
         }
         
-        width = width > (kScreenWidth - 30) ? width : kScreenWidth - 30
-        s.contentSize = CGSize(width: width, height: 120)
-        //self.widthConstraint.constant = width
-        
-        print(width)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -111,7 +119,39 @@ class VIPFindHeadCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @objc func tap(tap: UITapGestureRecognizer) {
-        if let v = tap.view, v.tag == 100 {
+        guard let v = tap.view else {
+            return
+        }
+   
+        if v.tag == 0 {
+            if let block = self.netnoteBlock {
+                block()
+            }
+        } else if v.tag == 1 {
+            if let block = self.foreignExchangeBlock {
+                block()
+            }
+        } else if v.tag == 2 {
+            if let block = self.fundBlock {
+                block()
+            }
+        } else if v.tag == 3 {
+            if let block = self.insuranceBlock {
+                block()
+            }
+        } else if v.tag == 4 {
+            if let block = self.negotiableSecuritiesBlock {
+                block()
+            }
+        } else if v.tag == 7 {
+            if let block = self.btcBlock {
+                block()
+            }
+        } else if v.tag == 8 {
+            if let block = self.ethBlock {
+                block()
+            }
+        } else if v.tag == 100 {
             if let block = self.financialBlock {
                 block()
             }
@@ -120,12 +160,13 @@ class VIPFindHeadCell: UITableViewCell {
                 block()
             }
         }
+        
     }
 }
 extension VIPFindHeadCell: SDCycleScrollViewDelegate {
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
         print(index)
-        //ViewManager.showNotice("待开发中，敬请期待")
+        
         if let block = self.bannerBlock {
             block(index)
         }

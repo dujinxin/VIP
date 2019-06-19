@@ -16,7 +16,7 @@ class VIPSafetyVM: NSObject {
 
     //修改密码
     func modifyPsd(type: Int, used_password: String, new_password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["type": type, "used_password": used_password ,"new_password": new_password,"lang":LanaguageManager.shared.languageStr], success: { (data, message) in
+        JXRequest.request(url: ApiString.modifyPsd.rawValue, param: ["type": type, "used_password": used_password ,"new_password": new_password,"lang":LanaguageManager.shared.languageStr], success: { (data, message) in
             
             completion(nil,message,true)
         }) { (message, code) in

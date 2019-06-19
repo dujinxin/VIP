@@ -268,25 +268,25 @@ class VIPRegisterViewController: VIPBaseViewController {
     
     @IBAction func logAction(_ sender: Any) {
         guard let userName = self.phoneTextField.text, userName.count >= 5 else {
-            ViewManager.showNotice("名称需要设置5位以上！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_nameLength"))
             return
         }
         
         guard let login_password = self.loginPsdTextField.text, login_password.count >= 6 else {
-            ViewManager.showNotice("登录密码需要设置6位以上！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_loginLength"))
             return
         }
         guard let password_again = self.loginPsdRepeatTextField.text, password_again == login_password else {
-            ViewManager.showNotice("登录密码不一致！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_loginDifferent"))
             return
         }
-        
+      
         guard let trade_password = self.tradePsdTextField.text, trade_password.count == 6 else {
-            ViewManager.showNotice("交易密码需设置6位数字！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_tradeLength"))
             return
         }
         guard let trade_password_again = self.tradePsdRepeatTextField.text, trade_password_again == trade_password else {
-            ViewManager.showNotice("交易密码不一致！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_tradeDifferent"))
             return
         }
         
@@ -301,15 +301,15 @@ class VIPRegisterViewController: VIPBaseViewController {
                     let storyboard = UIStoryboard.init(name: "My", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
                     vc.isRegister = 1
-                    vc.title = "备份助记词"
                     vc.mnemonicStr = UserManager.manager.userEntity.mnemonic ?? ""
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         } else {
-            let alertVC = UIAlertController(title: "系统提示", message: "未填写推荐码，将安排默认推荐码", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
+            
+            let alertVC = UIAlertController(title: LocalizedString(key: "Register_systemTips"), message: LocalizedString(key: "Register_systemTips_content"), preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
                 
                 self.showMBProgressHUD()
                 
@@ -321,14 +321,13 @@ class VIPRegisterViewController: VIPBaseViewController {
                         let storyboard = UIStoryboard.init(name: "My", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
                         vc.isRegister = 1
-                        vc.title = "备份助记词"
                         vc.mnemonicStr = UserManager.manager.userEntity.mnemonic ?? ""
                         vc.hidesBottomBarWhenPushed = true
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
             }))
-            alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
             }))
             
             self.present(alertVC, animated: true, completion: nil)

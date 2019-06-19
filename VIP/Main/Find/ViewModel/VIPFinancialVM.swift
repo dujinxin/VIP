@@ -70,7 +70,7 @@ class VIPFinancialVM: NSObject {
                     completion(nil, msg, false)
                     return
             }
-            self.programEntity.invest_money = result["invest_money"] as? Float ?? 0
+            self.programEntity.invest_money = result["invest_money"] as? Double ?? 0
          
             if let contracts = result["contracts"] as? Array<Dictionary<String, Any>>{
                 for i in 0..<contracts.count {
@@ -87,7 +87,7 @@ class VIPFinancialVM: NSObject {
         }
     }
     //加入理财计划
-    func financialJoin(contract_id: Int, currency_id: Int, currency_qty: Float, pay_password: String, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
+    func financialJoin(contract_id: Int, currency_id: Int, currency_qty: Double, pay_password: String, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
         JXRequest.request(url: ApiString.financialJoin.rawValue, param: ["contract_id": contract_id, "currency_id": currency_id,"currency_qty": currency_qty,"pay_password": pay_password, "lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
             
             completion(data, msg, true)
@@ -153,6 +153,9 @@ class VIPFinancialVM: NSObject {
             completion(data, msg, true)
 
         }) { (msg, code) in
+            
+            self.recordsEntity.list.removeAll()
+            
             completion(nil, msg, false)
         }
     }

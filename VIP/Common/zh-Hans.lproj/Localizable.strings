@@ -18,6 +18,44 @@
 "Safety" = "安全中心";
 "Notification" = "通知中心";
 "Setting" = "设置";
+
+
+
+//common
+"Cancel" = "取消";
+"OK" = "确定";
+
+"Copied" = "已复制";
+"Saved" = "已保存";
+"SaveFailed" = "保存失败";
+
+"No relevant data available" = "暂无相关数据";
+"To be developed, please look forward to it." = "待开发中，敬请期待";
+
+
+//Notice
+
+"Notice_nameLength" = "名称需要设置5位以上！";
+"Notice_loginLength" = "登录密码需要设置6位以上！";
+"Notice_tradeLength" = "交易密码需设置6位数字！";
+"Notice_loginDifferent" = "登录密码不一致";
+"Notice_tradeDifferent" = "交易密码不一致";
+"Notice_newPsdDifferent" = "新密码不一致";
+
+"Notice_nameError" = "名称有误";
+"Notice_passwordError" = "密码有误";
+
+"Notice_inputPassword" = "请输入密码";
+"Notice_inputNumber" = "请输入购买数量";
+"Notice_insufficientBalance" = "余额不足";
+
+"Notice_feedbackContent_min" = "反馈内容至少6个字符！";
+"Notice_feedbackContent_max" = "字符个数不大于300";
+
+
+"Notice_version" = "当前版本为最新版本!";
+
+
 //MARK:login&register
 //register
 "Language" = "语言";
@@ -34,6 +72,11 @@
 "Register" = "注册";
 "Registered" = "已注册？";
 "Register_gotologin" = "去登录";
+
+"Register_gotologin" = "To login";
+"Register_systemTips" = "系统提示";
+"Register_systemTips_content" = "未填写推荐码，将安排默认推荐码！";
+
 //login
 "Login_psdTextField_placeholder" = "请输入密码";
 "Login" = "登录";
@@ -49,3 +92,108 @@
 "Forget_loginPsdTextField_repeat_placeholder" = "重复输入密码";
 
 "Import" = "立即导入";
+
+
+//Home
+"Finance" = "理财";
+"SuperNode" = "超级节点";
+"Notice" = "公告";
+"Home_more" = "更多";
+"Home_totalAssets" = "总资产";
+"Home_earningsToday" = "今日收益";
+
+"Withdraw" = "提现";
+"Recharge" = "充值";
+"Transfer" = "转账";
+"Receip" = "收款";
+"Exchange" = "兑换";
+"Whole" = "全部";
+
+
+"Home_review" = "待审核";
+"Home_failure" = "已失败";
+"Home_completed" = "已完成";
+"Home_transferInProgress" = "转账中";
+"Home_auditInProgress" = "审核中";
+"Home_confirmationInProgress" = "确认中";
+
+"Home_number of exchange token" = "Number of exchange token";
+"Transfer amount" = "Transfer amount";
+
+"Balance" = "Balance";
+
+"Home_transferAmount" = "Transfer amount";
+"Home_outputAmount" = "Output amount";
+"Home_receivingAddress" = "Receiving address";
+"Home_inputAddress" = "Input address";
+"Home_sendAddress" = "Send Address";
+"Home_photo" = "选择照片";
+"Home_flashError" = "闪光灯故障";
+
+"Home_fromWallets" = "From wallets";
+"Home_targetWallet" = "Target Wallet";
+"Home_exchangeRate" = "exchange rate";
+"Home_maximumExchangeNumber" = "Maximum Exchange Number";
+"Home_absenceFee" = "旷工费";
+"Home_Please enter the trade password" = "请输入交易密码";
+"Home_exchangeRecord" = "兑换记录";
+"Home_recordDetails" = "记录详情";
+
+
+//Find
+"Find_foreignExchange" = "外汇";
+"Find_fund" = "基金";
+"Find_insurance" = "保险";
+"Find_negotiableSecurities" = "证券";
+
+"Find_financialRecords" = "理财记录";
+"Find_amount" = "金额";
+"Find_current" = "活期";
+"Find_months" = "个月";
+
+"Find_selectAaccounts" = "选择账户";
+
+"Find_nothing" = "无";
+"Find_effectiveInProgress" = "生效中";
+"Find_released" = "已解除";
+"Find_completed" = "已完成";
+
+"Find_availableBalance" = "可用余额";
+"Find_presentPrice" = "现价";
+"Find_value" = "价值";
+"Find_pleaseEnterQuantity" = "请输入数量";
+
+//Quotes
+"Quotes_currency" = "币种";
+"Quotes_latestPrice" = "最新价";
+"Quotes_upAndDown" = "涨跌幅";
+
+//My
+"My_logout" = "退出登录";
+
+"My_incomeDetail" = "收益明细";
+//1:合约收益 2：分享收益 3：分享收益 4社区收益 5：平级收益
+"My_languageChoice" = "合约收益";
+"My_aboutUs" = "分享收益";
+"My_version" = "社区收益";
+"My_languageChoice" = "平级收益";
+
+"My_exportPrivateKey" = "导出私钥";
+"My_backupMnemonics" = "备份助记词";
+"My_modifyLoginPassword" = "修改登录密码";
+"My_modifyTradePassword" = "修改交易密码";
+
+"My_languageChoice" = "语言选择";
+"My_aboutUs" = "关于我们";
+"My_feedback" = "意见反馈";
+"My_version" = "当前版本";
+
+"My_effective" = "有效";
+"My_notActive" = "未激活";
+"My_qualified" = "合格";
+
+"My_feedback_textView_placeholder" = "请填写您的宝贵建议!";
+
+"My_chinese" = "简体中文";
+"My_english" = "英语";
+

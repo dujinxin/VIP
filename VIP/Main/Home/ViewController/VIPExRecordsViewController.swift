@@ -18,7 +18,7 @@ class VIPExRecordsViewController: VIPTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = LocalizedString(key: "Home")
+        self.title = LocalizedString(key: "Home_exchangeRecord")
         
         
         self.tableView.separatorStyle = .none
@@ -61,7 +61,7 @@ class VIPExRecordsViewController: VIPTableViewController {
                         l.textColor = JXGrayTextColor
                     }
                 })
-                self.defaultInfo = ["imageName":"noneImage","content":"暂无相关数据"]
+                self.defaultInfo = ["imageName":"noneImage","content":LocalizedString(key: "No relevant data available")]
                 self.setUpDefaultView()
                 self.defaultView.frame = self.tableView.frame
             }
@@ -87,8 +87,8 @@ class VIPExRecordsViewController: VIPTableViewController {
         return cell
         
     }
-   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "exRecordsDetail") as! VIPExRecordsDetailController

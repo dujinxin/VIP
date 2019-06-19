@@ -31,8 +31,9 @@ class VIPFinancialRecordsController: VIPTableViewController {
         return sel
     }()
     
-    lazy var topBar : JXBarView = {
-        let topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width , height: 48), titles: ["","",""])
+    lazy var topBar : JXXBarView = {
+        
+        let topBar = JXXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width , height: 48), titles: [""])
         topBar.delegate = self
         
         let att = JXAttribute()
@@ -65,7 +66,7 @@ class VIPFinancialRecordsController: VIPTableViewController {
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(customView: ({ () -> UIButton in
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 88, height: 30))
             //button.backgroundColor = UIColor.lightGray
-            button.setTitle("选择账户", for: .normal)
+            button.setTitle(LocalizedString(key: "Find_selectAaccounts"), for: .normal)
             button.setImage(UIImage(named: "selectAccount"), for: .normal)
             button.setTitleColor(JXBlueColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -101,10 +102,12 @@ class VIPFinancialRecordsController: VIPTableViewController {
                 //self.topBar.titles =
                 self.select_row = 0
                 self.programIndex = 0
+                self.topBar.titles.removeAll()
                 self.topBar.titles = self.vm.programRecordsEntity.list[0].titles
                 self.topBar.isBottomLineEnabled = true
                 self.topBar.containerView.reloadData()
                 
+    
                 self.contract_id = self.vm.programRecordsEntity.list[0].list[0].id
                 self.request(page: self.page)
             } else {
@@ -121,7 +124,26 @@ class VIPFinancialRecordsController: VIPTableViewController {
             self.hideMBProgressHUD()
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-            self.tableView.reloadData()
+           
+            
+            if self.vm.recordsEntity.list.count > 0 {
+                self.defaultView.isHidden = true
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+            } else {
+                self.tableView.isHidden = true
+                self.defaultView.isHidden = false
+                self.defaultView.backgroundColor = UIColor.clear
+                self.defaultView.subviews.forEach({ (v) in
+                    v.backgroundColor = UIColor.clear
+                    if let l = v as? UILabel {
+                        l.textColor = JXGrayTextColor
+                    }
+                })
+                self.defaultInfo = ["imageName":"noneImage","content":LocalizedString(key: "No relevant data available")]
+                self.setUpDefaultView()
+                self.defaultView.frame = self.tableView.frame
+            }
         }
     }
     @objc func back() {
@@ -150,9 +172,9 @@ extension VIPFinancialRecordsController {
     }
 }
 //MARK:JXBarViewDelegate
-extension VIPFinancialRecordsController : JXBarViewDelegate {
+extension VIPFinancialRecordsController : JXXBarViewDelegate {
     
-    func jxBarView(barView: JXBarView, didClick index: Int) {
+    func jxxBarView(barView: JXXBarView, didClick index: Int) {
         self.programIndex = index
         self.contract_id = self.vm.programRecordsEntity.list[self.select_row].list[index].id
         self.tableView.mj_header.beginRefreshing()
@@ -206,10 +228,8 @@ extension VIPFinancialRecordsController {
         return cell
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "propertyDetail") as! VIPProDetailViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
 }

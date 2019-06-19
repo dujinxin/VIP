@@ -20,6 +20,8 @@ class VIPFinancialListCell: UITableViewCell {
         didSet{
             self.joinButton.backgroundColor = JXGreenColor
             self.joinButton.isEnabled = false
+            
+            self.joinButton.layer.cornerRadius = 2
         }
     }
     

@@ -110,7 +110,7 @@ class VIPForgetPsdViewController: VIPBaseViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
-        self.title = "忘记密码"
+        self.title = LocalizedString(key: "Login_forgetPassword")
         self.barView.addSubview(self.topBar)
         self.view.addSubview(self.keyboard)
         
@@ -151,18 +151,14 @@ class VIPForgetPsdViewController: VIPBaseViewController {
             return
         }
         guard let password = self.psdTextField.text, password.count >= 6 else {
-            ViewManager.showNotice("登录密码需要设置6位以上！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_loginLength"))
             return
         }
         guard let password_r = self.psdRepeatTextField.text, password == password_r else {
-            ViewManager.showNotice("两次输入密码不一致！")
+            ViewManager.showNotice(LocalizedString(key: "Notice_loginDifferent"))
             return
         }
         
-        //        if self.validate(password) == false {
-        //            ViewManager.showNotice("密码格式错误")
-        //            return
-        //        }
         self.showMBProgressHUD()
         
         self.vm.resetPsd(text: text, type: self.selectIndex + 1, password: password) { (_, msg, isSuc) in

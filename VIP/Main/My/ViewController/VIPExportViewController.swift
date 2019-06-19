@@ -30,7 +30,7 @@ class VIPExportViewController: VIPBaseViewController {
     @IBAction func copyAction(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = self.addressLabel.text
-        ViewManager.showNotice("已复制")
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
     }
     
 }

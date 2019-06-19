@@ -17,7 +17,6 @@ class VIPProDetailViewController: VIPBaseViewController {
     }
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -25,8 +24,8 @@ class VIPProDetailViewController: VIPBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "记录详情"
-        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
+        self.title = LocalizedString(key: "Home_recordDetails")
+        //self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
         
         if self.entity.operation_qty > 0 {
             self.numLabel.text = "+\(self.entity.operation_qty) \(self.entity.currency_name ?? "")"
@@ -35,15 +34,40 @@ class VIPProDetailViewController: VIPBaseViewController {
         }
         // 1充值 2提现 3 理财 4兑换
         if self.entity.operation_style == 1 {
-            self.typeLabel.text = "充值"
+            self.typeLabel.text = LocalizedString(key: "Recharge")
         } else if self.entity.operation_style == 2 {
-            self.typeLabel.text = "提现"
+            self.typeLabel.text = LocalizedString(key: "Withdraw")
         } else if self.entity.operation_style == 3 {
-            self.typeLabel.text = "理财"
+            self.typeLabel.text = LocalizedString(key: "Finance")
         } else if self.entity.operation_style == 4 {
-            self.typeLabel.text = "兑换"
+            self.typeLabel.text = LocalizedString(key: "Exchange")
         }
-        self.orderLabel.text = "\(self.entity.operation_id)"
+        //1 待审核 2 已审核(转账中，确认中) 3 已完成 4 审核失败(转账失败 操作失败)
+        if self.entity.verify_status == 1 {
+            self.statusLabel.text = LocalizedString(key: "Home_review")
+        } else if self.entity.verify_status == 3 {
+            self.statusLabel.text = LocalizedString(key: "Home_completed")
+        } else if self.entity.verify_status  == 2 {
+            if self.entity.operation_style == 1 {
+                self.statusLabel.text = LocalizedString(key: "Home_transferInProgress")
+            } else if self.entity.operation_style == 2 {
+                self.statusLabel.text = LocalizedString(key: "Home_transferInProgress")
+            } else if self.entity.operation_style == 3 {
+                self.statusLabel.text = LocalizedString(key: "Home_completed")
+            } else if self.entity.operation_style == 4 {
+                self.statusLabel.text = LocalizedString(key: "Home_confirmationInProgress")
+            }
+        } else {
+            if self.entity.operation_style == 1 {
+                self.statusLabel.text = LocalizedString(key: "Home_failure")
+            } else if self.entity.operation_style == 2 {
+                self.statusLabel.text = LocalizedString(key: "Home_failure")
+            } else if self.entity.operation_style == 3 {
+                self.statusLabel.text = LocalizedString(key: "Home_failure")
+            } else if self.entity.operation_style == 4 {
+                self.statusLabel.text = LocalizedString(key: "Home_failure")
+            }
+        }
         //self.statusLabel.text =
         self.timeLabel.text = self.entity.create_time
     }
