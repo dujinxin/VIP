@@ -17,8 +17,6 @@ class VIPHomeModel: VIPBaseModel {
 }
 class VIPCoinPropertyEntity: VIPBaseModel {
     
-    @objc var deposit_address : String?
-    
     @objc var address : String?
     @objc var available_qty : Double = 0
     @objc var currency_type : Int = 0

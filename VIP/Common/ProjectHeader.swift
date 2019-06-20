@@ -8,5 +8,7 @@
 
 import Foundation
 
-let kBaseUrl = "http://api.daodixiangzenyang.com"
+//let kBaseUrl = "http://api.daodixiangzenyang.com"
+
+let kBaseUrl = "http://api.vib.world"
 

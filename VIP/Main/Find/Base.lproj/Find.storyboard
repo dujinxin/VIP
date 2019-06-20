@@ -53,7 +53,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="28" id="jUC-10-fHp"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -84,7 +84,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="28" id="Wpg-bn-r8F"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -293,7 +293,7 @@
                                                         <rect key="frame" x="15" y="109" width="344" height="50"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量（BTC）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-7B-kT0">
-                                                                <rect key="frame" x="10" y="-2" width="249" height="54"/>
+                                                                <rect key="frame" x="10" y="-2" width="131.5" height="54"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="54" id="ffi-Bg-2wt"/>
                                                                 </constraints>
@@ -304,7 +304,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgT-IW-qtx">
                                                                 <rect key="frame" x="269" y="10" width="65" height="30"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="65" id="2cY-6r-EoV"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="2cY-6r-EoV"/>
                                                                     <constraint firstAttribute="height" constant="30" id="8b4-On-5DI"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -323,7 +323,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="9pK-l6-2VW"/>
                                                             <constraint firstItem="Q1d-7B-kT0" firstAttribute="centerY" secondItem="ehH-nq-zoj" secondAttribute="centerY" id="S9D-fh-tv2"/>
                                                             <constraint firstItem="Q1d-7B-kT0" firstAttribute="leading" secondItem="ehH-nq-zoj" secondAttribute="leading" constant="10" id="hZW-no-cDs"/>
-                                                            <constraint firstItem="QgT-IW-qtx" firstAttribute="leading" secondItem="Q1d-7B-kT0" secondAttribute="trailing" constant="10" id="tqs-kU-Z4p"/>
+                                                            <constraint firstItem="QgT-IW-qtx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Q1d-7B-kT0" secondAttribute="trailing" constant="10" id="tqs-kU-Z4p"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utb-9W-7Mz">
@@ -352,7 +352,7 @@
                                                         <color key="backgroundColor" red="0.47450980390000003" green="0.59999999999999998" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="cQB-dd-xqM"/>
-                                                            <constraint firstAttribute="width" constant="124" id="mCd-72-gTa"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="mCd-72-gTa"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <state key="normal" title="确认抢购">
@@ -363,7 +363,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价值 ≈ $0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ1-8o-x2T">
-                                                        <rect key="frame" x="15" y="165" width="63" height="20"/>
+                                                        <rect key="frame" x="15" y="165" width="344" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="s5P-jf-YhY"/>
                                                         </constraints>
@@ -375,6 +375,8 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="xSF-lz-979" secondAttribute="trailing" id="1UF-pC-tx1"/>
+                                                    <constraint firstItem="08v-HU-7YW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lcH-rZ-Prp" secondAttribute="leading" constant="15" id="2Wc-so-m7l"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dQ1-8o-x2T" secondAttribute="trailing" constant="15" id="ASB-cc-qCz"/>
                                                     <constraint firstItem="Utb-9W-7Mz" firstAttribute="top" secondItem="ehH-nq-zoj" secondAttribute="bottom" constant="41" id="BbJ-0p-Y5I"/>
                                                     <constraint firstItem="dQ1-8o-x2T" firstAttribute="leading" secondItem="ehH-nq-zoj" secondAttribute="leading" id="EgT-8c-zId"/>
                                                     <constraint firstAttribute="height" constant="351" id="GO4-p6-q7C"/>

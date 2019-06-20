@@ -119,11 +119,11 @@ class VIPExchangeViewController: VIPBaseViewController {
         self.setOtherValues(leftEntity: leftEntity, rightEntity: rightEntity)
     }
     func setLeftValues(_ entity: VIPCoinPropertyEntity) {
-        self.fromBalanceLabel.text = "\(LocalizedString(key: "Balance"))：\(entity.available_qty)"
+        self.fromBalanceLabel.text = "\(LocalizedString(key: "Balance"))\n\(entity.available_qty)"
         self.fromCoinLabel.text = "\(entity.short_name ?? "")"
     }
     func setRightValues(_ entity: VIPCoinPropertyEntity) {
-        self.toBalanceLabel.text = "\(LocalizedString(key: "Balance"))：\(entity.available_qty)"
+        self.toBalanceLabel.text = "\(LocalizedString(key: "Balance"))\n\(entity.available_qty)"
         self.toCoinLabel.text = "\(entity.short_name ?? "")"
     }
     func setOtherValues(leftEntity: VIPCoinPropertyEntity, rightEntity: VIPCoinPropertyEntity) {

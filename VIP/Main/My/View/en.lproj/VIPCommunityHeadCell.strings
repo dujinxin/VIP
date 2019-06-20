@@ -1,12 +1,12 @@
 
 /* Class = "UILabel"; text = "社区市值($)"; ObjectID = "0Ph-Pa-1G5"; */
-"0Ph-Pa-1G5.text" = "Community market value($)";
+"0Ph-Pa-1G5.text" = "Community value($)";
 
 /* Class = "UILabel"; text = "社区有效账户(个)"; ObjectID = "AI3-mm-IIR"; */
-"AI3-mm-IIR.text" = "Community effective accounts (individual)";
+"AI3-mm-IIR.text" = "Effective accounts (individual)";
 
 /* Class = "UILabel"; text = "社区人员"; ObjectID = "H4k-rN-RZ7"; */
-"H4k-rN-RZ7.text" = "Community personnel";
+"H4k-rN-RZ7.text" = "Community Accounts";
 
 /* Class = "UILabel"; text = "社区奖励(VIT)"; ObjectID = "YFX-JF-a9g"; */
 "YFX-JF-a9g.text" = "Community rewards(VIT)";
@@ -24,4 +24,4 @@
 "quT-G1-bhA.text" = "1234";
 
 /* Class = "UILabel"; text = "平级奖励(VIT)"; ObjectID = "vB2-Ql-QQo"; */
-"vB2-Ql-QQo.text" = "Horizontal awards(VIT)";
+"vB2-Ql-QQo.text" = "Level rewards(VIT)";

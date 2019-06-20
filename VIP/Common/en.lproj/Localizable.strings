@@ -6,10 +6,10 @@
   Copyright © 2019 飞亦. All rights reserved.
 */
 
-"Home" = "Home page";
+"Home" = "Home";
 "Find" = "Discover";
 "Quotes" = "Quotation";
-"My" = "Main";
+"My" = "Me";
 
 
 
@@ -50,7 +50,7 @@
 "Notice_passwordError" = "Incorrect password";
 
 "Notice_inputPassword" = "Please enter the password";
-"Notice_inputNumber" = "Please enter quantity";
+"Notice_inputNumber" = "Please enter amount";
 "Notice_insufficientBalance" = "Insufficient balance";
 
 "Notice_feedbackContent_min" = "The feedback content is at least 6 characters.";

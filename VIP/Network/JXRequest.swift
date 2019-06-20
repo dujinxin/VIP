@@ -91,7 +91,7 @@ class JXRequest: JXBaseRequest {
                 data = jsonDict["data"]
                 isSuccess = true
             }else if code == .kResponseShortTokenDisabled{
-                JXNetworkManager.manager.cancelRequests(keepCurrent: self)
+                JXNetworkManager.manager.cancelRequests(keepCurrent: nil)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationLoginStatus"), object: false)
             }else if code == .kResponseLoginFromOtherDevice{
                 JXNetworkManager.manager.cancelRequests(keepCurrent: self)

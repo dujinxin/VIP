@@ -234,10 +234,10 @@ extension VIPFinancialAlertController: JXKeyboardTextFieldDelegate {
             return true
         }
         
-        if textField == numTextField, let text = textField.text, let num = Double(text), num >= self.currentEntity.available_qty  {
-            
-            return false
-        }
+//        if textField == numTextField, let text = textField.text, let num = Double(text), num >= self.currentEntity.available_qty  {
+//
+//            return false
+//        }
         if textField == psdTextField  {
             if range.location > 5 {
                 return false

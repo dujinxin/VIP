@@ -117,6 +117,15 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func superNodeAction(_ sender: Any) {
+//        let entity = self.vm.homeEntity.list[0]
+//
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "propertyNew") as! VIPPropertyNewViewController
+//        vc.title = entity.short_name
+//        vc.entity = entity
+//        vc.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
         ViewManager.showNotice(LocalizedString(key: "To be developed, please look forward"))
     }
     @IBAction func moreAction(_ sender: Any) {
@@ -259,7 +268,7 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
     }
     // MARK: - SDCycleScrollViewDelegate
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        print(index)
+       
         let entity = self.vm.homeEntity.noticeList[index]
 
         if entity.content_type == 1 {

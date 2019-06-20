@@ -239,7 +239,7 @@ class VIPPropertyViewController: VIPTableViewController {
         if let num = vm.propertyEntity.walletEntity?.available_qty, let prise = vm.propertyEntity.coinEntity?.price {
             self.coinValueLabel.text = String(format: "$%.2f", num * prise)
         }
-        self.addressLabel.text = vm.propertyEntity.coinEntity?.deposit_address
+        self.addressLabel.text = vm.propertyEntity.walletEntity?.address
     }
     override func requestData() {
         self.financialVM.walletList { (_, msg, isSuc) in

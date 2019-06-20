@@ -76,7 +76,7 @@ class VIPTransferViewController: VIPBaseViewController {
         } else {
             self.toAddressTextField.placeholder = LocalizedString(key: "Input address(\(self.entity?.coinEntity?.short_name ?? ""))")
         }
-        self.fromAddressLabel.text = self.entity?.coinEntity?.deposit_address
+        self.fromAddressLabel.text = self.entity?.walletEntity?.address
         self.rateLabel.text = "\(LocalizedString(key: "Home_absenceFee"))：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)

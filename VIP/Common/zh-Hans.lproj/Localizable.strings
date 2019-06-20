@@ -133,7 +133,7 @@
 "Home_targetWallet" = "Target Wallet";
 "Home_exchangeRate" = "exchange rate";
 "Home_maximumExchangeNumber" = "Maximum Exchange Number";
-"Home_absenceFee" = "旷工费";
+"Home_absenceFee" = "矿工费";
 "Home_Please enter the trade password" = "请输入交易密码";
 "Home_exchangeRecord" = "兑换记录";
 "Home_recordDetails" = "记录详情";
