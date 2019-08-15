@@ -94,16 +94,16 @@ class VIPPropertyCell: UITableViewCell {
                 }
             } else {
                 if self.tradeRecords?.operation_style == 1 {
-                    self.statusLabel.text = LocalizedString(key: "Home_failure")
+                    self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
                 } else if self.tradeRecords?.operation_style == 2 {
-                    self.statusLabel.text = LocalizedString(key: "Home_failure")
+                    self.statusLabel.text = LocalizedString(key: "Home_auditFailure")
                 } else if self.tradeRecords?.operation_style == 3 {
-                    self.statusLabel.text = LocalizedString(key: "Home_failure")
+                    self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
                 } else if self.tradeRecords?.operation_style == 4 {
-                    self.statusLabel.text = LocalizedString(key: "Home_failure")
+                    self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
                 }
             }
-            
+        
         }
     }
     var exchangeRecords : VIPExchangeCellEntity? {

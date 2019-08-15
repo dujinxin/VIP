@@ -87,6 +87,8 @@
 "PrivateKey" = "私钥";
 "Forget_mnemonicsTextField_placeholder" = "请输入助记词，用空格隔开";
 "Forget_privateKeyTextField_placeholder" = "请输入私钥";
+"Forget_notice_placeholder" = "请选择需要重置的密码";
+
 "Forget_loginPsdTextField_placeholder" = "新密码";
 "Forget_loginPsdTextField_repeat_placeholder" = "重复输入密码";
 
@@ -103,29 +105,36 @@
 
 "Withdraw" = "提现";
 "Recharge" = "充值";
-"Transfer" = "转账";
+"Transfer" = "提现";
 "Receive" = "收款";
 "Exchange" = "兑换";
 "All" = "全部";
 
-
 "Home_review" = "待审核";
 "Home_failure" = "已失败";
 "Home_completed" = "已完成";
-"Home_transferInProgress" = "转账中";
+"Home_transferInProgress" = "提现中";
 "Home_auditInProgress" = "审核中";
 "Home_confirmationInProgress" = "确认中";
+
+"Home_auditFailure" = "审核失败";
+"Home_transferFailure" = "提现失败";
+"Home_operatefFailure" = "操作失败";
 
 "Home_number of exchange token" = "Number of exchange token";
 "Transfer amount" = "Transfer amount";
 
 "Balance" = "Balance";
 
+"Home_availableBalance" = "可用余额：";
+"Home_freezeBalance" = "冻结余额：";
+
 "Home_transferAmount" = "Transfer amount";
 "Home_outputAmount" = "Output amount";
 "Home_receivingAddress" = "Receiving address";
 "Home_inputAddress" = "Input address";
 "Home_sendAddress" = "Send Address";
+"Home_addressBook" = "地址本";
 "Home_photo" = "选择照片";
 "Home_flashError" = "闪光灯故障";
 
@@ -137,6 +146,17 @@
 "Home_Please enter the trade password" = "请输入交易密码";
 "Home_exchangeRecord" = "兑换记录";
 "Home_recordDetails" = "记录详情";
+
+"Home_address" = "地址";
+"Home_name" = "名称";
+"Home_addAddress" = "添加地址";
+"Home_addressBookList" = "地址本列表";
+"Home_addAddressBook" = "添加地址本";
+"Home_editAddressBook" = "编辑地址本";
+"Home_deleteTheAddress" = "删除该地址";
+
+"Home_text_placeHolder_addressName" = "请输入地址名称";
+"Home_text_placeHolder_address" = "请输入地址";
 
 
 //Find

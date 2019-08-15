@@ -257,3 +257,4 @@ extension VIPLoginViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
         }
     }
 }
+

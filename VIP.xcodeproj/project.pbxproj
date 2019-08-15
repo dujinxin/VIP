@@ -19,6 +19,10 @@
 		290ACA4222ACCE9100A9F238 /* VIPLanguageAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290ACA4122ACCE9100A9F238 /* VIPLanguageAlertController.swift */; };
 		290ACA4322ACFD2C00A9F238 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290ACA4522ACFD2C00A9F238 /* Login.storyboard */; };
 		290ACA4B22AE4C4B00A9F238 /* JXXBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290ACA4A22AE4C4B00A9F238 /* JXXBarView.swift */; };
+		2940850D22E9930400FF5D30 /* VIPAddressListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2940850C22E9930400FF5D30 /* VIPAddressListController.swift */; };
+		2940851022E9E37500FF5D30 /* VIPAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2940850E22E9E37500FF5D30 /* VIPAddressCell.swift */; };
+		2940851122E9E37500FF5D30 /* VIPAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2940850F22E9E37500FF5D30 /* VIPAddressCell.xib */; };
+		2940851322EAF8C300FF5D30 /* VIPAddressAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2940851222EAF8C300FF5D30 /* VIPAddressAddController.swift */; };
 		2944D8A9229FB92B00C31FAA /* VIPFinancialAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8A8229FB92B00C31FAA /* VIPFinancialAccountController.swift */; };
 		2944D8B5229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D8B3229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift */; };
 		2944D8B6229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2944D8B4229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib */; };
@@ -156,6 +160,10 @@
 		290ACA4722ACFD3800A9F238 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		290ACA4922ACFD4600A9F238 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.strings"; sourceTree = "<group>"; };
 		290ACA4A22AE4C4B00A9F238 /* JXXBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXXBarView.swift; sourceTree = "<group>"; };
+		2940850C22E9930400FF5D30 /* VIPAddressListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPAddressListController.swift; sourceTree = "<group>"; };
+		2940850E22E9E37500FF5D30 /* VIPAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPAddressCell.swift; sourceTree = "<group>"; };
+		2940850F22E9E37500FF5D30 /* VIPAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPAddressCell.xib; sourceTree = "<group>"; };
+		2940851222EAF8C300FF5D30 /* VIPAddressAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPAddressAddController.swift; sourceTree = "<group>"; };
 		2944D8A8229FB92B00C31FAA /* VIPFinancialAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAccountController.swift; sourceTree = "<group>"; };
 		2944D8B3229FBA2200C31FAA /* VIPFinancialAccountHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFinancialAccountHeadCell.swift; sourceTree = "<group>"; };
 		2944D8B4229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPFinancialAccountHeadCell.xib; sourceTree = "<group>"; };
@@ -501,9 +509,9 @@
 				2944D8F622A3EECE00C31FAA /* ViewManager.swift */,
 				2944D8EF22A2CCB200C31FAA /* UserManager.swift */,
 				29981B93229BE4C100BD2FDC /* ConfigurationHeader.swift */,
+				2944D8ED22A2C93000C31FAA /* ProjectHeader.swift */,
 				29FC1032229EC45A00371D68 /* LanguageHeader.swift */,
 				29FC102E229EC30500371D68 /* Localizable.strings */,
-				2944D8ED22A2C93000C31FAA /* ProjectHeader.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -596,6 +604,8 @@
 				29981B9D229C149600BD2FDC /* VIPHomeCell.xib */,
 				290ACA1F22AA1C7800A9F238 /* VIPExchangeListCell.swift */,
 				296AD0EB22B69182005E4ED8 /* VIPExchangeListCell.xib */,
+				2940850E22E9E37500FF5D30 /* VIPAddressCell.swift */,
+				2940850F22E9E37500FF5D30 /* VIPAddressCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -613,6 +623,8 @@
 				2944D8C7229FF09F00C31FAA /* VIPExRecordsViewController.swift */,
 				2944D8C9229FF8F300C31FAA /* VIPExRecordsDetailController.swift */,
 				290ACA1522A8036B00A9F238 /* VIPScanViewController.swift */,
+				2940850C22E9930400FF5D30 /* VIPAddressListController.swift */,
+				2940851222EAF8C300FF5D30 /* VIPAddressAddController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -804,6 +816,7 @@
 				29025FB222BA428F0038D1E5 /* VIPPropertyContentCell.xib in Resources */,
 				296AD12822B79E2C005E4ED8 /* VIPCommunityHeadCell.xib in Resources */,
 				2944D8B6229FBA2200C31FAA /* VIPFinancialAccountHeadCell.xib in Resources */,
+				2940851122E9E37500FF5D30 /* VIPAddressCell.xib in Resources */,
 				296AD11322B6AA5D005E4ED8 /* My.storyboard in Resources */,
 				296AD0F722B697FE005E4ED8 /* Find.storyboard in Resources */,
 				296AD0FE22B69937005E4ED8 /* VIPFindHeadCell.xib in Resources */,
@@ -908,6 +921,8 @@
 				296AD0CF22B23481005E4ED8 /* VIPFindVM.swift in Sources */,
 				290ACA1422A6BB4900A9F238 /* JXDropListView.swift in Sources */,
 				29981BC0229D839C00BD2FDC /* VIPMyListCell.swift in Sources */,
+				2940851022E9E37500FF5D30 /* VIPAddressCell.swift in Sources */,
+				2940850D22E9930400FF5D30 /* VIPAddressListController.swift in Sources */,
 				2944D90A22A52C7B00C31FAA /* VIPFinancialRecordsAlertController.swift in Sources */,
 				290ACA1622A8036B00A9F238 /* VIPScanViewController.swift in Sources */,
 				2944D91E22A67C2300C31FAA /* VIPFinancialModel.swift in Sources */,
@@ -920,6 +935,7 @@
 				290ACA1E22A8F5A300A9F238 /* JXSelectView.swift in Sources */,
 				29FC1020229E71C000371D68 /* VIPRegisterViewController.swift in Sources */,
 				2944D8E622A2C4EE00C31FAA /* JXBaseRequest.swift in Sources */,
+				2940851322EAF8C300FF5D30 /* VIPAddressAddController.swift in Sources */,
 				29981BB2229D4C2500BD2FDC /* VIPReceiptViewController.swift in Sources */,
 				296AD0DB22B2A601005E4ED8 /* VIPNotificationTextController.swift in Sources */,
 				29981B85229BD7F600BD2FDC /* VIPBaseModel.swift in Sources */,

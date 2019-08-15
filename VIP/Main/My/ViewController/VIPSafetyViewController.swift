@@ -10,7 +10,7 @@ import UIKit
 
 class VIPSafetyViewController: VIPTableViewController{
 
-    var actionArray = [LocalizedString(key: "My_exportPrivateKey"),LocalizedString(key: "My_backupMnemonics"),LocalizedString(key: "My_modifyLoginPassword"),LocalizedString(key: "My_modifyTradePassword")]
+    var actionArray = [LocalizedString(key: "My_exportPrivateKey"),LocalizedString(key: "My_backupMnemonics"),LocalizedString(key: "My_modifyLoginPassword"),LocalizedString(key: "My_modifyTradePassword"),LocalizedString(key: "Home_addressBook")]
     
     var vm = VIPSafetyVM()
     
@@ -94,11 +94,15 @@ class VIPSafetyViewController: VIPTableViewController{
             vc.type = .login
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
+        } else if indexPath.section == 3{
             let vc = storyboard.instantiateViewController(withIdentifier: "modify") as! VIPModifyViewController
             vc.title = title
             vc.type = .trade
             vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = VIPAddressListController()
+            vc.type = .my
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

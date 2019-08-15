@@ -91,4 +91,63 @@ class VIPPropertyVM: NSObject {
             completion(nil, msg, false)
         }
     }
+    
+    
+    //地址列表
+    var addressListEntity = VIPAddressListEntity()
+    
+    func addressList(page: Int, coin_id: Int = 0, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
+        
+        JXRequest.request(url: ApiString.propertyAddressList.rawValue, param: ["lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
+            if page == 1 {
+                self.addressListEntity.list.removeAll()
+            }
+            if let result = data as? Array<Dictionary<String, Any>> {
+                
+                for i in 0..<result.count {
+                    let entity = VIPAddressCellEntity()
+                    entity.setValuesForKeys(result[i])
+                    if coin_id > 0 {
+                        if coin_id == entity.currency_id {
+                            self.addressListEntity.list.append(entity)
+                        }
+                    } else {
+                        self.addressListEntity.list.append(entity)
+                    }
+                }
+            }
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
+    func addressAdd(address_remark: String, address: String, currency_id: Int, pay_password: String, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
+        JXRequest.request(url: ApiString.propertyAddressAdd.rawValue, param: ["address_remark": address_remark, "address": address,"currency_id": currency_id, "pay_password": pay_password, "lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
+    func addressEdit(address_remark: String, address: String, currency_id: Int, address_id: Int, pay_password: String, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
+        JXRequest.request(url: ApiString.propertyAddressEdit.rawValue, param: ["address_remark": address_remark, "address": address,"currency_id": currency_id, "address_id": address_id, "pay_password": pay_password, "lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
+    func addressDelete(address_id: Int, pay_password: String, completion: @escaping ((_ data: Any?, _ msg: String, _ isSuccess: Bool)->())) -> Void{
+        JXRequest.request(url: ApiString.propertyAddressDel.rawValue, param: ["address_id": address_id, "pay_password": pay_password, "lang":LanaguageManager.shared.languageStr], success: { (data, msg) in
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
 }

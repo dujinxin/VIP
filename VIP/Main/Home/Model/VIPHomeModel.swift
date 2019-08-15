@@ -37,6 +37,8 @@ class VIPCoinPropertyEntity: VIPBaseModel {
     @objc var withdraw_limit_month : Double = 0
     @objc var withdraw_qty : Double = 0
     @objc var withdraw_status : Int = 0
+    
+    @objc var ex_type : Int = 0
 }
 
 

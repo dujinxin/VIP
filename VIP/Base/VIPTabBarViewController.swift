@@ -111,7 +111,7 @@ class VIPTabBarViewController: UITabBarController {
     }
 
 }
-//E68807963   2026-02-15
+
 //MARK: loginStatus
 extension VIPTabBarViewController {
     @objc func loginStatus(notify:Notification) {

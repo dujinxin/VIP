@@ -49,28 +49,59 @@ class VIPPropertyViewController: VIPTableViewController {
 //        topView.addSubview(leftLabel)
 //        leftLabel.center = CGPoint(x: leftLabel.center.x, y: topView.jxHeight / 2)
         
-        let iconImageView = UIImageView(frame: CGRect(x: 0, y: 20, width: 50, height: 50))
+        let iconImageView = UIImageView(frame: CGRect(x: 15, y: 20, width: 50, height: 50))
         topView.addSubview(iconImageView)
-        iconImageView.center = CGPoint(x: topView.center.x, y: iconImageView.center.y)
+        iconImageView.center = CGPoint(x: iconImageView.center.x, y: topView.center.y)
         
+        let leftLabel1 = UILabel(frame: CGRect(x: iconImageView.jxRight, y: 28, width: kScreenWidth / 2 - iconImageView.jxRight, height: 20))
+        leftLabel1.textColor = JXBlackTextColor
+        leftLabel1.font = UIFont.systemFont(ofSize: 14)
+        leftLabel1.textAlignment = .right
+        topView.addSubview(leftLabel1)
         
-        let centerLabel1 = UILabel(frame: CGRect(x: 30, y: iconImageView.jxBottom + 20, width: 260, height: 30))
+        let centerLabel1 = UILabel(frame: CGRect(x: kScreenWidth / 2, y: 20, width: kScreenWidth / 2, height: 33))
         centerLabel1.textColor = JXBlackTextColor
         centerLabel1.font = UIFont.systemFont(ofSize: 24)
-        centerLabel1.textAlignment = .center
+        centerLabel1.textAlignment = .left
         topView.addSubview(centerLabel1)
-        centerLabel1.center = CGPoint(x: topView.center.x, y: centerLabel1.center.y)
+
         
-        let centerLabel2 = UILabel(frame: CGRect(x: 30, y: centerLabel1.jxBottom + 2, width: 260, height: 20))
+        let centerLabel2 = UILabel(frame: CGRect(x: kScreenWidth / 2, y: centerLabel1.jxBottom + 2, width: kScreenWidth / 2, height: 20))
         centerLabel2.textColor = JXGrayTextColor
         centerLabel2.font = UIFont.systemFont(ofSize: 14)
-        centerLabel2.textAlignment = .center
+        centerLabel2.textAlignment = .left
         topView.addSubview(centerLabel2)
-        centerLabel2.center = CGPoint(x: topView.center.x, y: centerLabel2.center.y)
+        
+        
+        let leftLabel2 = UILabel(frame: CGRect(x: iconImageView.jxRight, y: centerLabel2.jxBottom + 30, width: kScreenWidth / 2 - iconImageView.jxRight, height: 20))
+        leftLabel2.textColor = JXBlackTextColor
+        leftLabel2.font = UIFont.systemFont(ofSize: 14)
+        leftLabel2.textAlignment = .right
+        topView.addSubview(leftLabel2)
+        
+        let centerLabel3 = UILabel(frame: CGRect(x: kScreenWidth / 2, y: centerLabel2.jxBottom + 22, width: kScreenWidth / 2, height: 33))
+        centerLabel3.textColor = JXBlackTextColor
+        centerLabel3.font = UIFont.systemFont(ofSize: 24)
+        centerLabel3.textAlignment = .left
+        topView.addSubview(centerLabel3)
+        
+        
+        let centerLabel4 = UILabel(frame: CGRect(x: kScreenWidth / 2, y: centerLabel3.jxBottom + 2, width: kScreenWidth / 2, height: 20))
+        centerLabel4.textColor = JXGrayTextColor
+        centerLabel4.font = UIFont.systemFont(ofSize: 14)
+        centerLabel4.textAlignment = .left
+        topView.addSubview(centerLabel4)
+        
+        
         
         self.iconImageView = iconImageView
-        self.coinNumLabel = centerLabel1
-        self.coinValueLabel = centerLabel2
+        self.useBlanceLabel = leftLabel1
+        self.useNumLabel = centerLabel1
+        self.useValueLabel = centerLabel2
+        
+        self.limitBlanceLabel = leftLabel2
+        self.limitNumLabel = centerLabel3
+        self.limitValueLabel = centerLabel4
         
         //地址相关
         let textFieldBgView = UIView(frame: CGRect(x: 30, y: topView.jxBottom + 15, width: headView.jxWidth - 30 * 2, height: 50))
@@ -152,8 +183,13 @@ class VIPPropertyViewController: VIPTableViewController {
     }()
     
     var iconImageView : UIImageView!
-    var coinNumLabel : UILabel!
-    var coinValueLabel : UILabel!
+    var useBlanceLabel : UILabel!
+    var useNumLabel : UILabel!
+    var useValueLabel : UILabel!
+    
+    var limitBlanceLabel : UILabel!
+    var limitNumLabel : UILabel!
+    var limitValueLabel : UILabel!
     
     var addressLabel : UILabel!
     
@@ -226,8 +262,15 @@ class VIPPropertyViewController: VIPTableViewController {
         if let s = self.entity.icon, let url = URL(string: kBaseUrl + s) {
             self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
         }
-        self.coinNumLabel.text = "\(self.entity.available_qty)"
-        self.coinValueLabel.text = "$\(self.entity.available_qty * self.entity.price)"
+       
+        self.useBlanceLabel.text = "\(LocalizedString(key: "Home_availableBalance"))"
+        self.useNumLabel.text = "\(0)"
+        self.useValueLabel.text = "$\(0)"
+        
+        self.limitBlanceLabel.text = "\(LocalizedString(key: "Home_freezeBalance"))"
+        self.limitNumLabel.text = "\(0)"
+        self.limitValueLabel.text = "$\(0)"
+        
         self.addressLabel.text = self.entity.address
     }
     func updateValues(_ vm: VIPPropertyVM) {
@@ -235,9 +278,13 @@ class VIPPropertyViewController: VIPTableViewController {
         if let s = self.entity.icon, let url = URL(string: kBaseUrl + s) {
             self.iconImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
         }
-        self.coinNumLabel.text = String(format: "%.8f", vm.propertyEntity.walletEntity?.available_qty ?? 0)
+        self.useNumLabel.text = String(format: "%.8f", vm.propertyEntity.walletEntity?.available_qty ?? 0)
         if let num = vm.propertyEntity.walletEntity?.available_qty, let prise = vm.propertyEntity.coinEntity?.price {
-            self.coinValueLabel.text = String(format: "$%.2f", num * prise)
+            self.useValueLabel.text = String(format: "$%.2f", num * prise)
+        }
+        self.limitNumLabel.text = String(format: "%.8f", vm.propertyEntity.walletEntity?.frozen_qty ?? 0)
+        if let num = vm.propertyEntity.walletEntity?.frozen_qty, let prise = vm.propertyEntity.coinEntity?.price {
+            self.limitValueLabel.text = String(format: "$%.2f", num * prise)
         }
         self.addressLabel.text = vm.propertyEntity.walletEntity?.address
     }
@@ -258,7 +305,7 @@ class VIPPropertyViewController: VIPTableViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "transfer") as! VIPTransferViewController
             vc.entity = self.vm?.propertyEntity
             vc.backBlock = {
-                self.tableView.mj_header.beginRefreshing()
+                //self.tableView.mj_header.beginRefreshing()
             }
             self.navigationController?.pushViewController(vc, animated: true)
         } else if button.tag == 1 {

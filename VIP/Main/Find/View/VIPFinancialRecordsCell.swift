@@ -43,6 +43,10 @@ class VIPFinancialRecordsCell: UITableViewCell {
             
             if entity?.create_time == entity?.expire_time {
                 self.endTimeLabel.text = "--"
+                self.ReleaseButton.isHidden = false
+            } else {
+                self.endTimeLabel.text = entity?.expire_time
+                self.ReleaseButton.isHidden = true
             }
           
         }

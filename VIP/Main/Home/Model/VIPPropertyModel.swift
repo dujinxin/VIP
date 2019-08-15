@@ -20,6 +20,7 @@ class VIPWalletEntity: VIPBaseModel {
     @objc var currency_name : String?
     @objc var available_qty : Double = 0
     @objc var address : String?
+    @objc var frozen_qty : Double = 0
     @objc var locked_qty : Double = 0
     @objc var withdraw_qty : Double = 0
     @objc var status : Int = 0
@@ -66,4 +67,24 @@ class VIPExchangeCellEntity: VIPBaseModel {
     
     @objc var status : Float = 0
     @objc var create_time : String?
+}
+
+
+class VIPAddressListEntity: VIPBaseModel {
+    var list = Array<VIPAddressCellEntity>()
+}
+class VIPAddressCellEntity: VIPBaseModel {
+    
+    @objc var currency_name : String?
+    @objc var currency_id : Int = 0
+    
+    @objc var address : String?
+    @objc var address_remark : String?
+   
+    @objc var id : Int = 0
+    @objc var status : Float = 0
+    @objc var create_time : String?
+    @objc var update_time : String?
+    
+    @objc var verify_status : Int = 0 //0未审核，1已审核
 }

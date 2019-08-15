@@ -144,7 +144,7 @@
 "jzJ-jh-DS6.normalTitle" = "灯光";
 
 /* Class = "UILabel"; text = "转账金额"; ObjectID = "k53-Qc-rqq"; */
-"k53-Qc-rqq.text" = "转账金额";
+"k53-Qc-rqq.text" = "提现金额";
 
 /* Class = "UILabel"; text = "目标钱包"; ObjectID = "knP-DB-b0H"; */
 "knP-DB-b0H.text" = "目标钱包";

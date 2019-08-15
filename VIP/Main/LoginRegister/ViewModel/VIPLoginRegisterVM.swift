@@ -60,8 +60,14 @@ class VIPLoginRegisterVM: NSObject {
         }
     }
     //重设密码
-    func resetPsd(text: String, type: Int, password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["text": text, "password": password ,"type": type, "lang":LanaguageManager.shared.languageStr], success: { (data, message) in
+    func resetPsd(psdType: Int, text: String, type: Int, password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        var psd : String = ""
+        if psdType == 0 {
+            psd = ApiString.resetLoginPsd.rawValue
+        } else {
+            psd = ApiString.resetTradePsd.rawValue
+        }
+        JXRequest.request(url: psd, param: ["text": text, "password": password ,"type": type, "lang":LanaguageManager.shared.languageStr], success: { (data, message) in
 
             completion(nil,message,true)
         }) { (message, code) in

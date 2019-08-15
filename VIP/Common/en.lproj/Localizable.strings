@@ -94,6 +94,7 @@
 "PrivateKey" = "Private key";
 "Forget_mnemonicsTextField_placeholder" = "Please enter mnemonic words separated by spaces.";
 "Forget_privateKeyTextField_placeholder" = "Please enter private key                  ";
+"Forget_notice_placeholder" = "Select the password you need to reset";
 "Forget_loginPsdTextField_placeholder" = "New password";
 "Forget_loginPsdTextField_repeat_placeholder" = "Repeat password";
 
@@ -117,7 +118,7 @@
 
 "Withdraw" = "Withdraw";
 "Recharge" = "Recharge";
-"Transfer" = "Transfer";
+"Transfer" = "Withdraw";
 "Receive" = "Receive";
 "Exchange" = "Exchange";
 "All" = "All";
@@ -135,16 +136,26 @@
 "Home_confirmationInProgress" = "Confirmation in progress";
 "Home_exchangeQuantity" = "Exchange Amount";
 
+
+"Home_auditFailure" = "Failure";
+"Home_transferFailure" = "Failure";
+"Home_operatefFailure" = "Failure";
+
 "Home_number of exchange token" = "Amount of exchange token";
 "Transfer amount" = "Transfer amount";
 
 "Balance" = "Balance";
+
+
+"Home_availableBalance" = "Available balance: ";
+"Home_freezeBalance" = "Freeze balance: ";
 
 "Home_transferAmount" = "Transfer amount";
 "Home_Output amount" = "Output amount";
 "Home_receivingAddress" = "Receiving address";
 "Home_inputAddress" = "Input address";
 "Home_sendAddress" = "Send Address";
+"Home_addressBook" = "Address book";
 "Home_photo" = "Photo";
 "Home_flashError" = "Flash Error";
 
@@ -157,6 +168,21 @@
 "Home_Please enter the trade password" = "Please enter the trade password";
 "Home_exchangeRecord" = "Records";
 "Home_recordDetails" = "Details";
+
+
+"Home_address" = "Address";
+"Home_name" = "Name";
+"Home_addAddress" = "Add Address";
+"Home_addressBookList" = "Address Book List";
+"Home_addAddressBook" = "Add Address Book";
+"Home_editAddressBook" = "Edit Address Book";
+"Home_deleteTheAddress" = "Delete the address";
+
+"Home_text_placeHolder_addressName" = "Please enter the address name";
+"Home_text_placeHolder_address" = "Please enter the address";
+
+
+
 
 
 //Find

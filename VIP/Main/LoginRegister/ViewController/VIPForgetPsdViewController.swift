@@ -24,6 +24,39 @@ class VIPForgetPsdViewController: VIPBaseViewController {
              self.textView.placeHolderText = LocalizedString(key: "Forget_mnemonicsTextField_placeholder")
         }
     }
+    
+    @IBOutlet weak var noticeLabel: UILabel!{
+        didSet{
+            self.noticeLabel.text = LocalizedString(key: "Forget_notice_placeholder")
+        }
+    }
+    @IBOutlet weak var loginItem: UIButton!{
+        didSet{
+            loginItem.isSelected = true
+            loginItem.setTitleColor(JXMainColor, for: .selected)
+            loginItem.setTitleColor(UIColor.rgbColor(rgbValue: 0xA3ADB6), for: .normal)
+            loginItem.setTitle(LocalizedString(key: "Register_loginPsdTextField_placeholder"), for: .normal)
+        }
+    }
+    @IBOutlet weak var loginLine: UIView!{
+        didSet{
+            loginLine.backgroundColor = JXMainColor
+        }
+    }
+    @IBOutlet weak var tradeItem: UIButton!{
+        didSet{
+            tradeItem.isSelected = false
+            tradeItem.setTitleColor(JXMainColor, for: .selected)
+            tradeItem.setTitleColor(UIColor.rgbColor(rgbValue: 0xA3ADB6), for: .normal)
+            tradeItem.setTitle(LocalizedString(key: "Register_tradePsdTextField_placeholder"), for: .normal)
+        }
+    }
+    @IBOutlet weak var tradeLine: UIView!{
+        didSet{
+            tradeLine.backgroundColor = UIColor.clear
+        }
+    }
+    
     @IBOutlet weak var psdTextField: UITextField!{
         didSet{
             psdTextField.placeholder = LocalizedString(key: "Forget_loginPsdTextField_placeholder")
@@ -99,6 +132,8 @@ class VIPForgetPsdViewController: VIPBaseViewController {
     
     var selectIndex : Int = 0
     
+    var type : Int = 0 //0登录，1交易
+    
     var vm = VIPLoginRegisterVM()
     
     override func viewDidLoad() {
@@ -136,6 +171,7 @@ class VIPForgetPsdViewController: VIPBaseViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     @objc func switchPsd(button: UIButton) {
         button.isSelected = !button.isSelected
         if button.tag == 1 {
@@ -143,6 +179,22 @@ class VIPForgetPsdViewController: VIPBaseViewController {
         } else if button.tag == 2 {
             self.psdRepeatTextField.isSecureTextEntry = !button.isSelected
         }
+    }
+    @IBAction func loginSelect(_ sender: Any) {
+        self.loginItem.isSelected = true
+        self.tradeItem.isSelected = false
+        self.loginLine.backgroundColor = JXMainColor
+        self.tradeLine.backgroundColor = UIColor.clear
+        
+        self.type = 0
+    }
+    @IBAction func tradeSelect(_ sender: Any) {
+        self.loginItem.isSelected = false
+        self.tradeItem.isSelected = true
+        self.loginLine.backgroundColor = UIColor.clear
+        self.tradeLine.backgroundColor = JXMainColor
+        
+        self.type = 1
     }
     
     
@@ -161,7 +213,7 @@ class VIPForgetPsdViewController: VIPBaseViewController {
         
         self.showMBProgressHUD()
         
-        self.vm.resetPsd(text: text, type: self.selectIndex + 1, password: password) { (_, msg, isSuc) in
+        self.vm.resetPsd(psdType: self.type, text: text, type: self.selectIndex + 1, password: password) { (_, msg, isSuc) in
             self.hideMBProgressHUD()
             ViewManager.showNotice(msg)
             if isSuc {

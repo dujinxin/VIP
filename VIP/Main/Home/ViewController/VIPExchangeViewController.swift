@@ -102,7 +102,9 @@ class VIPExchangeViewController: VIPBaseViewController {
             if entity.currency_type == 3 {
                 self.leftLists.append(entity)
             } else {
-                self.rightLists.append(entity)
+                if entity.ex_type != 0 {
+                    self.rightLists.append(entity)
+                }
             }
         }
         if self.leftLists.count > 0 && self.rightLists.count > 0 {

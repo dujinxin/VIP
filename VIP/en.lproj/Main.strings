@@ -6,7 +6,7 @@
 "8gM-l3-5BH.normalTitle" = "超级节点";
 
 /* Class = "UILabel"; text = "10000.21"; ObjectID = "Asr-I2-2yn"; */
-"Asr-I2-2yn.text" = "10000.21";
+"Asr-I2-2yn.text" = "0";
 
 /* Class = "UILabel"; text = "首页"; ObjectID = "Jri-do-VS3"; */
 "Jri-do-VS3.text" = "首页";
@@ -27,7 +27,7 @@
 "gHP-uJ-fsg.normalTitle" = "理财";
 
 /* Class = "UILabel"; text = "今日收益：10 VIT"; ObjectID = "h58-3a-dYr"; */
-"h58-3a-dYr.text" = "今日收益：10 VIT";
+"h58-3a-dYr.text" = "今日收益：0 VIT";
 
 /* Class = "UIButton"; normalTitle = "更多"; ObjectID = "sRF-r5-vhY"; */
 "sRF-r5-vhY.normalTitle" = "More";

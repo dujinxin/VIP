@@ -59,13 +59,13 @@ class VIPProDetailViewController: VIPBaseViewController {
             }
         } else {
             if self.entity.operation_style == 1 {
-                self.statusLabel.text = LocalizedString(key: "Home_failure")
+                self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
             } else if self.entity.operation_style == 2 {
-                self.statusLabel.text = LocalizedString(key: "Home_failure")
+                self.statusLabel.text = LocalizedString(key: "Home_auditFailure")
             } else if self.entity.operation_style == 3 {
-                self.statusLabel.text = LocalizedString(key: "Home_failure")
+                self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
             } else if self.entity.operation_style == 4 {
-                self.statusLabel.text = LocalizedString(key: "Home_failure")
+                self.statusLabel.text = LocalizedString(key: "Home_operatefFailure")
             }
         }
         //self.statusLabel.text =

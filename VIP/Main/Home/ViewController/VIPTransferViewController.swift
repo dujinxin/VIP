@@ -33,9 +33,20 @@ class VIPTransferViewController: VIPBaseViewController {
     
     @IBOutlet weak var toAddressTextField: UITextField!{
         didSet{
-            
+            self.toAddressTextField.isEnabled = false
         }
     }
+    @IBOutlet weak var addressButton: UIButton!{
+        didSet{
+            addressButton.setTitle(LocalizedString(key: "Home_addressBook"), for: .normal)
+            addressButton.setImage(UIImage(named: "addressBook"), for: .normal)
+            addressButton.setTitleColor(JXBlueColor, for: .normal)
+            addressButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            addressButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
+            //addressButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
+    
     @IBOutlet weak var fromAddressLabel: UILabel!
     @IBOutlet weak var scanButton: UIButton!
     
@@ -68,13 +79,13 @@ class VIPTransferViewController: VIPBaseViewController {
         }
         self.view.addSubview(self.keyboard)
         
-        self.title = "\(self.entity?.coinEntity?.short_name ?? "") \(LocalizedString(key: "Exchange"))"
+        self.title = "\(self.entity?.coinEntity?.short_name ?? "") \(LocalizedString(key: "Transfer"))"
         self.numLabel.text = "\(self.entity?.coinEntity?.short_name ?? "") \(LocalizedString(key: "Balance"))：\(self.entity?.walletEntity?.available_qty ?? 0)"
         self.valueLabel.text = "≈ $0.00"
         if LanaguageManager.shared.type == .chinese {
-            self.toAddressTextField.placeholder = LocalizedString(key: "请输入（ \(self.entity?.coinEntity?.short_name ?? "")）地址")
+            self.toAddressTextField.placeholder = LocalizedString(key: "请选择（ \(self.entity?.coinEntity?.short_name ?? "")）地址")
         } else {
-            self.toAddressTextField.placeholder = LocalizedString(key: "Input address(\(self.entity?.coinEntity?.short_name ?? ""))")
+            self.toAddressTextField.placeholder = LocalizedString(key: "Select address(\(self.entity?.coinEntity?.short_name ?? ""))")
         }
         self.fromAddressLabel.text = self.entity?.walletEntity?.address
         self.rateLabel.text = "\(LocalizedString(key: "Home_absenceFee"))：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
@@ -94,6 +105,17 @@ class VIPTransferViewController: VIPBaseViewController {
             self.valueLabel.text = "≈ $\(0.00)"
         }
     }
+    @IBAction func addressAction(_ sender: UIButton) {
+        let vc = VIPAddressListController()
+        vc.type = .transfer
+        vc.coin_id = self.entity?.walletEntity?.currency_id ?? 0
+        vc.coin_name = self.entity?.walletEntity?.currency_name
+        vc.selectBlock = { address in
+            self.toAddressTextField.text = address
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func scanAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "scan") as! VIPScanViewController
@@ -171,7 +193,7 @@ extension VIPTransferViewController: JXKeyboardTextFieldDelegate {
                 let text = textField.text, text.isEmpty == false,
                 let num = Double(text), num > 0 {
                 
-                self.valueLabel.text = "≈ $\(num * (self.entity?.walletEntity!.available_qty)!)"
+                self.valueLabel.text = "≈ $\(num * (self.entity?.coinEntity?.price)!)"
             } else {
                 self.valueLabel.text = "≈ $\(0.00)"
             }

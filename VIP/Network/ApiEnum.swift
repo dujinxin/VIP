@@ -14,13 +14,20 @@ enum ApiString : String {
     case login =                     "/user/login"                          //用户登录
     case logout =                    "/planA/logout"                        //用户登出
     case register =                  "/user/register"                       //用户注册
-    case resetPsd =                  "/user/forgetLoginPwd"                 //重设密码
+    case resetLoginPsd =             "/user/forgetLoginPwd"                 //重设登录密码
+    case resetTradePsd =             "/user/forgetPayPwd"                   //重设交易密码
     
     case homeInfo =                  "/api/home"                            //首页
     case propertyDetails =           "/api/home/wallet/details"             //资产详情
     case propertyTransfer =          "/api/home/wallet/withdraw"            //转账
     case propertyExchange =          "/api/wallet/exchange"                 //兑换
     case propertyExchangeList =      "/api/wallet/exchange/list"            //兑换列表
+    
+    case propertyAddressAdd =        "/api/home/wallet/address/add"         //添加地址
+    case propertyAddressEdit =       "/api/home/wallet/address/update"      //编辑地址
+    case propertyAddressDel =        "/api/home/wallet/address/del"         //删除地址
+    case propertyAddressList =       "/api/home/wallet/address"             //地址列表
+   
    
     case my =                        "/api/user"                            //我的
     case noticeLists =               "/api/home/notice"                     //消息列表
