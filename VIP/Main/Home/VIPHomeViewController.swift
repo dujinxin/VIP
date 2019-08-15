@@ -306,7 +306,6 @@ class VIPHomeViewController: VIPTableViewController, SDCycleScrollViewDelegate {
         cell.coinValueLabel.text = "$\(entity.price)"
         cell.numValueLabel.text = String(format: "$%.8f", entity.price * entity.available_qty)
         if let s = entity.icon,let url = URL(string: kBaseUrl + s) {
-            print(url)
             cell.coinImageView.setImageWith(url, placeholderImage: UIImage(named: "coin"))
         }
         
