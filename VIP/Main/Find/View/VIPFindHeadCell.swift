@@ -86,7 +86,7 @@ class VIPFindHeadCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.contentView.backgroundColor = JXFfffffColor
         let width : CGFloat = kScreenWidth - 30
         let s = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: 218))
         self.scrollContentView.addSubview(s)

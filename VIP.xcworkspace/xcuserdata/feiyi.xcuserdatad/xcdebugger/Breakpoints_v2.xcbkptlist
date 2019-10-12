@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "A357BB37-34AD-4063-BC48-7481FC75C576"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9E577513-37F4-4998-9061-F3F71BEAA87D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -13,15 +15,16 @@
             timestampString = "582550559.473307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -35,59 +38,59 @@
             landmarkType = "24">
             <Locations>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 92e60ecebbea59d6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.maskView.getter : __C.UIView"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.maskView.getter : __C.UIView"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.550297"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "206">
+                  offsetFromSymbolStart = "370">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 96741553d4acbff9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; __C.UIView in VIP.VIPFinancialAccountController.maskView.getter : __C.UIView"
-                  moduleName = "VIP"
+                  symbolName = "closure #1 () -&gt; __C.UIView in VIB.VIPFinancialAccountController.maskView.getter : __C.UIView"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.552623"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "187"
                   endingLineNumber = "187"
-                  offsetFromSymbolStart = "14">
+                  offsetFromSymbolStart = "17">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 6a99535160df31da"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.maskView.setter : __C.UIView"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.maskView.setter : __C.UIView"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.554607"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "128">
+                  offsetFromSymbolStart = "160">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 33be4f761b8a33ab"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.maskView.modify : __C.UIView"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.maskView.modify : __C.UIView"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.5568759"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -95,14 +98,14 @@
                   offsetFromSymbolStart = "26">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 6c38b92815cdbf88"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.maskView.modify : __C.UIView with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.maskView.modify : __C.UIView with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.558874"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
@@ -110,34 +113,34 @@
                   offsetFromSymbolStart = "27">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - dffcbfc29dd0618"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VIP.VIPFinancialAccountController"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; VIB.VIPFinancialAccountController"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.5607719"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "1279">
+                  offsetFromSymbolStart = "1207">
                </Location>
                <Location
+                  uuid = "E6DB41EB-CB2D-493F-B1D7-EC544EC784F8 - 1a68a1d8875f0fe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialAccountController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VIP.VIPFinancialAccountController&gt;"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialAccountController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;VIB.VIPFinancialAccountController&gt;"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
-                  timestampString = "585904809.5627559"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialAccountController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "1193">
+                  offsetFromSymbolStart = "1139">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -145,11 +148,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "4E4720EA-5748-41F1-ACD4-7EEA1462820B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/LoginRegister/ViewModel/VIPLoginRegisterVM.swift"
-            timestampString = "587553247.5871249"
+            timestampString = "588672615.864236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -161,11 +165,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "CD06CAB8-7868-4D4E-99B4-76370B78F50A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Network/JXRequest.swift"
-            timestampString = "582644886.034707"
+            timestampString = "589712474.925797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -177,11 +182,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "24111EE8-476C-4976-8774-4BEA4CFA3AD2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.473588"
+            timestampString = "589712474.925863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
@@ -193,11 +199,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "CB8D68D7-05EF-41EB-9C26-575BBE417C63"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.4736609"
+            timestampString = "589712474.925917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -209,11 +216,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "1738BE88-998D-478C-9CD2-C842BC60D2E2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.473724"
+            timestampString = "589712474.925963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -225,27 +233,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "CFF62A69-4879-4B04-88D3-6B29B577397B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.473787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.4738491"
+            timestampString = "589712474.926007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -254,34 +247,34 @@
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "CFF62A69-4879-4B04-88D3-6B29B577397B - 630f9afc304847bd"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPFinancialRecordsController.requestData() -&gt; ()"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPFinancialRecordsController.requestData() -&gt; ()"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-                  timestampString = "585904809.595927"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
+                  uuid = "CFF62A69-4879-4B04-88D3-6B29B577397B - 854e61ea0e005765"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.String, Swift.Bool) -&gt; () in VIP.VIPFinancialRecordsController.requestData() -&gt; ()"
-                  moduleName = "VIP"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.String, Swift.Bool) -&gt; () in VIB.VIPFinancialRecordsController.requestData() -&gt; ()"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-                  timestampString = "585904809.597816"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "182">
+                  offsetFromSymbolStart = "130">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -289,11 +282,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "AB330351-D5CB-40A1-B3B5-D77FD682263C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.473909"
+            timestampString = "589712474.926051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -305,6 +299,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "936D6449-2DAB-428D-8E32-AA3023AEEB51"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -321,11 +316,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BF97863F-4BBC-4721-A4A3-B8AA170D4E93"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPExchangeViewController.swift"
-            timestampString = "587553247.587703"
+            timestampString = "588672615.864574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -337,15 +333,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "5E69CCCD-9AF0-49A2-9E18-B675EAFA9221"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPExchangeViewController.swift"
-            timestampString = "587553247.5878"
+            timestampString = "588672615.864628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "jxSelectView(selectView:didSelectRowAt:inSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -353,6 +350,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "7B1BCEC5-CAE7-465E-9411-238FED8E2B1F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -369,6 +367,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0A5E1999-D948-4700-9B23-02EB0DCFC4AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -378,13 +377,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
             endingLineNumber = "193"
-            landmarkName = "forgetPsd(_:)"
+            landmarkName = "logAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "CA75D78F-1539-4B7B-914C-7A905A6EF823"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -401,6 +401,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "C4E1BD7A-8D4F-423F-B79E-E56AF6B2A83B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -414,34 +415,34 @@
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "C4E1BD7A-8D4F-423F-B79E-E56AF6B2A83B - 9ca02b65874bc3f6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "VIP.VIPRegisterViewController.switchLanguage(Any) -&gt; ()"
-                  moduleName = "VIP"
+                  symbolName = "VIB.VIPRegisterViewController.switchLanguage(Any) -&gt; ()"
+                  moduleName = "VIB"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/LoginRegister/ViewController/VIPRegisterViewController.swift"
-                  timestampString = "585904809.624305"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "221"
-                  endingLineNumber = "221"
-                  offsetFromSymbolStart = "866">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in VIP.VIPRegisterViewController.switchLanguage(Any) -&gt; ()"
-                  moduleName = "VIP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac1/VIP/VIP/Main/LoginRegister/ViewController/VIPRegisterViewController.swift"
-                  timestampString = "585904809.626062"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/LoginRegister/ViewController/VIPRegisterViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "222"
                   endingLineNumber = "222"
-                  offsetFromSymbolStart = "111">
+                  offsetFromSymbolStart = "865">
+               </Location>
+               <Location
+                  uuid = "C4E1BD7A-8D4F-423F-B79E-E56AF6B2A83B - e50be8a02d8aaa0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in VIB.VIPRegisterViewController.switchLanguage(Any) -&gt; ()"
+                  moduleName = "VIB"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac1/VIP1/VIP/Main/LoginRegister/ViewController/VIPRegisterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "96">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -449,22 +450,24 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "157D0C90-BEFB-4A00-9746-38ACC3DD00E3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/LoginRegister/ViewController/VIPForgetPsdViewController.swift"
-            timestampString = "587553247.5882159"
+            timestampString = "588672615.864822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
             endingLineNumber = "245"
-            landmarkName = "jxBarView(barView:didClick:)"
-            landmarkType = "7">
+            landmarkName = "VIPForgetPsdViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "40CA2A0A-67CB-47C4-9F92-5EFD529E73F4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -481,6 +484,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "C65B5871-8066-4083-AA14-1480F665FD6A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -490,13 +494,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "VIPLoginViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "D2539BAF-11F4-4641-BF10-05A23BBB607F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -513,6 +518,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "AB400B24-25AF-49C9-8C28-7787BB4B7AEE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -529,6 +535,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "513A7BF4-9C04-4079-BD40-848B7ED4F002"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -545,15 +552,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "5B32975A-91A9-438C-AB93-3A78F770E05F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.588724"
+            timestampString = "588672615.865052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "action(button:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -561,6 +569,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0333EA09-7872-48B4-8F09-F53FF834F062"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -577,6 +586,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "DCEE8CCA-F68E-43A9-A6C1-397CBD76FE26"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -593,11 +603,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "39F81D35-E4F3-4D09-8EBF-3371D2FAE356"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/VIPHomeViewController.swift"
-            timestampString = "587553247.5889471"
+            timestampString = "588672615.865507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -609,6 +620,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "ABFA7442-1337-4821-9C34-D58DFA801970"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -625,6 +637,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "B4EC32CC-5762-4E89-AF53-FDF5C1A7DFAE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -641,11 +654,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "1A3DF8E1-6C47-4ECA-893A-CB31A685415D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.4749891"
+            timestampString = "589712474.926404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -657,6 +671,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BFFF79BF-427E-4BFD-900C-EB4CA83A6986"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -673,11 +688,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "F561EBBD-5200-4826-ACFB-36C373A496FE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.475095"
+            timestampString = "589712474.926471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -689,6 +705,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "7E97A6A7-447F-4424-993D-9C0B5E596DCD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -705,6 +722,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "E70D0B27-A08F-4742-BBAB-410BC049E9CB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -721,6 +739,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0CB4B8F8-2D87-4CAB-9CA3-ACDAFA0022DD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -737,6 +756,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "01E9B540-6CAB-4565-BC01-2A1531B6BE7A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -753,11 +773,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "6A88D436-77E6-4C8F-BC41-6D9259081B15"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
-            timestampString = "582550559.4753309"
+            timestampString = "589712474.9266011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -769,6 +790,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "6A1E4D2D-5F5B-48AF-B628-53B4BA3CD6A0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -785,15 +807,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "F063D6AE-FA5E-462C-90E1-13E9792378C9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPProDetailViewController.swift"
-            timestampString = "587553247.589555"
+            timestampString = "588672615.8659329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -801,15 +824,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "39283C99-1ED6-4D0A-87E7-A72CEC41078A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPProDetailViewController.swift"
-            timestampString = "587553247.5896291"
+            timestampString = "588672615.8659821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -817,15 +841,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0EEE1D02-665B-466C-AED9-53A402DD033A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.5896749"
+            timestampString = "588672615.866028"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "jxxBarView(barView:didClick:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -833,15 +858,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "0720B848-B554-42E1-A341-5987A7911BCA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.5897501"
+            timestampString = "588672615.86634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "horizontalViewDidScroll(scrollView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -849,15 +875,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "80557E76-7AD5-48BA-BF68-5140AA86F267"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.589859"
+            timestampString = "588672615.866601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "horizontalView(_:to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -865,6 +892,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "C285B280-26C0-4ACB-9D27-32E5FE0328B6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -881,11 +909,12 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "2B2500FD-4A17-487C-9406-0BC1F78B37BF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/My/ViewController/VIPIncomeViewController.swift"
-            timestampString = "582569536.136427"
+            timestampString = "588672615.866909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -897,15 +926,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "54355762-745F-46F3-819F-A14577662029"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.590071"
+            timestampString = "588672615.866959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -913,16 +943,82 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "5EF6078C-342D-4E60-AAE5-E5F16A6374E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP/Main/Home/ViewController/VIPPropertyViewController.swift"
-            timestampString = "587553247.59014"
+            timestampString = "588672615.867223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "horizontalViewDidScroll(scrollView:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5CEA76F-B678-4ED9-8633-947AD038C381"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIP/Main/Find/ViewController/VIPFinancialRecordsController.swift"
+            timestampString = "589712474.926802"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16EE4112-21F1-46B9-9D51-8F1A410D8FBE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIP/Main/My/ViewController/VIPPromotionDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "030301F5-F5BA-40DF-84F3-C9F1C279F183"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIP/Main/LoginRegister/ViewController/VIPLanguageAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "confirmAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79F86586-F71C-4C64-B36C-4C20AC6381CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIP/Common/LanguageHeader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "changeLanguage(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

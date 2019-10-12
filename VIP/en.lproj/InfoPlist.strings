@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  VIP
+
+  Created by 飞亦 on 10/12/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+{
+    "NSCameraUsageDescription" = "This feature requires the use of your camera";
+    "NSPhotoLibraryAddUsageDescription" = "This feature requires access to your album";
+    "NSPhotoLibraryUsageDescription" = "This feature requires access to your photo library";
+}

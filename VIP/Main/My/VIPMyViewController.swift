@@ -22,7 +22,8 @@ class VIPMyViewController: VIPTableViewController{
             ["image":"setting","title":"Setting"]
         ]
     ]
-  
+    //
+    
     var vm = VIPMyVM()
    
     
@@ -214,6 +215,7 @@ class VIPMyViewController: VIPTableViewController{
                 let vc = storyboard.instantiateViewController(withIdentifier: "promotionDetail") as! VIPPromotionDetailController
                 //vc.title = LocalizedString(key: "Promotion")
                 vc.inviteUrl = self.vm.myEntity.invent_url
+                vc.inviteCode = self.vm.myEntity.invitation_code
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }

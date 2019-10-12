@@ -204,6 +204,7 @@ extension VIPFinancialRecordsController {
             let vc = storyboard.instantiateViewController(withIdentifier: "financialRecordsAlert") as! VIPFinancialRecordsAlertController
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
+            vc.view.backgroundColor = UIColor.clear
             vc.entity = entity
             if self.vm.programRecordsEntity.list.count > 0 {
                 let arr = self.vm.programRecordsEntity.list[self.select_row].titles

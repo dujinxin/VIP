@@ -20,12 +20,42 @@ class VIPProDetailViewController: VIPBaseViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var fromLeftLabel: UILabel!{
+        didSet{
+            self.fromLeftLabel.text = ""
+        }
+    }
+    @IBOutlet weak var fromRightLabel: UILabel!{
+        didSet{
+            self.fromRightLabel.text = ""
+        }
+    }
+    @IBOutlet weak var fromLine: UIView!{
+        didSet{
+            self.fromLine.isHidden = true
+        }
+    }
+    @IBOutlet weak var fromHeightConstraint: NSLayoutConstraint!{
+        didSet{
+            self.fromHeightConstraint.constant = 1
+        }
+    }
+    
     var entity : VIPTradeRecordsEntity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = LocalizedString(key: "Home_recordDetails")
         //self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(back))
+        
+        if self.entity.operation_style == 2 {
+            self.fromHeightConstraint.constant = 50
+            self.fromLeftLabel.text = LocalizedString(key: "Home_from")
+            self.fromRightLabel.text = self.entity.remarks
+            self.fromLine.isHidden = false
+        } else {
+            self.fromHeightConstraint.constant = 1
+        }
         
         if self.entity.operation_qty > 0 {
             self.numLabel.text = "+\(self.entity.operation_qty) \(self.entity.currency_name ?? "")"

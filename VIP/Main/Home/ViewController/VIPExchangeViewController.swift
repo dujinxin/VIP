@@ -70,7 +70,7 @@ class VIPExchangeViewController: VIPBaseViewController {
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
-   
+        k.closeItem?.title = LocalizedString(key: "Done")
         return k
     }()
     lazy var selectView: JXSelectView = {
@@ -232,6 +232,7 @@ class VIPExchangeViewController: VIPBaseViewController {
         //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
         alertVC.addTextField(configurationHandler: { (textField) in
             textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
+            textField.isSecureTextEntry = true
         })
         alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
             

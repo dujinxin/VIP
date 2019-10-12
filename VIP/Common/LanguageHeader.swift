@@ -11,6 +11,7 @@ import UIKit
 enum LanguageType : String{
     case chinese = "zh-Hans"
     case english = "en"
+    case korean  = "ko"
 }
 
 var charBundle : Int8 = 0
@@ -38,6 +39,9 @@ class LanaguageManager: NSObject {
             } else if language == LanguageType.english.rawValue {
                 languageStr = "en"
                 type = .english
+            } else if language == LanguageType.korean.rawValue {
+                languageStr = "ko"
+                type = .korean
             }
             Bundle.main.setLanguage(language)
         }
@@ -52,6 +56,8 @@ class LanaguageManager: NSObject {
             self.languageStr = "zh"
         } else if key == .english {
             self.languageStr = "en"
+        } else if key == .korean {
+            self.languageStr = "ko"
         }
         
         Bundle.main.setLanguage(key.rawValue)

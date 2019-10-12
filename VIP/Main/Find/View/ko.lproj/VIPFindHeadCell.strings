@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "VIB服务"; ObjectID = "8GD-6e-8eA"; */
+"8GD-6e-8eA.text" = "VIB 서비스";
+
+/* Class = "UILabel"; text = "Etherscan"; ObjectID = "CX2-Dc-Hnc"; */
+"CX2-Dc-Hnc.text" = "Etherscan";
+
+/* Class = "UILabel"; text = "ETH区块链浏览器"; ObjectID = "HAG-vS-pRF"; */
+"HAG-vS-pRF.text" = "ETH 블록체인 브라우저";
+
+/* Class = "UILabel"; text = "推荐"; ObjectID = "Ibf-0o-a8a"; */
+"Ibf-0o-a8a.text" = "추천";
+
+/* Class = "UILabel"; text = "理财"; ObjectID = "THF-Q0-tMX"; */
+"THF-Q0-tMX.text" = "이재";
+
+/* Class = "UILabel"; text = "其他"; ObjectID = "TLD-yF-WcW"; */
+"TLD-yF-WcW.text" = "기타";
+
+/* Class = "UILabel"; text = "超级节点"; ObjectID = "VVm-pz-svZ"; */
+"VVm-pz-svZ.text" = "슈퍼 노드";
+
+/* Class = "UILabel"; text = "BTC区块链浏览器"; ObjectID = "gQZ-pk-bjE"; */
+"gQZ-pk-bjE.text" = "BTC 블록체인 브라우저";
+
+/* Class = "UILabel"; text = "BTC.COM"; ObjectID = "zC0-X6-AZ7"; */
+"zC0-X6-AZ7.text" = "BTC.COM";

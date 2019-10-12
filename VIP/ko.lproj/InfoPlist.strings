@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  VIP
+
+  Created by 飞亦 on 10/12/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+{
+    "NSCameraUsageDescription" = "이 기능을 사용하려면 카메라를 사용해야합니다";
+    "NSPhotoLibraryAddUsageDescription" = "이 기능을 사용하려면 앨범에 액세스해야합니다";
+    "NSPhotoLibraryUsageDescription" = "이 기능을 사용하려면 사진 라이브러리에 액세스해야합니다";
+}

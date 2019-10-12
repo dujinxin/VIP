@@ -40,8 +40,8 @@ enum ApiString : String {
     case version =                   "/app/update"                          //版本更新
 
 
-    case mnemonic =                  "/api/user/get/mnemonic"               //获取助记词
-    case privateKey =                "/api/user/get/masterMrivateKey"       //获取私钥
+    case mnemonic =                  "/api/user/get/mnemonic/v2"            //获取助记词
+    case privateKey =                "/api/user/get/masterMrivateKey/v2"    //获取私钥
     case modifyPsd =                 "/api/user/forgetLoginPwd"             //修改密码
     
     case find =                      "/api/find/banner"                     //发现

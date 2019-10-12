@@ -57,36 +57,78 @@ class VIPSafetyViewController: VIPTableViewController{
         let title = actionArray[indexPath.section]
         
         if indexPath.section == 0 {
-            self.showMBProgressHUD()
-            self.vm.fetchPrivateKey() { (_, msg, isSuc) in
-                self.hideMBProgressHUD()
+            
+            let alertVC = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+            //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
+            alertVC.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
+                textField.isSecureTextEntry = true
+            })
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
                 
-                if isSuc == false {
-                    ViewManager.showNotice(msg)
-                } else {
-                    let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
-                    vc.title = title
-                    vc.privateKey = self.vm.privateKey
-                    vc.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                guard
+                    let textField = alertVC.textFields?[0],
+                    let psd = textField.text,
+                    psd.isEmpty == false else {
+                        return
                 }
-            }
+                self.showMBProgressHUD()
+                self.vm.fetchPrivateKey(pay_password: psd) { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    
+                    if isSuc == false {
+                        ViewManager.showNotice(msg)
+                    } else {
+                        let vc = storyboard.instantiateViewController(withIdentifier: "export") as! VIPExportViewController
+                        vc.title = title
+                        vc.privateKey = self.vm.privateKey
+                        vc.hidesBottomBarWhenPushed = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }))
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
+            
+            
             
         } else if indexPath.section == 1{
-            self.showMBProgressHUD()
-            self.vm.fetchMnemonic() { (_, msg, isSuc) in
-                self.hideMBProgressHUD()
+            let alertVC = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+            //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
+            alertVC.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
+                textField.isSecureTextEntry = true
+            })
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
                 
-                if isSuc == false {
-                    ViewManager.showNotice(msg)
-                } else {
-                    let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
-                    vc.title = title
-                    vc.mnemonicStr = self.vm.mnemonic
-                    vc.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                guard
+                    let textField = alertVC.textFields?[0],
+                    let psd = textField.text,
+                    psd.isEmpty == false else {
+                        return
                 }
-            }
+                self.showMBProgressHUD()
+                self.vm.fetchMnemonic(pay_password: psd) { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    
+                    if isSuc == false {
+                        ViewManager.showNotice(msg)
+                    } else {
+                        let vc = storyboard.instantiateViewController(withIdentifier: "backUp") as! VIPBackUpViewController
+                        vc.title = title
+                        vc.mnemonicStr = self.vm.mnemonic
+                        vc.hidesBottomBarWhenPushed = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }))
+            alertVC.addAction(UIAlertAction(title: LocalizedString(key: "Cancel"), style: .cancel, handler: { (action) in
+            }))
+            
+            self.present(alertVC, animated: true, completion: nil)
+            
             
         } else if indexPath.section == 2{
             let vc = storyboard.instantiateViewController(withIdentifier: "modify") as! VIPModifyViewController

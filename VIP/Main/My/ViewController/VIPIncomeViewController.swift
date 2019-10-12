@@ -104,8 +104,8 @@ class VIPIncomeViewController: VIPBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     @objc func tapAction(_ sender: UITapGestureRecognizer) {
-        let vc = VIPIncomeRecordsController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = VIPIncomeRecordsController()
+//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }

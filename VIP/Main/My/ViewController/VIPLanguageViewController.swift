@@ -10,7 +10,7 @@ import UIKit
 
 class VIPLanguageViewController: VIPTableViewController{
 
-    var actionArray = [LocalizedString(key: "My_chinese"),LocalizedString(key: "My_english")]
+    var actionArray = [LocalizedString(key: "My_chinese"),LocalizedString(key: "My_english"),LocalizedString(key: "My_korean")]
     
     var selectedRow : Int = 0
     var currentRow : Int = 0
@@ -33,9 +33,12 @@ class VIPLanguageViewController: VIPTableViewController{
             if language == LanguageType.chinese.rawValue {
                 selectedRow = 0
                 currentRow = 0
-            } else {
+            } else if language == LanguageType.english.rawValue{
                 selectedRow = 1
                 currentRow = 1
+            } else {
+                selectedRow = 2
+                currentRow = 2
             }
         }
         
@@ -50,8 +53,10 @@ class VIPLanguageViewController: VIPTableViewController{
         } else {
             if selectedRow == 0 {
                 LanaguageManager.shared.changeLanguage(.chinese)
-            } else {
+            } else if selectedRow == 1 {
                 LanaguageManager.shared.changeLanguage(.english)
+            } else {
+                LanaguageManager.shared.changeLanguage(.korean)
             }
             LanaguageManager.shared.reset(nil)
             self.navigationController?.popViewController(animated: true)

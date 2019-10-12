@@ -22,14 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Bundle.main.setLanguage(language)
         } else {
             let language = Bundle.main.getCurrentLanguage()
-            if language == "en" {
+            if language.hasPrefix("en") {
                 UserDefaults.standard.set("en", forKey: "myLanguage")
                 UserDefaults.standard.synchronize()
+            } else if language.hasPrefix("ko") {
+                UserDefaults.standard.set("ko", forKey: "myLanguage")
+                UserDefaults.standard.synchronize()
+            } else if language.hasPrefix("zh") {
+                UserDefaults.standard.set("zh-Hans", forKey: "myLanguage")
+                UserDefaults.standard.synchronize()
             } else {
-                UserDefaults.standard.set("zh", forKey: "myLanguage")
+                UserDefaults.standard.set("en", forKey: "myLanguage")
                 UserDefaults.standard.synchronize()
             }
+            
         }
+        
+        print(UserDefaults.standard.object(forKey: "AppleLanguages"))
         return true
     }
 

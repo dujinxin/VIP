@@ -31,12 +31,17 @@ class VIPPromotionDetailController: VIPBaseViewController {
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
+    @IBOutlet weak var topCodeLabel: UILabel!
  
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var copyButton: UIButton!
     
-    var inviteUrl : String!
+    @IBOutlet weak var codeTitleLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var rightCopyButton: UIButton!
     
+    var inviteUrl : String!
+    var inviteCode : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,15 @@ class VIPPromotionDetailController: VIPBaseViewController {
         //self.titleLabel.text = LocalizedString(key: "Promotion")
         
         self.codeImageView.image = self.code(self.inviteUrl)
+        self.topCodeLabel.text = self.inviteCode
+        self.codeLabel.text = self.inviteCode
+        if LanaguageManager.shared.type == .chinese {
+            self.codeTitleLabel.text = "推荐码："
+        } else if LanaguageManager.shared.type == .korean {
+            self.codeTitleLabel.text = "추천 코드："
+        } else {
+            self.codeTitleLabel.text = ""
+        }
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -65,9 +79,15 @@ class VIPPromotionDetailController: VIPBaseViewController {
         guard let image = self.codeImageView.image else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
-    @IBAction func copyCodeAction(_ sender: Any) {
+    @IBAction func copyUrlAction(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = inviteUrl
+        ViewManager.showNotice(LocalizedString(key: "Copied"))
+        
+    }
+    @IBAction func copyCodeAction(_ sender: Any) {
+        let pals = UIPasteboard.general
+        pals.string = inviteCode
         ViewManager.showNotice(LocalizedString(key: "Copied"))
         
     }

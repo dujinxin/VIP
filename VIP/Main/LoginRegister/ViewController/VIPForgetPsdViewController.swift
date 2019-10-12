@@ -126,6 +126,7 @@ class VIPForgetPsdViewController: VIPBaseViewController {
         k.backgroundColor = JXViewBgColor
         k.textViewDelegate = self
         k.textFieldDelegate = self
+        k.closeItem?.title = LocalizedString(key: "Done")
         return k
     }()
     

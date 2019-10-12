@@ -51,6 +51,8 @@ class VIPTransferViewController: VIPBaseViewController {
     @IBOutlet weak var scanButton: UIButton!
     
     @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var noticeLabel: UILabel!
+    
     @IBOutlet weak var confirmButton: UIButton!
     
     lazy var keyboard: JXKeyboardToolBar = {
@@ -62,6 +64,7 @@ class VIPTransferViewController: VIPBaseViewController {
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
+        k.closeItem?.title = LocalizedString(key: "Done")
         return k
     }()
     
@@ -88,7 +91,12 @@ class VIPTransferViewController: VIPBaseViewController {
             self.toAddressTextField.placeholder = LocalizedString(key: "Select address(\(self.entity?.coinEntity?.short_name ?? ""))")
         }
         self.fromAddressLabel.text = self.entity?.walletEntity?.address
-        self.rateLabel.text = "\(LocalizedString(key: "Home_absenceFee"))：\(self.entity?.coinEntity?.withdraw_fee ?? 0)"
+        self.rateLabel.text = "\(LocalizedString(key: "Tips"))"
+        if let detail = self.entity?.coinEntity?.withdraw_detail {
+            let s = detail.replacingOccurrences(of: "/", with: "\n")
+            self.noticeLabel.text = s
+        }
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
     }
@@ -132,6 +140,7 @@ class VIPTransferViewController: VIPBaseViewController {
         //键盘的返回键 如果只有一个非cancel action 那么就会触发 这个按钮，如果有多个那么返回键只是单纯的收回键盘
         alertVC.addTextField(configurationHandler: { (textField) in
             textField.placeholder = LocalizedString(key: "Home_Please enter the trade password")
+            textField.isSecureTextEntry = true
         })
         alertVC.addAction(UIAlertAction(title: LocalizedString(key: "OK"), style: .destructive, handler: { (action) in
             

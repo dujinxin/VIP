@@ -195,6 +195,7 @@ class VIPPropertyViewController: VIPTableViewController {
     
     var topBar : JXXBarView!
     var horizontalView : JXHorizontalView!
+    var vcArray : Array<VIPProRecordsContorller> = []
     
     override func viewDidLoad() {
         
@@ -253,6 +254,7 @@ class VIPPropertyViewController: VIPTableViewController {
         self.view.addSubview(horizontalView)
         self.horizontalView = horizontalView
         
+        self.vcArray = [vc1,vc2,vc3,vc4,vc5]
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(self.headView)
         self.scrollView.addSubview(horizontalView)
@@ -306,6 +308,13 @@ class VIPPropertyViewController: VIPTableViewController {
             vc.entity = self.vm?.propertyEntity
             vc.backBlock = {
                 //self.tableView.mj_header.beginRefreshing()
+        
+                for i in 0..<self.vcArray.count {
+                    if i == self.topBar.selectedIndex {
+                        let vc = self.vcArray[i]
+                        vc.request(page: 0)
+                    }
+                }
             }
             self.navigationController?.pushViewController(vc, animated: true)
         } else if button.tag == 1 {
@@ -335,6 +344,13 @@ class VIPPropertyViewController: VIPTableViewController {
             self.financialVM.walletListEntity.list.removeAll()
             self.financialVM.walletList { (_, msg, isSuc) in
                 
+            }
+            
+            for i in 0..<self.vcArray.count {
+                if i == self.topBar.selectedIndex {
+                    let vc = self.vcArray[i]
+                    vc.request(page: 0)
+                }
             }
         }
         vc.hidesBottomBarWhenPushed = true

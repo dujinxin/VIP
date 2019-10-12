@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "73W-uB-YgC"; */
+"73W-uB-YgC.text" = "1234";
+
+/* Class = "UILabel"; text = "金额(100$-999$)"; ObjectID = "OG3-fT-iWu"; */
+"OG3-fT-iWu.text" = "金额(100$-999$)";
+
+/* Class = "UIButton"; normalTitle = "加入"; ObjectID = "ZCh-Ya-BOe"; */
+"ZCh-Ya-BOe.normalTitle" = "가입";

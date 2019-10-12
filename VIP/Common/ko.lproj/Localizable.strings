@@ -1,0 +1,264 @@
+/* 
+  Localizable.strings
+  VIP
+
+  Created by 飞亦 on 5/29/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+
+"Home" = "첫 페이지";
+"Find" = "발경";
+"Quotes" = "시세";
+"My" = "나의";
+
+
+
+"Promotion" = "나의 홍보";
+"Community" = "나의 공동체";
+"Income" = "나의 수익";
+"Safety" = "안전센터";
+"Notification" = "통지센터";
+"Setting" = "설치";
+
+//common
+"Tips" = "제시";
+"Cancel" = "취소";
+"OK" = "확인";
+"Done" = "완료";
+
+"Submit" = "제출";
+
+"Copied" = "성공적인 복사";
+"Saved" = "성공적으로 저장되었습니다";
+"SaveFailed" = "저장 실패";
+
+
+"No relevant data available" = "관련 데이터가 아직 없음";
+
+
+
+//Notice
+
+"To be developed, please look forward" = "대개발중,기대해주세요";
+
+"Notice_nameLength" = "The name needs to be set to 5 or more.";
+"Notice_loginLength" = "Login password needs to be set to 6 or more.";
+"Notice_tradeLength" = "The transaction password must be set to 6 digits.";
+"Notice_loginDifferent" = "The login passwords is different";
+"Notice_tradeDifferent" = "The trade passwords is different";
+"Notice_newPsdDifferent" = "The new passwords is different";
+
+"Notice_nameError" = "Incorrect name";
+"Notice_passwordError" = "Incorrect password";
+
+"Notice_inputPassword" = "Please enter the password";
+"Notice_inputNumber" = "Please enter amount";
+"Notice_insufficientBalance" = "Insufficient balance";
+
+"Notice_feedbackContent_min" = "The feedback content is at least 6 characters.";
+"Notice_feedbackContent_max" = "The number of characters is not more than 300.";
+
+
+"Notice_version" = "이 최신 버전입니다";
+
+//MARK:login&register
+//register
+"Language" = "언어 선택";
+"Register_nameTextField_placeholder" = "이름 입력해주세요";
+"Register_loginPsdTextField_placeholder" = "비밀번호 등록";
+"Register_loginPsdTextField_repeat_placeholder" = "비밀번호 중복 등록";
+"Register_tradePsdTextField_placeholder" = "거래 비밀번호";
+"Register_tradePsdTextField_repeat_placeholder" = "거래 비밀번호 중복";
+"Register_inviteTextField_placeholder" = "초대 코드";
+
+"Register_read_agree" = "을 읽고 동의합니다";
+"Register_user_agreement" = "사용자 계약";
+
+"Register" = "회원가입";
+"Registered" = "기회원가입?";
+//"Register_gotologin" = "Go to login";
+"Register_gotologin" = "등록하러";
+"Register_systemTips" = "시스텍 팁";
+"Register_systemTips_content" = "초대 코드를 입력하지 않으면 기본 초대 코드가 정렬됩니다.";
+
+//login
+"Login_psdTextField_placeholder" = "비밀번호 입력해주세요";
+"Login" = "등록";
+"Login_noAccountYet" = "아직 아이디 없다？";
+"Login_goToRegister" = "회원가입하러";
+//"Login_goToRegister" = "Go to register";
+"Login_forgetPassword" = "비밀번호 잊어버렸다";
+//"Login_forgetPassword" = "Forget password";
+
+
+//Forget password
+"Mnemonic" = "니모닉";
+"PrivateKey" = "개인 키";
+"Forget_mnemonicsTextField_placeholder" = "도움말을 입력하여 빈칸으로 격리하세요";
+"Forget_privateKeyTextField_placeholder" = "개인키 입력하세요               ";
+"Forget_notice_placeholder" = "선택하세요";
+"Forget_loginPsdTextField_placeholder" = "새 비밀번호";
+"Forget_loginPsdTextField_repeat_placeholder" = "비밀번호 중복 입력";
+
+"Import" = "즉시 도입";
+
+//Backup mnemonics
+"Backup_mnemonics" = "니모닉 백업 ";
+"Backup_info" = "니모닉을 자세히 백업하고 노트에서 적은 것이 좋습니다.";
+"Backup_remember" = "잘 기억해주세요";
+"Backup_next" = "다음에 기억합니다";
+
+
+//Home
+"Finance" = "이재";
+"SuperNode" = "슈퍼 노드";
+"Notice" = "공시";
+"Home_more" = "더 많이";
+"Home_totalAssets" = "총재산";
+"Home_earningsToday" = "금일 수익";
+
+
+"Withdraw" = "Withdraw";
+"Recharge" = "Recharge";
+"Transfer" = "이체";
+"Receive" = "수납";
+"Exchange" = "환전";
+"All" = "전부";
+"Number" = "수량";
+"State" = "상태";
+"Time" = "시간";
+
+
+
+"Home_review" = "Waiting Review";
+"Home_failure" = "기실폐";
+"Home_completed" = "기완성";
+"Home_transferInProgress" = "Transfer in progress";
+"Home_auditInProgress" = "심사중";
+"Home_confirmationInProgress" = "확인중";
+"Home_exchangeQuantity" = "환전수량";
+
+
+"Home_auditFailure" = "기실폐";
+"Home_transferFailure" = "기실폐";
+"Home_operatefFailure" = "기실폐";
+
+"Home_number of exchange token" = "환전 토큰 수량";
+"Transfer amount" = "이체 금액";
+
+"Balance" = "잔액";
+
+
+"Home_availableBalance" = "사용 가능한 잔액: ";
+"Home_freezeBalance" = "Freeze balance: ";
+
+"Home_transferAmount" = "이체 금액";
+"Home_Output amount" = "수출금액";
+"Home_receivingAddress" = "받을 주소";
+"Home_inputAddress" = "주소 입력";
+"Home_sendAddress" = "발송 주소";
+"Home_addressBook" = "주소록";
+"Home_photo" = "Photo";
+"Home_flashError" = "Flash Error";
+
+
+"Home_fromWallets" = "지갑에서 유래";
+"Home_targetWallet" = "목표 지갑";
+"Home_exchangeRate" = "환율";
+"Home_maximumExchangeNumber" = "최대 환전 수";
+"Home_absenceFee" = "광부비";
+"Home_Please enter the trade password" = "거래 비밀번호 입력하세요";
+"Home_exchangeRecord" = "기록";
+"Home_recordDetails" = "Details";
+
+"Home_from" = "From:";
+
+
+"Home_address" = "주소";
+"Home_name" = "이름";
+"Home_addAddress" = "주소 추가";
+"Home_addressBookList" = "주소 목록";
+"Home_addAddressBook" = "주소 추가";
+"Home_editAddressBook" = "주소본 편집";
+"Home_deleteTheAddress" = "이 주소본 삭제";
+
+"Home_text_placeHolder_addressName" = "이름 입력해주세요";
+"Home_text_placeHolder_address" = "주소를 기입하십시오";
+
+
+
+
+
+//Find
+"Find_btc" = "BTC";
+"Find_eth" = "ETH";
+
+"Find_foreignExchange" = "외환";
+"Find_fund" = "펀드";
+"Find_insurance" = "보험";
+"Find_negotiableSecurities" = "증권";
+
+"Find_financialRecords" = "이재기록";
+"Find_amount" = "금액";
+"Find_current" = "지불 토큰 종류";
+"Find_months" = "Months";
+
+//"Find_selectAaccounts" = "Selection of accounts";
+"Find_selectAaccounts" = "계정 선택";
+
+"Find_effective" = "효력이 발생 중";
+"Find_dissolved" = "기해체";
+"Find_completed" = "기완성";
+
+//"Find_availableBalance" = "Available balance";
+//"Find_presentPrice" = "Present price";
+"Find_availableBalance" = "사용 가능한 잔액e";
+"Find_presentPrice" = "현재 가격";
+"Find_value" = "가치";
+"Find_enterAmount" = "수량 입력해주세요";
+
+
+
+
+
+
+
+//Quotes
+"Quotes_currency" = "지폐 종류";
+"Quotes_latestPrice" = "최신 가격";
+"Quotes_upAndDown" = "등락폭";
+
+
+//My
+"My_logout" = "로그아웃";
+
+
+"My_incomeDetail" = "기록 상세";
+//1:合约收益 2：分享收益 3：分享收益 4社区收益 5：平级收益
+"My_contractGains" = "계약 수익";
+"My_sharedProfit" = "공유수익";
+"My_communityBenefits" = "공동체 수익";
+"My_levelIncome" = "평균수익";
+
+
+"My_exportPrivateKey" = "개인 키 도출";
+"My_backupMnemonics" = "니모닉 백업 ";
+"My_modifyLoginPassword" = "동록 비밀번호 수정";
+"My_modifyTradePassword" = "거래 암호 수정";
+
+//"My_languageChoice" = "Language Choice";
+"My_languageChoice" = "언어선택";
+"My_aboutUs" = "우리에 관해";
+"My_feedback" = "의견 피드백";
+"My_version" = "버전";
+
+
+"My_effective" = "유효";
+"My_notActive" = "미활성화";
+"My_qualified" = "합격";
+
+"My_feedback_textView_placeholder" = "당신의 귀중한 건의를 적어 주세요.";
+
+"My_chinese" = "중국어 간체";
+"My_english" = "영어";
+"My_korean" = "한국어";

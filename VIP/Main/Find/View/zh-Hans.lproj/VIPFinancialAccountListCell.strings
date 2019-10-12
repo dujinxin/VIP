@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "(活期)"; ObjectID = "CDK-J5-d04"; */
 "CDK-J5-d04.text" = "(活期)";
 
-/* Class = "UILabel"; text = "(日收益率)"; ObjectID = "JUn-pQ-JuD"; */
-"JUn-pQ-JuD.text" = "(日收益率)";
+/* Class = "UILabel"; text = "(月收益率)"; ObjectID = "JUn-pQ-JuD"; */
+"JUn-pQ-JuD.text" = "(月收益率)";
 
 /* Class = "UILabel"; text = "3%-8%"; ObjectID = "e5L-41-I7r"; */
 "e5L-41-I7r.text" = "3%-8%";

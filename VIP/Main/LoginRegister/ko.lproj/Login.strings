@@ -1,0 +1,90 @@
+
+/* Class = "UITextField"; placeholder = "重复交易密码"; ObjectID = "00C-nX-sbb"; */
+"00C-nX-sbb.placeholder" = "重复交易密码";
+
+/* Class = "UILabel"; text = "还没有账号？"; ObjectID = "9Ms-NH-ktY"; */
+"9Ms-NH-ktY.text" = "还没有账号？";
+
+/* Class = "UILabel"; text = "请选择要重置的密码"; ObjectID = "CME-2V-hlJ"; */
+"CME-2V-hlJ.text" = "请选择要重置的密码";
+
+/* Class = "UITextField"; placeholder = "请输入名称"; ObjectID = "Dew-d4-1VJ"; */
+"Dew-d4-1VJ.placeholder" = "请输入名称";
+
+/* Class = "UIButton"; normalTitle = "去注册"; ObjectID = "Duc-An-D0E"; */
+"Duc-An-D0E.normalTitle" = "去注册";
+
+/* Class = "UILabel"; text = "语言选择"; ObjectID = "EYX-Xa-VTq"; */
+"EYX-Xa-VTq.text" = "语言选择";
+
+/* Class = "UITextField"; placeholder = "重复输入密码"; ObjectID = "Eh1-Xp-lDI"; */
+"Eh1-Xp-lDI.placeholder" = "重复输入密码";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "Gqc-WE-iaY"; */
+"Gqc-WE-iaY.placeholder" = "请输入密码";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "HIu-ir-hEB"; */
+"HIu-ir-hEB.normalTitle" = "注册";
+
+/* Class = "UITextField"; placeholder = "登录密码"; ObjectID = "IWE-Wo-B5P"; */
+"IWE-Wo-B5P.placeholder" = "登录密码";
+
+/* Class = "UIButton"; normalTitle = "立即导入"; ObjectID = "JOr-Vk-JjQ"; */
+"JOr-Vk-JjQ.normalTitle" = "立即导入";
+
+/* Class = "UITextField"; placeholder = "新密码"; ObjectID = "Ld0-c2-zmD"; */
+"Ld0-c2-zmD.placeholder" = "新密码";
+
+/* Class = "UIButton"; normalTitle = "语言"; ObjectID = "QKo-0p-aro"; */
+"QKo-0p-aro.normalTitle" = "语言";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "Ql6-hY-OVU"; */
+"Ql6-hY-OVU.text" = "English";
+
+/* Class = "UITextField"; placeholder = "重复登录密码"; ObjectID = "S9h-np-EDG"; */
+"S9h-np-EDG.placeholder" = "重复登录密码";
+
+/* Class = "UIButton"; normalTitle = "忘记密码"; ObjectID = "XnQ-dX-4ks"; */
+"XnQ-dX-4ks.normalTitle" = "忘记密码";
+
+/* Class = "UITextField"; placeholder = "请输入名称"; ObjectID = "YNF-JV-Hae"; */
+"YNF-JV-Hae.placeholder" = "请输入名称";
+
+/* Class = "UIButton"; normalTitle = "《用户协议》"; ObjectID = "Zqy-va-mR3"; */
+"Zqy-va-mR3.normalTitle" = "사용자 계약";
+
+/* Class = "UILabel"; text = "已阅读并同意"; ObjectID = "fPR-VN-baO"; */
+"fPR-VN-baO.text" = "을 읽고 동의합니다";
+
+/* Class = "UITextField"; placeholder = "邀请码"; ObjectID = "fVd-Tb-LUM"; */
+"fVd-Tb-LUM.placeholder" = "邀请码";
+
+/* Class = "UIButton"; normalTitle = "去登录"; ObjectID = "iqp-9W-0wC"; */
+"iqp-9W-0wC.normalTitle" = "去登录";
+
+/* Class = "UIButton"; normalTitle = "登录密码"; ObjectID = "kAg-XP-gfa"; */
+"kAg-XP-gfa.normalTitle" = "登录密码";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "nwR-iR-eVS"; */
+"nwR-iR-eVS.normalTitle" = "登录";
+
+/* Class = "UITextField"; placeholder = "交易密码"; ObjectID = "r9a-VR-4Kg"; */
+"r9a-VR-4Kg.placeholder" = "交易密码";
+
+/* Class = "UIButton"; normalTitle = "语言"; ObjectID = "shD-Zs-opz"; */
+"shD-Zs-opz.normalTitle" = "语言";
+
+/* Class = "UILabel"; text = "已注册？"; ObjectID = "tOc-Dd-fcP"; */
+"tOc-Dd-fcP.text" = "已注册？";
+
+/* Class = "UIButton"; normalTitle = "交易密码"; ObjectID = "uEE-MY-5iz"; */
+"uEE-MY-5iz.normalTitle" = "交易密码";
+
+/* Class = "UILabel"; text = "简体中文"; ObjectID = "wZW-Cf-lKT"; */
+"wZW-Cf-lKT.text" = "简体中文";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "xHc-Hu-cM8"; */
+"xHc-Hu-cM8.normalTitle" = "取消";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "zJc-Ey-NkL"; */
+"zJc-Ey-NkL.normalTitle" = "确定";

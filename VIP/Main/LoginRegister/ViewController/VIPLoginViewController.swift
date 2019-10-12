@@ -74,6 +74,7 @@ class VIPLoginViewController: VIPBaseViewController {
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
+        k.closeItem?.title = LocalizedString(key: "Done")
         return k
     }()
     

@@ -25,8 +25,8 @@ class VIPSafetyVM: NSObject {
     }
     
     //获取私钥
-    func fetchPrivateKey(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.privateKey.rawValue, param: ["lang":LanaguageManager.shared.languageStr], success: { (data, message) in
+    func fetchPrivateKey(pay_password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.privateKey.rawValue, param: ["lang":LanaguageManager.shared.languageStr, "pay_password": pay_password], success: { (data, message) in
             self.privateKey = data as! String
             completion(nil,message,true)
         }) { (message, code) in
@@ -34,8 +34,8 @@ class VIPSafetyVM: NSObject {
         }
     }
     //获取助记词
-    func fetchMnemonic(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.mnemonic.rawValue, param: ["lang":LanaguageManager.shared.languageStr], success: { (data, message) in
+    func fetchMnemonic(pay_password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.mnemonic.rawValue, param: ["lang":LanaguageManager.shared.languageStr, "pay_password": pay_password], success: { (data, message) in
             self.mnemonic = data as! String
             completion(nil,message,true)
         }) { (message, code) in

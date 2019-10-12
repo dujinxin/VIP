@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "支付币种"; ObjectID = "2Zb-ly-j7d"; */
+"2Zb-ly-j7d.text" = "지불 토큰 종류";
+
+/* Class = "UILabel"; text = "合约状态"; ObjectID = "51i-ka-FMx"; */
+"51i-ka-FMx.text" = "계약 상태";
+
+/* Class = "UILabel"; text = "加入价值"; ObjectID = "551-3U-ryi"; */
+"551-3U-ryi.text" = "가입가격";
+
+/* Class = "UILabel"; text = "2019-05-24 18:50:08"; ObjectID = "65f-v7-7xR"; */
+"65f-v7-7xR.text" = "2019-05-24 18:50:08";
+
+/* Class = "UILabel"; text = "¥67"; ObjectID = "6rV-L7-LJA"; */
+"6rV-L7-LJA.text" = "¥67";
+
+/* Class = "UILabel"; text = "加入时间"; ObjectID = "8H4-oF-d1B"; */
+"8H4-oF-d1B.text" = "가입시간";
+
+/* Class = "UILabel"; text = "到期时间"; ObjectID = "Mzf-Wu-e6T"; */
+"Mzf-Wu-e6T.text" = "만료시간";
+
+/* Class = "UILabel"; text = "2019-05-24 18:50:08"; ObjectID = "gPy-lj-Raf"; */
+"gPy-lj-Raf.text" = "2019-05-24 18:50:08";
+
+/* Class = "UIButton"; normalTitle = "解除合约"; ObjectID = "jd4-AK-ZpS"; */
+"jd4-AK-ZpS.normalTitle" = "계약 해체";
+
+/* Class = "UILabel"; text = "生效中"; ObjectID = "sEK-WG-r27"; */
+"sEK-WG-r27.text" = "生效中";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "xK1-kO-9xQ"; */
+"xK1-kO-9xQ.text" = "BTC";

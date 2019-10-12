@@ -35,14 +35,10 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
         }
     }
     @IBOutlet weak var totalCastLabel: UILabel!
-    @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var interestIncomeLabel: UILabel!
     
     @IBOutlet weak var psdTextField: UITextField!
-    
-    @IBOutlet weak var noticeLabel: UILabel!
-    
-    
+  
     lazy var keyboard: JXKeyboardToolBar = {
         let k = JXKeyboardToolBar(frame: CGRect(), views: [self.psdTextField])
         k.showBlock = { (height, rect) in
@@ -52,11 +48,21 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
         k.toolBar.barTintColor = JXViewBgColor
         k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
+        k.closeItem?.title = LocalizedString(key: "Done")
         return k
     }()
     
-    var entity : VIPFinancialRecordsListEntity?
-    var titleStr = ""
+    var entity : VIPFinancialRecordsListEntity?{
+        didSet{
+            self.totalCastLabel.text = String(describing: entity?.contract_price ?? 0.0)
+            self.interestIncomeLabel.text = String(describing: entity?.deduct_price ?? 0.0)
+        }
+    }
+    var titleStr : String = "" {
+        didSet{
+            self.titleLabel.text = titleStr
+        }
+    }
     var vm = VIPFinancialVM()
     var callBackBlock : ((_ isRefresh: Bool)->())?
     
@@ -72,11 +78,6 @@ class VIPFinancialRecordsAlertController: VIPBaseViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         self.view.addSubview(self.keyboard)
-        
-        self.titleLabel.text = self.titleStr
-        self.totalCastLabel.text = "\(self.entity?.contract_price ?? 0)"
-        self.totalIncomeLabel.text = "\(self.entity?.bonus_price ?? 0)"
-        self.interestIncomeLabel.text = "\(self.entity?.deduct_price ?? 0)"
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)

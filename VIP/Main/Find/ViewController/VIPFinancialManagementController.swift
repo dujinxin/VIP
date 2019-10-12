@@ -132,29 +132,12 @@ class VIPFinancialManagementController: VIPTableViewController {
         return self.vm.financialEntity.list.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierHeader, for: indexPath) as! VIPFinancialAccountHeadCell
-//            //cell.entity = self.vm.tradeDetailEntity
-//            //cell.setEntity(self.vm.tradeDetailEntity, type: self.type)
-//
-//            return cell
-//        } else {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPFinancialListCell
-            let entity = self.vm.financialEntity.list[indexPath.row]
-            cell.accountLabel.text = entity.level_name
-            cell.limitLabel.text = "\(LocalizedString(key: "Find_amount"))($\(entity.min_money)-$\(entity.max_money))"
-//            cell.joinBlock = {
-//                //                let storyboard = UIStoryboard(name: "Find", bundle: nil)
-//                //                let vc = storyboard.instantiateViewController(withIdentifier: "financialManagement") as! VIPFinancialManagementController
-//                //                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-            return cell
-            
-//        }
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCell, for: indexPath) as! VIPFinancialListCell
+        let entity = self.vm.financialEntity.list[indexPath.row]
+        cell.accountLabel.text = entity.level_name
+        cell.limitLabel.text = "\(LocalizedString(key: "Find_amount"))($\(entity.min_money)-$\(entity.max_money))"
+        return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

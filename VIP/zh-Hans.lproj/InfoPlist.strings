@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  VIP
+
+  Created by 飞亦 on 10/12/19.
+  Copyright © 2019 飞亦. All rights reserved.
+*/
+{
+    "NSCameraUsageDescription" = "该功能需要使用您的相机";
+    "NSPhotoLibraryAddUsageDescription" = "该功能需要访问您的相册";
+    "NSPhotoLibraryUsageDescription" = "该功能需要访问您的照片库";
+}

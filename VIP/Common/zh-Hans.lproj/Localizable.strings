@@ -22,8 +22,11 @@
 
 
 //common
+
+"Tips" = "提示";
 "Cancel" = "取消";
 "OK" = "确定";
+"Done" = "完成";
 
 "Copied" = "已复制";
 "Saved" = "已保存";
@@ -147,6 +150,8 @@
 "Home_exchangeRecord" = "兑换记录";
 "Home_recordDetails" = "记录详情";
 
+"Home_from" = "转入方：";
+
 "Home_address" = "地址";
 "Home_name" = "名称";
 "Home_addAddress" = "添加地址";
@@ -214,4 +219,4 @@
 
 "My_chinese" = "简体中文";
 "My_english" = "英语";
-
+"My_korean" = "韩语";

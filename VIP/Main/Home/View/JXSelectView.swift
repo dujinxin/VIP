@@ -108,7 +108,7 @@ public class JXSelectView: UIView {
     public lazy var cancelButton: UIButton = {
         let btn = UIButton()
         btn.tag = 0
-        btn.setTitle("取消", for: UIControl.State.normal)
+        btn.setTitle(LocalizedString(key: "Cancel"), for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitleColor(JXMainColor, for: .normal)
         btn.addTarget(self, action: #selector(tapClick), for: UIControl.Event.touchUpInside)
@@ -117,7 +117,7 @@ public class JXSelectView: UIView {
     public lazy var confirmButton: UIButton = {
         let btn = UIButton()
         btn.tag = 1
-        btn.setTitle("确定", for: UIControl.State.normal)
+        btn.setTitle(LocalizedString(key: "OK"), for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitleColor(JXMainColor, for: .normal)
         btn.addTarget(self, action: #selector(confirmClick), for: UIControl.Event.touchUpInside)
